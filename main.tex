@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{chronology}
+\usepackage{chronosys}
 
 \title{}
 \author{}
@@ -8,23 +8,8 @@
 
 \begin{document}
 
-\begin{figure}
-  \centering
-  \begin{chronology}{2018}{2019}{\textwidth}[10ex]
-    \event{\decimaldate{30}{7}{2019}}{o famoso teste}
-    \event{\decimaldate{30}{8}{2019}}{o famoso teste}
-    \event{\decimaldate{30}{9}{2019}}{o famoso teste}
-    \event{\decimaldate{30}{10}{2019}}{o famoso teste}
-    \event{\decimaldate{30}{11}{2019}}{o famoso teste}
-    \event{\decimaldate{30}{12}{2019}}{o famoso teste}
-  \end{chronology}
-\end{figure}
-
-
-% \begin{chronology}[5]{1983}{2010}{\textwidth}
-% \event{1984}{one}
-% \event[1985]{1986}{two}
-% \event{\decimaldate{25}{12}{2001}}{three}
-% \end{chronology}
+\begin{chronology}[startyear=2018, stopyear=2021, height=5pt, dates=false, arrow=false, align=center]
+    \chronograduation{1}
+\end{chronology}
 
 \end{document}
