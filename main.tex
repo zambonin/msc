@@ -261,7 +261,7 @@ on~\cite[Section 3.3]{Ding:2006:book}.
 We will describe our improvement to Rainbow-like signature schemes below.
 Sections~\ref{sec:scheme} and~\ref{sec:efcma} give a formal description
 of our modifications. In Section~\ref{sec:security}, we look into 
-possible avenues of research to ensure that our proposals yield secure
+possible avenues of research to ensure that our proposal yields secure
 schemes.
 
 \section{Modification to the original scheme}\label{sec:scheme}
@@ -449,7 +449,7 @@ a solvable linear system. It is also known that the central map is expressed as
 multivariate systems of equations, which can be themselves interpreted as
 multidimensional matrices of coefficients. Observe that, to describe these in a
 clearer way, a given monomial ordering is used such that only usual matrices
-are needed. With this in mind, we suggest to delve into the probability that a
+are needed. With this in mind, we propose to calculate the probability that a
 random matrix with elements in $\mathbb{F}$ is invertible. This will prove useful
 to conclude that the cost of recalculating $\mathcal{F}'$ is amortised over
 multiple signatures.
@@ -460,15 +460,14 @@ make roughly a third of the output, considering common parameters for Rainbow.
 Further, recall that there are approximately $q^v$ possibilities for $y$. Our
 proposal eliminates this choice by locking vinegar variables into the private
 key. Hence, it is essential to know if such variables create patterns in which
-private information may leak through a multi-target attack. Thus, one
+private information may leak through a multi-target attack. Experiments that
+use random matrices and vectors with field elements from a cryptographically
+secure pseudo-random number generator should aid in this objective.
 
-
-
-% the probability of matrices with
-% elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
-% we present a statistical analysis of the structure of signatures created by our
-% method, and finish with a security overview in
-% Subsection~\ref{subsec:analysis}.
+Finally, a variety of attacks currently thwart the security of Rainbow-like
+signature schemes if parameters are not chosen carefully. We will briefly
+state each of those, along with their estimated complexities~\cite{Petzoldt:201005:inproc},
+and argue that our methods do not facilitate such attacks.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
