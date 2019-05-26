@@ -1,6 +1,8 @@
 \documentclass[openright]{report}
-\usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts, chronosys, enumitem}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
 
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
@@ -258,7 +260,7 @@ on~\cite[Section 3.3]{Ding:2006:book}.
 
 We will describe our improvement to Rainbow-like signature schemes below.
 Sections~\ref{sec:scheme} and~\ref{sec:efcma} give a formal description
-of our modifications. In Subsection~\ref{sec:security}, we look into 
+of our modifications. In Section~\ref{sec:security}, we look into 
 possible avenues of research to ensure that our proposals yield secure
 schemes.
 
@@ -406,7 +408,7 @@ change.
 The Rainbow submission to the NIST standardisation
 process~\cite{Ding:201712:misc} presents a scheme description that diverges
 from the original works. The authors introduce modifications that provide
-security against the existential forgery under chosen-message attack (EF-CMA)
+security against the existential forgery under chosen-message attack
 model, whereas the original scheme only offers security against universal
 forgery. These changes are built upon the introduction of a random salt. We
 will briefly describe this approach, with the intent of preventing the
