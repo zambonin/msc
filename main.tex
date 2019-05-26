@@ -102,49 +102,46 @@ The exact query used is \texttt{rainbow AND signature AND crypto AND (scheme OR 
 
 This is close to the number of works obtained when grouping all analogous searches in other sites, such as the ACM Digital Library, IEEE Xplore, Scopus, Semantic Scholar and Springer Link. Indeed, Google Scholar additionally crawls other sources, \emph{e.g.} university and governmental repositories, and as such returns a slightly larger number of works. From this set, we select relevant papers and present a summary below.
 
-Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge, laid horizontally for better visualization. Works are divided into four types, namely
+Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge, laid horizontally for better visualization. Works are divided into four types, namely:
 
 \begin{enumerate}[label=(\roman*), itemsep=1pt]
   \item\label{enum:i} schemes that are currently unbroken;
-  \item\label{enum:ii} schemes that have been reparametrized;
-  \item\label{enum:iii} 
-  \item\label{enum:iv} 
+  \item\label{enum:ii} schemes that have been reparametrised due to new cryptanalytic methods;
+  \item\label{enum:iii} schemes that have been broken;
+  \item\label{enum:iv} cryptanalytic or other theoretical papers.
 \end{enumerate}
 
 \begin{figure}[htbp]
-    \begin{chronology}[startyear=2005, stopyear=2013, height=3pt, dates=false, arrow=false, align=center]
-        \definechronoevent{sp}[textstyle=\footnotesize, 
-      datesseparation=/, conversionmonth=false]
-\chronosp[colorbox=yellow!10,markdepth=-20pt]{06/2005}{\cite{Ding:200506:inproc}}
-\chronosp[colorbox=blue!10]{09/2006}{BG~\cite{Billet:inproc:2006:sep}}
-\chronosp[colorbox=blue!10,markdepth=50pt]{06/2008}{DYC$^{+}$~\cite{Ding:inproc:2008:jun}}
-\chronosp[colorbox=blue!10,markdepth=-20pt]{08/2008}{FLdVP~\cite{Faugere:inproc:2008:aug}}
-\chronosp[colorbox=blue!10]{12/2009}{Fau~\cite{Faugere:article:2009:dec}}
-\chronosp[colorbox=yellow!10,markdepth=-60pt]{06/2010}{PBB~\cite{Petzoldt:inproc:2010:jun}}
-\chronosp[colorbox=green!10,markdepth=130pt]{12/2010}{PBB~\cite{Petzoldt:inproc:2010:dec}}
-\chronosp[colorbox=yellow!10,markdepth=-20pt]{03/2011}{PBB~\cite{Petzoldt:inproc:2011:mar}}
-\chronosp[colorbox=green!10,markdepth=90pt]{09/2011}{PTBW~\cite{Petzoldt:inproc:2011:sep}}
-\chronosp[colorbox=red!10,markdepth=-100pt]{02/2012}{YST~\cite{Yasuda:inproc:2012:feb}}
-\chronosp[colorbox=blue!10,markdepth=50pt]{04/2012}{Tho~\cite{Thomae:misc:2012:apr}}
-\chronosp[colorbox=blue!10,markdepth=-60pt]{09/2012}{Tho~\cite{Thomae:inproc:2012:sep}}
-\chronosp[colorbox=green!10]{11/2012}{PB~\cite{Petzoldt:inproc:2012:nov}}
+  \begin{chronology}[startyear=2005, stopyear=2020, height=3pt, dates=false, arrow=false, align=center]
+    \definechronoevent{sp}[textstyle=\footnotesize, datesseparation=/, conversionmonth=false]
+    \chronosp[colorbox=yellow!10,markdepth=-20pt]{06/2005}{Class~\ref{enum:ii}~\cite{Ding:200506:inproc}}
+    \chronosp[colorbox=blue!10]{09/2006}{BG~\cite{Billet:inproc:2006:sep}}
+    \chronosp[colorbox=blue!10,markdepth=50pt]{06/2008}{DYC$^{+}$~\cite{Ding:inproc:2008:jun}}
+    % \chronosp[colorbox=blue!10,markdepth=-20pt]{08/2008}{FLdVP~\cite{Faugere:inproc:2008:aug}}
+    % \chronosp[colorbox=blue!10]{12/2009}{Fau~\cite{Faugere:article:2009:dec}}
+    \chronosp[colorbox=yellow!10,markdepth=-60pt]{06/2010}{PBB~\cite{Petzoldt:inproc:2010:jun}}
+    \chronosp[colorbox=green!10,markdepth=130pt]{12/2010}{PBB~\cite{Petzoldt:inproc:2010:dec}}
+    \chronosp[colorbox=yellow!10,markdepth=-20pt]{03/2011}{PBB~\cite{Petzoldt:inproc:2011:mar}}
+    \chronosp[colorbox=green!10,markdepth=90pt]{09/2011}{PTBW~\cite{Petzoldt:inproc:2011:sep}}
+    \chronosp[colorbox=red!10,markdepth=-100pt]{02/2012}{YST~\cite{Yasuda:inproc:2012:feb}}
+    \chronosp[colorbox=blue!10,markdepth=50pt]{04/2012}{Tho~\cite{Thomae:misc:2012:apr}}
+    \chronosp[colorbox=blue!10,markdepth=-60pt]{09/2012}{Tho~\cite{Thomae:inproc:2012:sep}}
+    \chronosp[colorbox=green!10]{11/2012}{PB~\cite{Petzoldt:inproc:2012:nov}}
+    \chronosp[colorbox=blue!10,markdepth=-60pt]{2/2013}{Has~\cite{Hashimoto:inproc:2013:feb}}
+    \chronosp[colorbox=yellow!10,markdepth=50pt]{5/2013}{YDTS~\cite{Yasuda:inproc:2013:may}}
+    % \chronosp[colorbox=green!10,markdepth=-20pt]{6/2013}{PBB~\cite{Petzoldt:inproc:2013:jun}}
+    \chronosp[colorbox=green!10]{7/2013}{Pet~\cite{Petzoldt:phd:2013:jul}}
+    \chronosp[colorbox=green!10,markdepth=-60pt]{1/2014}{YTS~\cite{Yasuda:article:2014:jan}}
+    \chronosp[colorbox=yellow!10]{4/2014}{YTS~\cite{Yasuda:inproc:2014:apr}}
+    \chronosp[colorbox=yellow!10,markdepth=-20pt]{9/2014}{YTS~\cite{Yasuda:article:2014:sep}}
+    \chronosp[colorbox=green!10]{12/2015}{SPB~\cite{Shim:inproc:2015:dec}}
+    % \chronosp[colorbox=green!10,markdepth=50pt]{6/2017}{Beu~\cite{Beullens:msc:2017:jun}}
+    \chronosp[colorbox=red!10,markdepth=-60pt]{6/2017}{PT~\cite{Peng:article:2017:jun}}
+    % \chronosp[colorbox=green!10]{6/2017}{SBP~\cite{Szepieniec:inproc:2017:jun}}
+    % \chronosp[colorbox=green!10,markdepth=-20pt]{12/2017}{BP~\cite{Beullens:inproc:2017:dec}}
+    % \chronosp[colorbox=red!10,markdepth=50pt]{03/2018}{PT~\cite{Peng:article:2018:mar}}
+    \chronosp[colorbox=blue!10,markdepth=-20pt]{10/2018}{Has~\cite{Hashimoto:misc:2018:oct}}
   \end{chronology}
-% \startchronology[startyear=2013,stopyear=2019,startdate=false,stopdate=false,arrow=false,height=3pt]
-% \chronoevent[colorbox=blue!10,markdepth=-60pt]{2/2013}{Has~\cite{Hashimoto:inproc:2013:feb}}
-% \chronoevent[colorbox=yellow!10,markdepth=50pt]{5/2013}{YDTS~\cite{Yasuda:inproc:2013:may}}
-% \chronoevent[colorbox=green!10,markdepth=-20pt]{6/2013}{PBB~\cite{Petzoldt:inproc:2013:jun}}
-% \chronoevent[colorbox=green!10]{7/2013}{Pet~\cite{Petzoldt:phd:2013:jul}}
-% \chronoevent[colorbox=green!10,markdepth=-60pt]{1/2014}{YTS~\cite{Yasuda:article:2014:jan}}
-% \chronoevent[colorbox=yellow!10]{4/2014}{YTS~\cite{Yasuda:inproc:2014:apr}}
-% \chronoevent[colorbox=yellow!10,markdepth=-20pt]{9/2014}{YTS~\cite{Yasuda:article:2014:sep}}
-% \chronoevent[colorbox=green!10]{12/2015}{SPB~\cite{Shim:inproc:2015:dec}}
-% \chronoevent[colorbox=green!10,markdepth=50pt]{6/2017}{Beu~\cite{Beullens:msc:2017:jun}}
-% \chronoevent[colorbox=red!10,markdepth=-60pt]{6/2017}{PT~\cite{Peng:article:2017:jun}}
-% \chronoevent[colorbox=green!10]{6/2017}{SBP~\cite{Szepieniec:inproc:2017:jun}}
-% \chronoevent[colorbox=green!10,markdepth=-20pt]{12/2017}{BP~\cite{Beullens:inproc:2017:dec}}
-% \chronoevent[colorbox=red!10,markdepth=50pt]{03/2018}{PT~\cite{Peng:article:2018:mar}}
-% \chronoevent[colorbox=blue!10,markdepth=-20pt]{10/2018}{Has~\cite{Hashimoto:misc:2018:oct}}
-% \stopchronology
 \caption{Timeline of works related to reduction of key sizes in Rainbow.}\label{fig:2}
 \end{figure}
 
