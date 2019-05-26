@@ -172,20 +172,25 @@ $76\%$. Nevertheless, the original schemes were deemed insecure and new
 parameters were suggested in~\cite{Peng:201706:article}. It also proposes a new
 scheme called Circulant Rainbow, which reduces the private key by up to $45\%$
 due to the concept of rotating relations. Yet, it was broken shortly
-after~\cite{Hashimoto:201810:misc}.
+after~\cite{Hashimoto:201810:misc}. Furthermore, it appears that the introduction
+of structures in the private key is highly threatening to the overall security 
+of a Rainbow scheme.
 
 In the case of modifications to the public key, there are mainly two approaches.
-
-
-It is also relevant to cite the approach by the authors
-of~\cite{Petzoldt:201006:inproc}, which is, to the best of our knowledge, the
-main method for public key reduction without compromises to the signature size.
-It is summarised in several
+The approach by the authors of~\cite{Petzoldt:201006:inproc} is, to the best of 
+our knowledge, the main method for public key reduction without compromises to
+the signature size. It explores the fact that specific parts of the public key
+do not contribute to the security of the scheme. It is summarised in several
 publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}
 and used in~\cite{Shim:201512:inproc} to construct Lite-Rainbow-1.
-However, these cannot be combined with the private key improvements previously
-cited. Furthermore, it appears that the introduction of structures in the
-private key is highly threatening to the overall security of a Rainbow scheme.
+
+The authors of~\cite{Szepieniec:201706:inproc} lift the public and central maps
+of a particular case of Rainbow to an extension field, reducing its public 
+key size by an order of magnitude but increasing the signature size. This is 
+compatible with the generalised scheme, as seen in~\cite{Beullens:201706:msc,Beullens:201712:inproc},
+and can make use of the improvements to the public key given above. However,
+both of these strategies cannot be combined with the private key improvements
+previously cited. 
 
 \subsubsection{Hypothesis.} It follows from the analysis above that, to the best of our knowledge, no works in the literature attempt to reduce both private and public keys in Rainbow-like signature schemes. This is due to the intricate relationship between both keys, in which one is used to create the other. Therefore, our hypothesis is answered positively if a scheme description is uncovered that shortens both keys in the key pair.
 
