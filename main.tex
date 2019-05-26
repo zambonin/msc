@@ -1,6 +1,6 @@
-\documentclass[openright, landscape]{report}
+\documentclass[openright]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{chronosys, enumitem, rotating}
+\usepackage{chronosys, enumitem, booktabs}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
 
 \title{Handling Vinegar Variables to Shorten Rainbow Key Pairs}
@@ -116,12 +116,13 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{8pt}
   \centering
-  \caption{}\label{tab:1}
-  \begin{tabular}{*{2}{l}*{5}{r}}
+  \begin{tabular}{l*{3}{r}}
     \toprule
-    \\ \midrule
+    Work & Class & $\mathcal{S}_{k}$ & $\mathcal{P}_{k}$ \\ \midrule
+    Rainbow~\cite{Ding:200506:inproc} & ~\ref{enum:ii} & -- & -- \\
     \bottomrule
   \end{tabular}
+  \caption{Summary of works related to reduction of key sizes in Rainbow, in chronological order.}\label{tab:1}
 \end{table}
 
 
