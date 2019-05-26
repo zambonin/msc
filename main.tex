@@ -1,6 +1,6 @@
-\documentclass[openright]{report}
+\documentclass[openright, landscape]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{chronosys, enumitem}
+\usepackage{chronosys, enumitem, rotating}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
 
 \title{Handling Vinegar Variables to Shorten Rainbow Key Pairs}
@@ -30,9 +30,9 @@ A vibrant discipline of public-key cryptography, signature schemes are often ass
 
 Classical computers are electronic in nature, using circuits to perform computations. However, a new paradigm has emerged in the form of quantum computers, in which computations are performed outside the scope of classical mechanics. Although these computers are physically hard to implement, algorithms that make use of quantum phenomena have already been proposed and provably present a speedup compared to classical computers. One of these algorithms, due to Shor~\cite{Shor:199710:article}, simplifies the complexity of integer factorisation, and can be theoretically used to break widely used signature schemes.
 
-Post-quantum cryptography addresses this issue by defining signature schemes which are either not known to be affected by quantum computers, or provably so~\cite{}. A popular technique employed to build quantum-resistant signatures is the usage of systems of equations over finite fields with multiple variables within the algorithms that rule the scheme. Primitives that use this strategy populate the area known as multivariate cryptography, and are extremely time- and space-efficient when creating and verifying signatures, while key generation is comparatively very slow and of large output.
+Post-quantum cryptography addresses this issue by defining signature schemes which are either not known to be affected by quantum computers, or provably so~\cite{Bernstein:2008:book}. A popular technique employed to build quantum-resistant signatures is the usage of systems of equations over finite fields with multiple variables within the algorithms that rule the scheme. Primitives that use this strategy populate the area known as multivariate cryptography, and are extremely time- and space-efficient when creating and verifying signatures, while key generation is comparatively very slow and of large output.
 
-Families of multivariate public-key cryptosystems are defined according to the types of finite fields used in the computations. This enables the focus on specific improvements, such as trade-offs between key and signature sizes, or larger security parameters. Particularly interesting are signature schemes based on the Oil--Vinegar principle, of which Rainbow~\cite{} receives primary attention. It performs computations on a single field and presents a balanced nature and simple, elegant definitions.
+Families of multivariate public-key cryptosystems are defined according to the types of finite fields used in the computations. This enables the focus on specific improvements, such as trade-offs between key and signature sizes, or larger security parameters. Particularly interesting are signature schemes based on the Oil--Vinegar principle, of which Rainbow~\cite{Ding:200506:inproc} receives primary attention. It performs computations on a single field and presents a balanced nature and simple, elegant definitions.
 
 Large key sizes often impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than the ones used in conventional signature schemes. Due to this fact, several distinct approaches to reduce the key sizes of multivariate public-key cryptosystems have been proposed in the literature. In the case of Rainbow, to the best of our knowledge, these are distributed into methods that reduce exclusively private or public keys, but never both at the same time.
 
@@ -113,13 +113,14 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
 \end{enumerate}
 
 \begin{figure}[htbp]
+  \vspace{-2cm}
   \begin{chronology}[startyear=2005, stopyear=2019, height=3pt, dates=false, arrow=false, align=center]
     \definechronoevent{sp}[textstyle=\footnotesize, datesseparation=/, conversionmonth=false]
     \chronosp[markdepth=-20pt]{06/2005}{Class~\ref{enum:ii}~\cite{Ding:200506:inproc}}
     \chronosp[]{09/2006}{Class~\ref{enum:iv}~\cite{Billet:200609:inproc}}
     \chronosp[markdepth=50pt]{06/2008}{Class~\ref{enum:iv}~\cite{Ding:200806:inproc}}
     \chronosp[markdepth=-60pt]{06/2010}{Class~\ref{enum:ii}~\cite{Petzoldt:201006:inproc}}
-    \chronosp[markdepth=130pt]{12/2010}{Class~\ref{enum:i}~\cite{Petzoldt:201012:inproc}}
+    \chronosp[markdepth=70pt]{12/2010}{Class~\ref{enum:i}~\cite{Petzoldt:201012:inproc}}
     \chronosp[markdepth=-20pt]{03/2011}{Class~\ref{enum:ii}~\cite{Petzoldt:201103:inproc}}
     \chronosp[markdepth=-100pt]{02/2012}{Class~\ref{enum:iii}~\cite{Yasuda:201202:inproc}}
     \chronosp[markdepth=-60pt]{09/2012}{Class~\ref{enum:iv}~\cite{Thomae:201209:inproc}}
@@ -130,10 +131,10 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
     \chronosp[]{04/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201404:inproc}}
     \chronosp[markdepth=-20pt]{09/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201409:article}}
     \chronosp[]{12/2015}{Class~\ref{enum:i}~\cite{Shim:201512:inproc}}
-    \chronosp[colorbox=green!10,markdepth=50pt]{06/2017}{Class~\ref{enum:i}~\cite{Beullens:msc:2017:jun}}
+    \chronosp[markdepth=50pt]{06/2017}{Class~\ref{enum:i}~\cite{Beullens:201706:msc}}
     \chronosp[markdepth=-60pt]{06/2017}{Class~\ref{enum:iii}~\cite{Peng:201706:article}}
-    \chronosp[colorbox=green!10]{06/2017}{Class~\ref{enum:i}~\cite{Szepieniec:inproc:2017:jun}}
-    \chronosp[colorbox=green!10,markdepth=-20pt]{12/2017}{Class~\ref{enum:i}~\cite{Beullens:inproc:2017:dec}}
+    \chronosp[]{06/2017}{Class~\ref{enum:i}~\cite{Szepieniec:201706:inproc}}
+    \chronosp[markdepth=-20pt]{12/2017}{Class~\ref{enum:i}~\cite{Beullens:201712:inproc}}
     \chronosp[markdepth=-20pt]{10/2018}{Class~\ref{enum:iv}~\cite{Hashimoto:201810:misc}}
   \end{chronology}
 \caption{Timeline of works related to reduction of key sizes in Rainbow.}\label{fig:2}
