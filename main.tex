@@ -1,4 +1,4 @@
-\documentclass[openright]{report}
+\documentclass[openright, landscape]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{chronosys, enumitem, booktabs}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
@@ -112,18 +112,18 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
   \item\label{enum:iv} cryptanalytic or other theoretical works.
 \end{enumerate}
 
-\begin{table}[htbp]
-  \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{8pt}
-  \centering
-  \begin{tabular}{l*{3}{r}}
-    \toprule
-    Work & Class & $\mathcal{S}_{k}$ & $\mathcal{P}_{k}$ \\ \midrule
-    Rainbow~\cite{Ding:200506:inproc} & ~\ref{enum:ii} & -- & -- \\
-    \bottomrule
-  \end{tabular}
-  \caption{Summary of works related to reduction of key sizes in Rainbow, in chronological order.}\label{tab:1}
-\end{table}
+% \begin{table}[htbp]
+%   \renewcommand{\arraystretch}{1.2}
+%   \setlength{\tabcolsep}{8pt}
+%   \centering
+%   \begin{tabular}{l*{3}{r}}
+%     \toprule
+%     Work & Class & $\mathcal{S}_{k}$ & $\mathcal{P}_{k}$ \\ \midrule
+%     Rainbow~\cite{Ding:200506:inproc} & ~\ref{enum:ii} & -- & -- \\
+%     \bottomrule
+%   \end{tabular}
+%   \caption{Summary of works related to reduction of key sizes in Rainbow, in chronological order.}\label{tab:1}
+% \end{table}
 
 
 
@@ -131,26 +131,26 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
   \vspace{-2cm}
   \begin{chronology}[startyear=2005, stopyear=2019, height=3pt, dates=false, arrow=false, align=center]
     \definechronoevent{sp}[textstyle=\footnotesize, datesseparation=/, conversionmonth=false]
-    \chronosp[markdepth=-20pt]{06/2005}{Class~\ref{enum:ii}~\cite{Ding:200506:inproc}}
-    \chronosp[]{09/2006}{Class~\ref{enum:iv}~\cite{Billet:200609:inproc}}
-    \chronosp[markdepth=50pt]{06/2008}{Class~\ref{enum:iv}~\cite{Ding:200806:inproc}}
-    \chronosp[markdepth=-60pt]{06/2010}{Class~\ref{enum:ii}~\cite{Petzoldt:201006:inproc}}
-    \chronosp[markdepth=70pt]{12/2010}{Class~\ref{enum:i}~\cite{Petzoldt:201012:inproc}}
-    \chronosp[markdepth=-20pt]{03/2011}{Class~\ref{enum:ii}~\cite{Petzoldt:201103:inproc}}
-    \chronosp[markdepth=-100pt]{02/2012}{Class~\ref{enum:iii}~\cite{Yasuda:201202:inproc}}
-    \chronosp[markdepth=-60pt]{09/2012}{Class~\ref{enum:iv}~\cite{Thomae:201209:inproc}}
-    \chronosp[]{11/2012}{Class~\ref{enum:i}~\cite{Petzoldt:201211:inproc}}
-    \chronosp[markdepth=-60pt]{02/2013}{Class~\ref{enum:iv}~\cite{Hashimoto:201302:inproc}}
-    \chronosp[markdepth=50pt]{05/2013}{Class~\ref{enum:ii}~\cite{Yasuda:201305:inproc}}
-    \chronosp[]{07/2013}{Class~\ref{enum:i}~\cite{Petzoldt:201307:phd}}
-    \chronosp[]{04/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201404:inproc}}
-    \chronosp[markdepth=-20pt]{09/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201409:article}}
-    \chronosp[]{12/2015}{Class~\ref{enum:i}~\cite{Shim:201512:inproc}}
-    \chronosp[markdepth=50pt]{06/2017}{Class~\ref{enum:i}~\cite{Beullens:201706:msc}}
-    \chronosp[markdepth=-60pt]{06/2017}{Class~\ref{enum:iii}~\cite{Peng:201706:article}}
-    \chronosp[]{06/2017}{Class~\ref{enum:i}~\cite{Szepieniec:201706:inproc}}
-    \chronosp[markdepth=-20pt]{12/2017}{Class~\ref{enum:i}~\cite{Beullens:201712:inproc}}
-    \chronosp[markdepth=-20pt]{10/2018}{Class~\ref{enum:iv}~\cite{Hashimoto:201810:misc}}
+    \chronosp[markdepth=-20pt]{06/2005}{\cite{Ding:200506:inproc}~\ref{enum:ii}}
+    \chronosp[]{09/2006}{\cite{Billet:200609:inproc}~\ref{enum:iv}}
+    \chronosp[]{06/2008}{\cite{Ding:200806:inproc}~\ref{enum:iv}}
+    \chronosp[markdepth=-60pt]{06/2010}{\cite{Petzoldt:201006:inproc}~\ref{enum:ii}}
+    \chronosp[]{12/2010}{\cite{Petzoldt:201012:inproc}~\ref{enum:i}}
+    \chronosp[markdepth=-20pt]{03/2011}{\cite{Petzoldt:201103:inproc}~\ref{enum:ii}}
+    \chronosp[markdepth=-100pt]{02/2012}{\cite{Yasuda:201202:inproc}~\ref{enum:iii}}
+    \chronosp[markdepth=-60pt]{09/2012}{\cite{Thomae:201209:inproc}~\ref{enum:iv}}
+    \chronosp[]{11/2012}{\cite{Petzoldt:201211:inproc}~\ref{enum:i}}
+    \chronosp[markdepth=-20pt]{02/2013}{\cite{Hashimoto:201302:inproc}~\ref{enum:iv}}
+    \chronosp[markdepth=50pt]{05/2013}{\cite{Yasuda:201305:inproc}~\ref{enum:ii}}
+    \chronosp[markdepth=-100pt]{07/2013}{\cite{Petzoldt:201307:phd}~\ref{enum:i}}
+    \chronosp[]{04/2014}{\cite{Yasuda:201404:inproc}~\ref{enum:ii}}
+    \chronosp[markdepth=-20pt]{09/2014}{\cite{Yasuda:201409:article}~\ref{enum:ii}}
+    \chronosp[]{12/2015}{\cite{Shim:201512:inproc}~\ref{enum:i}}
+    \chronosp[markdepth=50pt]{06/2017}{\cite{Beullens:201706:msc}~\ref{enum:i}}
+    \chronosp[markdepth=-60pt]{06/2017}{\cite{Peng:201706:article}~\ref{enum:iii}}
+    \chronosp[]{06/2017}{\cite{Szepieniec:201706:inproc}~\ref{enum:i}}
+    \chronosp[markdepth=-20pt]{12/2017}{\cite{Beullens:201712:inproc}~\ref{enum:i}}
+    \chronosp[markdepth=-20pt]{10/2018}{\cite{Hashimoto:201810:misc}~\ref{enum:iv}}
   \end{chronology}
 \caption{Timeline of works related to reduction of key sizes in Rainbow.}\label{fig:2}
 \end{figure}
