@@ -145,21 +145,21 @@ reduction of private key sizes have been suggested even before Rainbow was
 created. Tame transformation schemes, such as the ones listed
 in~\cite{Wolf:200503:misc}, feature sparseness in their maps, a common
 strategy used to shorten private keys, as seen in~\cite{Yang:200604:inproc}.
-However, these schemes were either broken, as summarised by the authors
+However, these schemes were either broken, as summarised
 in~\cite{Ding:200604:article}, or in the case of Enhanced TTS, new parameters
 were suggested, and it was subsequently found to be a special case of
 Rainbow~\cite{Thomae:201207:inproc}.
 
-Additionally, there have been several published variations of Rainbow with the
+Additionally, there are several published variations of Rainbow with the
 same goal, making use of distinct approaches. A scheme called
-Lite-Rainbow-0~\cite{Shim:201512:inproc} makes use of a small pseudorandom
+Lite-Rainbow-0~\cite{Shim:201512:inproc} employs a small pseudorandom
 number generator (PRNG) seed to replace the private key entirely. This shortens
 the private key by a factor of approximately $99.8\%$, but greatly increases
-the cost for signature generation.  NC-Rainbow was proposed
-in~\cite{Yasuda:201202:inproc} with a novel strategy based in non-commutative
+the cost for signature generation. NC-Rainbow was proposed
+in~\cite{Yasuda:201202:inproc}, with a novel strategy based in non-commutative
 rings to reduce a private key by up to $75\%$. However, it was shown by
 independent researchers to be
-insecure~\cite{Thomae:201207:inproc,Hashimoto:201302:inproc}. Other variants
+insecure~\cite{Thomae:201209:inproc,Hashimoto:201302:inproc}. Other variants
 called MB-Rainbow~\cite{Yasuda:201305:inproc} and
 NT-Rainbow~\cite{Yasuda:201404:inproc} employ sparseness of maps to reduce the
 number of terms in the private key by up to $40\%$.
@@ -176,14 +176,10 @@ It is also relevant to cite the approach by the authors
 of~\cite{Petzoldt:201006:inproc}, which is, to the best of our knowledge, the
 main method for public key reduction without compromises to the signature size.
 It is summarised in several
-publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc}.
+publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}.
 However, these cannot be combined with the private key improvements previously
 cited. Furthermore, it appears that the introduction of structures in the
 private key is highly threatening to the overall security of a Rainbow scheme.
-We will subsequently present a novel approach to these issues.
-
-
-% TODO discussion on related works
 
 \subsubsection{Hypothesis.} It follows from the analysis above that, to the best of our knowledge, no works in the literature attempt to reduce both private and public keys in Rainbow-like signature schemes. This is due to the intricate relationship between both keys, in which one is used to create the other. Therefore, our hypothesis is answered positively if a scheme description is uncovered that shortens both keys in the key pair.
 
