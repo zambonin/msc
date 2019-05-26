@@ -1,7 +1,9 @@
 \documentclass[openright]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{chronosys, enumitem, rotating}
+\usepackage{amsmath, amsfonts, chronosys, enumitem, rotating}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
+
+\newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
 \title{Handling Vinegar Variables to Shorten Rainbow Key Pairs}
 \author{Gustavo Zambonin}
@@ -172,11 +174,15 @@ scheme called Circulant Rainbow, which reduces the private key by up to $45\%$
 due to the concept of rotating relations. Yet, it was broken shortly
 after~\cite{Hashimoto:201810:misc}.
 
+In the case of modifications to the public key, there are mainly two approaches.
+
+
 It is also relevant to cite the approach by the authors
 of~\cite{Petzoldt:201006:inproc}, which is, to the best of our knowledge, the
 main method for public key reduction without compromises to the signature size.
 It is summarised in several
-publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}.
+publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}
+and used in~\cite{Shim:201512:inproc} to construct Lite-Rainbow-1.
 However, these cannot be combined with the private key improvements previously
 cited. Furthermore, it appears that the introduction of structures in the
 private key is highly threatening to the overall security of a Rainbow scheme.
@@ -200,9 +206,86 @@ We enumerate below a chronological list of activities that depict the process us
 
 \section{Multivariate cryptography}
 
-\section{The Oil--Vinegar principle}
+\subsection{The Oil--Vinegar principle}
 
 \section{Rainbow signature scheme}
+
+We will present below a description of the Rainbow signature scheme, a
+generalised version of the UOV scheme that reduces the length of keys and
+signatures. It consists of several ``oil and vinegar'' layers, that are
+combined to create a ``rainbow''. Consider a finite field $\mathbb{F}_{q}$ and
+$u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers
+$v_{1}, \dots, v_{u}$ such that
+$0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set
+$V = \{1, \dots, n\}$ and define the vinegar variables as
+$V_{l} = \{1, \dots, v_{l}\}$ for all $l \in \{1, \dots, u\}$. Observe that
+$v_{l} = |V_{l}|$ and $V_{1} \subset \dots \subset V_{u} = V$. Oil variables
+are given by $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. Note that
+$o_{l} = |O_{l}|$ and $O_{l} = V_{l + 1} - V_{l}$. Let $m = n - v_{1}$. Now,
+we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the
+form
+\begin{align}
+  P_{l} = \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
+    + \sum_{i \in V_{l}, j \in O_{l}} \beta_{ij} \cdot x_{i} \cdot x_{j}
+    + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} \cdot x_{i} + \delta.
+\end{align}
+
+\subsubsection{Key generation.}
+
+The central map of Rainbow is defined as
+$\mathcal{F} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$, with the
+following construction: for each layer $l$,
+$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$,
+and $\mathcal{F} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
+variables in a layer contains all variables from the previous layer, this
+allows for the inversion of this map. Further, let
+$\mathcal{S} : \mathbb{F}^{m} \longrightarrow \mathbb{F}^{m}$ and
+$\mathcal{T} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{n}$ be two affine
+invertible maps, used as the trapdoor to this construction. Let
+$\mathcal{P} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$ as
+$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
+Coefficients $\alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}$ are
+chosen randomly. The private key is the triple
+$(\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
+$\mathcal{P}$.
+
+\subsubsection{Signature generation.}
+
+To sign a message $M$, consider a cryptographic hash function
+$\mathcal{H} : {\{0, 1\}}^{*} \longrightarrow \mathbb{F}^{m}$, and obtain the
+message digest $d = \mathcal{H}(M)$. The signature will be the set of variables
+which yield the solution to the equation
+$\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{S}^{-1}(d)$. To
+generate $y = \mathcal{F}^{-1}(x)$, every layer must be inverted recursively.
+Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
+them into the first layer. This will bring forth a system of $o_{1}$ linear
+equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
+algorithm such as Gaussian elimination. If the system does not have a solution,
+new vinegar variables have to be chosen. These solutions can then be
+substituted into the next layer, which will create a system of $o_{2}$ linear
+equations, that can be solved analogously. This procedure is repeated until all
+layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
+
+\subsubsection{Signature verification.}
+
+To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
+the signature is valid, and invalid otherwise.
+
+Finally, denote an instance of the scheme by
+Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$,
+we get the UOV scheme. Measured in field elements, the size of a private key is
+\begin{align}
+  |\mathcal{K}_{Pr}| = m^{2} + m + n^{2} + n
+    + \sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
+      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right),
+\end{align}
+whereas the size of a public key is
+\begin{align}
+  |\mathcal{K}_{Pu}| = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
+\end{align}
+Further details on the construction of Rainbow may be found
+on~\cite[Section 3.3]{Ding:2006:book}.
+
 
 \section{Strategies to reduce keys}
 
