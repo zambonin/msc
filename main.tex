@@ -256,7 +256,198 @@ on~\cite[Section 3.3]{Ding:2006:book}.
 
 \chapter{Harnessing vinegar variables}
 
-\section{Contributions}
+We will describe our improvement to Rainbow-like signature schemes below.
+Sections~\ref{sec:scheme} and~\ref{sec:efcma} give a formal description
+of our modifications. In Subsection~\ref{sec:security}, we look into 
+possible avenues of research to ensure that our proposals yield secure
+schemes.
+
+\section{Modification to the original scheme}\label{sec:scheme}
+
+Our approach consists of modifications to the key and signature generation
+steps of Rainbow-like signature schemes. We propose to reuse the first set of
+vinegar variables for several signatures and replace these only when necessary,
+\emph{i.e.} situations where the central map cannot be inverted and creating a
+signature would fail. By locking such variables and substituting them on the
+central map $\mathcal{F}$ early in the key generation algorithm, we create a
+$\mathcal{F}'$ linear in $v_{1}$, thus reducing storage requirements. This
+approach does not modify the underlying structure of the private key, but
+rather of the central map preimages.
+
+To induce lower storage requirements for key pairs of Rainbow-like schemes, we
+explore constructions given in the literature and suggest general alterations
+to use our proposal. As per Subsection~\ref{subsec:related}, most variants that
+shorten private keys are structural in nature, that is, the key space is
+limited by some heuristic with the intent of producing a compact private key.
+Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307:phd}
+prevents alterations to the private key,
+since it indirectly generates $\mathcal{F}$ from a partial public key through
+linear relations between the maps.
+
+This division of improvements is blurred by our proposal. We present general
+methods based on different techniques that shorten private keys in all
+Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
+the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting
+the vinegar variables for the first layer as
+$\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
+
+\emph{Rainbow-$\eta_{1}$ key generation.}
+We use the fact that a PRNG has the ability to regenerate the same sequence of
+numbers given a seed. The choice of such a generator is outside the scope of
+our work, and we assume that a cryptographically secure PRNG is chosen. This
+approach is similar to Lite-Rainbow-0, but it is not as costly, since the
+private key does not need to be regenerated before every signature generation.
+It is best suited to environments in which an efficient generator is previously
+supplied.
+
+We bound the creation of the key pair to a seed $\mathbf{S}$. We are not aware
+of any Rainbow variants that disallow this practice. Thus, $\mathcal{S}$,
+$\mathcal{F}$ and $\mathcal{T}$, as well as the public key
+$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
+through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
+set $\widetilde{V}_{1} \random{} \mathbb{F}$, and substitute these into
+$\mathcal{F}$, giving $\mathcal{F}'$. According to
+Subsection~\ref{subsec:invert}, in the rare case that a
+failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
+regenerate $\mathcal{F}$, choose other values for $\widetilde{V}_{1}$ and
+create a different $\mathcal{F}'$. The private key of Rainbow-$\eta_{1}$ is
+$(\mathbf{S}, \mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is
+$\mathcal{P}$.
+
+\emph{Rainbow-$\eta_{2}$ key generation.}
+This approach is based on the fact that a private key owner is able to recover
+the original $\mathcal{F}$ through the possession of all other private maps and
+the public key. We make use of the linear relations given by the authors
+of~\cite{Petzoldt:201006:inproc} and applied in the definition of the
+well-known CyclicRainbow scheme. A short explanation is given below, with the
+full rationale available in~\cite[Chapter 7]{Petzoldt:201307:phd}.
+
+Consider the public key
+$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ and let
+$\mathcal{Q} = \mathcal{F} \circ \mathcal{T}$. Denote $\widetilde{Q}$ as a
+matrix containing only coefficients of the quadratic monomials from
+$\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
+Further let $\widetilde{T}$ be the matrix representation of $\mathcal{T}$, with
+its coefficients $t_{ij}, i, j \in \{1, \dots, n\}$, and define $\widetilde{S}$
+analogously. By fixing $t_{ij}$, the composition of $\mathcal{P}$ actually
+represents a linear relation between coefficients $q_{ij}^{k}, f_{ij}^{k}$ of
+the monomial $x_{i} \cdot x_{j}$ in the $k$-th component of, respectively,
+$\mathcal{Q}$ and $\mathcal{F}$, with the form
+\begin{align}
+  \begin{split}
+    q_{ij}^{k} = \sum_{r = 1}^{n} \sum_{s = r}^{n}
+      \alpha_{ij}^{rs} \cdot f_{rs}^{k}, \quad
+      \alpha_{ij}^{rs} = \begin{cases}
+        t_{ri} \cdot t_{si}                         & \text{if } i = j, \\
+        t_{ri} \cdot t_{sj} + t_{rj} \cdot t_{si}   & \text{otherwise},
+      \end{cases} \\
+      k \in \{v_{1} + 1, \dots, n\}.
+  \end{split}
+\end{align}
+This can be simplified, since $\mathcal{F}$ does not allow quadratic monomials
+with only oil variables, and results in
+\begin{align}
+  q_{ij}^{k} = \sum_{r = 1}^{v_{l}} \sum_{s = r}^{v_{l + 1}}
+    \alpha_{ij}^{rs} \cdot f_{rs}^{k},
+      \quad k \in O_{l}, \quad l \in \{1, \dots, u\}.
+\end{align}
+A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
+the previous equations. Given a particular monomial ordering, let
+$A = (\alpha_{ij}^{rs})$ such that $i, j, r, s \in \{1, \dots, n\}$, where
+$i \leq j$ and $r \leq s$ denote row and column indices, respectively. Thus, we
+have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
+$\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
+performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
+it is a general technique that works on all Rainbow-like schemes.
+
+Observe that the central map may not feature any linear or constant terms, due
+to the use of the above relations. This does not lower the overall security of
+the scheme, due to the fact that they are not multiplied with quadratic terms.
+With this implication in mind, the usual key generation algorithm for the
+target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
+and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
+$\widetilde{V}_{1} \random{} \mathbb{F}$ into $\mathcal{F}$, giving
+$\mathcal{F'}$. By the relations above, one is able to reconstruct
+$\mathcal{F}$ with no additional mechanisms if the central map inversion
+algorithm fails. The private key of Rainbow-$\eta_{2}$ is
+$(\mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is $\mathcal{P}$.
+
+\emph{Signature generation.}
+A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
+procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate
+$y = \mathcal{F}'^{-1}(x)$ by inverting every layer recursively. The first
+layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
+needs only to be solved by providing appropriate values of $d$. It will
+generate a new set of vinegar variables, that can be used on the next layer,
+until all layers are solved. If any of the transitory systems are not solvable,
+a new $\widetilde{V}_{1}$ is chosen and $\mathcal{F}'$ regenerated, according
+to one of the methods given above. We finish by computing
+$\sigma = \mathcal{T}^{-1}(y)$.
+
+\emph{Signature verification.}
+This step does not change. If $d = \mathcal{P}(\sigma)$, then the signature is
+valid, and invalid otherwise.
+
+By making the first layer linear and substituting the remaining variables, the
+size of the private key is now
+\begin{multline}
+  |\mathcal{K}_{Pr}^{\eta}| = m^{2} + m + n^{2} + n
+    + |\widetilde{V}_{1}| \\
+    + \sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right),
+\end{multline}
+plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
+used. One needs to store $\widetilde{V}_{1}$, since it is part of the central
+map preimage, used on further map applications. The public key size does not
+change.
+
+\section{Application to the EF-CMA variant}\label{sec:efcma}
+
+The Rainbow submission to the NIST standardisation
+process~\cite{Ding:201712:misc} presents a scheme description that diverges
+from the original works. The authors introduce modifications that provide
+security against the existential forgery under chosen-message attack (EF-CMA)
+model, whereas the original scheme only offers security against universal
+forgery. These changes are built upon the introduction of a random salt. We
+will briefly describe this approach, with the intent of preventing the
+recalculation of $\mathcal{F}'$ in the case that $\widetilde{V}_{1}$ is not
+suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
+
+\emph{Key generation.}
+Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
+private and public keys as per Subsection~\ref{subsec:scheme}. The private key
+for this scheme is $(\mathcal{S}, \mathcal{F}', \mathcal{T}, w)$, with the
+addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
+$(\mathcal{P}, w)$.
+
+\emph{Signature generation.}
+Let $r \random{} {\{0, 1\}}^{w}$. The digest value is calculated as
+$\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
+message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
+the rare case that the $y = \mathcal{F}'^{-1}(x)$ preimage calculation does not
+succeed, new variables in $\widetilde{V}_{1}$ are chosen. However, the
+addition of a random salt to the original message digest alters $\mathbf{d}$
+completely, due to the cryptographic hash function application. Thus, it is
+only necessary to generate a new $r$ and restart the signature generation
+process, such that $\widetilde{V}_{1}$, and consequently $\mathcal{F}'$, are
+not modified. Alternatively, if the preimage is generated successfully, we
+finish by letting $z = \mathcal{T}^{-1}(y)$ and $\sigma = (z, r)$.
+
+\emph{Signature verification.}
+Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
+the signature is valid, and invalid otherwise.
+
+The size of the private and public keys increase in exactly one element due to
+the addition of $w$. Real implementations of Rainbow-$\eta_{3}$ are tested on
+Section~\ref{sec:experiments}.
+
+\section{Security of our variants}\label{sec:security}
+
+the probability of matrices with
+elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
+we present a statistical analysis of the structure of signatures created by our
+method, and finish with a security overview in
+Subsection~\ref{subsec:analysis}.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
