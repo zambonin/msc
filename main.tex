@@ -28,7 +28,7 @@ Handwritten signatures are one of the ubiquitous ways to ensure trust, in the ca
 
 A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is expected to be secure. However, a specific scheme used within this situation drastically alters matters of security and performance compared to others. This is due to their natural connection to hard computational problems, that prevent forgery of signatures in various threat models. It is thus known that advances in computer engineering present direct consequences on the development of signature schemes.
 
-Classical computers are electronic in nature, using circuits to perform computations. However, a new paradigm has emerged in the form of quantum computers, in which computations are performed outside the scope of classical mechanics. Although these computers are physically hard to implement, algorithms that make use of quantum phenomena have already been proposed and provably present a speedup compared to classical computers. One of these algorithms, due to Shor~\cite{}, simplifies the complexity of integer factorisation, and can be theoretically used to break widely used signature schemes.
+Classical computers are electronic in nature, using circuits to perform computations. However, a new paradigm has emerged in the form of quantum computers, in which computations are performed outside the scope of classical mechanics. Although these computers are physically hard to implement, algorithms that make use of quantum phenomena have already been proposed and provably present a speedup compared to classical computers. One of these algorithms, due to Shor~\cite{Shor:199710:article}, simplifies the complexity of integer factorisation, and can be theoretically used to break widely used signature schemes.
 
 Post-quantum cryptography addresses this issue by defining signature schemes which are either not known to be affected by quantum computers, or provably so~\cite{}. A popular technique employed to build quantum-resistant signatures is the usage of systems of equations over finite fields with multiple variables within the algorithms that rule the scheme. Primitives that use this strategy populate the area known as multivariate cryptography, and are extremely time- and space-efficient when creating and verifying signatures, while key generation is comparatively very slow and of large output.
 
@@ -66,6 +66,7 @@ We outline the dates for special occasions that lead altogether to the conclusio
 \end{enumerate}
 
 \begin{figure}[htbp]
+  \vspace{-2cm}
   \begin{chronology}[startyear=2018, stopyear=2021, height=3pt, dates=false, arrow=false, align=center]
     \chronoperiodecoloralternation{lightgray, gray}
     \definechronoevent{sp}[textstyle=\footnotesize, 
@@ -118,22 +119,20 @@ Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge,
     \chronosp[]{09/2006}{Class~\ref{enum:iv}~\cite{Billet:200609:inproc}}
     \chronosp[markdepth=50pt]{06/2008}{Class~\ref{enum:iv}~\cite{Ding:200806:inproc}}
     \chronosp[markdepth=-60pt]{06/2010}{Class~\ref{enum:ii}~\cite{Petzoldt:201006:inproc}}
-    \chronosp[colorbox=green!10,markdepth=130pt]{12/2010}{Class~\ref{enum:i}~\cite{Petzoldt:201012:inproc}}
+    \chronosp[markdepth=130pt]{12/2010}{Class~\ref{enum:i}~\cite{Petzoldt:201012:inproc}}
     \chronosp[markdepth=-20pt]{03/2011}{Class~\ref{enum:ii}~\cite{Petzoldt:201103:inproc}}
-    \chronosp[colorbox=green!10,markdepth=90pt]{09/2011}{Class~\ref{enum:i}~\cite{Petzoldt:inproc:2011:sep}}
-    \chronosp[colorbox=red!10,markdepth=-100pt]{02/2012}{YST~\cite{Yasuda:inproc:2012:feb}}
+    \chronosp[markdepth=-100pt]{02/2012}{Class~\ref{enum:iii}~\cite{Yasuda:201202:inproc}}
     \chronosp[markdepth=-60pt]{09/2012}{Class~\ref{enum:iv}~\cite{Thomae:201209:inproc}}
-    \chronosp[colorbox=green!10]{11/2012}{Class~\ref{enum:i}~\cite{Petzoldt:inproc:2012:nov}}
-    \chronosp[markdepth=-60pt]{2/2013}{Class~\ref{enum:iv}~\cite{Hashimoto:201302:inproc}}
-    \chronosp[markdepth=50pt]{5/2013}{Class~\ref{enum:ii}~\cite{Yasuda:201305:inproc}}
-    \chronosp[colorbox=green!10]{7/2013}{Class~\ref{enum:i}~\cite{Petzoldt:phd:2013:jul}}
-    \chronosp[colorbox=green!10,markdepth=-60pt]{1/2014}{Class~\ref{enum:i}~\cite{Yasuda:article:2014:jan}}
-    \chronosp[]{4/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201404:inproc}}
-    \chronosp[markdepth=-20pt]{9/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201409:article}}
-    \chronosp[colorbox=green!10]{12/2015}{Class~\ref{enum:i}~\cite{Shim:inproc:2015:dec}}
-    \chronosp[colorbox=green!10,markdepth=50pt]{6/2017}{Class~\ref{enum:i}~\cite{Beullens:msc:2017:jun}}
-    \chronosp[colorbox=red!10,markdepth=-60pt]{6/2017}{PT~\cite{Peng:article:2017:jun}}
-    \chronosp[colorbox=green!10]{6/2017}{Class~\ref{enum:i}~\cite{Szepieniec:inproc:2017:jun}}
+    \chronosp[]{11/2012}{Class~\ref{enum:i}~\cite{Petzoldt:201211:inproc}}
+    \chronosp[markdepth=-60pt]{02/2013}{Class~\ref{enum:iv}~\cite{Hashimoto:201302:inproc}}
+    \chronosp[markdepth=50pt]{05/2013}{Class~\ref{enum:ii}~\cite{Yasuda:201305:inproc}}
+    \chronosp[]{07/2013}{Class~\ref{enum:i}~\cite{Petzoldt:201307:phd}}
+    \chronosp[]{04/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201404:inproc}}
+    \chronosp[markdepth=-20pt]{09/2014}{Class~\ref{enum:ii}~\cite{Yasuda:201409:article}}
+    \chronosp[]{12/2015}{Class~\ref{enum:i}~\cite{Shim:201512:inproc}}
+    \chronosp[colorbox=green!10,markdepth=50pt]{06/2017}{Class~\ref{enum:i}~\cite{Beullens:msc:2017:jun}}
+    \chronosp[markdepth=-60pt]{06/2017}{Class~\ref{enum:iii}~\cite{Peng:201706:article}}
+    \chronosp[colorbox=green!10]{06/2017}{Class~\ref{enum:i}~\cite{Szepieniec:inproc:2017:jun}}
     \chronosp[colorbox=green!10,markdepth=-20pt]{12/2017}{Class~\ref{enum:i}~\cite{Beullens:inproc:2017:dec}}
     \chronosp[markdepth=-20pt]{10/2018}{Class~\ref{enum:iv}~\cite{Hashimoto:201810:misc}}
   \end{chronology}
