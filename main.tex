@@ -99,7 +99,7 @@ Most of these events are shown in Figure~\ref{fig:1}. We highlight at least two 
 
 In this section, we describe the research strategy applied to produce this work. Recall that the objects of study are the key sizes of Rainbow-like signature schemes. We define the main research question, parse the related body of literature, and finally apply several reproducible methods in order to infer conclusions. Indeed, this is essentially a description of the usual scientific method. In other words, we infer knowledge from mensurable experiments related to deductions, in the interest of solving specific limitations that come with the hypothesis.
 
-\subsection{Literature review}
+\subsection{Literature review}\label{subsec:related}
 
 We inspect formal works such as journal and conference articles, and monographs. We restrict ourselves to works published exactly after the first formal description of Rainbow~\cite{Ding:200506:inproc}, and particularly select ones that deal with reduction of key sizes. To conduct this analysis, the Google Scholar web tool was employed. It is a meta-indexer that covers most scientific literature providers, and allows the user to input advanced parameters in order to correctly narrow the needed scope.
 
@@ -180,7 +180,7 @@ In this chapter, we will present the theory needed to understand how keys are re
 
 \section{The Oil--Vinegar principle}\label{sec:oil}
 
-\subsection{Rainbow signature scheme}
+\subsection{Rainbow signature scheme}\label{subsec:scheme}
 
 We will present below a description of the Rainbow signature scheme, a
 generalised version of the UOV scheme that reduces the length of keys and
@@ -254,7 +254,7 @@ whereas the size of a public key is
 Further details on the construction of Rainbow may be found
 on~\cite[Section 3.3]{Ding:2006:book}.
 
-\section{Strategies to reduce keys}\label{sec:strat}
+% \section{Strategies to reduce keys}\label{sec:strat}
 
 \chapter{Harnessing vinegar variables}
 
@@ -289,7 +289,7 @@ linear relations between the maps.
 This division of improvements is blurred by our proposal. We present general
 methods based on different techniques that shorten private keys in all
 Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
-the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting
+the same definitions as in Subsection~\ref{subsec:scheme}, further denoting
 the vinegar variables for the first layer as
 $\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
 
@@ -308,8 +308,7 @@ $\mathcal{F}$ and $\mathcal{T}$, as well as the public key
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
 through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
 set $\widetilde{V}_{1} \random{} \mathbb{F}$, and substitute these into
-$\mathcal{F}$, giving $\mathcal{F}'$. According to
-Subsection~\ref{subsec:invert}, in the rare case that a
+$\mathcal{F}$, giving $\mathcal{F}'$. In the rare case that a
 failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
 regenerate $\mathcal{F}$, choose other values for $\widetilde{V}_{1}$ and
 create a different $\mathcal{F}'$. The private key of Rainbow-$\eta_{1}$ is
@@ -440,16 +439,15 @@ Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
 the signature is valid, and invalid otherwise.
 
 The size of the private and public keys increase in exactly one element due to
-the addition of $w$. Real implementations of Rainbow-$\eta_{3}$ are tested on
-Section~\ref{sec:experiments}.
+the addition of $w$.
 
 \section{Security of our variants}\label{sec:security}
 
-the probability of matrices with
-elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
-we present a statistical analysis of the structure of signatures created by our
-method, and finish with a security overview in
-Subsection~\ref{subsec:analysis}.
+% the probability of matrices with
+% elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
+% we present a statistical analysis of the structure of signatures created by our
+% method, and finish with a security overview in
+% Subsection~\ref{subsec:analysis}.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
