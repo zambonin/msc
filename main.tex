@@ -1,6 +1,6 @@
 \documentclass[openright]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsfonts, chronosys, enumitem, rotating}
+\usepackage{amsmath, amsfonts, chronosys, enumitem}
 \usepackage[a5paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
 
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
@@ -105,43 +105,6 @@ The exact query used is \texttt{rainbow AND signature AND crypto AND (scheme OR 
 
 This is close to the number of works obtained when grouping all analogous searches in other sites, such as the ACM Digital Library, IEEE Xplore, Scopus, Semantic Scholar and Springer Link. Indeed, Google Scholar additionally crawls other sources, \emph{e.g.} university and governmental repositories, and as such returns a slightly larger number of works. From this set, we select relevant papers and present a summary below.
 
-Figure~\ref{fig:2} gives a timeline of such works, to the best of our knowledge, laid horizontally for better visualization. Works are divided into four types, namely:
-
-\begin{enumerate}[label=(\roman*), itemsep=1pt]
-  \item\label{enum:i} schemes that are currently unbroken;
-  \item\label{enum:ii} schemes that have been reparametrised due to new cryptanalytic methods or other advances;
-  \item\label{enum:iii} schemes that have been broken;
-  \item\label{enum:iv} cryptanalytic or other theoretical works.
-\end{enumerate}
-
-\begin{sidewaysfigure}[htbp]
-  \begin{chronology}[startyear=2005, stopyear=2019, height=3pt, dates=false, arrow=false, align=center]
-    \definechronoevent{sp}[textstyle=\footnotesize, datesseparation=/, conversionmonth=false]
-    \chronosp[markdepth=-15pt]{06/2005}{\cite{Ding:200506:inproc}~\ref{enum:ii}}
-    \chronosp[markdepth=-50pt]{04/2006}{\cite{Yang:200604:inproc}~\ref{enum:iii}}
-    \chronosp[markdepth=5pt]{09/2006}{\cite{Billet:200609:inproc}~\ref{enum:iv}}
-    \chronosp[markdepth=5pt]{06/2008}{\cite{Ding:200806:inproc}~\ref{enum:iv}}
-    \chronosp[markdepth=-50pt]{06/2010}{\cite{Petzoldt:201006:inproc}~\ref{enum:ii}}
-    \chronosp[markdepth=5pt]{12/2010}{\cite{Petzoldt:201012:inproc}~\ref{enum:i}}
-    \chronosp[markdepth=-15pt]{03/2011}{\cite{Petzoldt:201103:inproc}~\ref{enum:ii}}
-    \chronosp[markdepth=80pt]{02/2012}{\cite{Yasuda:201202:inproc}~\ref{enum:iii}}
-    \chronosp[markdepth=-85pt]{09/2012}{\cite{Thomae:201209:inproc}~\ref{enum:iv}}
-    \chronosp[markdepth=45pt]{11/2012}{\cite{Petzoldt:201211:inproc}~\ref{enum:i}}
-    \chronosp[markdepth=-50pt]{02/2013}{\cite{Hashimoto:201302:inproc}~\ref{enum:iv}}
-    \chronosp[markdepth=5pt]{05/2013}{\cite{Yasuda:201305:inproc}~\ref{enum:ii}}
-    \chronosp[markdepth=-15pt]{07/2013}{\cite{Petzoldt:201307:phd}~\ref{enum:i}}
-    \chronosp[markdepth=45pt]{04/2014}{\cite{Yasuda:201404:inproc}~\ref{enum:ii}}
-    \chronosp[markdepth=-50pt]{09/2014}{\cite{Yasuda:201409:article}~\ref{enum:ii}}
-    \chronosp[markdepth=5pt]{12/2015}{\cite{Shim:201512:inproc}~\ref{enum:i}}
-    \chronosp[markdepth=45pt]{06/2017}{\cite{Beullens:201706:msc}~\ref{enum:i}}
-    \chronosp[markdepth=-50pt]{06/2017}{\cite{Peng:201706:article}~\ref{enum:iii}}
-    \chronosp[markdepth=5pt]{06/2017}{\cite{Szepieniec:201706:inproc}~\ref{enum:i}}
-    \chronosp[markdepth=-15pt]{12/2017}{\cite{Beullens:201712:inproc}~\ref{enum:i}}
-    \chronosp[markdepth=5pt]{10/2018}{\cite{Hashimoto:201810:misc}~\ref{enum:iv}}
-  \end{chronology}
-\caption{Timeline of works related to reduction of key sizes in Rainbow.}\label{fig:2}
-\end{sidewaysfigure}
-
 Schemes based on multivariate cryptography with modifications that enable the
 reduction of private key sizes have been suggested even before Rainbow was
 created. Tame transformation schemes, such as the ones listed
@@ -192,7 +155,7 @@ and can make use of the improvements to the public key given above. However,
 both of these strategies cannot be combined with the private key improvements
 previously cited. 
 
-\subsubsection{Hypothesis.} It follows from the analysis above that, to the best of our knowledge, no works in the literature attempt to reduce both private and public keys in Rainbow-like signature schemes. This is due to the intricate relationship between both keys, in which one is used to create the other. Therefore, our hypothesis is answered positively if a scheme description is uncovered that shortens both keys in the key pair.
+\emph{Hypothesis.} It follows from the analysis above that, to the best of our knowledge, no works in the literature attempt to reduce both private and public keys in Rainbow-like signature schemes. This is due to the intricate relationship between both keys, in which one is used to create the other. Therefore, our hypothesis is answered positively if a scheme description is uncovered that shortens both keys in the key pair.
 
 \subsection{Research method}
 
@@ -235,9 +198,7 @@ form
     + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} \cdot x_{i} + \delta.
 \end{align}
 
-\subsubsection{Key generation.}
-
-The central map of Rainbow is defined as
+\emph{Key generation.} The central map of Rainbow is defined as
 $\mathcal{F} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$, with the
 following construction: for each layer $l$,
 $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$,
@@ -254,8 +215,7 @@ chosen randomly. The private key is the triple
 $(\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
 $\mathcal{P}$.
 
-\subsubsection{Signature generation.}
-
+\emph{Signature generation.}
 To sign a message $M$, consider a cryptographic hash function
 $\mathcal{H} : {\{0, 1\}}^{*} \longrightarrow \mathbb{F}^{m}$, and obtain the
 message digest $d = \mathcal{H}(M)$. The signature will be the set of variables
@@ -271,8 +231,7 @@ substituted into the next layer, which will create a system of $o_{2}$ linear
 equations, that can be solved analogously. This procedure is repeated until all
 layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
 
-\subsubsection{Signature verification.}
-
+\emph{Signature verification.}
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and invalid otherwise.
 
@@ -290,7 +249,6 @@ whereas the size of a public key is
 \end{align}
 Further details on the construction of Rainbow may be found
 on~\cite[Section 3.3]{Ding:2006:book}.
-
 
 \section{Strategies to reduce keys}
 
