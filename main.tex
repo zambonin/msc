@@ -180,9 +180,16 @@ In this chapter, we will present the theory needed to understand how keys are re
 
 We will shortly present some basic mathematical definitions. Recall that a polynomial is a mathematical expression that consists of indeterminates, also called variables, and coefficients that multiply these variables. Only addition, subtraction, multiplication and integer exponentiation operations are permitted within polynomials. If we denote a $n$-uple of variables as $\mathbf{x} = (x_{1}, \dots, x_{n}), n \in \mathbb{N}$, a polynomial in this sequence is denoted $p(\mathbf{x})$. 
 
-A polynomial may be separated into individual terms, called monomials. The degree of a monomial is the sum of the exponents of its variables, and the degree of a polynomial is the maximum degree between its monomials. A polynomial equation is constructed if we set $p(\mathbf{x}) = 0$. Finally, a polynomial system of $m \in \mathbb{N}$ equations is a set $\{p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$ in which $\mathbf{x}$ is a common solution for all equations.
+A polynomial may be separated into individual terms, called monomials. The degree of a monomial is the sum of the exponents of its variables, and the degree of a polynomial is the maximum degree between its monomials. A polynomial equation is constructed if we set $p(\mathbf{x}) = 0$. Finally, a polynomial system of $m \in \mathbb{N}$ equations is a set $\{p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0\}$ in which $\mathbf{x}$ is a common solution for all equations.
 
-In some cases, polynomials have to be operated between themselves. Indeed, for a ring $R$, the set of all polynomials in $\mathbf{x}$ with coefficients from $R$ forms the polynomial ring $R[\mathbf{x}]$, where the additive and multiplicative identities are borrowed from $R$. With these concepts in mind, we can observe the classes of polynomials used within multivariate cryptography. Usually, cryptosystems are composed of systems of quadratic polynomials, that is
+In some cases, polynomials have to be operated between themselves. Indeed, for a ring $R$, the set of all polynomials in $\mathbf{x}$ with coefficients from $R$ forms the polynomial ring $R[\mathbf{x}]$, where the additive and multiplicative identities are borrowed from $R$. With these concepts in mind, we can observe the classes of polynomials used within multivariate cryptography. Usually, cryptosystems are composed of systems of quadratic polynomials, \emph{i.e.} of degree $2$, as pictured below:
+\begin{align}
+    \begin{cases}
+        p^{(1)}(\mathbf{x}) = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j} + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \gamma_{0}^{(1)} \\
+        \vdots \\
+        p^{(m)}(\mathbf{x}) = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j} + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \gamma_{0}^{(m)}
+    \end{cases}
+\end{align}
 
 % Polynomials used within this context have $n$ variables, that is, $\mathbf{x} = (x_{1}, \dots, x_{n})$. A polynomial is called $p(\mathbf{x})$, and its coefficients are elements of a finite field $\mathbb{F}$. Thus, operations are described by the polynomial ring $\mathbb{F}[\mathbf{x}]$. In the case of multivariate cryptography, generally only quadratic polynomials are used due to efficiency
 
