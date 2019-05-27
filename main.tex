@@ -464,22 +464,20 @@ Recall that, to create a Rainbow signature, the central map $\mathcal{F}$ needs
 to be inverted. Random guessing of vinegar variables is done in order to create
 a solvable linear system. It is also known that the central map is expressed as
 multivariate systems of equations, which can be themselves interpreted as
-multidimensional matrices of coefficients. Observe that, to describe these in a
-clearer way, a given monomial ordering is used such that only usual matrices
-are needed. With this in mind, we propose to calculate the probability that a
+multidimensional matrices of coefficients. 
+With this in mind, we propose to calculate the probability that a
 random matrix with elements in $\mathbb{F}$ is invertible. This will prove useful
 to conclude that the cost of recalculating $\mathcal{F}'$ is amortised over
 multiple signatures.
 
 Vinegar variables chosen to invert the central map are an integral part of the
-preimage $y = \mathcal{F}^{-1}(x)$. For instance, in the case $u = 2$, these
-make roughly a third of the output, considering common parameters for Rainbow.
+preimage $y = \mathcal{F}^{-1}(x)$. 
 Further, recall that there are approximately $q^v$ possibilities for $y$. Our
 proposal eliminates this choice by locking vinegar variables into the private
 key. Hence, it is essential to know if such variables create patterns in which
 private information may leak through a multi-target attack. Experiments that
-use random matrices and vectors with field elements from a cryptographically
-secure pseudo-random number generator should aid in this objective.
+look for patterns in matrices and vectors with field elements from a
+cryptographically secure pseudo-random number generator should aid in this objective.
 
 Finally, a variety of attacks currently thwart the security of Rainbow-like
 signature schemes if parameters are not chosen carefully. We will briefly
