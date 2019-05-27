@@ -184,10 +184,13 @@ A polynomial may be separated into individual terms, called monomials. The degre
 
 In some cases, polynomials have to be operated between themselves. Indeed, for a ring $R$, the set of all polynomials in $\mathbf{x}$ with coefficients from $R$ forms the polynomial ring $R[\mathbf{x}]$, where the additive and multiplicative identities are borrowed from $R$. With these concepts in mind, we can observe the classes of polynomials used within multivariate cryptography. Usually, cryptosystems are composed of systems of quadratic polynomials over finite fields, as pictured below:
 \begin{align}
-    \begin{multline}
-        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j} + \sum_{i = 1}^{n} \beta_{i}^{(k)} x_{i} + \gamma_{0}^{(k)}, k \in \{1, \dots, m\}, \alpha, \beta, \gamma \in \mathbb{F}.
-    \end{multline}
+    \begin{split}
+        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j} + \sum_{i = 1}^{n} \beta_{i}^{(k)} x_{i} + \gamma_{0}^{(k)}, \\
+        1 \leq k \leq m, \; \alpha, \beta, \gamma \in \mathbb{F}.
+    \end{split}
 \end{align}
+
+This is due to the fact that solving polynomial systems of non-linear nature is a proven NP-complete problem~\cite{}. The simplest kinds of such systems are those composed of quadratic equations, indeed the most efficient in computations. Thus, they are widely used in multivariate cryptography.
 
 \section{The Oil--Vinegar principle}\label{sec:oil}
 
