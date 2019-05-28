@@ -204,10 +204,10 @@ This process is summarised in Figure~\ref{fig:2}. It depicts the steps used to o
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}
-    \node (h) at (-2.5, 0) {$h \in \mathbb{F}^{m}$};
+    \node (h) at (-2.5, 0) {$\mathbf{h} \in \mathbb{F}^{m}$};
     \node (x) at (0, 0) {$x \in \mathbb{F}^{m}$};
     \node (y) at (2.5, 0) {$y \in \mathbb{F}^{n}$};
-    \node (z) at (5, 0) {$z \in \mathbb{F}^{n}$};
+    \node (z) at (5, 0) {$\mathbf{z} \in \mathbb{F}^{n}$};
     \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{L}_{1}^{-1}$};
     \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{M}^{-1}$}
       node[midway,yshift=1cm] {decryption / signature generation};
@@ -219,7 +219,7 @@ This process is summarised in Figure~\ref{fig:2}. It depicts the steps used to o
   \caption{Standard flow of operations in the bipolar construction.}\label{fig:2}
 \end{figure}
 
-Consider $m > n$. The function $\mathcal{M}$ should be injective, to assure that there exists a plaintext related to each ciphertext in the preimage process. Indeed, there are encryption schemes in which a non-negligible probability of failure exists.
+Recall that the lateral maps can be considered as simple permutations, andConsider $m > n$. The function $\mathcal{M}$ should be injective, to assure that there exists a unique plaintext $z$ related to each ciphertext $h$ in the preimage process. Indeed, there are encryption schemes in which a non-negligible probability of failure in the decryption process exists.
 
 % TODO posso + EIP problem
 
