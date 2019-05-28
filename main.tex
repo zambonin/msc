@@ -196,7 +196,9 @@ The polynomial system above may also be represented as a mapping $\mathcal{M}: \
 This choice of degree is due to the fact that solving polynomial systems of non-linear nature is a proven NP-complete problem~\cite[Theorem 10]{Fraenkel:197909:article}. The simplest kinds of such systems are those composed of quadratic equations, indeed the most efficient in computations. Thus, they are widely used in multivariate cryptography.
 
 % TODO origin of bipolar
-We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$
+We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map, and it is regarded as the trapdoor, \emph{i.e.} a function that is easy to compute but difficult to invert without particular information. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the central map, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{F} \circ \mathcal{L}_{2}$.
+
+In terms of keys, 
 
 \begin{figure}[htbp]
   \centering
@@ -205,10 +207,10 @@ We now turn to the main construction used in cryptosystems of multivariate natur
     \node (x) at (0, 0) {$x \in \mathbb{F}^{m}$};
     \node (y) at (2.5, 0) {$y \in \mathbb{F}^{n}$};
     \node (z) at (5, 0) {$z \in \mathbb{F}^{n}$};
-    \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{S}^{-1}$};
-    \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{F}^{-1}$}
+    \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{L}_{1}^{-1}$};
+    \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{M}^{-1}$}
       node[midway,yshift=1cm] {decryption / signature generation};
-    \draw[-latex] (y) -- (z) node[midway,above] {$\mathcal{T}^{-1}$};
+    \draw[-latex] (y) -- (z) node[midway,above] {$\mathcal{L}_{2}^{-1}$};
     \draw[-latex] (z) -- (5, -1) -- (-2.5, -1) node[midway,above]
       {$\mathcal{P}$} node[midway,yshift=-.5cm] {encryption / signature
       verification} -- (h);
