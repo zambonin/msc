@@ -174,7 +174,7 @@ We enumerate below a chronological list of activities that depict the process us
 
 \chapter{Theoretical framework}
 
-In this chapter, we will present the theory needed to understand how keys are reduced in Rainbow. In Section~\ref{sec:mult} a panorama of the discipline known as multivariate cryptography is given, with regards to the overall working and classification of schemes. Descriptions of schemes based on Oil-Vinegar polynomials is given in Section~\ref{sec:oil}. Finally, we give an overview of strategies used to reduce keys in Rainbow-like schemes in Section~\ref{sec:strat}.
+In this chapter, we will present the theory needed to understand how keys are reduced in Rainbow. In Section~\ref{sec:mult} a panorama of the discipline known as multivariate cryptography is given, with regards to the overall working and classification of schemes. A description of the Rainbow signature scheme is given in Section~\ref{sec:scheme}. Finally, we give an overview of strategies used to reduce keys in Rainbow-like schemes in Section~\ref{sec:strat}.
 
 \section{Multivariate cryptography}\label{sec:mult}
 
@@ -195,9 +195,24 @@ This choice of degree is due to the fact that solving polynomial systems of non-
 
 We now turn to the main construction used in cryptosystems of multivariate nature. % TODO bipolar
 
-\section{The Oil--Vinegar principle}\label{sec:oil}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node (h) at (-2.5, 0) {$h \in \mathbb{F}^{m}$};
+    \node (x) at (0, 0) {$x \in \mathbb{F}^{m}$};
+    \node (y) at (2.5, 0) {$y \in \mathbb{F}^{n}$};
+    \node (z) at (5, 0) {$z \in \mathbb{F}^{n}$};
+    \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{S}^{-1}$};
+    \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{F}^{-1}$}
+      node[midway,yshift=1cm] {decryption / signature generation};
+    \draw[-latex] (y) -- (z) node[midway,above] {$\mathcal{T}^{-1}$};
+    \draw[-latex] (z) -- (5, -1) -- (-2.5, -1) node[midway,above]
+      {$\mathcal{P}$} node[midway,yshift=-.5cm] {encryption / signature
+      verification} -- (h);
+  \end{tikzpicture}
+\end{figure}
 
-\subsection{Rainbow signature scheme}\label{subsec:scheme}
+\section{Rainbow signature scheme}\label{sec:scheme}
 
 We will present below a description of the Rainbow signature scheme, a
 generalised version of the UOV scheme that reduces the length of keys and
