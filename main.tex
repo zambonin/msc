@@ -199,7 +199,7 @@ This choice of degree is due to the fact that solving polynomial systems of non-
 We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map, and it is regarded as the trapdoor, \emph{i.e.} a function that is easy to compute but difficult to invert without particular information. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the central map, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{M} \circ \mathcal{L}_{2}$.
 
 In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{L}_{1}, \mathcal{M}, \mathcal{L}_{2})$, whereas the public key is the map $\mathcal{P}$. With these definitions, it is possible to achieve both public-key encryption and signature schemes. 
-This process is summarised in Figure~\ref{fig:2}. It depicts the steps used to operate on a message digest $h$. We now observe the relationship between $m$ and $n$.
+This process is summarised in Figure~\ref{fig:2}. It depicts the steps used to operate on a message digest $h$. We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works.
 
 \begin{figure}[htbp]
   \centering
@@ -219,7 +219,7 @@ This process is summarised in Figure~\ref{fig:2}. It depicts the steps used to o
   \caption{Standard flow of operations in the bipolar construction.}\label{fig:2}
 \end{figure}
 
-
+Consider $m > n$, that is, $\mathcal{M}$ is overdetermined. 
 
 % TODO posso + EIP problem
 
