@@ -218,7 +218,7 @@ In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{
   \caption{Standard flow of operations in the bipolar construction.}\label{fig:2}
 \end{figure}
 
-Consider $m > n$. The function $\mathcal{M}$ should be injective, to assure that there exists a unique plaintext $z$ related to each ciphertext $h$ in the preimage process. Indeed, there are encryption schemes in which a non-negligible probability of failure in the decryption process exists. In the case of $m < n$, one expects that $\mathcal{M}$ is surjective, such that every message $h$ has a signature $z$.
+Consider $m \geq n$. The function $\mathcal{M}$ should be injective, to assure that there exists a unique plaintext $z$ related to each ciphertext $h$, by the preimage step. Indeed, there are encryption schemes in which a non-negligible probability of failure in the decryption process exists. In the case of $m \leq n$, one expects that $\mathcal{M}$ is surjective, such that every message $h$ has a signature $z$, once again by the central map preimage.
 
 % TODO posso + EIP problem
 
