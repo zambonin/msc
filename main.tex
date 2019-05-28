@@ -198,7 +198,7 @@ This choice of degree is due to the fact that solving polynomial systems of non-
 % TODO origin of bipolar
 We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map, and it is regarded as the trapdoor, \emph{i.e.} a function that is easy to compute but difficult to invert without particular information. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the central map, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{M} \circ \mathcal{L}_{2}$.
 
-In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{L}_{1}, \mathcal{M}, \mathcal{L}_{2})$, whereas the public key is the map $\mathcal{P}$.
+In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{L}_{1}, \mathcal{M}, \mathcal{L}_{2})$, whereas the public key is the map $\mathcal{P}$. With these definitions, it is possible to achieve both encryption and signature schemes, as seen in Figure~\ref{fig:2}. It depicts the steps used to operate on a message digest $h$. Particularly, if we look at the relation between $m$ and $n$, we conclude that if $m \geq n$, the application of the
 
 \begin{figure}[htbp]
   \centering
@@ -221,7 +221,8 @@ In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{
 \section{Rainbow signature scheme}\label{sec:scheme}
 
 We will present below a description of the Rainbow signature scheme, a
-generalised version of the Unbalanced Oil and Vinegar (UOV) scheme~\cite{Kipnis:199904:inproc}, that reduces the length of keys and
+generalised version of Unbalanced Oil and Vinegar
+(UOV)~\cite{Kipnis:199904:inproc}, that reduces the length of keys and
 signatures. It consists of several ``oil and vinegar'' layers, that are
 combined to create a ``rainbow''. Consider a finite field $\mathbb{F}_{q}$ and
 $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers
