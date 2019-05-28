@@ -193,7 +193,8 @@ The polynomial system above may also be represented as a mapping $\mathcal{M}: \
 
 This choice of degree is due to the fact that solving polynomial systems of non-linear nature is a proven NP-complete problem~\cite[Theorem 10]{Fraenkel:197909:article}. The simplest kinds of such systems are those composed of quadratic equations, indeed the most efficient in computations. Thus, they are widely used in multivariate cryptography.
 
-We now turn to the main construction used in cryptosystems of multivariate nature. % TODO bipolar
+% TODO origin of bipolar
+We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature, pictured in Figure~\ref{fig:2}.
 
 \begin{figure}[htbp]
   \centering
@@ -210,6 +211,7 @@ We now turn to the main construction used in cryptosystems of multivariate natur
       {$\mathcal{P}$} node[midway,yshift=-.5cm] {encryption / signature
       verification} -- (h);
   \end{tikzpicture}
+  \caption{Standard }
 \end{figure}
 
 \section{Rainbow signature scheme}\label{sec:scheme}
