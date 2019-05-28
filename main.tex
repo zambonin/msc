@@ -174,7 +174,9 @@ We enumerate below a chronological list of activities that depict the process us
 
 \chapter{Theoretical framework}
 
-In this chapter, we will present the theory needed to understand how keys are reduced in Rainbow. In Section~\ref{sec:mult} a panorama of the discipline known as multivariate cryptography is given, with regards to the overall working and classification of schemes. A description of the Rainbow signature scheme is given in Section~\ref{sec:scheme}. Finally, we give an overview of strategies used to reduce keys in Rainbow-like schemes in Section~\ref{sec:strat}.
+In this chapter, we will present the theory needed to understand how keys are reduced in Rainbow. In Section~\ref{sec:mult} a panorama of the discipline known as multivariate cryptography is given, with regards to the overall working and classification of schemes. A description of the Rainbow signature scheme is given in Section~\ref{sec:scheme}. 
+
+% Finally, we give an overview of strategies used to reduce keys in Rainbow-like schemes in Section~\ref{sec:strat}.
 
 \section{Multivariate cryptography}\label{sec:mult}
 
@@ -194,7 +196,7 @@ The polynomial system above may also be represented as a mapping $\mathcal{M}: \
 This choice of degree is due to the fact that solving polynomial systems of non-linear nature is a proven NP-complete problem~\cite[Theorem 10]{Fraenkel:197909:article}. The simplest kinds of such systems are those composed of quadratic equations, indeed the most efficient in computations. Thus, they are widely used in multivariate cryptography.
 
 % TODO origin of bipolar
-We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature, pictured in Figure~\ref{fig:2}.
+We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$
 
 \begin{figure}[htbp]
   \centering
@@ -293,12 +295,12 @@ on~\cite[Section 3.3]{Ding:2006:book}.
 \chapter{Harnessing vinegar variables}
 
 We will describe our improvement to Rainbow-like signature schemes below.
-Sections~\ref{sec:scheme} and~\ref{sec:efcma} give a formal description
+Sections~\ref{sec:mod} and~\ref{sec:efcma} give a formal description
 of our modifications. In Section~\ref{sec:security}, we look into 
 possible avenues of research to ensure that our proposal yields secure
 schemes.
 
-\section{Modification to the original scheme}\label{sec:scheme}
+\section{Modification to the original scheme}\label{sec:mod}
 
 Our approach consists of modifications to the key and signature generation
 steps of Rainbow-like signature schemes. We propose to reuse the first set of
@@ -323,7 +325,7 @@ linear relations between the maps.
 This division of improvements is blurred by our proposal. We present general
 methods based on different techniques that shorten private keys in all
 Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
-the same definitions as in Subsection~\ref{subsec:scheme}, further denoting
+the same definitions as in Section~\ref{sec:scheme}, further denoting
 the vinegar variables for the first layer as
 $\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
 
@@ -450,7 +452,7 @@ suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
 
 \emph{Key generation.}
 Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
-private and public keys as per Subsection~\ref{subsec:scheme}. The private key
+private and public keys as per Section~\ref{sec:scheme}. The private key
 for this scheme is $(\mathcal{S}, \mathcal{F}', \mathcal{T}, w)$, with the
 addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
 $(\mathcal{P}, w)$.
