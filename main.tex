@@ -196,9 +196,9 @@ The polynomial system above may also be represented as a mapping $\mathcal{M}: \
 This choice of degree is due to the fact that solving polynomial systems of non-linear nature is a proven NP-complete problem~\cite[Theorem 10]{Fraenkel:197909:article}. The simplest kinds of such systems are those composed of quadratic equations, indeed the most efficient in computations. Thus, they are widely used in multivariate cryptography.
 
 % TODO origin of bipolar
-We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map, and it is regarded as the trapdoor, \emph{i.e.} a function that is easy to compute but difficult to invert without particular information. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the central map, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{F} \circ \mathcal{L}_{2}$.
+We now turn to the main construction used in cryptosystems of multivariate nature. It is called bipolar, due to its elegant twofold nature. Consider $n, m \in \mathbb{N}$ as above. The function $\mathcal{M}: \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the central map, and it is regarded as the trapdoor, \emph{i.e.} a function that is easy to compute but difficult to invert without particular information. Two affine invertible maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the central map, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{M} \circ \mathcal{L}_{2}$.
 
-In terms of keys, 
+In terms of keys, it is evident that the private key is the $3$-uple $(\mathcal{L}_{1}, \mathcal{M}, \mathcal{L}_{2})$, whereas the public key is the map $\mathcal{P}$.
 
 \begin{figure}[htbp]
   \centering
