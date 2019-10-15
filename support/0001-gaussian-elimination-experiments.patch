@@ -1,0 +1,115 @@
+From 2d95674f63fc42b1c79f735f72d95ace43c04e62 Mon Sep 17 00:00:00 2001
+From: Gustavo Zambonin <gustavo.zambonin@grad.ufsc.br>
+Date: Sun, 2 Aug 2020 20:23:43 -0300
+Subject: [PATCH] gaussian elimination experiments
+
+---
+ crypto_sign/rainbowIa-classic/clean/Makefile  | 12 +++--
+ .../rainbowIa-classic/clean/eval-gauss.sh     | 48 +++++++++++++++++++
+ .../rainbowIa-classic/clean/test-gauss.c      | 20 ++++++++
+ 3 files changed, 77 insertions(+), 3 deletions(-)
+ create mode 100644 crypto_sign/rainbowIa-classic/clean/eval-gauss.sh
+ create mode 100644 crypto_sign/rainbowIa-classic/clean/test-gauss.c
+
+diff --git a/crypto_sign/rainbowIa-classic/clean/Makefile b/crypto_sign/rainbowIa-classic/clean/Makefile
+index 3327c0e3..11766567 100644
+--- a/crypto_sign/rainbowIa-classic/clean/Makefile
++++ b/crypto_sign/rainbowIa-classic/clean/Makefile
+@@ -5,3 +5,6 @@ LIB=librainbowIa-classic_clean.a
+-HEADERS = api.h blas_comm.h blas.h gf.h parallel_matrix_op.h rainbow_blas.h rainbow_config.h rainbow.h rainbow_keypair_computation.h rainbow_keypair.h utils_hash.h utils_prng.h
+-OBJECTS =  blas_comm.o parallel_matrix_op.o rainbow.o rainbow_keypair.o rainbow_keypair_computation.o sign.o utils_hash.o utils_prng.o blas.o gf.o
+-
++HEADERS = api.h blas_comm.h blas.h gf.h parallel_matrix_op.h rainbow_blas.h \
++	rainbow_config.h rainbow.h rainbow_keypair_computation.h rainbow_keypair.h \
++	utils_hash.h utils_prng.h
++OBJECTS = blas_comm.o parallel_matrix_op.o rainbow.o rainbow_keypair.o \
++	rainbow_keypair_computation.o sign.o utils_hash.o utils_prng.o blas.o gf.o \
++	../../../common/randombytes.o ../../../common/sha2.o ../../../common/aes.o
+@@ -12,0 +16,2 @@ all: $(LIB)
++test-gauss: test-gauss.o $(LIB)
++
+@@ -20,0 +26 @@ clean:
++	$(RM) test-gauss.o
+diff --git a/crypto_sign/rainbowIa-classic/clean/eval-gauss.sh b/crypto_sign/rainbowIa-classic/clean/eval-gauss.sh
+new file mode 100644
+index 00000000..7ebc686e
+--- /dev/null
++++ b/crypto_sign/rainbowIa-classic/clean/eval-gauss.sh
+@@ -0,0 +1,48 @@
++#!/bin/sh
++
++OUTPUT="gauss-exp-$(date +%s)"
++
++mkdir -p "$OUTPUT"
++trap -- 'rm -r "$OUTPUT"; exit' SIGINT
++
++for height in $(seq 1 64) ; do
++  for width in $(seq 1 64) ; do
++    if (( height == width )) ; then
++      make --silent -Bj EXTRAFLAGS="-DHEIGHT=$height -DWIDTH=$width" test-gauss
++      mv test-gauss "$OUTPUT/test-gauss-$height-$width"
++
++      valgrind --quiet --tool=callgrind --dump-instr=yes --collect-jumps=yes \
++        --instr-atstart=yes --collect-atstart=no --main-stacksize=33554432 \
++        --toggle-collect=PQCLEAN_RAINBOWIACLASSIC_CLEAN_gf16mat_gauss_elim \
++        --callgrind-out-file="$OUTPUT/grind-eval-$height-$width.out" \
++        "$OUTPUT/test-gauss-$height-$width"
++
++      gprof2dot -n0 -e0 -f callgrind "$OUTPUT/grind-eval-$height-$width.out" \
++        > "$OUTPUT/graph-eval-$height-$width.dot"
++      dot -Tpng "$OUTPUT/graph-eval-$height-$width.dot" \
++        -o "$OUTPUT/graph-eval-$height-$width.png"
++    fi
++  done
++done
++
++for i in $OUTPUT/*.dot ; do
++  printf "%s " "$i"
++  sed -n 's/×//g; /->/d; s/\\n/ /g; /gauss-/p' "$i" \
++    | awk -F\" '{ print $(NF - 1) }' \
++    | sed -E '/_start|main|gf16mat_|_sign/d' \
++    | LC_ALL=C sort -k2 \
++    | awk '{print $NF}' \
++    | paste -s
++done \
++  | sed 's/graph-sign-//g; s/\.dot//g; s/-/ /g' \
++  | sort -nk4 -nk5 -nk6 \
++  | column -t \
++  > "$OUTPUT/results.txt"
++
++sed -n 's/×//g; /->/d; s/\\n/ /g; /gauss-/p' "$OUTPUT/graph-eval-2-2.dot" \
++  | awk -F\" '{ print $(NF - 1) }' \
++  | sed -E '/_start|main|gf16mat_|_sign/d' \
++  | LC_ALL=C sort -k2 \
++  | awk '{print $2}' \
++  | paste -s \
++  >> "$OUTPUT/results.txt"
+diff --git a/crypto_sign/rainbowIa-classic/clean/test-gauss.c b/crypto_sign/rainbowIa-classic/clean/test-gauss.c
+new file mode 100644
+index 00000000..0fb1b61f
+--- /dev/null
++++ b/crypto_sign/rainbowIa-classic/clean/test-gauss.c
+@@ -0,0 +1,20 @@
++#include <stdint.h>
++#include <stdlib.h>
++
++#include "blas.h"
++#include "blas_comm.h"
++
++int main() {
++  uint8_t *mat = calloc(HEIGHT * WIDTH, sizeof(uint8_t));
++
++  for (size_t i = 0; i < HEIGHT * WIDTH; ++i) {
++    mat[i] = (uint8_t)i;
++  }
++
++  uint32_t result =
++      PQCLEAN_RAINBOWIACLASSIC_CLEAN_gf16mat_gauss_elim(mat, HEIGHT, WIDTH);
++
++  free(mat);
++
++  return (int)result;
++}
+--
+2.28.0
+
