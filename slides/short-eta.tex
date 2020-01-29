@@ -1,0 +1,146 @@
+\documentclass[12pt]{beamer}
+
+\usetheme{Copenhagen}
+\usecolortheme{seagull}
+
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}
+
+\setitemize{
+  itemsep=1em,
+  label=\usebeamerfont*{itemize item}
+    \usebeamercolor[fg]{itemize item}
+    \usebeamertemplate{itemize item}
+}
+
+\begin{filecontents}{\jobname.bib}
+@inproceedings{Zambonin:inproc:2019:jul,
+ doi = {10.1007/978-3-030-23696-0\_20},
+ author = {Zambonin, G. and Bittencourt, M. S. P. and Custódio, R.},
+ title = {{Handling Vinegar Variables to Shorten Rainbow Private Keys}},
+ year = {2019},
+ month = jul,
+ booktitle = {{Progress in Cryptology -- AFRICACRYPT 2019}},
+ pages = {391--408},
+ editor = {Buchmann, J. and Nitaj, A. and Rachidi, T.},
+ location = {Rabat, Morocco},
+ series = {Lecture Notes in Computer Science},
+ volume = 11627,
+}
+\end{filecontents}
+
+\author[G. Zambonin (\texttt{gustavo.zambonin@posgrad.ufsc.br})]{
+  \textbf{Gustavo Zambonin} \\
+  {\scriptsize \url{zambonin.org}}
+}
+\institute{
+  \includegraphics[scale=0.15]{ufsc} \\ \vspace{-4mm}
+  Laboratório de Segurança em Computação \\
+  Universidade Federal de Santa Catarina
+}
+\title{
+  Our current research in \\
+  multivariate cryptography
+}
+\date{January 29th, 2020}
+
+\begin{document}
+
+\nobibliography*
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item Quantum-safe cryptography (mainly signatures) through multivariate
+        quadratic equations over finite fields
+    \item Several families with different constructions or polynomial spaces
+        (HFE, \textbf{Oil--Vinegar}, MQDSS etc.)
+    \item Signature operations are very efficient but key sizes are
+        large systems of equations (up to 100KB)
+    \item We focus on the Rainbow signature scheme in our research, a
+        generalization of UOV submitted to NIST
+    \item How can we \textbf{securely reduce} the key sizes of Rainbow
+        instances without limiting parameter sets?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item We have observed that the literature contains strategies that are
+        mostly incompatible between themselves
+    \item Furthermore, several private key reductions are based on the
+        insecure introduction of structures into the key
+    \item We aim to provide a method that reduces public and private keys
+        \textbf{at the same time}
+    \item To create a signature, random values are substituted into the
+        private keys, yielding solvable$^{*}$ systems of equations
+    \item What if such values are pre-substituted into the private key? It may
+        then be stored in a smaller fashion
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item We provide ways to obtain the original private key and show that this
+        rarely happens
+    \item The general structure of the scheme is not changed, thus making it a
+        generic framework, which we call Rainbow-$\eta$
+    \item This method is not conflicting with strategies that reduce public
+        keys, achieving our original goal
+    \item {\small \bibentry{Zambonin:inproc:2019:jul}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{table}[htbp]
+    \setlength{\tabcolsep}{8pt}
+    \centering
+    \begin{tabular}{*{7}{r}}
+      \toprule
+      NIST Cat. & $n$ & $m$ & $|\mathcal{K}_{Pr}|$
+           & $|\mathcal{K}_{Pr} ^{\eta}|$ & Difference \\ \midrule
+      I-c    &   88 &   48 &   143384 &   33024 & $-76.97\%$ \\
+      III-c  &  140 &   72 &   537780 &   99656 & $-81.47\%$ \\
+      V-c    &  188 &   96 &  1274316 &  218984 & $-82.82\%$ \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+    \begin{table}[htbp]
+    \setlength{\tabcolsep}{7pt}
+    \centering
+    \begin{tabular}{*{6}{r}}
+      \toprule
+      Security & Variant
+        & $|\mathcal{K}_{Pr}|$ & $|\mathcal{K}_{Pr}^{\eta}|$
+        & $|\mathcal{K}_{Pu}|$ & Difference \\ \midrule
+      \multirow{3}{*}{128}
+        &  Classic &  \multirow{3}{*}{105006} &  \multirow{3}{*}{24924}
+                                                &  139320 & $-32.78\%$ \\
+        &   Cyclic &                          & &   48411 & $-69.98\%$ \\
+        &     LRS2 &                          & &   45547 & $-71.16\%$ \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \begin{itemize}
+    \item Key sizes are in number of $\mathbb{F}_{256}$ elements, or bytes
+    \item More precise security considerations, e.g. cryptanalysis and
+        side-channel attacks, are currently being worked on
+  \end{itemize}
+\end{frame}
+
+\bibliographystyle{alpha}
+\nobibliography{\jobname}
+
+\end{document}
