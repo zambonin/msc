@@ -24,14 +24,11 @@ Rainbow is evidently the most popular multivariate signature scheme based on Oil
 
 A similar idea introduced at roughly the same time are \emph{tame transformation schemes} (TTS), in which equations in the private key are required to present a minimum level of sparseness. This strategy remained unbroken for a longer duration than STS. In this period, STS and TTS were found to be specialized cases of the general Rainbow construction after it was published~\cite{}, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as the cryptanalysis of Rainbow itself~\cite{}, led to the development of new attacks that rendered TTS insecure~\cite{}. Further modifications were suggested to salvage and enhance the previous schemes, but every such variant was broken through a general attack due to Thomae--Wolf~\cite{}.
 
-We note that in the case of STS and TTS, reducing the private key was not the main intention of the authors, and it is thus not trivial to estimate such gains through direct comparison to Rainbow. On the other hand, with the general description of the scheme available~\cite{}, there have been several works which focus on the modification of Rainbow with the purpose of reducing key sizes. Additionally, this motivation stems from recent efforts to present quantum-safe cryptography as a valid alternative to traditional digital signature schemes~\cite{},. We discuss these ``newer generation''  works as follows.
+We note that in the case of STS and TTS, reducing the private key was not the main intention of the authors, and it is thus not trivial to estimate such gains through direct comparison to Rainbow. Indeed, the reduction of keys is a known strategy to increase the performance of operations on signatures, \emph{e.g.}~\cite{}. On the other hand, with the general description of the scheme available~\cite{}, there have been several works which focus on the modification of Rainbow with the sole purpose of reducing key sizes. This motivation partially stems from recent efforts to present quantum-safe cryptography as a valid alternative to traditional digital signature schemes~\cite{}. We discuss these ``newer generation''  works as follows, firstly addressing efforts towards reducing private keys.
 
-Additionally, there are several published variations of Rainbow with the
-same goal, making use of distinct approaches. A scheme called
-Lite-Rainbow-0~\cite{Shim:201512:inproc} employs a small pseudorandom
-number generator (PRNG) seed to replace the private key entirely. This shortens
-the private key by a factor of approximately $99.8\%$, but greatly increases
-the cost for signature generation. NC-Rainbow was proposed
+A scheme called Lite-Rainbow-0~\cite{} employs a small pseudorandom number generator (PRNG) seed to replace the private key entirely. This shortens the private key by a factor of approximately $99.8\%$, but greatly increases the cost for signature generation. 
+
+NC-Rainbow was proposed
 in~\cite{Yasuda:201202:inproc}, with a novel strategy based in non-commutative
 rings to reduce a private key by up to $75\%$. However, it was shown by
 independent researchers to be
