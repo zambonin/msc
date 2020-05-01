@@ -22,15 +22,7 @@ We perform a systematic review of the literature through the Google Scholar meta
 
 Rainbow is evidently the most popular multivariate signature scheme based on Oil--Vinegar polynomials. However, schemes of that class that feature modifications with the intent of reducing key sizes have been suggested even before Rainbow itself was created. Chronologically, the first schemes with this feature were called \emph{stepwise triangular systems} (STS) in their generalized form. The inherent shape of their private keys, hence the name, is derived from the fact that there are restrictions in the choice of variables for each polynomial in the central map system, on top of the Oil--Vinegar construction. STS schemes were broken in the same work that designed the general classification~\cite{}.
 
-A similar idea introduced at roughly the same time are \emph{tame transformation schemes} (TTS), in which sparseness is directly introducted into the private key. This strategy remained unbroken for a longer duration than STS. In this period, STS and TTS were found to be specialized cases of the general Rainbow construction, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as the cryptanalysis of Rainbow itself~\cite{}, led to the development of new attacks that rendered TTS insecure~\cite{}. Further modifications were suggested to fix the previous schemes and create Enan
-
-Tame transformation schemes, such as the ones listed
-in~\cite{Wolf:200503:misc}, feature sparseness in their maps, a common
-strategy used to shorten private keys, as seen in~\cite{Yang:200604:inproc}.
-However, these schemes were either broken, as summarised
-in~\cite{Ding:200604:article}, or in the case of Enhanced TTS, new parameters
-were suggested, and it was subsequently found to be a special case of
-Rainbow~\cite{Thomae:201207:inproc}.
+A similar idea introduced at roughly the same time are \emph{tame transformation schemes} (TTS), in which sparseness is directly introducted into the private key. This strategy remained unbroken for a longer duration than STS. In this period, STS and TTS were found to be specialized cases of the general Rainbow construction, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as the cryptanalysis of Rainbow itself~\cite{}, led to the development of new attacks that rendered TTS insecure~\cite{}. Further modifications were suggested to salvage and enhance the previous schemes, but every such variant was broken through a general attack due to Thomae--Wolf~\cite{}.
 
 Additionally, there are several published variations of Rainbow with the
 same goal, making use of distinct approaches. A scheme called
