@@ -2,11 +2,6 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-% \usepackage[a4paper,inner=2.5cm,outer=1.5cm,top=2.0cm,bottom=1.5cm,head=0.7cm,foot=0.7cm]{geometry}
-
-\usepackage{amsmath, amsfonts, chronosys, enumitem}
-
-\newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
 \begin{document}
 
@@ -32,7 +27,7 @@ NC-Rainbow was proposed in~\cite{}, with a novel strategy based in non-commutati
 
 A variant of Rainbow based on quadratic forms~\cite{} features a trade-off between private key and public key size in order to increase the performance of the signature generation step. It replaces the central map with a small invertible matrix, reducing the size of the private key by up to $91.2\%$ and increasing the public key threefold. However, it was found to be insecure directly afterwards~\cite{}.
 
-Some non-intrusive approaches are also found in the literature. A scheme called Lite-Rainbow-0~\cite{} replaces the entire private key with a small pseudorandom number generator (PRNG) seed to. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. A similar approach uses the RC4 stream cipher to generate the private key of UOV instances~\cite{}, presenting a similar decrease in the private key size but no noticeable effects on signature generation performance. This is also the case with another work~\cite{} that employs AES-CTR as a PRNG.
+Some nonintrusive approaches are also found in the literature. A scheme called Lite-Rainbow-0~\cite{} replaces the entire private key with a small pseudorandom number generator (PRNG) seed to. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. A similar approach uses the RC4 stream cipher to generate the private key of UOV instances~\cite{}, presenting a similar decrease in the private key size but no noticeable effects on signature generation performance. This is also the case with another work~\cite{} that employs AES-CTR as a PRNG.
 
 The authors of LWRS~\cite{} create a scheme with performance-restricted devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key. % this actually reduces both keys in the key pair
 
@@ -53,19 +48,6 @@ both of these strategies cannot be combined with the private key improvements
 previously cited. 
 
 \emph{Hypothesis.} It follows from the analysis above that, to the best of our knowledge, no works in the literature attempt to reduce both private and public keys in Rainbow-like signature schemes. This is due to the intricate relationship between both keys, in which one is used to create the other. Therefore, our hypothesis is answered positively if a scheme description is uncovered that shortens both keys in the key pair.
-
-\subsection{Research method}
-
-We enumerate below a chronological list of activities that depict the process used to develop our research.
-
-\begin{enumerate}[label=(\roman*), itemsep=1pt]
-    \item Maintain a bibliography featuring works related to reduction of keys in Rainbow-like signature schemes;
-    \item Classify strategies used by scheme variants to reduce private or public keys;
-    \item Develop a strategy to modify keys that is independent from existing ones;
-    \item Test the scheme derived from this strategy against known cryptanalytic methods, particularly ones that take advantage of concepts used to devise this variant;
-    \item Measure the overall gains of the scheme with regards to key sizes, comparing the new variant with existing works;
-    \item Provide a reference implementation to show that our proposal does not deviate from default inputs and outputs.
-\end{enumerate}
 
 \bibliographystyle{alpha}
 \bibliography{ref}
