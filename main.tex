@@ -28,7 +28,7 @@ We note that in the case of STS and TTS, reducing the private key was not the ma
 
 NC-Rainbow was proposed in~\cite{}, with a novel strategy based in non-commutative rings to reduce a private key by up to $75\%$. However, it was shown by independent researchers to be insecure~\cite{}. Other variants called MB-Rainbow~\cite{} and NT-Rainbow~\cite{} employ sparseness of maps to reduce the number of terms in the private key by up to $40\%$. The authors merged MB- and NC-Rainbow into a single scheme called MNT-Rainbow~\cite{}, shortening private keys by up to $76\%$. Nevertheless, the original schemes were deemed insecure by the authors of~\cite{}. In this work, a new scheme called Circulant Rainbow is also proposed, which reduces the private key by up to $45\%$ due to the concept of rotating relations. This approach and its analogous UOV variant~\cite{} were broken shortly after~\cite{}.
 
-A variant of Rainbow based on quadratic forms~\cite{} features a trade-off between private key and public key size in order to increase the performance of the signature generation step.
+A variant of Rainbow based on quadratic forms~\cite{} features a trade-off between private key and public key size in order to increase the performance of the signature generation step. It replaces the central map with a small invertible matrix, reducing the size of the private key by up to $91.2\%$ and increasing the public key threefold. However, it was broken 
 
 Furthermore, it appears that the introduction of structures in the private key is highly threatening to the overall security of a Rainbow scheme.
 
