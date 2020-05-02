@@ -29,6 +29,8 @@ A variant of Rainbow based on quadratic forms~\cite{} features a trade-off betwe
 
 Some nonintrusive approaches are also found in the literature. A scheme called Lite-Rainbow-0~\cite{} replaces the entire private key with a small pseudorandom number generator (PRNG) seed to. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. A similar approach uses the RC4 stream cipher to generate the private key of UOV instances~\cite{}, presenting a similar decrease in the private key size but no noticeable effects on signature generation performance. This is also the case with another work~\cite{} that employs AES-CTR as a PRNG.
 
+% TODO cubic paragraph?
+
 The authors of LWRS~\cite{} create a scheme with performance-restricted devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key. % this actually reduces both keys in the key pair
 
 In the case of modifications to the public key, there are mainly two approaches.
