@@ -38,7 +38,9 @@ Additionally, there are works in the literature which manage to reduce both priv
 
 A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively.
 
-The variant known as cubic UOV~\cite{} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{}. Repaired versions called CSSv and SVSv were proposed~\cite{}, which feature 
+The variant known as cubic UOV~\cite{} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{}. Repaired versions called CSSv and SVSv were proposed~\cite{}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter strips
+
+which feature another decrease in key sizes, with reductions of up to $\%$ for private keys and up to $\%$ for public keys.
 % TODO cubic paragraph?
 
 
