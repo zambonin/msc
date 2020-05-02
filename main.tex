@@ -49,7 +49,7 @@ of a Rainbow scheme.
 A scheme called Lite-Rainbow-0~\cite{} employs a small pseudorandom number generator (PRNG) seed to replace the private key entirely. This shortens the private key by a factor of approximately $99.8\%$, but greatly increases the cost for signature generation. % this is not structural, so it should go last
 
 
-A variant called LWRS~\cite{} consists of modifications with the intent of creating a scheme suitable for performance-restricted devices. The authors propose to drops the left affine transformation of the usual bipolar construction and apply the ``minus'' method~\cite[Subsection 3.2.1]{} to the public key. The suggested parameter set reduces the private key size in about $85.9\%$ and the public key size in % this actually reduces both keys in the key pair
+A variant called LWRS~\cite{} consists of modifications with the intent of creating a scheme suitable for performance-restricted devices. The authors propose to drops the left affine transformation of the usual bipolar construction and apply the ``minus'' method~\cite[Subsection 3.2.1]{} to the public key. The reduction factor is precisely $1 - \frac{\delta}{m}$ for the public key and $$ % this actually reduces both keys in the key pair
 
 In the case of modifications to the public key, there are mainly two approaches.
 The approach by the authors of~\cite{Petzoldt:201006:inproc} is, to the best of 
