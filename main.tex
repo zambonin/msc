@@ -34,11 +34,11 @@ Some non intrusive approaches are also found in the literature. A scheme called 
 
 The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements.
 
-% TODO cubic paragraph?
-
 Additionally, there are works in the literature which manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{} create a scheme with performance-restricted devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key.
 
 A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively.
+
+% TODO cubic paragraph?
 
 
 
