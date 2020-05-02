@@ -34,8 +34,7 @@ A variant of Rainbow based on quadratic forms~\cite{} features a trade-off betwe
 
 Furthermore, it appears that the introduction of structures in the private key is highly threatening to the overall security of a Rainbow scheme.
 
-A scheme called Lite-Rainbow-0~\cite{} employs a small pseudorandom number generator (PRNG) seed to replace the private key entirely. This shortens the private key by a factor of approximately $99.8\%$, but greatly increases the cost for signature generation. % this is not structural, so it should go last
-
+Some non-intrusive approaches are also found in the literature. A scheme called Lite-Rainbow-0~\cite{} replaces the entire private key with a small pseudorandom number generator (PRNG) seed to. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. A similar approach uses the stream cipher RC4 to generate the private key of UOV instances~\cite{}, presenting similar results. 
 
 The authors of LWRS~\cite{} create a scheme with performance-restricted devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key. % this actually reduces both keys in the key pair
 
