@@ -15,7 +15,8 @@ In this section, we make use of the previously well-defined boundaries with rega
 
 We perform a systematic review of the literature through the Google Scholar meta-indexer tool, which covers most scientific literature providers, and allows the user to efficiently delimit the wanted scope. We identify three critical works in the history of signatures based on Oil--Vinegar polynomials~\cite{Patarin:199709,Kipnis:199904,Ding:200506} and conduct the search over works that directly cited at least one of those. We consider only publications written in English that are not patents. From this set, we select relevant papers and present a summary below.
 
-% TODO explain how they were broken?
+% TODO explain how they were broken
+% if we're able to classify exactly which attack broke each scheme, then a table can be made
 
 Rainbow is evidently the most popular multivariate signature scheme based on Oil--Vinegar polynomials. However, schemes of that class that feature modifications with the intent of reducing key sizes have been suggested even before Rainbow itself was proposed. Chronologically, the first schemes with this feature were called \emph{stepwise triangular systems} (STS) in their generalized form. The inherent shape of their private keys, hence the name, is derived from the fact that there are restrictions in the choice of variables for each polynomial in the central map system, on top of the Oil--Vinegar construction. This strategy indirectly enables a reduction in private key size. STS schemes were broken in the same work that designed the general classification~\cite{}.
 
@@ -38,6 +39,8 @@ The precomputation of UOV signatures such that the private key is not required i
 Additionally, there are works in the literature which manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{} create a scheme with performance-restricted devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key.
 
 A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively.
+
+
 
 In the case of modifications to the public key, there are mainly two approaches.
 The approach by the authors of~\cite{Petzoldt:201006:inproc} is, to the best of 
