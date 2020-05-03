@@ -43,26 +43,19 @@ A modification that consists of adding cross-terms of oil variables in the last 
 
 The variant known as cubic UOV~\cite{} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{}. Repaired versions called CSSv and SVSv were proposed~\cite{}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve a further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{}.
 
-% TODO redo paragraphs on public key strategies (cyclic, theory)
+% TODO redo paragraphs on public key strategies (cyclic)
 
 In the case of modifications to the public key, there are mainly four approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{}, where it was attacked with a new strategy based on differentials between the base and extension fields. An extension of the LUOV proposal to Rainbow~\cite{} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
 A development by the name of block-anti-circulant (BAC) UOV~\cite{} forces matrices representing the central map and public key to be BAC. This allows for a compression of both keys in the key pair, although only public key size improvements are featured on the aforementioned work. Still, the authors of~\cite{} show that the security levels of BACUOV are smaller than originally claimed through manipulation of the public key and the application of the UOV attack.
 
-We also classify the work in~\cite{} as relevant, since it is a general method motivated by the context of public key infrastructures, in which the size of a public key and signature bundle must be minimized. The method initially was proposed for multivariate trapdoors, and it was subsequently generalized~\cite{} to work in 
+We also classify the work in~\cite{} as relevant, since it is a general method motivated by the context of public key infrastructures, in which the size of a public key and signature bundle must be minimized. The strategy, which consists of a trade-off between signature and public key sizes with their summed length still reduced, was initially proposed for multivariate trapdoors, and subsequently generalized~\cite{} to work in different security models and other signature schemes.
 
-The approach by the authors of~\cite{Petzoldt:201006:inproc} is, to the best of 
-our knowledge, the main method for public key reduction without compromises to
-the signature size. It explores the fact that specific parts of the public key
-do not contribute to the security of the scheme. It is summarised in several
-publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}
+Finally, the ``cyclic'' approach initially proposed in~\cite{Petzoldt:201006:inproc} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance.
+
+The CyclicRainbow variant~\cite{} is 
+It is summarised in several publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}
 and used in~\cite{Shim:201512:inproc} to construct Lite-Rainbow-1.
-
-The authors of~\cite{Szepieniec:201706:inproc} lift the public and central maps
-of a particular case of Rainbow to an extension field, reducing its public 
-key size by an order of magnitude but increasing the signature size. This is 
-compatible with the generalised scheme, as seen in~\cite{Beullens:201706:msc,Beullens:201712:inproc},
-and can make use of the improvements to the public key given above. 
 
 \bibliographystyle{alpha}
 \bibliography{ref}
