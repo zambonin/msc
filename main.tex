@@ -49,7 +49,7 @@ In the ELSA variant~\cite{Shim:201712}, a hidden layer of quadratic equations is
 
 Some non intrusive approaches are also found in the literature. The authors of Lite-Rainbow-0~\cite{Shim:201512} propose the replacement of the entire private key with a small pseudorandom number generator (PRNG) seed. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. In~\cite{Borges:201209}, it is suggested to use the RC4 stream cipher in the private key generation of UOV~\cite{Borges:201209}, presenting analogous decreases in the private key size but no noticeable effects on signature generation performance. Such approach is also demonstrated to work with Rainbow~\cite{Dornelles:201910}. A similar result is also given in another work~\cite{Seo:201403}, in which AES-CTR is employed as the PRNG of choice.
 
-The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements.
+The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements.
 
 % our variant
 
