@@ -42,7 +42,7 @@ The variant known as cubic UOV~\cite{} introduces a number of cubic polynomials 
 
 % TODO redo paragraphs on public key strategies (cyclic, luov, bac)
 
-In the case of modifications to the public key, there are mainly three approaches.  
+In the case of modifications to the public key, there are mainly three approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{}, where it was 
 
 
 
@@ -57,9 +57,7 @@ The authors of~\cite{Szepieniec:201706:inproc} lift the public and central maps
 of a particular case of Rainbow to an extension field, reducing its public 
 key size by an order of magnitude but increasing the signature size. This is 
 compatible with the generalised scheme, as seen in~\cite{Beullens:201706:msc,Beullens:201712:inproc},
-and can make use of the improvements to the public key given above. However,
-both of these strategies cannot be combined with the private key improvements
-previously cited. 
+and can make use of the improvements to the public key given above. 
 
 \bibliographystyle{alpha}
 \bibliography{ref}
