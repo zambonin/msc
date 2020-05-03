@@ -45,11 +45,11 @@ The precomputation of UOV signatures such that the private key is not required i
 
 In the case of modifications to the public key, there are several approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{Beullens:201712} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{Alagic:201901}, in which it was attacked with a new strategy based on differentials between the base and extension fields~\cite{Ding:201908}. An extension of the LUOV proposal to Rainbow~\cite{Duong:202003} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
+A strategy which can also be seen as a manipulation between  base and extension fields
+
 A development by the name of block-anti-circulant (BAC) UOV~\cite{Szepieniec:201908} forces matrices representing the central map and public key to be BAC. This allows for a compression of both keys in the key pair, although only public key size improvements are featured on the aforementioned work. Still, the authors of~\cite{Furue:202004} show that the security levels of BACUOV are smaller than originally claimed through manipulation of the public key and the application of the UOV attack.
 
 We also classify the work in~\cite{Szepieniec:201706} as relevant, since it is a general method motivated by the context of public key infrastructures, in which the size of a public key and signature bundle must be minimized. The strategy, which consists of a trade-off between signature and public key sizes with their summed length still reduced, was initially proposed for multivariate trapdoors, and subsequently generalized~\cite{Beullens:201808} to work in different security models and other signature schemes.
-
-% 0/1
 
 Finally, the ``cyclic'' approach initially proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance.
 
