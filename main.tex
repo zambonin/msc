@@ -21,10 +21,6 @@ We conduct our literature review by making use of the Google Scholar meta-indexe
 % TODO homogeneize terms like "private key(s)", "central map", etc
 % and just name every scheme if we're going the table way
 
-% TODO talk about our method
-
-% TODO divide into sections, looks better
-
 % TODO equivalent keys are one strategy to reduce the private key, actually...
 
 \subsection{Improvements to private key size}
@@ -39,7 +35,7 @@ In this period, STS and TTS were found to be specialized cases of the general Ra
 
 We note that in the case of STS and TTS, reducing the private key was not the main intention of the authors, and it is thus not trivial to estimate such gains through direct comparison to Rainbow. Indeed, the reduction of keys is a known strategy to increase the performance of operations on signatures. On the other hand, there are several proposals in the literature which focus on the modification of Rainbow with the sole purpose of reducing key sizes. This motivation partially stems from recent efforts to present quantum-safe cryptography as a valid alternative to traditional digital signature schemes~\cite{Bernstein:2008}.
 
-A variant of Rainbow based on quadratic forms~\cite{Yasuda:201306} features a trade-off between private key and public key size in order to increase the performance of the signature generation step. It replaces the central map with a small invertible matrix, reducing the size of the private key by up to $91.2\%$ and increasing the public key threefold. However, it was found to be insecure directly afterwards~\cite{} by algebraic cryptanalysis leading up to the discovery of equivalent keys.
+A variant of Rainbow based on quadratic forms~\cite{Yasuda:201306} features a trade-off between private key and public key size in order to increase the performance of the signature generation step. It replaces the central map with a small invertible matrix, reducing the size of the private key by up to $91.2\%$ and increasing the public key threefold. However, it was found to be insecure directly afterwards~\cite{Hashimoto:201410} by algebraic cryptanalysis leading up to the discovery of equivalent keys.
 
 NC-Rainbow~\cite{Yasuda:201202} is proposed as a novel strategy, based in non-commutative rings, used to reduce a private key by up to $75\%$. However, it was shown by independent researchers to be insecure through a combination of rank attacks and the UOV attack~\cite{Thomae:201209,Hashimoto:201302}. The variants MB-Rainbow~\cite{Yasuda:201305} and NT-Rainbow~\cite{Yasuda:201404} are based on the insertion of, respectively, sparse diagonal and non-triangular matrices into the central map, to reduce the private key by up to $40\%$. The authors merged MB- and NC-Rainbow into a single scheme MNT-Rainbow~\cite{Yasuda:201409}, shortening private keys by up to $76\%$. 
 
@@ -49,13 +45,11 @@ In the ELSA variant~\cite{Shim:201712}, a hidden layer of quadratic equations is
 
 Some non intrusive approaches are also found in the literature. The authors of Lite-Rainbow-0~\cite{Shim:201512} propose the replacement of the entire private key with a small pseudorandom number generator (PRNG) seed. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. In~\cite{Borges:201209}, it is suggested to use the RC4 stream cipher in the private key generation of UOV~\cite{Borges:201209}, presenting analogous decreases in the private key size but no noticeable effects on signature generation performance. Such approach is also demonstrated to work with Rainbow~\cite{Dornelles:201910}. A similar result is also given in another work~\cite{Seo:201403}, in which AES-CTR is employed as the PRNG of choice.
 
-The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements.
-
-% our variant
+The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the work discussed in Section~\ref{} is also part of a publication~\cite{Zambonin:201907}.
 
 \subsection{Improvements to public key size}
 
-In the case of modifications to the public key, there are mainly four approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{}, where it was attacked with a new strategy based on differentials between the base and extension fields. An extension of the LUOV proposal to Rainbow~\cite{} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
+In the case of modifications to the public key, there are mainly four approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{Beullens:201712} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{}, in which it was attacked with a new strategy based on differentials between the base and extension fields~\cite{Ding:201908}. An extension of the LUOV proposal to Rainbow~\cite{} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
 A development by the name of block-anti-circulant (BAC) UOV~\cite{} forces matrices representing the central map and public key to be BAC. This allows for a compression of both keys in the key pair, although only public key size improvements are featured on the aforementioned work. Still, the authors of~\cite{} show that the security levels of BACUOV are smaller than originally claimed through manipulation of the public key and the application of the UOV attack.
 
