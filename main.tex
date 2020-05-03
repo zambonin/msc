@@ -21,6 +21,8 @@ We conduct our literature review through the Google Scholar meta-indexer tool, w
 % TODO homogeneize terms like "private key(s)", "central map", etc
 % and just name every scheme if we're going the table way
 
+% TODO talk about our method
+
 Rainbow is evidently the most popular multivariate signature scheme based on Oil--Vinegar polynomials. However, schemes of that class that feature modifications with the intent of reducing key sizes have been suggested even before Rainbow itself was proposed. Chronologically, the first schemes with this feature were called \emph{stepwise triangular systems} (STS) in their generalized form. The inherent shape of their private keys, hence the name, is derived from the fact that there are restrictions in the choice of variables for each polynomial in the central map system, on top of the Oil--Vinegar construction. This strategy indirectly enables a reduction in private key size. STS schemes were broken in the same work that designed the general classification~\cite{}.
 
 A similar idea introduced at roughly the same time are \emph{tame transformation schemes} (TTS), in which equations in the private key are required to present a minimum level of sparseness. This strategy remained unbroken for a longer duration than STS. In this period, STS and TTS were found to be specialized cases of the general Rainbow construction after it was published~\cite{}, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as the cryptanalysis of Rainbow itself~\cite{}, led to the development of new attacks that rendered TTS insecure~\cite{}. Further modifications were suggested to salvage and enhance the previous schemes, but every such variant was broken through a general attack due to Thomae--Wolf~\cite{}.
@@ -43,8 +45,6 @@ A modification that consists of adding cross-terms of oil variables in the last 
 
 The variant known as cubic UOV~\cite{} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{}. Repaired versions called CSSv and SVSv were proposed~\cite{}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve a further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{}.
 
-% TODO redo paragraphs on public key strategies (cyclic)
-
 In the case of modifications to the public key, there are mainly four approaches. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{}, where it was attacked with a new strategy based on differentials between the base and extension fields. An extension of the LUOV proposal to Rainbow~\cite{} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
 A development by the name of block-anti-circulant (BAC) UOV~\cite{} forces matrices representing the central map and public key to be BAC. This allows for a compression of both keys in the key pair, although only public key size improvements are featured on the aforementioned work. Still, the authors of~\cite{} show that the security levels of BACUOV are smaller than originally claimed through manipulation of the public key and the application of the UOV attack.
@@ -53,7 +53,7 @@ We also classify the work in~\cite{} as relevant, since it is a general method m
 
 Finally, the ``cyclic'' approach initially proposed in~\cite{Petzoldt:201006:inproc} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance.
 
-The CyclicRainbow variant~\cite{} is 
+The CyclicRainbow variant~\cite{} is an extension of the original method, which only discussed a modification of UOV. It is featured on the Rainbow submission for the second round of the standardization process conducted by NIST~\cite{}. It reduces public keys by up to $56.6\%$. Another strategy based on the aforementioned result is the usage of linear recurring 
 It is summarised in several publications~\cite{Petzoldt:201012:inproc,Petzoldt:201103:inproc,Petzoldt:201211:inproc,Petzoldt:201307:phd}
 and used in~\cite{Shim:201512:inproc} to construct Lite-Rainbow-1.
 
