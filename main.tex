@@ -73,6 +73,8 @@ The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic po
 
 It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Section~\ref{}.
 
+% TODO table w/ schemes
+
 \chapter{New approach to reduce private keys}
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyse the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
