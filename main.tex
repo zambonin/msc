@@ -3,8 +3,12 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts}
+\usepackage{amsfonts, mathtools, multirow}
 % \usepackage[backref]{hyperref}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
 \begin{document}
 
@@ -69,9 +73,604 @@ The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic po
 
 It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Section~\ref{}.
 
-\chapter{New approach to reduce private key sizes}
+\chapter{New approach to reduce private keys}
 
-The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We propose a new strategy to reduce private key sizes in Rainbow-like digital signature schemes. 
+The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyse the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
+
+\section{Our proposal}\label{sec:proposal}
+
+We will describe our improvement to Rainbow-like signature schemes below, as
+well as supporting research on its soundness. Subsections~\ref{subsec:scheme}
+and~\ref{subsec:efcma} give a formal description of our modifications. In
+Subsection~\ref{subsec:invert}, we look into the probability of matrices with
+elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
+we present a statistical analysis of the structure of signatures created by our
+method, and finish with a security overview in
+Subsection~\ref{subsec:analysis}.
+
+\subsection{Modification to the original scheme}\label{subsec:scheme}
+
+Our approach consists of modifications to the key and signature generation
+steps of Rainbow-like signature schemes. We propose to reuse the first set of
+vinegar variables for several signatures and replace these only when necessary,
+\emph{i.e.} situations where the central map cannot be inverted and creating a
+signature would fail. By locking such variables and substituting them on the
+central map $\mathcal{F}$ early in the key generation algorithm, we create a
+$\mathcal{F}'$ linear in $v_{1}$, thus reducing storage requirements. This
+approach does not modify the underlying structure of the private key, but
+rather of the central map preimages.
+
+To induce lower storage requirements for key pairs of Rainbow-like schemes, we
+explore constructions given in the literature and suggest general alterations
+to use our proposal. As per Subsection~\ref{subsec:related}, most variants that
+shorten private keys are structural in nature, that is, the key space is
+limited by some heuristic with the intent of producing a compact private key.
+Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307:phd}
+prevents alterations to the private key,
+since it indirectly generates $\mathcal{F}$ from a partial public key through
+linear relations between the maps.
+
+This division of improvements is blurred by our proposal. We present general
+methods based on different techniques that shorten private keys in all
+Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
+the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting
+the vinegar variables for the first layer as
+$\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
+
+\subsubsection{Rainbow-$\eta_{1}$ key generation.}
+
+We use the fact that a PRNG has the ability to regenerate the same sequence of
+numbers given a seed. The choice of such a generator is outside the scope of
+our work, and we assume that a cryptographically secure PRNG is chosen. This
+approach is similar to Lite-Rainbow-0, but it is not as costly, since the
+private key does not need to be regenerated before every signature generation.
+It is best suited to environments in which an efficient generator is previously
+supplied.
+
+We bound the creation of the key pair to a seed $\mathbf{S}$. We are not aware
+of any Rainbow variants that disallow this practice. Thus, $\mathcal{S}$,
+$\mathcal{F}$ and $\mathcal{T}$, as well as the public key
+$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
+through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
+set $\widetilde{V}_{1} \random{} \mathbb{F}$, and substitute these into
+$\mathcal{F}$, giving $\mathcal{F}'$. According to
+Subsection~\ref{subsec:invert}, in the rare case that a
+failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
+regenerate $\mathcal{F}$, choose other values for $\widetilde{V}_{1}$ and
+create a different $\mathcal{F}'$. The private key of Rainbow-$\eta_{1}$ is
+$(\mathbf{S}, \mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is
+$\mathcal{P}$.
+
+\subsubsection{Rainbow-$\eta_{2}$ key generation.}
+
+This approach is based on the fact that a private key owner is able to recover
+the original $\mathcal{F}$ through the possession of all other private maps and
+the public key. We make use of the linear relations given by the authors
+of~\cite{Petzoldt:201006:inproc} and applied in the definition of the
+well-known CyclicRainbow scheme. A short explanation is given below, with the
+full rationale available in~\cite[Chapter 7]{Petzoldt:201307:phd}.
+
+Consider the public key
+$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ and let
+$\mathcal{Q} = \mathcal{F} \circ \mathcal{T}$. Denote $\widetilde{Q}$ as a
+matrix containing only coefficients of the quadratic monomials from
+$\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
+Further let $\widetilde{T}$ be the matrix representation of $\mathcal{T}$, with
+its coefficients $t_{ij}, i, j \in \{1, \dots, n\}$, and define $\widetilde{S}$
+analogously. By fixing $t_{ij}$, the composition of $\mathcal{P}$ actually
+represents a linear relation between coefficients $q_{ij}^{k}, f_{ij}^{k}$ of
+the monomial $x_{i} \cdot x_{j}$ in the $k$-th component of, respectively,
+$\mathcal{Q}$ and $\mathcal{F}$, with the form
+\begin{align}
+  \begin{split}
+    q_{ij}^{k} = \sum_{r = 1}^{n} \sum_{s = r}^{n}
+      \alpha_{ij}^{rs} \cdot f_{rs}^{k}, \quad
+      \alpha_{ij}^{rs} = \begin{cases}
+        t_{ri} \cdot t_{si}                         & \text{if } i = j, \\
+        t_{ri} \cdot t_{sj} + t_{rj} \cdot t_{si}   & \text{otherwise},
+      \end{cases} \\
+      k \in \{v_{1} + 1, \dots, n\}.
+  \end{split}
+\end{align}
+This can be simplified, since $\mathcal{F}$ does not allow quadratic monomials
+with only oil variables, and results in
+\begin{align}
+  q_{ij}^{k} = \sum_{r = 1}^{v_{l}} \sum_{s = r}^{v_{l + 1}}
+    \alpha_{ij}^{rs} \cdot f_{rs}^{k},
+      \quad k \in O_{l}, \quad l \in \{1, \dots, u\}.
+\end{align}
+A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
+the previous equations. Given a particular monomial ordering, let
+$A = (\alpha_{ij}^{rs})$ such that $i, j, r, s \in \{1, \dots, n\}$, where
+$i \leq j$ and $r \leq s$ denote row and column indices, respectively. Thus, we
+have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
+$\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
+performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
+it is a general technique that works on all Rainbow-like schemes.
+
+Observe that the central map may not feature any linear or constant terms, due
+to the use of the above relations. This does not lower the overall security of
+the scheme, due to the fact that they are not multiplied with quadratic terms.
+With this implication in mind, the usual key generation algorithm for the
+target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
+and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
+$\widetilde{V}_{1} \random{} \mathbb{F}$ into $\mathcal{F}$, giving
+$\mathcal{F'}$. By the relations above, one is able to reconstruct
+$\mathcal{F}$ with no additional mechanisms if the central map inversion
+algorithm fails. The private key of Rainbow-$\eta_{2}$ is
+$(\mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is $\mathcal{P}$.
+
+\subsubsection{Signature generation.}
+
+A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
+procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate
+$y = \mathcal{F}'^{-1}(x)$ by inverting every layer recursively. The first
+layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
+needs only to be solved by providing appropriate values of $d$. It will
+generate a new set of vinegar variables, that can be used on the next layer,
+until all layers are solved. If any of the transitory systems are not solvable,
+a new $\widetilde{V}_{1}$ is chosen and $\mathcal{F}'$ regenerated, according
+to one of the methods given above. We finish by computing
+$\sigma = \mathcal{T}^{-1}(y)$.
+
+\subsubsection{Signature verification.}
+
+This step does not change. If $d = \mathcal{P}(\sigma)$, then the signature is
+valid, and invalid otherwise.
+
+By making the first layer linear and substituting the remaining variables, the
+size of the private key is now
+\begin{multline}
+  |\mathcal{K}_{Pr}^{\eta}| = m^{2} + m + n^{2} + n
+    + |\widetilde{V}_{1}| \\
+    + \sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right),
+\end{multline}
+plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
+used. One needs to store $\widetilde{V}_{1}$, since it is part of the central
+map preimage, used on further map applications. The public key size does not
+change.
+
+\subsection{Application to the EF-CMA variant}\label{subsec:efcma}
+
+The Rainbow submission to the NIST standardisation
+process~\cite{Ding:201712:misc} presents a scheme description that diverges
+from the original works. The authors introduce modifications that provide
+security against the existential forgery under chosen-message attack (EF-CMA)
+model, whereas the original scheme only offers security against universal
+forgery. These changes are built upon the introduction of a random salt. We
+will briefly describe this approach, with the intent of preventing the
+recalculation of $\mathcal{F}'$ in the case that $\widetilde{V}_{1}$ is not
+suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
+
+\subsubsection{Key generation.}
+
+Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
+private and public keys as per Subsection~\ref{subsec:scheme}. The private key
+for this scheme is $(\mathcal{S}, \mathcal{F}', \mathcal{T}, w)$, with the
+addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
+$(\mathcal{P}, w)$.
+
+\subsubsection{Signature generation.}
+
+Let $r \random{} {\{0, 1\}}^{w}$. The digest value is calculated as
+$\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
+message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
+the rare case that the $y = \mathcal{F}'^{-1}(x)$ preimage calculation does not
+succeed, new variables in $\widetilde{V}_{1}$ are chosen. However, the
+addition of a random salt to the original message digest alters $\mathbf{d}$
+completely, due to the cryptographic hash function application. Thus, it is
+only necessary to generate a new $r$ and restart the signature generation
+process, such that $\widetilde{V}_{1}$, and consequently $\mathcal{F}'$, are
+not modified. Alternatively, if the preimage is generated successfully, we
+finish by letting $z = \mathcal{T}^{-1}(y)$ and $\sigma = (z, r)$.
+
+\subsubsection{Signature verification.}
+
+Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
+the signature is valid, and invalid otherwise.
+
+The size of the private and public keys increase in exactly one element due to
+the addition of $w$. Real implementations of Rainbow-$\eta_{3}$ are tested on
+Section~\ref{sec:experiments}.
+
+\subsection{Invertibility of $\mathcal{F}$}\label{subsec:invert}
+
+Recall that, to create a Rainbow signature, the central map $\mathcal{F}$ needs
+to be inverted. Random guessing of vinegar variables is done in order to create
+a solvable linear system. It is also known that the central map is expressed as
+multivariate systems of equations, which can be themselves interpreted as
+multidimensional matrices of coefficients. Observe that, to describe these in a
+clearer way, a given monomial ordering is used such that only usual matrices
+are needed. With this in mind, we first derive the probability that a random
+matrix with elements in $\mathbb{F}$ is invertible.
+
+Assume a square matrix $M$ of order $n$ such that
+$m_{ij} \in \mathbb{F}_{q}, i, j \in \{1, \dots, n\}$. For $M$ to be
+invertible, it must be composed entirely of vectors, \emph{i.e.} its rows
+$m_{i} \in \mathbb{F}^{n}$, that are linearly independent. The zero vector
+$(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors.
+Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors
+eligible. $m_{2}$ must not feature any of the $q$ multiples of $m_{1}$, and
+$q^{n} - q$ vectors remain. Without loss of generality,
+$m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1},
+c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then,
+the probability that all vectors chosen are linearly independent is
+\begin{align}
+  \begin{split}
+    \Pi(q, n) &= \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{-n}} \\
+              &= \prod_{k = 1}^{n} 1 - q^{-k}.
+  \end{split}
+\end{align}
+
+In the context of Rainbow, the number of layers directly influences
+$\Pi(q, n)$, since it dictates how many linear systems have to be solved. In
+other words, all square matrices of size $v_{i}, i \in \{1, \dots, u\}$ need to
+be invertible to achieve a preimage under $\mathcal{F}$. Thus, the probability
+\begin{align}
+  \Pi(q, n, u) = \prod_{i = 1}^{u} \prod_{k = 1}^{v_{i + 1}} 1 - q^{-k}
+\end{align}
+more accurately represents the upper bound for these chances. In the
+literature, the usual number of layers for a Rainbow instance is two, and we
+will denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. Note
+that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a
+slightly lower probability of success in the signature generation preimage
+step.
+
+Parameters for Rainbow are selected according to a number of restrictions,
+imposed by attacks that may harm the security of the scheme. Furthermore, note
+that the central map can be represented as square matrices of order $n$. Hence,
+we choose $n \in \{56, \dots, 90\}$
+from~\cite[Tables 6.4, 6.8, 6.13]{Petzoldt:201307:phd} and calculate the
+probability that a random matrix is invertible in finite fields of typical
+orders. For instance, $\Pi(16, 90) \approx 93.3594\%$ and
+$\Pi(256, 56) \approx 99.6078\%$. Figure~\ref{fig:1} depicts the lowest
+probabilities computed for the appropriate range. To simulate layering, we set
+$v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
+
+\begin{figure}[htbp]
+  \subfloat[
+    $\argmin_{56 \leq n \leq 90}$ of $\Pi(q, n)$
+    and $\widetilde{\Pi}(q, n)$.\label{fig:1a}
+  ]{
+    % \includegraphics[width=.49\columnwidth]{charts/inv-prob/inv-prob}
+  }
+  \subfloat[
+    Figure~\ref{fig:1a}, with $q \geq 16$.\label{fig:1b}
+  ]{
+    % \includegraphics[width=.458\columnwidth]{charts/inv-prob/inv-prob-zoom}
+  }
+  \caption{Probability of obtaining an invertible matrix, populated with field
+    elements where $q \in \{2, \dots 256\}$ and $q$ is a prime power, given the
+    quantity of layers of Rainbow.}\label{fig:1}
+\end{figure}
+
+It is also useful to calculate $\lim_{n \to \infty} \Pi(q, n)$ to observe
+changes in the probability with the growth of $m$. Note that this is very
+similar to the Euler function $\phi(q)$. Ergo, we can use one of Euler's
+identities to redefine the above limit as
+\begin{align}
+  \Pi(q) = \sum_{k = -\infty}^{\infty}
+    {(-1)}^{k} q^{\frac{-3 \cdot k^{2} + k}{2}}
+\end{align}
+and obtain a fast approximation of the probability when $n$ tends to infinity.
+We use the SageMath language arbitrary precision real numbers to obtain these
+values and find out that, when $n \geq 56$,
+$\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and
+$\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$.
+Thus, Figure~\ref{fig:1} also accurately reflects the behaviour of $\Pi(q)$,
+\emph{i.e.}, current values of $n$ already reach effective upper bounds for
+this probability.
+
+If we consider that the two-dimensional coefficient matrix of $\mathcal{F}$ has
+an effective size of $\frac{n^{2} + n}{2}$ due to the aforementioned monomial
+ordering strategy, we note that the inversion event happens almost surely.
+This evidence shows that computing a preimage in order to sign a message
+happens at the first try with high probability in a wide range of Rainbow
+configurations. Therefore, the cost of a central map reconfiguration, in the
+case that chosen vinegar variables do not lead to an invertible central map, is
+amortised by the overwhelming probability that a signature is successfully
+generated.
+
+\subsection{Similarity of multiple signatures}\label{subsec:similar}
+
+Vinegar variables chosen to invert the central map are an integral part of the
+preimage $y = \mathcal{F}^{-1}(x)$. For instance, in the case $u = 2$, these
+make roughly a third of the output, considering common parameters for Rainbow.
+Further, recall that there are approximately $q^v$ possibilities for $y$. Our
+proposal eliminates this choice by locking vinegar variables into the private
+key. Hence, it is essential to know if such variables create patterns in which
+private information may leak through a multi-target attack. We use the SageMath
+PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel
+space generator.
+
+Recall that a message digest $d$ is signed instead of the entire document.
+Evidently, a secure cryptographic hash function shall produce an output that
+appears to be random. The application $x = \mathcal{S}^{-1}(d)$ does not affect
+this behaviour, since the map is also random. Hence, we need not simulate this
+calculation in this analysis. According to Subsection~\ref{subsec:invert}, the
+inversion $y = \mathcal{F}^{-1}(x)$ creates a valid preimage with overwhelming
+probability, where the first $v_{1}$ elements of any $y$ will be the same.
+
+We observe the distribution of field elements in vectors after the final
+function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
+$Z'_{t} = (z_{1}, \dots, z_{t}) \random{} \mathbb{F}^{n}, t \in \mathbb{N}$ be
+a $t$-uple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
+z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
+When part of the vector $y$ is fixed, we will instead denote these by
+$\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
+and $\widetilde{Z}_{t}$ will behave similarly to observations sampled from the
+discrete uniform distribution $\mathcal{U}\{0, q - 1\}$. It is known that its
+standard deviation, where $r$ values are observed in an equally likely manner,
+is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. For a finite field $\mathbb{F}$, we
+set $r = q$ and obtain the desired value. It is expected that
+\begin{align}
+  \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
+\end{align}
+suggesting that greater values of $n$ and $t$ approximate faster to the
+theorised standard deviation.
+
+\begin{figure}[ht]
+  \subfloat[
+    $d_{\sigma}^{t}$ for $n = 42, v_{1} = 17$.\label{fig:2a}
+  ]{
+    % \includegraphics[width=.49\columnwidth]{charts/measure-diff/std-diff-n42}
+  }
+  \subfloat[
+    $d_{\sigma}^{t}$ for $n = 90, v_{1} = 35$.\label{fig:2b}
+  ]{
+    % \includegraphics[width=.425\columnwidth]{charts/measure-diff/std-diff-n90}
+  }
+  \caption{Difference of standard deviations when $t \in \{1, \dots, 1024\}$,
+    and $q \in \{2, \dots, 256\}$ with $q$ as a prime power.}\label{fig:2}
+\end{figure}
+
+Let us denote the absolute difference between standard deviations for a value
+$t$ as $d_{\sigma}^{t} = |\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})|$.
+Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
+and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
+fields of higher orders and lower $t$. For instance, given the finite field
+$\mathbb{F}_{223}^{42}$, we have $d_{\sigma}^{1} \approx 8.25$, and for a
+slightly higher $t$, we obtain a much lower value
+$d_{\sigma}^{11} \approx 0.24$. This behaviour is also observed within absolute
+differences of means, defined analogously as $d_{\mu}^{t}$. The field
+$\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}^{1} \approx 5.31$ and,
+comparatively, $d_{\mu}^{9} \approx 1.14$.
+
+The comparison of expected and obtained standard deviations and means in our
+experiments, gives positive results and confirms the law of large numbers.
+Still, it is interesting to look at the diffusion of values within
+$\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and
+standard deviation for a known discrete uniform. We count the amount of values
+for each class $k \in \{0, \dots, q - 1\}$ and refer to them by $Z_{t, k}$ and
+$\widetilde{Z}_{t, k}$. By the central limit theorem, these counts should be
+normally distributed.
+
+Figure~\ref{fig:3} shows the cumulative distribution function (CDF) plot and
+the Q-Q (quantile-quantile) plot for such samples. The expected CDF, as well as
+examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly
+distributed, with small variations due to the random generation of field
+elements. However, we note that this is due to the low number of classes,
+\emph{i.e.} the order of the finite field, and experimentally confirm that such
+discrepancies are largely reduced with $q = 2^{10}$. This is further confirmed
+by the Q-Q plot created with rankits, where the points are sufficiently close
+to the $y = x$ expected line.
+
+\begin{figure}[htbp]
+  \subfloat[
+    CDF plot.\label{fig:3a}
+  ]{
+    % \includegraphics[width=.49\columnwidth]{charts/diffusion/cdf-plot}
+  }
+  \subfloat[
+    Q-Q plot.\label{fig:3b}
+  ]{
+    % \includegraphics[width=.47\columnwidth]{charts/diffusion/qq-plot}
+  }
+  \caption{Distribution of counts of elements in $Z_{t}$ and
+    $\widetilde{Z}_{t}$ such that $t = 2^{16}$ for
+    $\mathbb{F}_{256}^{90}$.}\label{fig:3}
+\end{figure}
+
+Our argument indicates that, even if part of the preimage created by the
+central map is fixed, the remaining affine map application disrupts this
+pattern with high efficacy. Hence, an attacker with possession of multiple
+signatures created by our method would not be more capable of forging a new
+signature or deducing private information.
+
+\subsection{Security analysis}\label{subsec:analysis}
+
+A variety of attacks currently thwart the security of Rainbow-like signature
+schemes if parameters are not chosen carefully. We will briefly state each of
+those, along with their estimated complexities~\cite{Petzoldt:201005:inproc},
+and argue that our methods do not facilitate such attacks.
+
+\subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
+the public key $\mathcal{P}$ tries to solve $\mathcal{P}(x) = d$. This is done
+by fixing some of the variables and applying an algorithm built upon the theory
+of Gröbner basis, such as the Hybrid approach~\cite{Bettale:201207:inproc}.
+While it is hard to pinpoint the exact running time of such methods, the
+authors give an estimation of its asymptotic complexity in Equation 5 of the
+aforementioned work.
+
+\subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
+attacks that also work on the UOV signature scheme. This attack was originally
+created by Kipnis and Shamir~\cite{Kipnis:199808:inproc} to break the Balanced
+Oil-Vinegar scheme. The objective of this attack is to obtain an equivalent
+private key by means of finding the preimage of a specific oil subspace under
+the map $\mathcal{T}$. The complexity of the generalised attack for unbalanced
+schemes~\cite{Kipnis:199904:inproc} is
+$o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications.
+
+\subsubsection{MinRank attack.} All systems of polynomials in the public key
+$\mathcal{P}$ may be individually represented as matrices. This attack
+consists in finding linear combinations of these, such that they have a lesser
+rank than $v_{2}$, in the case of Rainbow. This allows an attacker to isolate
+the central map polynomials from the first layer of Rainbow, and analogously
+recover the remaining layers with a much lower effort. In the context of
+Rainbow~\cite{Billet:200609:inproc}, its complexity is
+$q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field
+multiplications.
+
+\subsubsection{HighRank attack.} In a similar way to MinRank, linear
+combinations of public key matrices are used to find the variables which
+appear the lowest number of times in the central map. This is used to identify
+the last Rainbow layer, and obtain the previous layers similarly. The
+complexity of the improved attack~\cite{Ding:200806:inproc} is
+$q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
+
+\subsubsection{Rainbow-Band-Separation attack.} An extension of the
+UOV-Reconciliation attack by the same authors~\cite{Ding:200806:inproc} that
+targets Rainbow, with the intent of producing an equivalent private key. It
+explores the fact that the central map matrix representation is composed of
+zeroes on its lower right corner. These yield quadratic equations which, if
+solved, lead to an alternative private key. The complexity of this attack is
+given by the hardness of solving a large system of equations, as seen
+above, is hard to estimate.
+
+\subsubsection{Side-channel attacks.} It may be observed that none of the
+proposed Rainbow variants, as well as the original scheme, present constant
+time signature generation algorithms. Particularly, in Rainbow-$\eta_2$, a
+considerable amount of computation is added to the signature algorithm when one
+of the systems is not solvable. In a chosen message attack, one may observe the
+time spent on multiple signature generation steps and easily check if the
+linear systems are solvable, thus obtaining information about the central map.
+Although there are no known attacks that make use of this technique, it is
+possible that there may exist information leaks when applying our methods to
+Rainbow-like schemes.
+
+\paragraph{} We do not discard the possibility that specialised attacks exist,
+particularly ones that take in account multiple signatures, due to our fixing
+of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
+that signatures generated by our method are comparably random with respect to
+conventional Rainbow signatures. Furthermore, we note that most attacks look
+for special structures within the private key. While our methods indeed modify
+the private key representation, it is still present in its entirety on the
+public key composition, which is the only information available to malicious
+entities that can be possibly used to forge signatures. We thus suggest that
+the right choice of parameters is made whenever our methods are applied,
+\emph{e.g.} according to~\cite{Petzoldt:201005:inproc}, to protect the scheme
+instance against these attacks.
+
+\section{Enhancement of existing schemes}\label{sec:experiments}
+
+Our method does not depend on special structures inserted on the private key.
+Consequently, it can be applied to all known Rainbow-like schemes. We
+experiment with several sets of parameters and observe the reduction of private
+keys. It is known that there are various limitations for the choice of
+parameters that lead to secure instances of
+Rainbow~\cite{Petzoldt:201005:inproc}. We implement several known guidelines
+and confirm that our proposal does indeed work for a large range of parameters.
+However, we only show results for known secure parameter sets to prevent
+accidental endorsement of untested, and possibly insecure, instances.
+
+\begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{8pt}
+  \centering
+  \caption{Reduction of Rainbow key sizes, in bytes, for various instances of the scheme.}\label{tab:1}
+  \begin{tabular}{*{2}{l}*{5}{r}}
+    \toprule
+    Instance & Parameters & $n$ & $m$ & $|\mathcal{K}_{Pr}|$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & Difference \\ \midrule
+    I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &   96 &   64 &   100208 &   33152 & $-66.92\%$ \\
+    I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &   92 &   56 &   114308 &   31676 & $-72.29\%$ \\
+    I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &   88 &   48 &   143384 &   33024 & $-76.97\%$ \\
+    III-b  & $(\mathbb{F}_{ 31}, 64, 32, 48)$  &  144 &   80 &   409463 &   87628 & $-78.60\%$ \\
+    III-c  & $(\mathbb{F}_{256}, 68, 36, 36)$  &  140 &   72 &   537780 &   99656 & $-81.47\%$ \\
+    IV-a   & $(\mathbb{F}_{ 16}, 56, 48, 48)$  &  152 &   96 &   376140 &  103336 & $-72.53\%$ \\
+    V-c    & $(\mathbb{F}_{256}, 92, 48, 48)$  &  188 &   96 &  1274316 &  218984 & $-82.82\%$ \\
+    VI-a   & $(\mathbb{F}_{ 16}, 76, 64, 64)$  &  204 &  128 &   892078 &  233044 & $-73.88\%$ \\
+    VI-b   & $(\mathbb{F}_{ 31}, 84, 56, 56)$  &  196 &  112 &  1016868 &  217244 & $-78.64\%$ \\
+    P-080  & $(\mathbb{F}_{256}, 17, 17,  9)$  &   43 &   26 &    19208 &    5914 & $-69.21\%$ \\
+    P-100  & $(\mathbb{F}_{256}, 26, 22, 21)$  &   69 &   43 &    75440 &   23193 & $-69.26\%$ \\
+    P-128  & $(\mathbb{F}_{256}, 36, 28, 15)$  &   79 &   43 &   103704 &   22110 & $-78.68\%$ \\
+    P-192  & $(\mathbb{F}_{256}, 63, 46, 22)$  &  131 &   68 &   440638 &   71773 & $-83.71\%$ \\
+    P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &  178 &   93 &  1086971 &  164721 & $-84.85\%$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We show results for the application of our method in Table~\ref{tab:1},
+considering the following Rainbow instances. Conservative choices were made by
+the Rainbow submission authors~\cite{Ding:201712:misc} to fit security
+categories as requested by NIST\@. We apply our method to these recent
+proposals, and additionally
+choose parameters from Petzoldt~\cite[Table 6.12]{Petzoldt:201307:phd} for
+further comparison. The latter are named P-$\ell$, where $\ell$ is the security
+level in bits. Indeed, the choice of $v_{1}$ remarkably affects the results.
+Moreover, a minimal value of $o_{u}$ is also known to further reduce the
+private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as
+possible to maximise the results of our method. However, we remark that one
+must set sufficient parameters for $o_{i}$ such that the scheme still resists
+direct and UOV attacks.
+
+The case of Rainbow variants is slightly more convoluted. Schemes claim
+optimisations of the private key often through the inclusion of inner
+structuring. To measure the impact of our method within the context of these
+schemes, it is imperative to understand such structures. For instance, it may
+be the case that a method introduces sparseness related to specific vinegar
+variables. Thus, the reduction would not be equally distributed over the
+private key elements and, as such, our method would have its efficiency
+reduced.
+
+To the best of our knowledge, the schemes presented in
+Subsection~\ref{subsec:related} feature changes that target the whole private
+key evenly. Hence, our method would yield similar results to those in
+Table~\ref{tab:1} if this assumption is true. However, it is also the case that
+some variants were subsequently broken or new parameters were suggested. We
+will thus consider only schemes that reduce the public key size, \emph{i.e.}
+CyclicRainbow~\cite{Petzoldt:201012:inproc} and
+RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307:phd}.
+
+\begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{7pt}
+  \centering
+  \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
+  \begin{tabular}{*{2}{l}*{5}{r}}
+    \toprule
+    Instance & Parameters & Variant & $|\mathcal{K}_{Pr}|$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & $|\mathcal{K}_{Pu}|$ & Difference \\ \midrule
+    \multirow{3}{*}{P-080}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
+                            &                                                    &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
+                            &                                                    &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
+    \multirow{3}{*}{P-100}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 26, 16, 17)$}  &  Classic &  \multirow{3}{*}{ 46131} &  \multirow{3}{*}{12474} &   60390 & $-31.60\%$ \\
+                            &                                                    &   Cyclic &                          &                         &   22246 & $-67.41\%$ \\
+                            &                                                    &     LRS2 &                          &                         &   20662 & $-68.89\%$ \\
+    \multirow{3}{*}{P-128}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 36, 21, 22)$}  &  Classic &  \multirow{3}{*}{105006} &  \multirow{3}{*}{24924} &  139320 & $-32.78\%$ \\
+                            &                                                    &   Cyclic &                          &                         &   48411 & $-69.98\%$ \\
+                            &                                                    &     LRS2 &                          &                         &   45547 & $-71.16\%$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We compare the total key pair sizes $|\mathcal{K}_{Pr}| + |\mathcal{K}_{Pu}|$
+when our method is used alongside Rainbow variants that reduce the public key
+size. Table~\ref{tab:2} shows the quantity of field elements for sets of
+parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307:phd}. We calculate
+$|\mathcal{K}_{Pu}|$ for the variants according to Equations 9.2 and 9.4 of the
+same work, and as per its Remark 9.1, note that $q = 16$ and $q = 31$ are not
+considered due to a security restriction of RainbowLRS2. We obtain positive
+results, with key pair size reductions of up to factors of 3 and no security
+harm to the resulting scheme.
+
+The use of CyclicRainbow or RainbowLRS2 with the Rainbow-$\eta_{2}$ method is
+recommended. These variants are based on the linear relations described in
+Subsection~\ref{subsec:scheme}, and resulting implementations may be
+effortlessly modified to use our proposal. Moreover, in the case that higher
+parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that
+the key pair will be reduced more aggressively. Thus, our results reflect
+changes over a wide variety of platforms and possible Rainbow deployments that
+benefit from lower storage requirements.
+
+We also briefly discuss the effect of these changes on the signature generation
+step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary
+greatly due to the fast regeneration of the central map elements from a given
+PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate
+techniques to reconstruct the central map if vinegar variables are not
+suitable.  This process is not without cost, and it may negatively affect the
+average signature generation time. Still, by making use of Rainbow-$\eta_{3}$,
+these computations are entirely avoided by choosing a new salt instead of new
+vinegar variables, reducing the inherent overhead.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
