@@ -12,7 +12,7 @@
 
 \begin{document}
 
-\chapter{Introduction}
+\chapter{Introduction}\label{chapter:intro}
 
 % TODO write some pages here introducing the subject and problems
 % TODO define hypothesis, objectives and scope before searching the literature
@@ -23,7 +23,7 @@ In this section, we make use of the previously well-defined boundaries with rega
 
 We conduct our literature review by making use of the Google Scholar meta-indexer tool, which covers most scientific literature providers, and allows the user to efficiently delimit the desired scope. We identify three critical works in the history of signatures based on Oil--Vinegar polynomials~\cite{Patarin:199709,Kipnis:199904,Ding:200506} and conduct the search over works that directly cited at least one of those. We consider only publications written in English that additionally are not patents. From this set, we select relevant papers and present a summary below.
 
-\subsection{Improvements to private key size}
+\subsection{Improvements to private key size}\label{subsec:priv}
 
 Rainbow is evidently the most popular multivariate signature scheme based on Oil--Vinegar polynomials. However, schemes of that class that feature modifications with the intent of reducing key sizes have been proposed even before Rainbow itself was proposed. Chronologically, the first schemes with this feature are called tame transformation schemes (TTS)~\cite{Chen:200210}, in which equations of the private key are required to present a minimum level of sparseness. This strategy was attacked with various algebraic techniques, e.g. MinRank and the UOV attack, and corrected several times, as summarized in~\cite{Ding:200604}.
 
@@ -47,7 +47,7 @@ Some non intrusive approaches are also found in the literature. The authors of L
 
 The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the proposal by the authors of~\cite{Zambonin:201907} is discussed in more detail in~\cite{Bittencourt:201911} and further expanded in Section~\ref{}.
 
-\subsection{Improvements to public key size}
+\subsection{Improvements to public key size}\label{subsec:pub}
 
 In the case of modifications to the public key, there are not as many approaches as for private keys. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{Beullens:201712} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{Alagic:201901}, in which it was attacked with a new strategy based on differentials between the base and extension fields~\cite{Ding:201908}. An extension of the LUOV proposal to Rainbow~\cite{Duong:202003} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
@@ -58,12 +58,10 @@ We also classify the work in~\cite{Szepieniec:201706} as relevant, since it is a
 The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{}. Schemes that make use of this framework are discussed below. 
 
 % This framework is also featured in some of the works previously described in Subsection~\ref{}. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance. Furthermore, key generation procedures in schemes that make use of these mathematical relations are inefficient when compared to Rainbow. 
-
 A strategy analogous to a manipulation between base and extension fields is given in~\cite{Petzoldt:201109}. The resulting scheme is called 0/1 UOV, since coefficients of the public key are in $\mathbb{F}_{2}$. The proposal consists of creating the matrix associated with the structured part of the key according to a graph structure. Such graph describes a relationship of coefficients that, while sparse, does not facilitate known attacks over UOV, reducing the public key size by up to $88.6\%$. However, it is unknown if this proposal can be extended to Rainbow.
 
 The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic UOV. It is featured on the Rainbow submission for the second round of the standardization process conducted by NIST~\cite{Ding:201901}. It reduces public keys by up to $53.8\%$, and the associated key generation algorithm is comparably efficient to Rainbow~\cite{Petzoldt:202004}. Another strategy is the usage of linear recurring sequences to generate such unimportant parts of the public key. It is summarized in two works~\cite{Petzoldt:201103,Petzoldt:201211} and reduces public keys by up to $56.6\%$. 
-
-\subsection{Improvements to total key pair size}
+\subsection{Improvements to total key pair size}\label{subsec:both}
 
 Additionally, there are works in the literature which manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{Wolf:200511} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key. 
 
@@ -75,7 +73,9 @@ It is evident that there have been commendable efforts in the creation, validati
 
 % TODO table w/ schemes
 
-\chapter{New approach to reduce private keys}
+\chapter{Mathematical background}\label{chapter:math}
+
+\chapter{New approach to reduce private keys}\label{chapter:eta}
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyse the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
@@ -104,10 +104,10 @@ rather of the central map preimages.
 
 To induce lower storage requirements for key pairs of Rainbow-like schemes, we
 explore constructions given in the literature and suggest general alterations
-to use our proposal. As per Subsection~\ref{subsec:related}, most variants that
+to use our proposal. As per Section~\ref{sec:related}, most variants that
 shorten private keys are structural in nature, that is, the key space is
 limited by some heuristic with the intent of producing a compact private key.
-Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307:phd}
+Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307}
 prevents alterations to the private key,
 since it indirectly generates $\mathcal{F}$ from a partial public key through
 linear relations between the maps.
@@ -115,7 +115,7 @@ linear relations between the maps.
 This division of improvements is blurred by our proposal. We present general
 methods based on different techniques that shorten private keys in all
 Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
-the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting
+the same definitions as in Subsection~\ref{}, further denoting
 the vinegar variables for the first layer as
 $\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
 
@@ -148,9 +148,9 @@ $\mathcal{P}$.
 This approach is based on the fact that a private key owner is able to recover
 the original $\mathcal{F}$ through the possession of all other private maps and
 the public key. We make use of the linear relations given by the authors
-of~\cite{Petzoldt:201006:inproc} and applied in the definition of the
+of~\cite{Petzoldt:201006} and applied in the definition of the
 well-known CyclicRainbow scheme. A short explanation is given below, with the
-full rationale available in~\cite[Chapter 7]{Petzoldt:201307:phd}.
+full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
 
 Consider the public key
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ and let
@@ -236,7 +236,7 @@ change.
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
 The Rainbow submission to the NIST standardisation
-process~\cite{Ding:201712:misc} presents a scheme description that diverges
+process~\cite{Ding:201712} presents a scheme description that diverges
 from the original works. The authors introduce modifications that provide
 security against the existential forgery under chosen-message attack (EF-CMA)
 model, whereas the original scheme only offers security against universal
@@ -323,7 +323,7 @@ Parameters for Rainbow are selected according to a number of restrictions,
 imposed by attacks that may harm the security of the scheme. Furthermore, note
 that the central map can be represented as square matrices of order $n$. Hence,
 we choose $n \in \{56, \dots, 90\}$
-from~\cite[Tables 6.4, 6.8, 6.13]{Petzoldt:201307:phd} and calculate the
+from~\cite[Tables 6.4, 6.8, 6.13]{Petzoldt:201307} and calculate the
 probability that a random matrix is invertible in finite fields of typical
 orders. For instance, $\Pi(16, 90) \approx 93.3594\%$ and
 $\Pi(256, 56) \approx 99.6078\%$. Figure~\ref{fig:1} depicts the lowest
@@ -484,7 +484,7 @@ signature or deducing private information.
 
 A variety of attacks currently thwart the security of Rainbow-like signature
 schemes if parameters are not chosen carefully. We will briefly state each of
-those, along with their estimated complexities~\cite{Petzoldt:201005:inproc},
+those, along with their estimated complexities~\cite{Petzoldt:201005},
 and argue that our methods do not facilitate such attacks.
 
 \subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
@@ -497,11 +497,11 @@ aforementioned work.
 
 \subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
 attacks that also work on the UOV signature scheme. This attack was originally
-created by Kipnis and Shamir~\cite{Kipnis:199808:inproc} to break the Balanced
+created by Kipnis and Shamir~\cite{Kipnis:199808} to break the Balanced
 Oil-Vinegar scheme. The objective of this attack is to obtain an equivalent
 private key by means of finding the preimage of a specific oil subspace under
 the map $\mathcal{T}$. The complexity of the generalised attack for unbalanced
-schemes~\cite{Kipnis:199904:inproc} is
+schemes~\cite{Kipnis:199904} is
 $o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications.
 
 \subsubsection{MinRank attack.} All systems of polynomials in the public key
@@ -510,7 +510,7 @@ consists in finding linear combinations of these, such that they have a lesser
 rank than $v_{2}$, in the case of Rainbow. This allows an attacker to isolate
 the central map polynomials from the first layer of Rainbow, and analogously
 recover the remaining layers with a much lower effort. In the context of
-Rainbow~\cite{Billet:200609:inproc}, its complexity is
+Rainbow~\cite{Billet:200609}, its complexity is
 $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field
 multiplications.
 
@@ -518,11 +518,11 @@ multiplications.
 combinations of public key matrices are used to find the variables which
 appear the lowest number of times in the central map. This is used to identify
 the last Rainbow layer, and obtain the previous layers similarly. The
-complexity of the improved attack~\cite{Ding:200806:inproc} is
+complexity of the improved attack~\cite{Ding:200806} is
 $q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
 
 \subsubsection{Rainbow-Band-Separation attack.} An extension of the
-UOV-Reconciliation attack by the same authors~\cite{Ding:200806:inproc} that
+UOV-Reconciliation attack by the same authors~\cite{Ding:200806} that
 targets Rainbow, with the intent of producing an equivalent private key. It
 explores the fact that the central map matrix representation is composed of
 zeroes on its lower right corner. These yield quadratic equations which, if
@@ -551,7 +551,7 @@ the private key representation, it is still present in its entirety on the
 public key composition, which is the only information available to malicious
 entities that can be possibly used to forge signatures. We thus suggest that
 the right choice of parameters is made whenever our methods are applied,
-\emph{e.g.} according to~\cite{Petzoldt:201005:inproc}, to protect the scheme
+\emph{e.g.} according to~\cite{Petzoldt:201005}, to protect the scheme
 instance against these attacks.
 
 \section{Enhancement of existing schemes}\label{sec:experiments}
@@ -561,7 +561,7 @@ Consequently, it can be applied to all known Rainbow-like schemes. We
 experiment with several sets of parameters and observe the reduction of private
 keys. It is known that there are various limitations for the choice of
 parameters that lead to secure instances of
-Rainbow~\cite{Petzoldt:201005:inproc}. We implement several known guidelines
+Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines
 and confirm that our proposal does indeed work for a large range of parameters.
 However, we only show results for known secure parameter sets to prevent
 accidental endorsement of untested, and possibly insecure, instances.
@@ -594,10 +594,10 @@ accidental endorsement of untested, and possibly insecure, instances.
 
 We show results for the application of our method in Table~\ref{tab:1},
 considering the following Rainbow instances. Conservative choices were made by
-the Rainbow submission authors~\cite{Ding:201712:misc} to fit security
+the Rainbow submission authors~\cite{Ding:201712} to fit security
 categories as requested by NIST\@. We apply our method to these recent
 proposals, and additionally
-choose parameters from Petzoldt~\cite[Table 6.12]{Petzoldt:201307:phd} for
+choose parameters from Petzoldt~\cite[Table 6.12]{Petzoldt:201307} for
 further comparison. The latter are named P-$\ell$, where $\ell$ is the security
 level in bits. Indeed, the choice of $v_{1}$ remarkably affects the results.
 Moreover, a minimal value of $o_{u}$ is also known to further reduce the
@@ -616,13 +616,13 @@ private key elements and, as such, our method would have its efficiency
 reduced.
 
 To the best of our knowledge, the schemes presented in
-Subsection~\ref{subsec:related} feature changes that target the whole private
+Subsection~\ref{subsec:priv} feature changes that target the whole private
 key evenly. Hence, our method would yield similar results to those in
 Table~\ref{tab:1} if this assumption is true. However, it is also the case that
 some variants were subsequently broken or new parameters were suggested. We
 will thus consider only schemes that reduce the public key size, \emph{i.e.}
-CyclicRainbow~\cite{Petzoldt:201012:inproc} and
-RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307:phd}.
+CyclicRainbow~\cite{Petzoldt:201012} and
+RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -648,7 +648,7 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307:phd}.
 We compare the total key pair sizes $|\mathcal{K}_{Pr}| + |\mathcal{K}_{Pu}|$
 when our method is used alongside Rainbow variants that reduce the public key
 size. Table~\ref{tab:2} shows the quantity of field elements for sets of
-parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307:phd}. We calculate
+parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307}. We calculate
 $|\mathcal{K}_{Pu}|$ for the variants according to Equations 9.2 and 9.4 of the
 same work, and as per its Remark 9.1, note that $q = 16$ and $q = 31$ are not
 considered due to a security restriction of RainbowLRS2. We obtain positive
