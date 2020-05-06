@@ -45,7 +45,7 @@ In the ELSA variant~\cite{Shim:201712}, a hidden layer of quadratic equations is
 
 Some non intrusive approaches are also found in the literature. The authors of Lite-Rainbow-0~\cite{Shim:201512} propose the replacement of the entire private key with a small pseudorandom number generator (PRNG) seed. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. In~\cite{Borges:201209}, it is suggested to use the RC4 stream cipher in the private key generation of UOV~\cite{Borges:201209}, presenting analogous decreases in the private key size but no noticeable effects on signature generation performance. Such approach also works with Rainbow~\cite{Dornelles:201910}. A similar result is also given in another work~\cite{Seo:201403}, in which AES-CTR is employed as the PRNG of choice.
 
-The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the proposal by the authors of~\cite{Zambonin:201907} is discussed in more detail in~\cite{Bittencourt:201911} and further expanded in Section~\ref{}.
+The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the proposal by the authors of~\cite{Zambonin:201907} is discussed in more detail in~\cite{Bittencourt:201911} and further expanded in Chapter~\ref{chapter:eta}.
 
 \subsection{Improvements to public key size}\label{subsec:pub}
 
@@ -69,7 +69,7 @@ A modification that consists of adding cross-terms of oil variables in the last 
 
 The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. Repaired versions called CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
-It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Section~\ref{}.
+It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Chapter~\ref{chapter:eta}.
 
 % TODO table w/ schemes
 
@@ -568,7 +568,7 @@ accidental endorsement of untested, and possibly insecure, instances.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{8pt}
+  \setlength{\tabcolsep}{6.5pt}
   \centering
   \caption{Reduction of Rainbow key sizes, in bytes, for various instances of the scheme.}\label{tab:1}
   \begin{tabular}{*{2}{l}*{5}{r}}
@@ -626,7 +626,6 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{7pt}
   \centering
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
   \begin{tabular}{*{2}{l}*{5}{r}}
