@@ -8,7 +8,8 @@
 
 \begin{document}
 
-% \chapter{Introduction}
+\chapter{Introduction}
+
 % TODO write some pages here introducing the subject and problems
 % TODO define hypothesis, objectives and scope before searching the literature
 
@@ -67,6 +68,10 @@ A modification that consists of adding cross-terms of oil variables in the last 
 The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. Repaired versions called CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
 It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Section~\ref{}.
+
+\chapter{New approach to reduce private key sizes}
+
+The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We propose a new strategy to reduce private key sizes in Rainbow-like digital signature schemes. 
 
 \bibliographystyle{alpha}
 \bibliography{ref}
