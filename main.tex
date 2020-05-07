@@ -189,6 +189,7 @@ have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
 $\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
 performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
 it is a general technique that works on all Rainbow-like schemes.
+% TODO expand on the performance of this 
 
 Observe that the central map may not feature any linear or constant terms, due
 to the use of the above relations. This does not lower the overall security of
@@ -208,8 +209,8 @@ A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
 procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate
 $y = \mathcal{F}'^{-1}(x)$ by inverting every layer recursively. The first
 layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
-needs only to be solved by providing appropriate values of $d$. It will
-generate a new set of vinegar variables, that can be used on the next layer,
+needs only to be solved by providing appropriate values of $d$. It
+generates a new set of vinegar variables, that can be used on the next layer,
 until all layers are solved. If any of the transitory systems are not solvable,
 a new $\widetilde{V}_{1}$ is chosen and $\mathcal{F}'$ regenerated, according
 to one of the methods given above. We finish by computing
@@ -241,7 +242,7 @@ from the original works. The authors introduce modifications that provide
 security against the existential forgery under chosen-message attack (EF-CMA)
 model, whereas the original scheme only offers security against universal
 forgery. These changes are built upon the introduction of a random salt. We
-will briefly describe this approach, with the intent of preventing the
+briefly describe this approach, with the intent of preventing the
 recalculation of $\mathcal{F}'$ in the case that $\widetilde{V}_{1}$ is not
 suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
 
@@ -273,7 +274,7 @@ Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
 the signature is valid, and invalid otherwise.
 
 The size of the private and public keys increase in exactly one element due to
-the addition of $w$. Real implementations of Rainbow-$\eta_{3}$ are tested on
+the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
 
 \subsection{Invertibility of $\mathcal{F}$}\label{subsec:invert}
