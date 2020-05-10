@@ -99,7 +99,7 @@ vinegar variables for several signatures and replace these only when necessary,
 \emph{i.e.} situations where the central map cannot be inverted and creating a
 signature would fail. By locking such variables and substituting them on the
 central map $\mathcal{F}$ early in the key generation algorithm, we create a
-$\mathcal{F}'$ linear in $v_{1}$, thus reducing storage requirements. This
+$\mathcal{F}'$ linear map in $v_{1}$, thus reducing storage requirements. This
 approach does not modify the underlying structure of the private key, but
 rather of the central map preimages.
 
@@ -289,10 +289,10 @@ clearer way, a given monomial ordering is used such that only usual matrices
 are needed. With this in mind, we first derive the probability that a random
 matrix with elements in $\mathbb{F}$ is invertible.
 
-Assume a square matrix $M$ of order $n$ such that
+Assume a square matrix $M$ of order $n \times n$ such that
 $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. For $M$ to be
-invertible, it must be composed entirely of vectors, \emph{i.e.} its rows
-$m_{i} \in \mathbb{F}^{n}$, that are linearly independent. The zero vector
+invertible, all of its rows
+$m_{i} \in \mathbb{F}^{n}$ have to be linearly independent. The zero vector
 $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors.
 Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors
 eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and
@@ -301,9 +301,8 @@ $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1},
 c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then,
 the probability that all vectors chosen are linearly independent is
 \begin{align}
-  \begin{split}
-    \Pi(q, n) &= \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} = \prod_{k = 1}^{n} 1 - q^{-k}.
-  \end{split}
+  \Pi(q, n) = \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} \quad
+    = \prod_{k = 1}^{n} 1 - q^{-k}.
 \end{align}
 
 In the context of Rainbow, the number of layers directly influences
