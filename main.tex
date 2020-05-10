@@ -104,18 +104,18 @@ form
 
 The central map of Rainbow is defined as
 $\mathcal{F} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$, with the
-following construction: for each layer $l$,
-$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$,
+following construction: for each layer $1 \leq l \leq u$, we have
+$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$ with all
+coefficients chosen randomly,
 and $\mathcal{F} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
 variables in a layer contains all variables from the previous layer, this
-allows for the inversion of this map. Further, let
+allows for the inversion of this map, as presented further along this description. Let
 $\mathcal{S} : \mathbb{F}^{m} \longrightarrow \mathbb{F}^{m}$ and
 $\mathcal{T} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{n}$ be two affine
 invertible maps, used as the trapdoor to this construction. Let
 $\mathcal{P} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$ as
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
-Coefficients $\alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}$ are
-chosen randomly. The private key is the triple
+The private key is the triple
 $(\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
 $\mathcal{P}$.
 
@@ -123,23 +123,23 @@ $\mathcal{P}$.
 
 To sign a message $M$, consider a cryptographic hash function
 $\mathcal{H} : {\{0, 1\}}^{*} \longrightarrow \mathbb{F}^{m}$, and obtain the
-message digest $d = \mathcal{H}(M)$. The signature will be the set of variables
+message digest $d = \mathcal{H}(M)$. The signature is the set of variables
 which yield the solution to the equation
 $\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{S}^{-1}(d)$. To
 generate $y = \mathcal{F}^{-1}(x)$, every layer must be inverted recursively.
 Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
-them into the first layer. This will bring forth a system of $o_{1}$ linear
+them into the first layer. This brings forth a system of $o_{1}$ linear
 equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
 algorithm such as Gaussian elimination. If the system does not have a solution,
-new vinegar variables have to be chosen. These solutions can then be
-substituted into the next layer, which will create a system of $o_{2}$ linear
+new vinegar variables $(x_{1}, \dots, x_{v_{1}})$ have to be chosen. These solutions can then be
+substituted into the next layer, which creates a system of $o_{2}$ linear
 equations, that can be solved analogously. This procedure is repeated until all
 layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
 
 \subsubsection{Signature verification.}
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
-the signature is valid, and invalid otherwise.
+the signature is valid, and otherwise invalid.
 
 Finally, denote an instance of the scheme by
 Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$,
