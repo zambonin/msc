@@ -207,8 +207,8 @@ $(\mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is $\mathcal{P}$.
 \subsubsection{Signature generation.}
 
 A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
-procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate
-$y = \mathcal{F}'^{-1}(x)$ by inverting every layer recursively. The first
+procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate the preimage
+$x = \mathcal{F}'(y)$ by inverting every layer recursively. The first
 layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
 needs only to be solved by providing appropriate values of $d$. It
 generates a new set of vinegar variables, that can be used on the next layer,
@@ -260,7 +260,7 @@ $(\mathcal{P}, w)$.
 Let $r \random{} {\{0, 1\}}^{w}$. The digest value is calculated as
 $\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
 message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
-the rare case that the $y = \mathcal{F}'^{-1}(x)$ preimage calculation does not
+the rare case that the $x = \mathcal{F}'(y)$ preimage calculation does not
 succeed, new variables in $\widetilde{V}_{1}$ are chosen. However, the
 addition of a random salt to the original message digest alters $\mathbf{d}$
 completely, due to the cryptographic hash function application. Thus, it is
