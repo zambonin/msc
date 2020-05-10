@@ -57,7 +57,8 @@ We also classify the work in~\cite{Szepieniec:201706} as relevant, since it is a
 
 The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{}. Schemes that make use of this framework are discussed below. 
 
-% This framework is also featured in some of the works previously described in Subsection~\ref{}. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance. Furthermore, key generation procedures in schemes that make use of these mathematical relations are inefficient when compared to Rainbow. 
+% This framework is also featured in some of the works previously described in Subsection~\ref{}. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance. Furthermore, key generation procedures in schemes that make use of these mathematical relations are inefficient when compared to Rainbow.
+
 A strategy analogous to a manipulation between base and extension fields is given in~\cite{Petzoldt:201109}. The resulting scheme is called 0/1 UOV, since coefficients of the public key are in $\mathbb{F}_{2}$. The proposal consists of creating the matrix associated with the structured part of the key according to a graph structure. Such graph describes a relationship of coefficients that, while sparse, does not facilitate known attacks over UOV, reducing the public key size by up to $88.6\%$. However, it is unknown if this proposal can be extended to Rainbow.
 
 The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic UOV. It is featured on the Rainbow submission for the second round of the standardization process conducted by NIST~\cite{Ding:201901}. It reduces public keys by up to $53.8\%$, and the associated key generation algorithm is comparably efficient to Rainbow~\cite{Petzoldt:202004}. Another strategy is the usage of linear recurring sequences to generate such unimportant parts of the public key. It is summarized in two works~\cite{Petzoldt:201103,Petzoldt:201211} and reduces public keys by up to $56.6\%$. 
@@ -77,7 +78,7 @@ It is evident that there have been commendable efforts in the creation, validati
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
-The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyse the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
+The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
 \section{Our proposal}\label{sec:proposal}
 
@@ -236,7 +237,7 @@ change.
 
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
-The Rainbow submission to the NIST standardisation
+The Rainbow submission to the NIST standardization
 process~\cite{Ding:201712} presents a scheme description that diverges
 from the original works. The authors introduce modifications that provide
 security against the existential forgery under chosen-message attack (EF-CMA)
@@ -357,8 +358,8 @@ identities to redefine the above limit as
     {(-1)}^{k} q^{\frac{-3 \cdot k^{2} + k}{2}}
 \end{align}
 and obtain a fast approximation of the probability when $n$ tends to infinity.
-We use the SageMath language arbitrary precision real numbers to obtain these
-values and find out that, when $n \geq 56$,
+We use the SageMath language, which features arbitrary precision real numbers,
+to obtain these values and find out that, when $n \geq 56$,
 $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and
 $\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$.
 Thus, Figure~\ref{fig:1} also accurately reflects the behaviour of $\Pi(q)$,
@@ -542,7 +543,7 @@ Although there are no known attacks that make use of this technique, it is
 possible that there may exist information leaks when applying our methods to
 Rainbow-like schemes.
 
-\paragraph{} We do not discard the possibility that specialised attacks exist,
+\paragraph{} We do not discard the possibility that specialized attacks exist,
 particularly ones that take in account multiple signatures, due to our fixing
 of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
 that signatures generated by our method are comparably random with respect to
@@ -603,12 +604,12 @@ further comparison. The latter are named P-$\ell$, where $\ell$ is the security
 level in bits. Indeed, the choice of $v_{1}$ remarkably affects the results.
 Moreover, a minimal value of $o_{u}$ is also known to further reduce the
 private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as
-possible to maximise the results of our method. However, we remark that one
+possible to maximize the results of our method. However, we remark that one
 must set sufficient parameters for $o_{i}$ such that the scheme still resists
 direct and UOV attacks.
 
 The case of Rainbow variants is slightly more convoluted. Schemes claim
-optimisations of the private key often through the inclusion of inner
+optimizations of the private key often through the inclusion of inner
 structuring. To measure the impact of our method within the context of these
 schemes, it is imperative to understand such structures. For instance, it may
 be the case that a method introduces sparseness related to specific vinegar
