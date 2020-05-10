@@ -308,14 +308,14 @@ the probability that all vectors chosen are linearly independent is
 
 In the context of Rainbow, the number of layers directly influences
 $\Pi(q, n)$, since it dictates how many linear systems have to be solved. In
-other words, all square matrices of size $v_{i}, i \in \{1, \dots, u\}$ need to
+other words, all square matrices of size $v_{i}, 1 \leq i \leq u$ need to
 be invertible to achieve a preimage under $\mathcal{F}$. Thus, the probability
 \begin{align}
   \Pi(q, n, u) = \prod_{i = 1}^{u} \prod_{k = 1}^{v_{i + 1}} 1 - q^{-k}
 \end{align}
 more accurately represents the upper bound for these chances. In the
 literature, the usual number of layers for a Rainbow instance is two, and we
-will denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. Note
+denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. Note
 that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a
 slightly lower probability of success in the signature generation preimage
 step.
@@ -323,7 +323,7 @@ step.
 Parameters for Rainbow are selected according to a number of restrictions,
 imposed by attacks that may harm the security of the scheme. Furthermore, note
 that the central map can be represented as square matrices of order $n$. Hence,
-we choose $n \in \{56, \dots, 90\}$
+we choose $56 \leq n \leq 90$
 from~\cite[Tables 6.4, 6.8, 6.13]{Petzoldt:201307} and calculate the
 probability that a random matrix is invertible in finite fields of typical
 orders. For instance, $\Pi(16, 90) \approx 93.3594\%$ and
@@ -344,7 +344,7 @@ $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
     % \includegraphics[width=.458\columnwidth]{charts/inv-prob/inv-prob-zoom}
   }
   \caption{Probability of obtaining an invertible matrix, populated with field
-    elements where $q \in \{2, \dots 256\}$ and $q$ is a prime power, given the
+    elements where $2 \leq q \leq 256$ and $q$ is a prime power, given the
     quantity of layers of Rainbow.}\label{fig:1}
 \end{figure}
 
@@ -393,16 +393,16 @@ appears to be random. The application $x = \mathcal{S}^{-1}(d)$ does not affect
 this behaviour, since the map is also random. Hence, we need not simulate this
 calculation in this analysis. According to Subsection~\ref{subsec:invert}, the
 inversion $y = \mathcal{F}^{-1}(x)$ creates a valid preimage with overwhelming
-probability, where the first $v_{1}$ elements of any $y$ will be the same.
+probability, where the first $v_{1}$ elements of any $y$ are the same.
 
 We observe the distribution of field elements in vectors after the final
 function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
 $Z'_{t} = (z_{1}, \dots, z_{t}) \random{} \mathbb{F}^{n}, t \in \mathbb{N}$ be
 a $t$-uple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
-When part of the vector $y$ is fixed, we will instead denote these by
+When part of the vector $y$ is fixed, we instead denote these by
 $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
-and $\widetilde{Z}_{t}$ will behave similarly to observations sampled from the
+and $\widetilde{Z}_{t}$ behave similarly to observations sampled from the
 discrete uniform distribution $\mathcal{U}\{0, q - 1\}$. It is known that its
 standard deviation, where $r$ values are observed in an equally likely manner,
 is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. For a finite field $\mathbb{F}$, we
@@ -424,8 +424,8 @@ theorised standard deviation.
   ]{
     % \includegraphics[width=.425\columnwidth]{charts/measure-diff/std-diff-n90}
   }
-  \caption{Difference of standard deviations when $t \in \{1, \dots, 1024\}$,
-    and $q \in \{2, \dots, 256\}$ with $q$ as a prime power.}\label{fig:2}
+  \caption{Difference of standard deviations when $1 \leq t \leq 1024$,
+    and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:2}
 \end{figure}
 
 Let us denote the absolute difference between standard deviations for a value
@@ -445,7 +445,7 @@ experiments, gives positive results and confirms the law of large numbers.
 Still, it is interesting to look at the diffusion of values within
 $\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and
 standard deviation for a known discrete uniform. We count the amount of values
-for each class $k \in \{0, \dots, q - 1\}$ and refer to them by $Z_{t, k}$ and
+for each class $0 \leq k \leq q - 1$ and refer to them by $Z_{t, k}$ and
 $\widetilde{Z}_{t, k}$. By the central limit theorem, these counts should be
 normally distributed.
 
@@ -484,7 +484,7 @@ signature or deducing private information.
 \subsection{Security analysis}\label{subsec:analysis}
 
 A variety of attacks currently thwart the security of Rainbow-like signature
-schemes if parameters are not chosen carefully. We will briefly state each of
+schemes if parameters are not chosen carefully. We briefly state each of
 those, along with their estimated complexities~\cite{Petzoldt:201005},
 and argue that our methods do not facilitate such attacks.
 
@@ -621,7 +621,7 @@ Subsection~\ref{subsec:priv} feature changes that target the whole private
 key evenly. Hence, our method would yield similar results to those in
 Table~\ref{tab:1} if this assumption is true. However, it is also the case that
 some variants were subsequently broken or new parameters were suggested. We
-will thus consider only schemes that reduce the public key size, \emph{i.e.}
+thus consider only schemes that reduce the public key size, \emph{i.e.}
 CyclicRainbow~\cite{Petzoldt:201012} and
 RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
 
@@ -660,7 +660,7 @@ recommended. These variants are based on the linear relations described in
 Subsection~\ref{subsec:scheme}, and resulting implementations may be
 effortlessly modified to use our proposal. Moreover, in the case that higher
 parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that
-the key pair will be reduced more aggressively. Thus, our results reflect
+the key pair is reduced more aggressively. Thus, our results reflect
 changes over a wide variety of platforms and possible Rainbow deployments that
 benefit from lower storage requirements.
 
