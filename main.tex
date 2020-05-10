@@ -192,11 +192,10 @@ have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
 $\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
 performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
 it is a general technique that works on all Rainbow-like schemes.
-% TODO expand on the performance of this 
 
 We observe that the central map may not feature any linear or constant terms, due
 to the use of the above relations. This does not lower the overall security of
-the scheme, due to the fact that they are not multiplied with quadratic terms.
+the scheme~\cite{}, due to the fact that they are not multiplied with quadratic terms.
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
@@ -433,11 +432,11 @@ $t$ as $d_{\sigma}^{t} = |\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})|$.
 Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
 and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
 fields of higher orders and lower $t$. For instance, given the finite field
-$\mathbb{F}_{223}^{42}$, we have $d_{\sigma}^{1} \approx 8.25$, and for a
+$\mathbb{F}_{223^{42}}$, we have $d_{\sigma}^{1} \approx 8.25$, and for a
 slightly higher $t$, we obtain a much lower value
 $d_{\sigma}^{11} \approx 0.24$. This behaviour is also observed within absolute
 differences of means, defined analogously as $d_{\mu}^{t}$. The field
-$\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}^{1} \approx 5.31$ and,
+$\mathbb{F}_{191^{42}}$ gives the values $d_{\mu}^{1} \approx 5.31$ and,
 comparatively, $d_{\mu}^{9} \approx 1.14$.
 
 The comparison of expected and obtained standard deviations and means in our
