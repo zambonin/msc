@@ -242,7 +242,7 @@ process~\cite{Ding:201712} presents a scheme description that diverges
 from the original works. The authors introduce modifications that provide
 security against the existential forgery under chosen-message attack (EF-CMA)
 model, whereas the original scheme only offers security against universal
-forgery. These changes are built upon the introduction of a random salt. We
+forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We
 briefly describe this approach, with the intent of preventing the
 recalculation of $\mathcal{F}'$ in the case that $\widetilde{V}_{1}$ is not
 suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
@@ -262,7 +262,7 @@ $\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
 message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
 the rare case that the $x = \mathcal{F}'(y)$ preimage calculation does not
 succeed, new variables in $\widetilde{V}_{1}$ are chosen. However, the
-addition of a random salt to the original message digest alters $\mathbf{d}$
+addition of a salt to the original message digest alters $\mathbf{d}$
 completely, due to the cryptographic hash function application. Thus, it is
 only necessary to generate a new $r$ and restart the signature generation
 process, such that $\widetilde{V}_{1}$, and consequently $\mathcal{F}'$, are
