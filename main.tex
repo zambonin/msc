@@ -78,6 +78,8 @@ It is evident that there have been commendable efforts in the creation, validati
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
+% TODO finite field notation is a bit weak
+
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
 \section{Our proposal}\label{sec:proposal}
@@ -396,7 +398,7 @@ probability, where the first $v_{1}$ elements of any $y$ are the same.
 
 We observe the distribution of field elements in vectors after the final
 function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
-$Z'_{t} = (z_{1}, \dots, z_{t}) \random{} \mathbb{F}^{n}, t \in \mathbb{N}$ be
+$Z'_{t} = (z_{1}, \dots, z_{t}) \random{} \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
 a $t$-uple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
 When part of the vector $y$ is fixed, we instead denote these by
@@ -404,8 +406,7 @@ $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
 and $\widetilde{Z}_{t}$ behave similarly to observations sampled from the
 discrete uniform distribution $\mathcal{U}\{0, q - 1\}$. It is known that its
 standard deviation, where $r$ values are observed in an equally likely manner,
-is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. For a finite field $\mathbb{F}$, we
-set $r = q$ and obtain the desired value. It is expected that
+is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. We set $r = q$ in the context of $\mathbb{F}_{q}$, and thus it is expected that
 \begin{align}
   \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
 \end{align}
