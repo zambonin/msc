@@ -155,7 +155,7 @@ full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
 
 Consider the public key
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ and let
-$\mathcal{Q} = \mathcal{F} \circ \mathcal{T}$. Denote $\widetilde{Q}$ as a
+$\mathcal{Q} = \mathcal{F} \circ \mathcal{T}$. We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
 $\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
 Further let $\widetilde{T}$ be the matrix representation of $\mathcal{T}$, with
@@ -192,7 +192,7 @@ performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
 it is a general technique that works on all Rainbow-like schemes.
 % TODO expand on the performance of this 
 
-Observe that the central map may not feature any linear or constant terms, due
+We observe that the central map may not feature any linear or constant terms, due
 to the use of the above relations. This does not lower the overall security of
 the scheme, due to the fact that they are not multiplied with quadratic terms.
 With this implication in mind, the usual key generation algorithm for the
@@ -284,7 +284,7 @@ Recall that, to create a Rainbow signature, the central map $\mathcal{F}$ needs
 to be inverted. Random guessing of vinegar variables is done in order to create
 a solvable linear system. It is also known that the central map is expressed as
 multivariate systems of equations, which can be themselves interpreted as
-multidimensional matrices of coefficients. Observe that, to describe these in a
+multidimensional matrices of coefficients. We observe that, to describe these in a
 clearer way, a given monomial ordering is used such that only usual matrices
 are needed. With this in mind, we first derive the probability that a random
 matrix with elements in $\mathbb{F}$ is invertible.
@@ -314,7 +314,7 @@ be invertible to achieve a preimage under $\mathcal{F}$. Thus, the probability
 \end{align}
 more accurately represents the upper bound for these chances. In the
 literature, the usual number of layers for a Rainbow instance is two, and we
-denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. Note
+denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. We observe
 that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a
 slightly lower probability of success in the signature generation preimage
 step.
@@ -348,7 +348,7 @@ $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
 \end{figure}
 
 It is also useful to calculate $\lim_{n \to \infty} \Pi(q, n)$ to observe
-changes in the probability with the growth of $m$. Note that this is very
+changes in the probability with the growth of $m$. We note that this is very
 similar to the Euler function $\phi(q)$. Thus, we can use one of Euler's
 identities to redefine the above limit as
 \begin{align}
@@ -649,7 +649,7 @@ when our method is used alongside Rainbow variants that reduce the public key
 size. Table~\ref{tab:2} shows the quantity of field elements for sets of
 parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307}. We calculate
 $|\mathcal{K}_{Pu}|$ for the variants according to Equations 9.2 and 9.4 of the
-same work, and as per its Remark 9.1, note that $q = 16$ and $q = 31$ are not
+same work, and as per its Remark 9.1, we note that $q = 16$ and $q = 31$ are not
 considered due to a security restriction of RainbowLRS2. We obtain positive
 results, with key pair size reductions of up to factors of 3 and no security
 harm to the resulting scheme.
