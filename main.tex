@@ -295,15 +295,14 @@ invertible, it must be composed entirely of vectors, \emph{i.e.} its rows
 $m_{i} \in \mathbb{F}^{n}$, that are linearly independent. The zero vector
 $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors.
 Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors
-eligible. $m_{2}$ must not feature any of the $q$ multiples of $m_{1}$, and
+eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and
 $q^{n} - q$ vectors remain. Without loss of generality,
 $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1},
 c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then,
 the probability that all vectors chosen are linearly independent is
 \begin{align}
   \begin{split}
-    \Pi(q, n) &= \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{-n}} \\
-              &= \prod_{k = 1}^{n} 1 - q^{-k}.
+    \Pi(q, n) &= \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} = \prod_{k = 1}^{n} 1 - q^{-k}.
   \end{split}
 \end{align}
 
@@ -373,7 +372,7 @@ This evidence shows that computing a preimage in order to sign a message
 happens at the first try with high probability in a wide range of Rainbow
 configurations. Therefore, the cost of a central map reconfiguration, in the
 case that chosen vinegar variables do not lead to an invertible central map, is
-amortised by the overwhelming probability that a signature is successfully
+amortized by the overwhelming probability that a signature is successfully
 generated.
 
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
