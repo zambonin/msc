@@ -86,16 +86,18 @@ combined to create a ``rainbow''.
 Consider a finite field $\mathbb{F}_{q}$ and
 $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers
 $v_{1}, \dots, v_{u}$ such that
-$0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. For the range $1 \leq l \leq u$, take the usual set
-$V = \{1, \dots, n\}$ and define vinegar variables as
-$V_{l} = \{1, \dots, v_{l}\}$, and oil variables $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. Oil variables
-are given by. We note that $V_{1} \subset \dots \subset V_{u} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $m = n - v_{1}$. Now,
+$0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set
+$V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as
+$V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now,
 we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the
 form
 \begin{align}
-  P_{l} = \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
-    + \sum_{i \in V_{l}, j \in O_{l}} \beta_{ij} \cdot x_{i} \cdot x_{j}
-    + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} \cdot x_{i} + \delta.
+  \begin{split}
+    P_{l} = \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
+      + \sum_{i \in V_{l}, j \in O_{l}} \beta_{ij} \cdot x_{i} \cdot x_{j}
+      + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} \cdot x_{i} + \delta, \\
+      \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}_{q}.
+  \end{split}
 \end{align}
 
 \subsubsection{Key generation.}
