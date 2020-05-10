@@ -179,11 +179,11 @@ with only oil variables, and results in
 \begin{align}
   q_{ij}^{k} = \sum_{r = 1}^{v_{l}} \sum_{s = r}^{v_{l + 1}}
     \alpha_{ij}^{rs} \cdot f_{rs}^{k},
-      \quad k \in O_{l}, \quad l \in \{1, \dots, u\}.
+      \quad k \in O_{l}, \quad 1 \leq l \leq u.
 \end{align}
 A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
 the previous equations. Given a particular monomial ordering, let
-$A = (\alpha_{ij}^{rs})$ such that $i, j, r, s \in \{1, \dots, n\}$, where
+$A = (\alpha_{ij}^{rs})$ such that $1 \leq i, j, r, s \leq n$, where
 $i \leq j$ and $r \leq s$ denote row and column indices, respectively. Thus, we
 have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
 $\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
@@ -289,7 +289,7 @@ are needed. With this in mind, we first derive the probability that a random
 matrix with elements in $\mathbb{F}$ is invertible.
 
 Assume a square matrix $M$ of order $n$ such that
-$m_{ij} \in \mathbb{F}_{q}, i, j \in \{1, \dots, n\}$. For $M$ to be
+$m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. For $M$ to be
 invertible, it must be composed entirely of vectors, \emph{i.e.} its rows
 $m_{i} \in \mathbb{F}^{n}$, that are linearly independent. The zero vector
 $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors.
