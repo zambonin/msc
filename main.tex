@@ -78,6 +78,8 @@ It is evident that there have been commendable efforts in the creation, validati
 
 % TODO finite field notation is a bit weak
 % TODO replace S, F, T by L1, L2 and C
+% TODO underlying problems
+% TODO add figures
 % TODO matrix representation of stuff
 % TODO bipolar construction, UOV/Rainbow, equivalent keys, that affine relation
 %  * no need for constant part of S, T, and affine/constant part of F
@@ -148,14 +150,14 @@ layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and otherwise invalid.
 
-Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to every coefficient from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
   |\mathcal{K}_{Pr}| = \underbrace{m^{2} + m}_{\mathcal{S}} 
     + \underbrace{n^{2} + n}_{\mathcal{T}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
-      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}},
-\end{align}.
-The size of a public key is the summation of the number of elements in the matrices associated with the homogeneous quadratic forms, as per Equation~\ref{}, of all polynomials in the system, or
+      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}}.
+\end{align}
+The size of a public key is the number of elements in the matrices associated with the homogeneous quadratic forms of all polynomials in the system, as per Equation~\ref{}, or
 \begin{align}
   |\mathcal{K}_{Pu}| = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
 \end{align}
