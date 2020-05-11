@@ -76,6 +76,12 @@ It is evident that there have been commendable efforts in the creation, validati
 
 \chapter{Mathematical background}\label{chapter:math}
 
+% TODO finite field notation is a bit weak
+% TODO replace S, F, T by L1, L2 and C
+% TODO matrix representation of stuff
+% TODO bipolar construction, UOV/Rainbow, equivalent keys, that affine relation
+%  * no need for constant part of S, T, and affine/constant part of F
+
 \subsection{Original Rainbow signature scheme}\label{subsec:rainbow}
 
 We present below a description of the Rainbow signature scheme, a
@@ -116,8 +122,8 @@ invertible maps, used as the trapdoor to this construction. Let
 $\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
 The private key is the triple
-$(\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
-$\mathcal{P}$.
+$\mathcal{K}_{Pr} = (\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
+$\mathcal{K}_{Pu} = \mathcal{P}$.
 % this can expanded removing what we _know_ to be extraneous
 
 \subsubsection{Signature generation.}
@@ -132,7 +138,7 @@ Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
 them into the first layer. This brings forth a system of $o_{1}$ linear
 equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
 algorithm such as Gaussian elimination. If the system does not have a solution,
-new vinegar variables $(x_{1}, \dots, x_{v_{1}})$ have to be chosen. These solutions can then be
+new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be
 substituted into the next layer, which creates a system of $o_{2}$ linear
 equations, that can be solved analogously. This procedure is repeated until all
 layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
@@ -159,9 +165,6 @@ Further details on the construction of Rainbow may be found
 on~\cite[Section 3.3]{Ding:2006}.
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
-
-% TODO finite field notation is a bit weak
-% TODO replace S, F, T by L1, L2 and C
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
