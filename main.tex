@@ -97,7 +97,7 @@ $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar varia
 $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now,
 we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the
 form
-\begin{align}\ref{eq:ov}
+\begin{align}\label{eq:ov}
   \begin{split}
     P_{l} = \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
       + \sum_{i \in V_{l}, j \in O_{l}} \beta_{ij} \cdot x_{i} \cdot x_{j}
@@ -148,19 +148,14 @@ layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and otherwise invalid.
 
-Finally, denote an instance of the scheme by
-Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$,
-we get the UOV scheme. Measured in field elements, the size of a private key is
-the number of elements in the matrix representations of \mathcal{S} and \mathcal{T}, as well as every coefficient from each layer of Oil--Vinegar polynomials as per Equation~\ref{}. In other words,
+Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to every coefficient from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
   |\mathcal{K}_{Pr}| = \underbrace{m^{2} + m}_{\mathcal{S}} 
     + \underbrace{n^{2} + n}_{\mathcal{T}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
       + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}},
 \end{align}.
-
-
-whereas the size of a public key is
+The size of a public key is the summation of the number of elements in the matrices associated with the homogeneous quadratic forms, as per Equation~\ref{}, of all polynomials in the system, or
 \begin{align}
   |\mathcal{K}_{Pu}| = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
 \end{align}
