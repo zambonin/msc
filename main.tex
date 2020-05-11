@@ -312,13 +312,14 @@ valid, and invalid otherwise.
 By making the first layer linear and substituting the remaining variables, the
 size of the private key is now
 \begin{multline}
-  |\mathcal{K}_{Pr}^{\eta}| = m^{2} + m + n^{2} + n
-    + v_{1} \\
-    + \sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
-      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right),
+  |\mathcal{K}_{Pr}^{\eta}| = \underbrace{m^{2} + m}_{\mathcal{S}} 
+    + \underbrace{n^{2} + n}_{\mathcal{T}}
+    + \underbrace{v_{1}}_{\widetilde{V}_{1}} \\
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\mathcal{F}'},
 \end{multline}
 plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
-used. One needs to store $\widetilde{V}_{1}$, since it is part of the central
+used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. One needs to store $\widetilde{V}_{1}$, since it is part of the central
 map preimage, used on further map applications. The public key size does not
 change.
 
