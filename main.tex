@@ -145,9 +145,10 @@ Finally, denote an instance of the scheme by
 Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$,
 we get the UOV scheme. Measured in field elements, the size of a private key is
 \begin{align}
-  |\mathcal{K}_{Pr}| = m^{2} + m + n^{2} + n
-    + \sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
-      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right),
+  |\mathcal{K}_{Pr}| = \underbrace{m^{2} + m}_{\mathcal{S}} 
+    + \underbrace{n^{2} + n}_{\mathcal{T}}
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
+      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}},
 \end{align}
 whereas the size of a public key is
 \begin{align}
@@ -159,6 +160,7 @@ on~\cite[Section 3.3]{Ding:2006:book}.
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
 % TODO finite field notation is a bit weak
+% TODO replace S, F, T by L1, L2 and C
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
