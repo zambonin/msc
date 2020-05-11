@@ -103,17 +103,17 @@ form
 \subsubsection{Key generation.}
 
 The central map of Rainbow is defined as
-$\mathcal{F} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$, with the
+$\mathcal{F} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with the
 following construction: for each layer $1 \leq l \leq u$, we have
 $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$ with all
 coefficients chosen randomly,
 and $\mathcal{F} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
 variables in a layer contains all variables from the previous layer, this
 allows for the inversion of this map, as presented further along this description. Let
-$\mathcal{S} : \mathbb{F}^{m} \longrightarrow \mathbb{F}^{m}$ and
-$\mathcal{T} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{n}$ be two affine
+$\mathcal{S} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ and
+$\mathcal{T} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be two affine
 invertible maps, used as the trapdoor to this construction. Let
-$\mathcal{P} : \mathbb{F}^{n} \longrightarrow \mathbb{F}^{m}$ as
+$\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
 The private key is the triple
 $(\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
@@ -122,7 +122,7 @@ $\mathcal{P}$.
 \subsubsection{Signature generation.}
 
 To sign a message $M$, consider a cryptographic hash function
-$\mathcal{H} : {\{0, 1\}}^{*} \longrightarrow \mathbb{F}^{m}$, and obtain the
+$\mathcal{H} : {\{0, 1\}}^{*} \to \mathbb{F}^{m}$, and obtain the
 message digest $d = \mathcal{H}(M)$. The signature is the set of variables
 which yield the solution to the equation
 $\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{S}^{-1}(d)$. To
@@ -155,7 +155,7 @@ whereas the size of a public key is
   |\mathcal{K}_{Pu}| = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
 \end{align}
 Further details on the construction of Rainbow may be found
-on~\cite[Section 3.3]{Ding:2006:book}.
+on~\cite[Section 3.3]{Ding:2006}.
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
