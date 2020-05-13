@@ -390,7 +390,7 @@ multidimensional matrices of coefficients. We observe that, to describe these in
 clearer way, a given monomial ordering is used such that only usual matrices
 are needed. With this in mind, we first derive the probability that a random
 matrix with elements in $\mathbb{F}$ is invertible. This is a well-known
-result~\cite[Remark 13.2.14]{} included hereafter for completeness.
+result~\cite[Remark 13.2.14]{Mullen:2013} included hereafter for completeness.
 
 Assume a square matrix $M$ of order $n \times n$ such that
 $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. For $M$ to be
@@ -717,11 +717,7 @@ variables. Thus, the reduction would not be equally distributed over the
 private key elements and, as such, our method would have its efficiency
 reduced.
 
-To the best of our knowledge, the schemes presented in
-Subsection~\ref{subsec:priv} feature changes that target the whole private
-key evenly. Hence, our method would yield similar results to those in
-Table~\ref{tab:1} if this assumption is true. However, it is also the case that
-some variants were subsequently broken or new parameters were suggested. We
+To the best of our knowledge, it is not trivial to combine our strategy with the schemes presented in Subsection~\ref{subsec:priv}, and resulting gains would be reduced. Furthermore, several of those schemes were subsequently broken or new parameters were proposed, suggesting that such a combination would not be productive. We
 thus consider only schemes that reduce the public key size, \emph{i.e.}
 CyclicRainbow~\cite{Petzoldt:201012} and
 RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
