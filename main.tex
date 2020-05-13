@@ -557,9 +557,9 @@ elements. However, we note that this is due to the low number of classes,
 discrepancies are largely reduced with $q = 2^{10}$. This is further confirmed
 by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts with quantiles from the standard normal distribution. Such quantiles are chosen to approximate normal order statistics~\cite{} and generated as follows. 
 
-Let $r \in \mathbb{N}$ be a precision parameter. A number $r \times q$ of samples are taken from a standard normal distribution and organized into $q$-uples $K_{0}, \dots, K_{r}$. Then, let $\min_{i}(S)$ represent the $i$-th smallest value in a set $S$. The $q$-uple $K$ representing the approximate normal order statistics is calculated as
+Let $r \in \mathbb{N}$ be a precision parameter. A number $rq$ of samples are taken from a standard normal distribution and organized into $q$-uples $K_{0}, \dots, K_{r - 1}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The $q$-uple $K$ representing the approximate normal order statistics is calculated as
 \[
-    K = (\mu(\min_{i}(K_{j})): 1 \leq i \leq q).
+    K = (\mu(\{\min(K_{j}, i) : 0 \leq j \leq r - 1\}) : 1 \leq i \leq q).
 \]
 
 % created by pairing the normalized counts with approximate normal order statistics, where the points are sufficiently close
