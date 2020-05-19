@@ -119,3 +119,73 @@ function verify(pk, message, signature)
   sig := ElementToSequence(signature);
   return ElementToSequence(message) eq [ Evaluate(pk_i, sig) : pk_i in pk ];
 end function;
+
+sk, pk := keygen(: uov := true);
+S, Q, T := Explode(sk);
+
+o1 := v[2] - v[1];
+iterations := 16;
+assert o1 lt iterations;
+
+// grab some signatures (in this case we're signing but they are public data)
+msgs := [];
+sigs := [];
+for i := 1 to iterations do
+  message := [ Random(F) : _ in [1..m] ];
+  signature := sign(sk, message: fix := true);
+  if verify(pk, message, signature) then
+    Append(~msgs, message);
+    Append(~sigs, signature);
+  end if;
+end for;
+
+// recover matrix + vector parts of affine transformation T
+sig_space := VectorSpace(F, n);
+M_T := Matrix(F, JacobianMatrix(T));
+c_T := sig_space!([ MonomialCoefficient(T_i, 1) : T_i in T ]);
+
+// obtain T^(-1)
+invMT := M_T^(-1);
+invCT := -c_T * Transpose(invMT);
+
+// sanity check of the inverse affine
+truth, pre, _ := IsConsistent(Transpose(invMT), sig_space!(sigs[1]) - invCT);
+assert truth;
+
+// choose o1 random pairs of signatures, subtract them and check for linear
+// independence to build a basis
+repeat
+  repeat
+    rand := [ Random(1, #sigs - 1) : _ in [1..m] ];
+    minus := [ sigs[i] - sigs[i + 1] : i in rand ];
+  until IsIndependent(minus);
+
+  id := ScalarMatrix(F, n, 1);
+  for i -> vec in minus do
+    id[i + v[1]] := vec;
+  end for;
+  newTmat := Transpose(id);
+until IsInvertible(newTmat);
+
+// reconstruct T as T'
+TRing := Parent(T[1]);
+newT := [ TRing.i ^ newTmat : i in [1..n] ];
+
+// take the public key and compose it with T' to get an equivalent central map
+// and confirm that it is Oil-Vinegar
+newF := [ Evaluate(pk_i, newT) : pk_i in pk ];
+zero := ZeroMatrix(F, o1, o1);
+for poly in newF do
+  // TODO does not work for finite fields of characteristic 2
+  sbf := SymmetricBilinearForm(poly);
+  assert Submatrix(sbf, v[1] + 1, v[1] + 1, o1, o1) eq zero;
+end for;
+
+// invert T' and confirm that the public key remains the same
+newTmatInv := newTmat^(-1);
+newTinv := [ TRing.i ^ newTmatInv : i in [1..n] ];
+newPK := [ Evaluate(i, newTinv) : i in newF ];
+assert newPK eq pk;
+
+fake := sign(<sk[1], newF, newTinv>, msgs[1]: fix := true);
+assert verify(pk, msgs[1], fake);
