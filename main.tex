@@ -91,7 +91,12 @@ We use the following symbols throughout this work. The symbol $\random{}$ is rea
 In this Section, we define the elementary algebraic structures known as groups, rings and fields and derived algebras. We make this clear distinction since there are several underlying structures used in multivariate cryptography which, for instance, operate on the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{} and~\cite{}, and we refer the reader to these references for proofs of the facts given below.
 
 \begin{definition}
-  Given a set $G$ and any $g_{1}, g_{2} \in G$, a binary operation $\star$ is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$.
+  Given a set $G$ and any $g_{1}, g_{2} \in G$, a binary operation $\star$ on a set $G$ is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
+  
+  \begin{itemize}
+    \item It is said to be associative if, for any $g_{1}, g_{2}, g_{3} \in G$, then $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$.
+    \item It is said to be commutative if all elements of $G$ commute, that is, for any $g_{1}, g_{2} \in G$, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$.
+  \end{itemize}
 \end{definition}
 
 %  A vector space of dimension $n$ over the finite field $\mathbb{F}_{q}$ of order $q$ is denoted by $\mathbb{F}_{q}^{n}$, with $q$ and $n$ omitted for brevity if appropriate.
