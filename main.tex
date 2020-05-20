@@ -91,23 +91,23 @@ We use the following symbols throughout this work. The symbol $\random{}$ is rea
 In this Section, we define the elementary algebraic structures known as groups, rings and fields and derived algebras. We make this clear distinction since there are several underlying structures used in multivariate cryptography which, for instance, operate on the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{} and~\cite{}, and we refer the reader to these references for proofs of the facts given below.
 
 \begin{definition}
-  Given a set $G$ and any $g_{1}, g_{2} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
+  Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
   
   \begin{itemize}
-    \item It is said to be \emph{associative} if, for any $g_{1}, g_{2}, g_{3} \in G$, we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$.
-    \item It is said to be \emph{commutative} if all elements of $G$ commute, that is, for any $g_{1}, g_{2} \in G$, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$.
-    \item It is said to be \emph{closed under $G$} if, for any $g_{1}, g_{2} \in G$, we have that $g_{1} \star g_{2} \in G$.
+    \item It is said to be \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$.
+    \item It is said to be \emph{commutative} if all elements of $G$ commute, that is, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$.
+    \item It is said to be \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
   \end{itemize}
 \end{definition}
 
 \begin{definition}
-  Given a set $G$ and a binary operation $\star$ on $G$, a \emph{group} is an ordered pair $(G, \star)$ that satisfies the following axioms:
+  Given a set $G$, any $g_{1} \in G$ and a binary operation $\star$ on $G$, a \emph{group} is an ordered pair $(G, \star)$ that satisfies the following axioms:
   
   \begin{enumerate}
     \item The binary operation $\star$ is \emph{closed under $G$}.
     \item The binary operation $\star$ on $G$ is \emph{associative}.
-    \item For any $g_{1} \in G$, there exists a unique element $e \in G$, called \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$.
-    \item For any $g_{1} \in G$, there exists a uniquely determined element $g_{1}^{-1} \in G$, called \emph{the inverse of $g_{1}$}, such that $g_{1} \star g_{1}^{-1} = g_{1}^{-1} \star g_{1} = e$, and indeed $(g_{1}^{-1})^{-1} = g_{1}$.
+    \item There exists a unique element $e \in G$, called \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$.
+    \item There exists a uniquely determined element $g_{1}^{-1} \in G$, called \emph{the inverse of $g_{1}$}, such that $g_{1} \star g_{1}^{-1} = g_{1}^{-1} \star g_{1} = e$, and indeed $(g_{1}^{-1})^{-1} = g_{1}$.
   \end{enumerate}
 \end{definition}
 
@@ -119,7 +119,13 @@ In this Section, we define the elementary algebraic structures known as groups, 
   Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is also called commutative, or \emph{abelian}.
 \end{definition}
 
-If it is clear from the context, we hereafter refer to a group simply by $G$ and omit the associated binary operation $\star$. Other useful facts about groups are given in~\cite[Prop. 1]{}. Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{Z}$, that is, $(\mathbb{Z}, +)$, and the multiplicative group of integers modulo $n$ denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$.
+If it is clear from the context, we hereafter refer to a group simply by $G$ and omit the associated binary operation $\star$. Other useful facts about groups are given in~\cite[Prop. 1]{}. Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$ usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$.
+
+Now, we extend the definition of a group to form another structure carrying two binary operations, usually called addition and multiplication.
+
+\begin{definition}
+  Given a set $R$ and 
+\end{definition}
 
 %  A vector space of dimension $n$ over the finite field $\mathbb{F}_{q}$ of order $q$ is denoted by $\mathbb{F}_{q}^{n}$, with $q$ and $n$ omitted for brevity if appropriate.
 
