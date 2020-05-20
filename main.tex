@@ -94,8 +94,8 @@ In this Section, we define the elementary algebraic structures known as groups, 
   Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
   
   \begin{itemize}
-    \item It is said to be \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$.
-    \item It is said to be \emph{commutative} if all elements of $G$ commute, that is, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$.
+    \item It is said to be \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
+    \item It is said to be \emph{commutative} if all elements of $G$ commute, that is, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
     \item It is said to be \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
   \end{itemize}
 \end{definition}
@@ -104,9 +104,9 @@ In this Section, we define the elementary algebraic structures known as groups, 
   Given a set $G$, any $g_{1} \in G$ and a binary operation $\star$ on $G$, a \emph{group} is an ordered pair $(G, \star)$ that satisfies the following axioms:
   
   \begin{enumerate}
-    \item The binary operation $\star$ is \emph{closed under $G$}.
-    \item The binary operation $\star$ on $G$ is \emph{associative}.
-    \item There exists a unique element $e \in G$, called \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$.
+    \item The binary operation $\star$ is \emph{closed under $G$};
+    \item The binary operation $\star$ on $G$ is \emph{associative};
+    \item There exists a unique element $e \in G$, called \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$;
     \item There exists a uniquely determined element $g_{1}^{-1} \in G$, called \emph{the inverse of $g_{1}$}, such that $g_{1} \star g_{1}^{-1} = g_{1}^{-1} \star g_{1} = e$, and indeed $(g_{1}^{-1})^{-1} = g_{1}$.
   \end{enumerate}
 \end{definition}
@@ -128,8 +128,8 @@ Now, we extend the definition of a group to form another structure carrying two 
   
   \begin{enumerate}
     \item The ordered pair $(R, +)$ forms an \emph{abelian group};
-    \item The binary operation $\times$ on $R$ is \emph{associative}.
-    \item The binary operation \emph{$\times$ distributes over $+$}, that is, it holds that $r_{1} \times (r_{2} + r_{3})$
+    \item The binary operation $\times$ on $R$ is \emph{associative};
+    \item The binary operation \emph{$\times$ distributes over $+$}, that is, we must have that $r_{1} \times (r_{2} + r_{3}) = (r_{1} \times r_{2}) + (r_{1} \times r_{3})$ and $(r_{2} + r_{3}) \times r_{1} = (r_{2} \times r_{1}) + (r_{3} \times r_{1})$. These are respectively called left and right distributivity.
   \end{enumerate}
 \end{definition}
 
