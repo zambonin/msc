@@ -3,12 +3,18 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts, mathtools, multirow}
+\usepackage{amsfonts, amsthm, mathtools, multirow}
 % \usepackage[backref]{hyperref}
 
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 
 \begin{document}
 
@@ -82,7 +88,11 @@ We use the following symbols throughout this work. The symbol $\random{}$ is rea
 
 \section{Algebraic structures}\label{sec:algebra}
 
-In this Section, we define the elementary algebraic structures known as groups, rings and fields and derived algebras. We make this clear distinction since there are several underlying structures present in multivariate cryptography which, for instance, operate on the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{} and~\cite{}, and we refer the reader to these references for proofs of the facts given.
+In this Section, we define the elementary algebraic structures known as groups, rings and fields and derived algebras. We make this clear distinction since there are several underlying structures used in multivariate cryptography which, for instance, operate on the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{} and~\cite{}, and we refer the reader to these references for proofs of the facts given below.
+
+\begin{definition}
+  Given a set $G$ and any $g_{1}, g_{2} \in G$, a binary operation $\star$ is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$.
+\end{definition}
 
 %  A vector space of dimension $n$ over the finite field $\mathbb{F}_{q}$ of order $q$ is denoted by $\mathbb{F}_{q}^{n}$, with $q$ and $n$ omitted for brevity if appropriate.
 
