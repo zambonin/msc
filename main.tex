@@ -119,9 +119,7 @@ In this Section, we define the elementary algebraic structures known as groups, 
   Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is also called commutative, or \emph{abelian}.
 \end{definition}
 
-If it is clear from the context, we hereafter refer to a group simply by $G$ and omit the associated binary operation $\star$. Other useful facts about groups are given in~\cite[Prop. 1]{}. Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$.
-
-Now, we extend the definition of a group to form another structure carrying two binary operations, usually called addition and multiplication.
+Other useful facts about groups are given in~\cite[Prop. 1]{}. Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$.
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\times$ on $R$, a \emph{ring} is an ordered 3-uple $(R, +, \times)$ satisfying the following axioms:
@@ -132,6 +130,12 @@ Now, we extend the definition of a group to form another structure carrying two 
     \item The binary operation \emph{$\times$ distributes over $+$}, that is, we must have that $r_{1} \times (r_{2} + r_{3}) = (r_{1} \times r_{2}) + (r_{1} \times r_{3})$ and $(r_{2} + r_{3}) \times r_{1} = (r_{2} \times r_{1}) + (r_{3} \times r_{1})$. These are respectively called left and right distributivity.
   \end{enumerate}
 \end{definition}
+
+\begin{definition}
+  Given a ring $(R, +, \times)$, if the binary operation $\times$ is commutative, then the ring is also called \emph{commutative}.
+\end{definition}
+
+% If it is clear from the context, we hereafter refer to group-like structures simply by the name of its base set and omit the associated binary operations. 
 
 %  A vector space of dimension $n$ over the finite field $\mathbb{F}_{q}$ of order $q$ is denoted by $\mathbb{F}_{q}^{n}$, with $q$ and $n$ omitted for brevity if appropriate.
 
