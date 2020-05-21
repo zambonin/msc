@@ -147,9 +147,9 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
   Given a ring $(R, +, \times)$ and any $r_{1} \in R, r_{1} \neq 0$, if there exists a unique element $1 \in R$ such that $r_{1} \times 1 = 1 \times r_{1} = r_{1}$, then the ring is called a \emph{unit ring}.
 \end{definition}
 
-\begin{definition}
-  Given a ring $(R, +, \times)$ and any $r_{1}, r_{2} \in R, r_{1}, r_{2} \neq 0$, if $r_{1} \times r_{2} \neq 0$, then the ring is called an \emph{integral domain}.
-\end{definition}
+% \begin{definition}
+%   Given a ring $(R, +, \times)$ and any $r_{1}, r_{2} \in R, r_{1}, r_{2} \neq 0$, if $r_{1} \times r_{2} \neq 0$, then the ring is called an \emph{integral domain}.
+% \end{definition}
 
 \begin{definition}
   Given a unit ring $(R, +, \times)$, if $(R - \{0\}, \times)$ forms a group, then the ring is called a \emph{division ring}.
@@ -167,7 +167,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
   The order of a finite field is always of the form $q^{n}$ with $q$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is called a \emph{prime field}.
 \end{theorem}
 
-For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate group-like structures over mathematical objects that live outside the usual sets of numbers. Let us define two such commonplace objects.
+For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate group-like structures over mathematical objects that live outside the usual sets of numbers.
 
 \begin{definition}
   Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, the expression $$\sum_{i = 0}^{k} a_{i} x^{i} = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}$$ is called an \emph{univariate polynomial}. Each of the terms in the summation is called a \emph{monomial}.
@@ -178,10 +178,10 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 \end{definition}
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $R$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form a \emph{polynomial ring}, denoted $R[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$
+  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\textsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring}, denoted $\textsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring}, denoted $\textsf{R}[x_{1}, \dots, x_{n}]$ or $\textsf{R}[\textbf{x}]$.
 \end{definition}
 
-% A polynomial by itself is simply a mathematical expression, but they are commonly used to define polynomial functions. In this case, the indeterminates are usually called the \emph{variables} of the function $p(x_{1}, \dots, x_{n})$ associated with the polynomial. The domain and codomain of such a function must be well-defined.
+We note that a polynomial by itself is simply a mathematical expression, but they are commonly used to define polynomial functions. In this case, the indeterminates are usually called the \emph{variables} of the function $p(x_{1}, \dots, x_{n})$ associated with the polynomial. The domain and codomain of such a function must be well-defined.
 
 %  A vector space of dimension $n$ over the finite field $\mathbb{F}_{q}$ of order $q$ is denoted by $\mathbb{F}_{q}^{n}$, 
 
