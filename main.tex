@@ -173,10 +173,13 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
   Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and a \emph{variable} $x$, the expression $$\sum_{i = 0}^{k} a_{i} x^{i} = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}$$ is called an \emph{univariate polynomial}. Each of the terms in the summation is called a \emph{monomial}.
 \end{definition}
 
-This concept can be evidently expanded to accommodate more variables. However, we refrain from showing the full generalized summation that defines the new polynomial expression, since it is hard to follow even for a bivariate polynomial.
-
 \begin{definition}
-  Given $n \in \mathbb{N}$, a polynomial over a sequence of variables $\mathbf{x} = (x_{1}, \dots, x_{n})$ is called a \emph{multivariate polynomial}. The highest sum of the exponents of the variables in a monomial with a non-zero coefficient is called the \emph{degree} of the polynomial.
+  Given $n \in \mathbb{N}$, a polynomial over a sequence of variables $\mathbf{x} = (x_{1}, \dots, x_{n})$ is called a \emph{multivariate polynomial}, described by the expression
+  \[
+    \sum_{i_{1}}^{k_{1}} \cdots \sum_{i_{n}}^{k_{n}} a_{i_{1}, \dots, i_{n}} x^{i_{1}, \dots, i_{n}}
+  \]
+  
+  The highest sum of the exponents of the variables in a monomial with a non-zero coefficient is called the \emph{degree} of the polynomial.
 \end{definition}
 
 \begin{definition}
