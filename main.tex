@@ -214,12 +214,12 @@ A polynomial system is \emph{consistent} if there exists at least one solution $
 To generalize the notion of grouping polynomials into a system, it is useful to define an algebraic structure which falls outside of the class of pure ring-like structures.
 
 \begin{definition}
-  Given a finite field $\mathbb{F}$ with binary operations $+$ and $\times$, a set $V$, any elements $f_{1}, f_{2} \in \mathbb{F}$ and $\mathbf{u} \in V$, a binary operation $\oplus$ on $V$ and a binary operation $\cdot : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-uple $(V, \oplus, \cdot)$ satisfying the following axioms:
+  Given a finite field $\mathbb{F}$ with binary operations $+$ and $\times$, a set $V$, any elements $f_{1}, f_{2} \in \mathbb{F}, \mathbf{v_{1}}, \mathbf{v_{2}} \in V$, a binary operation $\oplus$ on $V$ and a binary operation $\cdot : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-uple $(V, \oplus, \cdot)$ satisfying the following axioms:
   
   \begin{enumerate}
     \item The ordered pair $(V, \oplus)$ forms an \emph{abelian group};
-    \item The binary operation $\cdot$ is \emph{associative}, that is, $f_{1} \cdot (f_{2} \cdot \textbf{u}) = (f_{1} \times f_{2}) \cdot \textbf{u}$;
-    \item The binary operation $\cdot$
+    \item The binary operation $\cdot$ is \emph{associative}, that is, $f_{1} \cdot (f_{2} \cdot \mathbf{v_{1}}) = (f_{1} \times f_{2}) \cdot \mathbf{v_{1}}$;
+    \item The binary operation $\cdot$ left distributes over $\oplus$, that is, we must have that $f_{1} \cdot (\mathbf{v_{1}} \oplus \mathbf{v_{2}} = (f_{1} \cdot \mathbf{v_{1}}) \oplus (f_{1} \cdot \mathbf{v_{2}})$
   \end{enumerate}
 \end{definition}
 
