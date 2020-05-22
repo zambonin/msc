@@ -136,7 +136,7 @@ Oftentimes it is convenient to interpret elements as those of a different group.
 \end{definition}
 
 \begin{lemma}[~\cite{}]
-  Given a group $\mathsf{G}$, the set of all automorphisms carrying the usual composition binary operation forms a group, denoted $\mathsf{Aut}(\mathsf{G})$.
+  Given a group $\mathsf{G}$, the set of all automorphisms carrying the usual function composition binary operation forms a group, denoted $\mathsf{Aut}(\mathsf{G})$.
 \end{lemma}
 
 Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
@@ -279,11 +279,13 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate}
 \end{definition}
 
-A trivial example is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. If additionally $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{} is analogous in the setting of vector spaces.
+A trivial example is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. If additionally $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definitions~\ref{} and~\ref{} are analogous in the setting of vector spaces. Indeed, for finite vector spaces, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition.
+
+This group is more commonly known as 
 
 % The usual arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. In fact, several structures previously defined can also be represented as matrices, which is useful when performing calculations with relatively abstract elements such as polynomials.
 
-% topics for tomorrow: invertible matrix <-> invertible map, general linear group, agl, matrix representations of certain polynomials
+% topics for tomorrow: invertible matrix <-> invertible map, general linear group, matrix representations of certain polynomials
 
 % TODO finite field notation is a bit weak
 % TODO replace S, F, T by L1, L2 and C
