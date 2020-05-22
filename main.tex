@@ -161,7 +161,7 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
   Given a unit ring $(R, +, \ast)$, if $(R \setminus \{0\}, \ast)$ forms a group, then the ring is called a \emph{division ring}.
 \end{definition}
 
-The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a very common number system employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations. If it is clear from the context, we hereafter refer to group- and ring-like structures simply by the name of its base set and omit the associated binary operations. 
+The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a powerful number system commonly employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations. If it is clear from the context, we hereafter refer to group- and ring-like structures simply by the name of its base set and omit the associated binary operations. 
 
 \begin{definition}
   A commutative division ring is called a \emph{field}.
@@ -224,7 +224,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   
   \begin{enumerate}
     \item The ordered pair $(V, \bm{+})$ forms an \emph{abelian group};
-    \item The binary operation $\bm{\times}$ is \emph{associative}, that is, $f_{1} \bm{\times} (f_{2} \bm{\times} \mathbf{v_{1}}) = (f_{1} \times f_{2}) \bm{\times} \mathbf{v_{1}}$;
+    \item The binary operation $\bm{\times}$ is \emph{associative}, that is, $f_{1} \bm{\times} (f_{2} \bm{\times} \mathbf{v_{1}}) = (f_{1} \ast f_{2}) \bm{\times} \mathbf{v_{1}}$;
     \item The binary operation \emph{$\bm{\times}$ left distributes over $\bm{+}$}, that is, we must have that $f_{1} \bm{\times} (\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{1} \bm{\times} \mathbf{v_{2}})$;
     \item The binary operation \emph{$\bm{+}$ left distributes over $\bm{\times}$}, that is, we must have that $(f_{1} + f_{2}) \bm{\times} \mathbf{v_{1}} = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{2} \bm{\times} \mathbf{v_{1}})$.
   \end{enumerate}
@@ -244,6 +244,8 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
   \end{align*}
 \end{definition}
 
+We give other useful traits of a vector space before returning to polynomial maps.
+
 \begin{definition}
   Given a vector space $(V, \bm{+}, \bm{\times})$ over $\mathbb{F}$, $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$ and $f_{1}, \dots, f_{n} \in \mathbb{F}$, if the unique solution for the linear combination $f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} = 0$ is $f_{1} = \cdots = f_{n} = 0$, then the vectors $\mathbf{v_{1}}, \dots, \mathbf{v_{n}}$ are said to be \emph{linearly independent}.
 \end{definition}
@@ -254,7 +256,7 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
 
 There always exists at least one basis for a vector space~\cite{}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. Furthermore, all bases have the same number of elements~\cite{}, which is called the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
-Oftentimes it is useful to perform a change of basis to interpret vectors with different criteria. This is an example of an endomorphism, a function from a vector space to itself. However, there are restrictions to such functions in order to ``preserve'' the binary operations of the vector spaces. The general form of a mapping between vector spaces is given below.
+Oftentimes it is useful to perform a change of basis to interpret vectors with different criteria. This is an example of a function from a vector space to itself. However, there are restrictions to such functions in order to ``preserve'' the binary operations of the vector spaces. The general form of a mapping between vector spaces is given below.
 
 \begin{definition}
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
