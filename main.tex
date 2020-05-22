@@ -236,7 +236,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-uples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$. We can thus recall Definition~\ref{} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-uples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{} and create a function of several polynomials.
 
 \begin{definition}
   Given $n, m \in \mathbb{N}$, a finite field $\mathbb{F}$ and $p_{1}, \dots, p_{m} \in \mathbb{F}[x_{1}, \dots, x_{n}]$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
@@ -262,7 +262,7 @@ We give other useful traits of a vector space before returning to polynomial map
 
 There always exists at least one basis for a vector space~\cite{}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. Furthermore, all bases have the same number of elements~\cite{}, which is called the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
-Oftentimes it is useful to perform a change of basis to interpret vectors with different criteria. This is an example of a function from a vector space to itself. However, there are restrictions to such functions in order to ``preserve'' the binary operations of the vector spaces. The general form of a mapping between vector spaces is given below.
+Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations. The general form of such functions is presented below.
 
 \begin{definition}
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
