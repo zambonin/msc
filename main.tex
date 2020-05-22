@@ -231,12 +231,10 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
 \end{definition}
 
 \begin{definition}
-  Given a vector space and $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$, the set of all linear combinations $f_{1} \cdot \mathbf{v_{1}} \oplus \dots \oplus f_{n} \cdot \mathbf{v_{n}}$, where each $f_{i}, \dots, f_{n}$ is any element in $\mathbb{F}$, is called the \emph{linear span}.
+  Given a vector space and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \cdot \mathbf{v_{1}} \oplus \dots \oplus f_{n} \cdot \mathbf{v_{n}} \mid \forall f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is called the \emph{linear span}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is called a \emph{basis of the vector space}.
 \end{definition}
 
-\begin{definition}
-  Given a vector space and $B \subseteq V$, if the elements of $B$ are linearly independent and the linear span of $B$ is $V$, then $B$ is called a \emph{basis of the vector space}.
-\end{definition}
+There always exists at least one basis for a vector space~\cite{}. It is a compact way of representing the entire set of vectors.
 
 % topics for tomorrow: polynomial maps, vector spaces
 % topics for later: matrices, general linear group, agl, matrix representations of certain polynomials
