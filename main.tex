@@ -251,13 +251,15 @@ There always exists at least one basis for a vector space~\cite{}. Indeed, it is
 Oftentimes it is useful to perform a change of basis to interpret vectors with different criteria. This is an example of an endomorphism, a function from a vector space to itself. However, there are restrictions to such functions in order to ``preserve'' the binary operations of the vector spaces. The general form of a mapping between vector spaces is given below.
 
 \begin{definition}
-  Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$, any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
+  Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
   
   \begin{enumerate}
     \item The \emph{addition operation is preserved}, that is, we must have that $\varphi(\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = \varphi(\mathbf{v_{1}}) \bm{+'} \varphi(\mathbf{v_{2}})$;
     \item The \emph{scalar multiplication operation is preserved}, that is, we must have that $\varphi(f_{1} \bm{\times} \mathbf{v_{1}}) = f_{1} \bm{\times'} \varphi(\mathbf{v_{1}})$.
   \end{enumerate}
 \end{definition}
+
+As mentioned previously, if a linear transformation is of the form $\varphi : \mathbf{V} \to \mathbf{V}$, it is an endomorphism. If $\dim V = \dim W$, then $\varphi$ may be invertible. In other words, given the trivial endomorphism $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$, there may exist a function $\varphi^{-1} : \mathb{}$
 
 % The usual arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. In fact, several structures previously defined can also be represented as matrices, which is useful when performing calculations with relatively abstract elements such as polynomials.
 
