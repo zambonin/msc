@@ -268,7 +268,7 @@ We give other useful traits of a vector space before returning to polynomial map
 
 There always exists at least one basis for a vector space~\cite{}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. Furthermore, all bases have the same number of elements~\cite{}, which is called the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
-Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations. The general form of such functions is presented below.
+Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to homomorphisms. The general form of such functions is presented below.
 
 \begin{definition}
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
@@ -279,7 +279,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate}
 \end{definition}
 
-As mentioned previously, if a linear transformation is of the form $\varphi : \mathbf{V} \to \mathbf{V}$, it is an endomorphism. The trivial example is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. If additionally $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist a function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. In this case, $\varphi$ is invertible and called an isomorphism. An endomorphism $\varphi$ that is also an isomorphism is called an automorphism.
+A trivial example is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. If additionally $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{} is analogous in the setting of vector spaces.
 
 % The usual arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. In fact, several structures previously defined can also be represented as matrices, which is useful when performing calculations with relatively abstract elements such as polynomials.
 
