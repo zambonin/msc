@@ -227,7 +227,15 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
 Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. Given $c \in \mathbb{N}$, if members of $V$ are $c$-uples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$. We can thus recall Definition~\ref{} and create a function of several polynomials.
 
 \begin{definition}
-  Given $n, m \in \mathbb{N}$ and a finite field $\mathbb{F}$, a \emph{polynomial map} $p : \mathbb{F}^{n} \times \mathbb{F}^{m}$
+  Given $n, m \in \mathbb{N}$, a finite field $\mathbb{F}$ and $p_{1}, \dots, p_{m} \in \mathbb{F}[x_{1}, \dots, x_{n}]$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
+  \begin{align*}
+    j(x_{1}, \dots, x_{n}) =
+    \begin{cases}
+      p_{1}(x_{1}, \dots, x_{n}) \\
+      \quad \vdots \\
+      p_{m}(x_{1}, \dots, x_{n}).
+    \end{cases}
+  \end{align*}
 \end{definition}
 
 \begin{definition}
