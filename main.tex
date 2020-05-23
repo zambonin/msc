@@ -11,14 +11,9 @@
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
-\newtheorem{theorem}{Theorem}
-
-\newtheorem{lemma}{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-
-\theoremstyle{remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem*{remark}{Remark}
 
 \begin{document}
@@ -74,7 +69,8 @@ The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge
 
 A strategy analogous to a manipulation between base and extension fields is given in~\cite{Petzoldt:201109}. The resulting scheme is called 0/1 UOV, since coefficients of the public key are in $\mathbb{F}_{2}$. The proposal consists of creating the matrix associated with the structured part of the key according to a graph structure. Such graph describes a relationship of coefficients that, while sparse, does not facilitate known attacks over UOV, reducing the public key size by up to $88.6\%$. However, it is unknown if this proposal can be extended to Rainbow.
 
-The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic UOV. It is featured on the Rainbow submission for the second round of the standardization process conducted by NIST~\cite{Ding:201901}. It reduces public keys by up to $53.8\%$, and the associated key generation algorithm is comparably efficient to Rainbow~\cite{Petzoldt:202004}. Another strategy is the usage of linear recurring sequences to generate such unimportant parts of the public key. It is summarized in two works~\cite{Petzoldt:201103,Petzoldt:201211} and reduces public keys by up to $56.6\%$. 
+The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic UOV. It is featured on the Rainbow submission for the second round of the standardization process conducted by NIST~\cite{Ding:201901}. It reduces public keys by up to $53.8\%$, and the associated key generation algorithm is comparably efficient to Rainbow~\cite{Petzoldt:202004}. Another strategy is the usage of linear recurring sequences to generate such unimportant parts of the public key. It is summarized in two works~\cite{Petzoldt:201103,Petzoldt:201211} and reduces public keys by up to $56.6\%$.
+
 \subsection{Improvements to total key pair size}\label{subsec:both}
 
 Additionally, there are works in the literature which manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and the ``minus'' method~\cite[Subsection 3.2.1]{Wolf:200511} is applied to the public key, of which the last $\delta$ equations are removed. Precisely $m (m + 1)$ field elements are removed in the private key, and a reduction factor of $1 - \frac{\delta}{m}$ is achieved on the public key. 
