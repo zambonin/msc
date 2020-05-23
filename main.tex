@@ -12,7 +12,7 @@
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem*{remark}{Remark}
@@ -91,7 +91,7 @@ It is evident that there have been commendable efforts in the creation, validati
 
 In this chapter, we introduce the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{sec:algebra}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{sec:mult}, we introduce the general bipolar construction of multivariate cryptography and properly define a multivariate signature scheme, with a discussion of its underlying problems. In Section~\ref{sec:ov}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
 
-We use the following symbols throughout this work. The symbol $\random{}$ is read as ``chosen randomly from''. The symbol $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements up to context is given by $\mid\mid$.
+We use the following symbols throughout this work. The symbol $\random$ is read as ``chosen randomly from''. The symbol $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements up to context is given by $\mid\mid$.
 
 \section{Algebraic structures}\label{sec:algebra}
 
@@ -138,9 +138,9 @@ Oftentimes it is convenient to interpret elements as those of a different group.
   Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, then it is invertible, or called an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is an isomorphism and an endomorphism at the same time, it is called an \emph{automorphism}.
 \end{definition}
 
-\begin{lemma}[~\cite{}]\label{lemma:autgroup}
+\begin{proposition}[~\cite{}]\label{prop:autgroup}
   Given a group $\mathsf{G}$, the set of all automorphisms carrying the usual function composition binary operation forms a group, denoted $\mathsf{Aut}(\mathsf{G})$.
-\end{lemma}
+\end{proposition}
 
 Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
 
@@ -284,13 +284,13 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{def:morph} and Lemma~\ref{lemma:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
-\begin{lemma}[~\cite{}]
+\begin{proposition}[~\cite{}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$ be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
-\end{lemma}
+\end{proposition}
 
-We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work.
+We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work.
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
@@ -343,7 +343,7 @@ form
 The central map of Rainbow is defined as
 $\mathcal{F} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with the
 following construction: for each layer $1 \leq l \leq u$, we have
-$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random{} P_{l}$, where the random choice means all
+$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, where the random choice means all
 coefficients chosen randomly,
 and $\mathcal{F} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
 variables in a layer contains all variables from the previous layer, this
@@ -453,7 +453,7 @@ of any Rainbow variants that disallow this practice. Thus, $\mathcal{S}$,
 $\mathcal{F}$ and $\mathcal{T}$, as well as the public key
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
 through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
-set $\widetilde{V}_{1} \random{} \mathbb{F}$, and substitute these into
+set $\widetilde{V}_{1} \random \mathbb{F}$, and substitute these into
 $\mathcal{F}$, giving $\mathcal{F}'$. According to
 Subsection~\ref{subsec:invert}, in the rare case that a
 failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
@@ -515,7 +515,7 @@ the scheme~\cite{}, due to the fact that they are not multiplied with quadratic 
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
-$\widetilde{V}_{1} \random{} \mathbb{F}$ into $\mathcal{F}$, giving
+$\widetilde{V}_{1} \random \mathbb{F}$ into $\mathcal{F}$, giving
 $\mathcal{F'}$. By the relations above, one is able to reconstruct
 $\mathcal{F}$ with no additional mechanisms if the central map inversion
 algorithm fails. The private key of Rainbow-$\eta_{2}$ is
@@ -575,7 +575,7 @@ $(\mathcal{P}, w)$.
 
 \subsubsection{Signature generation.}
 
-Let $r \random{} {\{0, 1\}}^{w}$. The digest value is calculated as
+Let $r \random {\{0, 1\}}^{w}$. The digest value is calculated as
 $\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
 message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
 the rare case that the $x = \mathcal{F}'(y)$ preimage calculation does not
@@ -715,7 +715,7 @@ probability, where the first $v_{1}$ elements of any $y$ are the same.
 
 We observe the distribution of field elements in vectors after the final
 function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
-$Z'_{t} = (z_{1}, \dots, z_{t}) \random{} \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
+$Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
 a $t$-uple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
 When part of the vector $y$ is fixed, we instead denote these by
@@ -866,7 +866,7 @@ Although there are no known attacks that make use of this technique, it is
 possible that there may exist information leaks when applying our methods to
 Rainbow-like schemes.
 
-\paragraph{} We do not discard the possibility that specialized attacks exist,
+We do not discard the possibility that specialized attacks exist,
 particularly ones that take in account multiple signatures, due to our fixing
 of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
 that signatures generated by our method are comparably random with respect to
