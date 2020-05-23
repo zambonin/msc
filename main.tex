@@ -326,7 +326,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
   \end{align}
 \end{definition}
 
-As mentioned in Section~\ref{sec:algebra}, division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
+We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
 
 \begin{definition}
   Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by letting $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$.
@@ -334,7 +334,11 @@ As mentioned in Section~\ref{sec:algebra}, division of polynomials in a multivar
 
 The definition above amounts to ordering monomials according to their associated $n$-uples of exponents, which is relatively intuitive. There are several examples of ordering strategies~\cite{}. For instance, lexicographic ordering, more commonly known as the ``dictionary ordering'', compares the exponents of $x_{1}$ and only if they are equal it compares exponents of $x_{2}$, and so on. Graded lexicographic ordering sums the exponents of all monomials and uses lexicographic ordering as the tie-breaker.
 
-In the context of multivariate cryptography, monomial ordering is used to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. 
+In the context of multivariate cryptography, monomial ordering is used to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. As seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is helpful in understanding and even attacking some cryptosystems. 
+
+\begin{definition}
+  
+\end{definition}
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
