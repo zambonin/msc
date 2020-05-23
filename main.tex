@@ -43,7 +43,7 @@ A similar idea introduced at roughly the same time are stepwise triangular syste
 
 STS and TTS were later found to be specialized cases of the general Rainbow construction~\cite{Ding:200806}, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as further cryptanalysis of Rainbow itself~\cite{Billet:200609} with the MinRank attack, led to the proposal of new parameters for TTS and Rainbow~\cite{Ding:200806}. This was achieved through the creation of the Rainbow band separation attack, an extension of the UOV reconciliation attack. Further modifications were suggested to salvage the previous schemes~\cite{Tsujii:201005}, but every such variant was broken through a key recovery attack~\cite{Thomae:201207} which stems from the generalization of the theory of equivalent keys.
 
-Equivalent keys are explained in more detail in Section~\ref{}, in which it is shown that the bipolar construction leads to a large amount of redundancy in the key space. Indeed, this fact is usually applied to find inconsistencies in the security of proposed schemes, as seen in this section. However, a consequence of this theory is that the associated matrices of the affine transformations that hide the central map structure may be thoroughly simplified. This is explored in~\cite{Czypek:201209}, for instance, to insert instances of UOV and Rainbow into low-resource devices.
+Equivalent keys are explained in more detail in Section~\ref{subsec:bipolar}, in which it is shown that the bipolar construction leads to a large amount of redundancy in the key space. Indeed, this fact is usually applied to find inconsistencies in the security of proposed schemes, as seen in this section. However, a consequence of this theory is that the associated matrices of the affine transformations that hide the central map structure may be thoroughly simplified. This is explored in~\cite{Czypek:201209}, for instance, to insert instances of UOV and Rainbow into low-resource devices.
 
 We note that in the case of STS and TTS, reducing the private key was not the main intention of the authors, and it is thus not trivial to estimate such gains through direct comparison to Rainbow. Indeed, the reduction of keys is a known strategy to increase the performance of operations on signatures. On the other hand, there are several proposals in the literature which focus on the modification of Rainbow with the sole purpose of reducing key sizes. This motivation partially stems from recent efforts to present quantum-safe cryptography as a valid alternative to traditional digital signature schemes~\cite{Bernstein:2008}.
 
@@ -67,7 +67,7 @@ A development by the name of BACUOV~\cite{Szepieniec:201908} forces matrices rep
 
 We also classify the work in~\cite{Szepieniec:201706} as relevant, since it is a general method motivated by the context of public key infrastructures, in which the size of a public key and signature bundle must be minimized. The strategy, which consists of a trade-off between signature and public key sizes with their combined length still reduced, was initially proposed for multivariate trapdoors, and subsequently generalized~\cite{Beullens:201808} to work in different security models and other signature schemes.
 
-The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{}. Schemes that make use of this framework are discussed below. 
+The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{subsec:scheme}. Schemes that make use of this framework are discussed below. 
 
 % This framework is also featured in some of the works previously described in Subsection~\ref{}. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance. Furthermore, key generation procedures in schemes that make use of these mathematical relations are inefficient when compared to Rainbow.
 
@@ -89,7 +89,7 @@ It is evident that there have been commendable efforts in the creation, validati
 
 \chapter{Mathematical background}\label{chapter:math}
 
-In this chapter, we introduce the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{}, we introduce the general bipolar construction of multivariate cryptography and properly define a multivariate signature scheme, with a discussion of its underlying problems. In Section~\ref{}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
+In this chapter, we introduce the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{sec:algebra}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{sec:mult}, we introduce the general bipolar construction of multivariate cryptography and properly define a multivariate signature scheme, with a discussion of its underlying problems. In Section~\ref{sec:ov}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
 
 We use the following symbols throughout this work. The symbol $\random{}$ is read as ``chosen randomly from''. The symbol $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements up to context is given by $\mid\mid$.
 
@@ -292,9 +292,9 @@ Such functions between coordinate spaces are usually represented by polynomial m
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work.
 
-\section{Multivariate signature schemes}
+\section{Multivariate signature schemes}\label{sec:mult}
 
-\subsection{Bipolar construction}
+\subsection{Bipolar construction}\label{subsec:bipolar}
 
 \subsection{Underlying problems}
 
@@ -302,7 +302,7 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 % \subsection{Digital signature schemes}
 
-\section{The Oil--Vinegar trapdoor}
+\section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
 \subsection{Unbalanced Oil and Vinegar signature scheme}
 
