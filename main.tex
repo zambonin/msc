@@ -298,14 +298,18 @@ With the pure mathematical machinery defined, we now introduce the building bloc
 
 Most modern multivariate cryptography schemes are based on multivariate quadratic equations over finite fields, that is, polynomial systems with $\deg(\cdot) = 2$. We discuss this choice in Subsection~\ref{}.
 The general form of such a polynomial system is
-
 \begin{align}
   \begin{split}
     \begin{cases}
-      p_{1}(x_{1}, \dots, x_{n}) =& \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij} x_{i} x_{j}
-        + \sum_{i = 1}^{n} \beta_{i} x_{i} + \gamma, \\
+      p^{(1)}(x_{1}, \dots, x_{n}) = 
+        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
+          + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \gamma^{(1)} \\
+      \quad \vdots \\
+      p^{(m)}(x_{1}, \dots, x_{n}) = 
+        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
+          + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \gamma^{(m)},
     \end{cases} \\
-    x_{i}, x_{j}, \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}.
+    \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}.
   \end{split}
 \end{align}
 
