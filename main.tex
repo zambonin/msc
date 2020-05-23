@@ -201,11 +201,11 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply summing the coefficients of monomials with the same product of variables, that is, $\sum_{i}^{k} a_{i} x^{i} + \sum_{i}^{k} b_{i} x^{i} = \sum_{i}^{k} (a_{i} + b_{i}) x^{i}$. Multiplication is calculated through repeated applications of the distributive law, and the resulting polynomial has the sum of the degrees of the factors. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends. This allows us to define the following structure.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\textsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring}, denoted $\textsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring}, denoted $\textsf{R}[x_{1}, \dots, x_{n}]$ or $\textsf{R}[\textbf{x}]$.
+  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring}, denoted $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring}, denoted $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
 \end{definition}
 
 \begin{definition}
-  Given $p_{1}, p_{2}, p_{3} \in \textsf{R}[\textbf{x}]$ with $p_{1} = p_{2} \cdot p_{3}$, if $\deg(p_{1}) > 0$ and either $\deg(p_{2}) = 0$ or $\deg(p_{3}) = 0$, then $p_{1}$ is an \emph{irreducible polynomial}.
+  Given $p_{1}, p_{2}, p_{3} \in \mathsf{R}[\mathsf{x}]$ with $p_{1} = p_{2} \cdot p_{3}$, if $\deg(p_{1}) > 0$ and either $\deg(p_{2}) = 0$ or $\deg(p_{3}) = 0$, then $p_{1}$ is an \emph{irreducible polynomial}.
 \end{definition}
 
 We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
@@ -216,12 +216,12 @@ We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.
 
 Finite fields of the form $\mathbb{F}_{2^{l}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
-We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are called the \emph{variables} of the function $p(\textbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\textbf{x}) = 0$, if they exist, are called the zeros of the function or the \emph{roots} of a polynomial. 
+We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are called the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are called the zeros of the function or the \emph{roots} of a polynomial. 
 
 Usually several polynomials are used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
-  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\textbf{x}) = 0, \dots, p^{(m)}(\textsf{x}) = 0$, usually denoted
+  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, usually denoted
   \begin{align*}
     \begin{cases}
       p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
@@ -284,7 +284,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p. 418, Cor. 14]{Dummit:2003}}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$ be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
@@ -302,8 +302,8 @@ We note that public keys in multivariate cryptography are polynomial systems wit
   Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is called the \emph{polynomial system solving problem}.
 \end{definition}
 
-\begin{theorem}[{~\cite{}}]
-  Given $n, m \in \mathbb{N}$, $\mathbf{x} = x_{1}, \dots, x_{n}$, a polynomial ring $\mathbb{F}_{2}[\mathbf{x}]$ and $p^{(1)}, \dots, p^{(m)} \in $, finding $p^{(1)} = 0, \dots, p^{(m)} = 0$ is NP-hard.
+\begin{theorem}[{\cite{Fraenkel:197909:article}}]
+  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete.
 \end{theorem}
 
 We start by introducing which polynomials are chosen in this context and how they interact to hide secret information and create a cryptosystem.
