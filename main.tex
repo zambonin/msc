@@ -23,6 +23,8 @@
 
 \begin{document}
 
+\tableofcontents
+
 \chapter{Introduction}\label{chapter:intro}
 
 % TODO write some pages here introducing the subject and problems
@@ -584,6 +586,8 @@ The size of the private and public keys increase in exactly one element due to
 the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
 
+\section{Statistical argument}
+
 \subsection{Invertibility of $\mathcal{F}$}\label{subsec:invert}
 
 Recall that, to create a Rainbow signature, the central map $\mathcal{F}$ needs
@@ -977,6 +981,10 @@ suitable.  This process is not without cost, and it may negatively affect the
 average signature generation time. Still, by making use of Rainbow-$\eta_{3}$,
 these computations are entirely avoided by choosing a new salt instead of new
 vinegar variables, reducing the inherent overhead.
+
+\chapter{Conclusion}
+
+\section{Future work}
 
 \bibliographystyle{alpha}
 \bibliography{ref}
