@@ -134,11 +134,11 @@ Oftentimes it is convenient to interpret elements as those of a different group.
   Given two groups $\mathsf{G} = (G, \star)$ and $\mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if we have that $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:morph}
   Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, then it is invertible, or called an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is an isomorphism and an endomorphism at the same time, it is called an \emph{automorphism}.
 \end{definition}
 
-\begin{lemma}[~\cite{}]
+\begin{lemma}[~\cite{}]\label{lemma:autgroup}
   Given a group $\mathsf{G}$, the set of all automorphisms carrying the usual function composition binary operation forms a group, denoted $\mathsf{Aut}(\mathsf{G})$.
 \end{lemma}
 
@@ -284,7 +284,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definitions~\ref{} and~\ref{} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\textsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\textsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \textsf{id}$. We remark that Definition~\ref{def:morph} and Lemma~\ref{lemma:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\textsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{lemma}[~\cite{}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$ be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
@@ -434,7 +434,7 @@ linear relations between the maps.
 This division of improvements is blurred by our proposal. We present general
 methods based on different techniques that shorten private keys in all
 Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$ and use
-the same definitions as in Subsection~\ref{}, further denoting
+the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting
 the vinegar variables for the first layer as
 $\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
 
