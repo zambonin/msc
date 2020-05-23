@@ -191,7 +191,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, the expression $$\sum_{i = 0}^{k} a_{i} x^{i} = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}$$ is called an \emph{univariate polynomial}. Each of the terms in the summation is called a \emph{monomial}, or \emph{monic monomial} if $a_{i} = 1$.
+  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, the expression $$\sum_{i = 0}^{k} a_{i} x^{i} = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}$$ is called an \emph{univariate polynomial}. Each of the terms in the summation is called a \emph{monomial}.
 \end{definition}
 
 \begin{definition}
@@ -208,7 +208,7 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
   Given $p_{1}, p_{2}, p_{3} \in \textsf{R}[\textbf{x}]$ with $p_{1} = p_{2} \cdot p_{3}$, if $\deg(p_{1}) > 0$ and either $\deg(p_{2}) = 0$ or $\deg(p_{3}) = 0$, then $p_{1}$ is an \emph{irreducible polynomial}.
 \end{definition}
 
-We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. However, in the context of multivariate polynomial rings, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we attach further structure to the ring in order to make this clear.
+We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. However, in the context of multivariate polynomial rings, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we take a short detour to make this clear by attaching further structure to the ring.
 
 \begin{definition}
   
