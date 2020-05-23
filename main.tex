@@ -306,7 +306,6 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 \subsection{Unbalanced Oil and Vinegar signature scheme}
 
-% TODO finite field notation is a bit weak
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
 % TODO add figures
@@ -453,7 +452,7 @@ of any Rainbow variants that disallow this practice. Thus, $\mathcal{S}$,
 $\mathcal{F}$ and $\mathcal{T}$, as well as the public key
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
 through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
-set $\widetilde{V}_{1} \random \mathbb{F}$, and substitute these into
+set $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$, and substitute these into
 $\mathcal{F}$, giving $\mathcal{F}'$. According to
 Subsection~\ref{subsec:invert}, in the rare case that a
 failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
@@ -515,7 +514,7 @@ the scheme~\cite{}, due to the fact that they are not multiplied with quadratic 
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
-$\widetilde{V}_{1} \random \mathbb{F}$ into $\mathcal{F}$, giving
+$\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{F}$, giving
 $\mathcal{F'}$. By the relations above, one is able to reconstruct
 $\mathcal{F}$ with no additional mechanisms if the central map inversion
 algorithm fails. The private key of Rainbow-$\eta_{2}$ is
