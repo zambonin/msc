@@ -296,7 +296,11 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. 
 
-We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. Thus, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the scheme. It is thus crucial that solving random instances of polynomial systems is computationally hard.
+We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. Thus, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the scheme. It is thus crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
+
+\begin{definition}
+  Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is called the \emph{polynomial system solving problem}.
+\end{definition}
 
 
 We start by introducing which polynomials are chosen in this context and how they interact to hide secret information and create a cryptosystem.
