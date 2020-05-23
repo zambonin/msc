@@ -221,12 +221,12 @@ We remark that a polynomial by itself is simply a mathematical expression, but t
 Usually several polynomials are used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
-  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p_{1}(\textbf{x}) = 0, \dots, p_{m}(\textsf{x}) = 0$, usually denoted
+  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\textbf{x}) = 0, \dots, p^{(m)}(\textsf{x}) = 0$, usually denoted
   \begin{align*}
     \begin{cases}
-      p_{1}(x_{1}, \dots, x_{n}) &= 0 \\
+      p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
       \quad \vdots \\
-      p_{m}(x_{1}, \dots, x_{n}) &= 0.
+      p^{(m)}(x_{1}, \dots, x_{n}) &= 0.
     \end{cases}
   \end{align*}
   If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
@@ -250,13 +250,13 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
 Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-uples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}
-  Given $n, m \in \mathbb{N}$, a finite field $\mathbb{F}$ and $p_{1}, \dots, p_{m} \in \mathbb{F}[x_{1}, \dots, x_{n}]$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
+  Given $n, m \in \mathbb{N}$, a finite field $\mathbb{F}$ and $p^{(1)}, \dots, p^{(m)} \in \mathbb{F}[x_{1}, \dots, x_{n}]$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
   \begin{align*}
     j(x_{1}, \dots, x_{n}) =
     \begin{cases}
-      p_{1}(x_{1}, \dots, x_{n}) \\
+      p^{(1)}(x_{1}, \dots, x_{n}) \\
       \quad \vdots \\
-      p_{m}(x_{1}, \dots, x_{n}).
+      p^{(m)}(x_{1}, \dots, x_{n}).
     \end{cases}
   \end{align*}
 \end{definition}
@@ -302,10 +302,10 @@ The general form of such a polynomial system is
 \begin{align}
   \begin{split}
     \begin{cases}
-      p_{1}(x_{1}, \dots, x_{n}) =& \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
-        + \sum_{i \in V_{l} \cup O_{l}} \beta{i} \cdot x_{i} + \gamma, \\
+      p_{1}(x_{1}, \dots, x_{n}) =& \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij} x_{i} x_{j}
+        + \sum_{i = 1}^{n} \beta_{i} x_{i} + \gamma, \\
     \end{cases} \\
-    \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}.
+    x_{i}, x_{j}, \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}.
   \end{split}
 \end{align}
 
