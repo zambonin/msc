@@ -8,6 +8,7 @@
 
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \newcommand{\random}{\stackrel{\$}{\longleftarrow}}
 
 \newtheorem{theorem}{Theorem}
@@ -341,8 +342,8 @@ invertible maps, used as the trapdoor to this construction. Let
 $\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
 $\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
 The private key is the triple
-$\mathcal{K}_{Pr} = (\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
-$\mathcal{K}_{Pu} = \mathcal{P}$.
+$\mathsf{sk} = (\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
+$\mathsf{pk} = \mathcal{P}$.
 % this can expanded removing what we _know_ to be extraneous
 
 \subsubsection{Signature generation.}
@@ -369,14 +370,14 @@ the signature is valid, and otherwise invalid.
 
 Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
-  \#\mathbf{sk} = \underbrace{m^{2} + m}_{\mathcal{S}} 
+  \sharp\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{S}} 
     + \underbrace{n^{2} + n}_{\mathcal{T}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
       + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}}.
 \end{align}
 The size of a public key is the number of coefficients of $m$ polynomials in the polynomial ring $\mathbb{F}_{q}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for a degree $d \in \mathbb{N}$. In the case of Oil--Vinegar polynomials, we have $d = 2$, and thus
 \begin{align}
-  |\mathcal{K}_{Pu}| = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
+  \sharp\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
 \end{align}
 Further details on the construction of Rainbow may be found
 on~\cite[Section 3.3]{Ding:2006}.
@@ -529,7 +530,7 @@ valid, and invalid otherwise.
 By making the first layer linear and substituting the remaining variables, the
 size of the private key is now
 \begin{multline}
-  |\mathcal{K}_{Pr}^{\eta}| = \underbrace{v_{1}}_{\widetilde{V}_{1}}
+  \sharp\mathsf{pk}^{\eta} = \underbrace{v_{1}}_{\widetilde{V}_{1}}
     + \underbrace{m^{2} + m}_{\mathcal{S}}
     + \underbrace{n^{2} + n}_{\mathcal{T}} \\
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
@@ -731,7 +732,7 @@ theoretical standard deviation.
 \end{figure}
 
 Let us denote the absolute difference between standard deviations for a value
-$t$ as $d_{\sigma}^{t} = \abs(\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t}))$.
+$t$ as $d_{\sigma}^{t} = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$.
 Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
 and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
 fields of higher orders and lower $t$. For instance, given the vector space
@@ -881,7 +882,7 @@ accidental endorsement of untested, and possibly insecure, instances.
   \caption{Reduction of Rainbow key sizes, in bytes, for various instances of the scheme.}\label{tab:1}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-    Instance & Parameters & $n$ & $m$ & $\#\mathbf{sk}$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & Difference \\ \midrule
+    Instance & Parameters & $n$ & $m$ & $\sharp\mathsf{sk}$ & $\sharp\mathsf{sk}$ & Difference \\ \midrule
     I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &   96 &   64 &   100208 &   33152 & $-66.92\%$ \\
     I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &   92 &   56 &   114308 &   31676 & $-72.29\%$ \\
     I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &   88 &   48 &   143384 &   33024 & $-76.97\%$ \\
@@ -934,7 +935,7 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-    Instance & Parameters & Variant & $\#\mathbf{sk}$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & $|\mathcal{K}_{Pu}|$ & Difference \\ \midrule
+    Instance & Parameters & Variant & $\sharp\mathsf{sk}$ & $\sharp\mathsf{pk}^{\eta}$ & $\sharp\mathsf{pk}$ & Difference \\ \midrule
     \multirow{3}{*}{P-080}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
                             &                                                    &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
                             &                                                    &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
@@ -948,11 +949,11 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \end{tabular}
 \end{table}
 
-We compare the total key pair sizes $\#\mathbf{sk} + |\mathcal{K}_{Pu}|$
+We compare the total key pair sizes $\sharp\mathsf{sk} + \sharp\mathsf{pk}$
 when our method is used alongside Rainbow variants that reduce the public key
 size. Table~\ref{tab:2} shows the quantity of field elements for sets of
 parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307}. We calculate
-$|\mathcal{K}_{Pu}|$ for the variants according to Equations 9.2 and 9.4 of the
+$\sharp\mathsf{pk}$ for the variants according to Equations 9.2 and 9.4 of the
 same work, and as per its Remark 9.1, we note that $q = 16$ and $q = 31$ are not
 considered due to a security restriction of RainbowLRS2. We obtain positive
 results, with key pair size reductions of up to factors of 3 and no security
