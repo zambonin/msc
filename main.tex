@@ -88,7 +88,7 @@ It is evident that there have been commendable efforts in the creation, validati
 
 In this chapter, we introduce the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{}, we introduce the general bipolar construction of multivariate cryptography. In Section~\ref{}, we properly define a multivariate digital signature scheme, with a discussion on its underlying problems. In Section~\ref{}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
 
-We use the following symbols throughout this work. The symbol $\random{}$ is read as ``chosen randomly from'', and $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The cardinality of a set $S$ is given by $|S|$. This notation may also be used as the absolute value of an integer, if applicable. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements is given by $\mid\mid$.
+We use the following symbols throughout this work. The symbol $\random{}$ is read as ``chosen randomly from'', and $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The cardinality of a set $S$ is given by $|S|$. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements is given by $\mid\mid$.
 
 \section{Algebraic structures}\label{sec:algebra}
 
@@ -369,7 +369,7 @@ the signature is valid, and otherwise invalid.
 
 Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
-  |\mathcal{K}_{Pr}| = \underbrace{m^{2} + m}_{\mathcal{S}} 
+  \#\mathbf{sk} = \underbrace{m^{2} + m}_{\mathcal{S}} 
     + \underbrace{n^{2} + n}_{\mathcal{T}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
       + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}}.
@@ -731,7 +731,7 @@ theoretical standard deviation.
 \end{figure}
 
 Let us denote the absolute difference between standard deviations for a value
-$t$ as $d_{\sigma}^{t} = |\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})|$.
+$t$ as $d_{\sigma}^{t} = \abs(\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t}))$.
 Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
 and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
 fields of higher orders and lower $t$. For instance, given the vector space
@@ -881,7 +881,7 @@ accidental endorsement of untested, and possibly insecure, instances.
   \caption{Reduction of Rainbow key sizes, in bytes, for various instances of the scheme.}\label{tab:1}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-    Instance & Parameters & $n$ & $m$ & $|\mathcal{K}_{Pr}|$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & Difference \\ \midrule
+    Instance & Parameters & $n$ & $m$ & $\#\mathbf{sk}$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & Difference \\ \midrule
     I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &   96 &   64 &   100208 &   33152 & $-66.92\%$ \\
     I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &   92 &   56 &   114308 &   31676 & $-72.29\%$ \\
     I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &   88 &   48 &   143384 &   33024 & $-76.97\%$ \\
@@ -934,7 +934,7 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-    Instance & Parameters & Variant & $|\mathcal{K}_{Pr}|$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & $|\mathcal{K}_{Pu}|$ & Difference \\ \midrule
+    Instance & Parameters & Variant & $\#\mathbf{sk}$ & $|\mathcal{K}_{Pr} ^{\eta}|$ & $|\mathcal{K}_{Pu}|$ & Difference \\ \midrule
     \multirow{3}{*}{P-080}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
                             &                                                    &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
                             &                                                    &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
@@ -948,7 +948,7 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \end{tabular}
 \end{table}
 
-We compare the total key pair sizes $|\mathcal{K}_{Pr}| + |\mathcal{K}_{Pu}|$
+We compare the total key pair sizes $\#\mathbf{sk} + |\mathcal{K}_{Pu}|$
 when our method is used alongside Rainbow variants that reduce the public key
 size. Table~\ref{tab:2} shows the quantity of field elements for sets of
 parameters from Petzoldt~\cite[Table 9.8]{Petzoldt:201307}. We calculate
