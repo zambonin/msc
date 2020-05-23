@@ -208,9 +208,7 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
   Given $p_{1}, p_{2}, p_{3} \in \textsf{R}[\textbf{x}]$ with $p_{1} = p_{2} \cdot p_{3}$, if $\deg(p_{1}) > 0$ and either $\deg(p_{2}) = 0$ or $\deg(p_{3}) = 0$, then $p_{1}$ is an \emph{irreducible polynomial}.
 \end{definition}
 
-We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}.
-
-However, in the context of multivariate polynomial rings, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. This concept is defined in the context of multivariate cryptography in Section~\ref{sec:mult}. We are now ready to define non-prime fields.
+We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
   Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = l$, then the finite field $\mathbb{F}_{q^{l}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $p$.
@@ -298,15 +296,13 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 With the pure mathematical machinery defined, we now introduce the building blocks to create a generic digital signature scheme based on multivariate polynomial equations.
 
-As mentioned in Section~\ref{sec:algebra}, division of multivariate polynomials is ambiguous if a structure is not given to order monomials.
-
-not used in the definition of a non-prime field, but it is a pervasive concept in other aspects of multivariate cryptography. Thus, we take a short detour to make this clear by generalizing the aforementioned ordering for multivariate polynomials. 
+As mentioned in Section~\ref{sec:algebra}, division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
 
 \begin{definition}
   Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by letting $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$.
 \end{definition}
 
-The definition above amounts to ordering monomials according to their associated $n$-uples of exponents, which is more intuitive. 
+The definition above amounts to ordering monomials according to their associated $n$-uples of exponents, which is more intuitive. Lexicographic ordering compares the exponents of $x_{1}$ and only if they are equal it compares exponents of $x_{2}$. 
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
