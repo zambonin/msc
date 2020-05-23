@@ -296,9 +296,11 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 \subsection{Bipolar construction}
 
-\subsection{Cryptographic hash functions}
+\subsection{Underlying problems}
 
-\subsection{Digital signature schemes}
+% \subsection{Cryptographic hash functions}
+
+% \subsection{Digital signature schemes}
 
 \section{The Oil--Vinegar trapdoor}
 
@@ -795,13 +797,15 @@ We have found experimentally that the lowest precision parameter $r = 1$ is stil
     $\mathbb{F}_{256}^{90}$.}\label{fig:3}
 \end{figure}
 
+% TODO chi-square
+
 Our argument indicates that, even if part of the preimage created by the
 central map is fixed, the remaining affine map application disrupts this
 pattern with high efficacy. Hence, an attacker with possession of multiple
 signatures created by our method would not be more capable of forging a new
 signature or deducing private information.
 
-\subsection{Security analysis}\label{subsec:analysis}
+\section{Security analysis}\label{subsec:analysis}
 
 A variety of attacks currently thwart the security of Rainbow-like signature
 schemes if parameters are not chosen carefully. We briefly state each of
