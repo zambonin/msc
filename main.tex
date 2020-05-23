@@ -296,7 +296,7 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 With the pure mathematical machinery defined, we now introduce the building blocks to create a generic digital signature scheme based on multivariate polynomial equations. We recall that public keys in multivariate cryptography are polynomial systems. We start by introducing which polynomials are chosen for this effect and how they interact to hide secret information and create a cryptosystem.
 
-Essentially most modern multivariate cryptography schemes are based on multivariate quadratic equations over finite fields, that is, polynomial systems with $\deg(\cdot) = 2$. This is due to the fact that obtaining sec
+Most modern multivariate cryptography schemes are based on multivariate quadratic equations over finite fields, that is, polynomial systems with $\deg(\cdot) = 2$. This is due to the fact that obtaining secret information from a public key, which is expected to look like a random polynomial system, is proven NP-hard for quadratic systems~\cite{}. Consequently, operating on polynomials of lower degrees is more efficients
 
 As mentioned in Section~\ref{sec:algebra}, division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
 
