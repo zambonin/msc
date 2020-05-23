@@ -302,11 +302,11 @@ We note that public keys in multivariate cryptography are polynomial systems wit
   Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is called the \emph{polynomial system solving problem}.
 \end{definition}
 
-\begin{theorem}[{\cite{Fraenkel:197909:article}}]
+\begin{theorem}[{\cite[Sec. 4]{Fraenkel:197909}}]
   Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete.
 \end{theorem}
 
-Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the degree restriction of the polynomials, to better visualize such systems.
+Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the proposed degree restriction of the polynomials, to better visualize such systems.
 
 \begin{definition}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
