@@ -297,21 +297,26 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 With the pure mathematical machinery defined, we now introduce the building blocks to create a generic digital signature scheme based on multivariate polynomial equations. We recall that public keys in multivariate cryptography are polynomial systems. We start by introducing which polynomials are chosen for this effect and how they interact to hide secret information and create a cryptosystem.
 
 Most modern multivariate cryptography schemes are based on multivariate quadratic equations over finite fields, that is, polynomial systems with $\deg(\cdot) = 2$. We discuss this choice in Subsection~\ref{}.
-The general form of such a polynomial system is
-\begin{align}
-  \begin{split}
-    \begin{cases}
-      p^{(1)}(x_{1}, \dots, x_{n}) = 
-        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
-          + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \gamma^{(1)} \\
-      \quad \vdots \\
-      p^{(m)}(x_{1}, \dots, x_{n}) = 
-        \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
-          + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \gamma^{(m)},
-    \end{cases} \\
-    \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}.
-  \end{split}
-\end{align}
+
+\begin{definition}
+  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathbb{F}_{q}[x_{1}, \dots, x_{n}]$ and 
+  
+  a finite field $\mathbb{F}_{q}$ and $\alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}_{q}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}_{q}$} is defined as
+  \begin{align}
+    \begin{split}
+      \begin{cases}
+        p^{(1)}(x_{1}, \dots, x_{n}) = 
+          \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
+            + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \gamma^{(1)} \\
+        \quad \vdots \\
+        p^{(m)}(x_{1}, \dots, x_{n}) = 
+          \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
+            + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \gamma^{(m)}.
+      \end{cases}
+    \end{split}
+  \end{align}
+\end{definition}
+
 
 As mentioned in Section~\ref{sec:algebra}, division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
 
