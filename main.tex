@@ -211,8 +211,10 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
 We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. However, in the context of multivariate polynomial rings, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. This concept is not used in the definition of a non-prime field, but it is a pervasive concept in other aspects of multivariate cryptography. Thus, we take a short detour to make this clear by generalizing the aforementioned ordering for multivariate polynomials. 
 
 \begin{definition}
-  Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. A well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$. Given a polynomial ring $\mathsf{R}[\mathbf{x}]$ and any monomials $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}}$
+  Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by letting $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$.
 \end{definition}
+
+The definition above amounts to ordering monomials according to their associated $n$-uples of exponents, which is more intuitive. We further discuss strategies for ordering in Section~\ref{sec:mult}.
 
 \begin{definition}
   Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = l$, then the finite field $\mathbb{F}_{q^{l}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $p$.
