@@ -295,7 +295,7 @@ Such functions between coordinate spaces are usually represented by polynomial m
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
 \end{proposition}
 
-We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given a linear transformation $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\varphi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
+We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\varphi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
@@ -380,12 +380,15 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
-We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. 
+We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
-Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, and indeed $\mathcal{P} \in \mathsf{MQ}(n, m)$, but with no apparent structure. 
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, and indeed $\mathcal{P} \in \mathsf{MQ}(n, m)$, but with no apparent structure. 
 
-We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ as elements of $\mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$.
+We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result.
 
+\begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
+  
+\end{theorem}
 
 In
 terms of keys, it is evident that the private key is the $3$-tuple
