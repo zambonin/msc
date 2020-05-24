@@ -341,8 +341,8 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 
 There are several other examples of ordering strategies~\cite{}, but for efficiency reasons, \textsf{grevlex} is more commonly employed in algorithms~\cite{}. In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. 
 
-\begin{definition}
-  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$ and a monomial ordering, the matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$ is given by
+\begin{definition}\label{def:matquad}
+  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     \overline{M}(p^{(i)}) = 
     \begin{pmatrix}
@@ -356,7 +356,7 @@ There are several other examples of ordering strategies~\cite{}, but for efficie
   such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
-
+% We note that the matrix of Definition~\ref{def:matquad} does not necessarily need a monomial order, but the resulting product may differ from the original polynomial 
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
