@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow}
+\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, tikz}
 % \usepackage[backref]{hyperref}
 
 \DeclareMathOperator*{\argmin}{argmin}
@@ -408,12 +408,17 @@ considered in this discussion due to their lack of structure.
     \node (x) at (0, 0) {$\mathbf{y} \in \mathbb{F}^{m}$};
     \node (y) at (2.5, 0) {$\mathbf{x} \in \mathbb{F}^{n}$};
     \node (z) at (5, 0) {$\mathbf{z} \in \mathbb{F}^{n}$};
-    \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{L}_{1}^{-1}$};
-    \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{C}'$}
-      node[midway,yshift=1cm] {decryption / signature generation};
-    \draw[-latex] (y) -- (z) node[midway,above] {$\mathcal{L}_{2}^{-1}$};
-    \draw[-latex] (z) -- (5, -1) -- (-2.5, -1) 
-      node[midway,above] {$\mathcal{P}$} node[midway,yshift=-.5cm] {encryption / signature verification} -- (h);
+    \draw[-latex] (h) -- (x) 
+      node[midway,above] {$\mathcal{L}_{1}^{-1}$};
+    \draw[-latex] (x) -- (y) 
+      node[midway,above] {$\mathcal{C}'$}
+      node[midway,yshift=1.2cm] {decryption / signature generation};
+    \draw[-latex] (y) -- (z) 
+      node[midway,above] {$\mathcal{L}_{2}^{-1}$};
+    \draw[-latex] (z) -- (5, -1.5) -- (-2.5, -1.5) 
+      node[midway,below] {$\mathcal{P}$} 
+      node[midway,yshift=-1cm] {encryption / signature verification} -- (h);
+    \draw[dashed]  -- (2, 0) -- (12, 0);
   \end{tikzpicture}
   \caption{Standard flow of operations in the bipolar
     construction.}\label{fig:bipolar}
@@ -427,7 +432,7 @@ exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is
 surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$,
 once again by the central map preimage.
 
-The bipolar construction creates a specific situation in which the schemes
+The bipolar construction creates a situation in which the schemes
 derived from it are not exclusively based on the polynomial system solving
 problem. Instead, it is proven~\cite{} that there exist many private keys that
 compose a single public key. Thus, a scheme using the bipolar construction is
