@@ -345,13 +345,13 @@ There are several other examples of ordering strategies~\cite{}, but for efficie
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     \overline{M}(p^{(i)}) = 
-    \begin{pmatrix}
+    \begin{bmatrix}
       \alpha^{(i)}_{11} & \alpha^{(i)}_{12} & \cdots & \alpha^{(i)}_{1n} & \beta^{(i)}_{1}  \\
                       0 & \alpha^{(i)}_{22} & \cdots & \alpha^{(i)}_{2n} & \beta^{(i)}_{2}  \\
                  \vdots &            \vdots & \ddots &            \vdots & \vdots           \\
                       0 &                 0 & \cdots & \alpha^{(i)}_{nn} & \beta^{(i)}_{n}  \\
                       0 &                 0 & \cdots &                 0 & \gamma^{(i)}     \\
-    \end{pmatrix}
+    \end{bmatrix}
   \end{align}
   such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
