@@ -324,7 +324,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}.
     \end{split}
   \end{align}
-  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
+  The set of all such polynomials is denoted by $\mathsf{MQ}(n, m)$.
 \end{definition}
 
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials.
@@ -335,7 +335,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 
 The definition above amounts to ordering monomials according to their associated $n$-uples of exponents, which is relatively intuitive. There are several examples of ordering strategies~\cite{}. For instance, lexicographic ordering, more commonly known as the ``dictionary ordering'', compares the exponents of $x_{1}$ and only if they are equal it compares exponents of $x_{2}$, and so on. Graded lexicographic ordering sums the exponents of all monomials and uses lexicographic ordering as the tie-breaker.
 
-In the context of multivariate cryptography, monomial ordering is used to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. As seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is helpful in understanding and even attacking some cryptosystems. 
+In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. 
 
 \begin{definition}
   
