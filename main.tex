@@ -295,7 +295,7 @@ Such functions between coordinate spaces are usually represented by polynomial m
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
 \end{proposition}
 
-We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work.
+We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$.
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
@@ -344,7 +344,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   \end{itemize}
 \end{definition}
 
-There are several other examples of ordering strategies~\cite{}, but for efficiency reasons, \textsf{grevlex} is more commonly employed in algorithms~\cite{}. In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems.
+There are several other examples of ordering strategies~\cite{}, but for efficiency reasons, \textsf{grevlex} is more commonly employed in algorithms~\cite{}. In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems.
 
 \begin{definition}\label{def:matquad}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
@@ -463,7 +463,7 @@ layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and otherwise invalid.
 
-Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme of Section~\ref{}. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
   \#\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{S}} 
     + \underbrace{n^{2} + n}_{\mathcal{T}}
