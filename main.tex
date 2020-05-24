@@ -865,8 +865,8 @@ probability, where the first $v_{1}$ elements of any $y$ are the same.
 We observe the distribution of field elements in vectors after the final
 function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
 $Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
-a $t$-tuple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
-z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
+a $t$-tuple of ``signatures''. We build the sequence $$Z_{t} = (z_{1}^{1},
+z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n}).$$
 When part of the vector $y$ is fixed, we instead denote these by
 $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
 and $\widetilde{Z}_{t}$ behave similarly to observations sampled from the
@@ -906,7 +906,7 @@ differences of means, defined analogously as $d_{\mu}^{t}$. The vector space
 $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}^{1} \approx 5.31$ and,
 comparatively, $d_{\mu}^{9} \approx 1.14$.
 
-The comparison of expected and obtained standard deviations and means in our
+The comparison of expected with obtained standard deviations and means in our
 experiments gives positive results and confirms the law of large numbers.
 Still, it is interesting to look at the diffusion of values within
 $\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and
@@ -995,8 +995,8 @@ the last Rainbow layer, and obtain the previous layers similarly. The
 complexity of the improved attack~\cite{Ding:200806} is
 $q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
 
-\subsubsection{Rainbow-Band-Separation attack.} An extension of the
-UOV-Reconciliation attack by the same authors~\cite{Ding:200806} that
+\subsubsection{Rainbow-Band-Separation attack.} An extension of
+UOV-Reconciliation by the same authors~\cite{Ding:200806} that
 targets Rainbow, with the intent of producing an equivalent private key. It
 explores the fact that the central map matrix representation is composed of
 zeroes on its lower right corner. These yield quadratic equations which, if
@@ -1098,18 +1098,18 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \renewcommand{\arraystretch}{1.2}
   \centering
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
-  \begin{tabular}{*{2}{l}*{5}{r}}
+  \begin{tabular}{l*{5}{r}}
     \toprule
-    Instance & Parameters & Variant & $\#\mathsf{sk}$ & $\#\mathsf{pk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
-    \multirow{3}{*}{P-080}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
-                            &                                                    &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
-                            &                                                    &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
-    \multirow{3}{*}{P-100}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 26, 16, 17)$}  &  Classic &  \multirow{3}{*}{ 46131} &  \multirow{3}{*}{12474} &   60390 & $-31.60\%$ \\
-                            &                                                    &   Cyclic &                          &                         &   22246 & $-67.41\%$ \\
-                            &                                                    &     LRS2 &                          &                         &   20662 & $-68.89\%$ \\
-    \multirow{3}{*}{P-128}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 36, 21, 22)$}  &  Classic &  \multirow{3}{*}{105006} &  \multirow{3}{*}{24924} &  139320 & $-32.78\%$ \\
-                            &                                                    &   Cyclic &                          &                         &   48411 & $-69.98\%$ \\
-                            &                                                    &     LRS2 &                          &                         &   45547 & $-71.16\%$ \\
+    Parameters & Variant & $\#\mathsf{sk}$ & $\#\mathsf{pk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
+    \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
+                                                       &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
+                                                       &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
+    \multirow{3}{*}{$(\mathbb{F}_{256}, 26, 16, 17)$}  &  Classic &  \multirow{3}{*}{ 46131} &  \multirow{3}{*}{12474} &   60390 & $-31.60\%$ \\
+                                                       &   Cyclic &                          &                         &   22246 & $-67.41\%$ \\
+                                                       &     LRS2 &                          &                         &   20662 & $-68.89\%$ \\
+    \multirow{3}{*}{$(\mathbb{F}_{256}, 36, 21, 22)$}  &  Classic &  \multirow{3}{*}{105006} &  \multirow{3}{*}{24924} &  139320 & $-32.78\%$ \\
+                                                       &   Cyclic &                          &                         &   48411 & $-69.98\%$ \\
+                                                       &     LRS2 &                          &                         &   45547 & $-71.16\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -1124,7 +1124,7 @@ considered due to a security restriction of RainbowLRS2. We obtain positive
 results, with key pair size reductions of up to factors of 3 and no security
 harm to the resulting scheme.
 
-The use of CyclicRainbow or RainbowLRS2 with the Rainbow-$\eta_{2}$ method is
+The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is
 recommended. These variants are based on the linear relations described in
 Subsection~\ref{subsec:scheme}, and resulting implementations may be
 effortlessly modified to use our proposal. Moreover, in the case that higher
