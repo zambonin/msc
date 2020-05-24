@@ -380,19 +380,12 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
-We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea.
+We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. 
 
-Consider
-$n, m \in \mathbb{N}$ as in Definition~\ref{def:quadsys}. The polynomial map
-$\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the
-central map, and it is regarded as the trapdoor, that is, a function that is
-easy to compute but difficult to invert without particular information.
+Evidently, this mechanism shall be hidden to hinder malicious parties. Two maps $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. 
 
-Two affine invertible maps
-$\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$
-and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the
-central map, by creating the composition
-$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. In
+
+In
 terms of keys, it is evident that the private key is the $3$-tuple
 $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$, whereas the public key is
 the map $\mathcal{P}$. With these definitions, it is possible to achieve both
