@@ -145,7 +145,7 @@ Oftentimes it is convenient to interpret elements as those of a different group.
 Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
 
 \begin{definition}
-  Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-uple $(R, +, \ast)$ satisfying the following axioms:
+  Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
   
   \begin{enumerate}
     \item The ordered pair $(R, +)$ forms an \emph{abelian group};
@@ -237,7 +237,7 @@ A polynomial system is \emph{consistent} if there exists at least one solution $
 To generalize the notion of grouping polynomials into a system, it is useful to define an algebraic structure which falls outside of the class of pure ring-like structures.
 
 \begin{definition}
-  Given a finite field $\mathbb{F}$ equipped with binary operations $+$ and $\ast$, a set $V$, any elements $f_{1}, f_{2} \in \mathbb{F}, \mathbf{v_{1}}, \mathbf{v_{2}} \in V$, a binary operation $\bm{+}$ on $V$ and a binary operation $\bm{\times} : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-uple $(V, \bm{+}, \bm{\times})$ satisfying the following axioms:
+  Given a finite field $\mathbb{F}$ equipped with binary operations $+$ and $\ast$, a set $V$, any elements $f_{1}, f_{2} \in \mathbb{F}, \mathbf{v_{1}}, \mathbf{v_{2}} \in V$, a binary operation $\bm{+}$ on $V$ and a binary operation $\bm{\times} : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-tuple $(V, \bm{+}, \bm{\times})$ satisfying the following axioms:
   
   \begin{enumerate}
     \item The ordered pair $(V, \bm{+})$ forms an \emph{abelian group};
@@ -247,7 +247,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-uples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
@@ -327,10 +327,10 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
   The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
 \end{definition}
 
-We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-uples of exponents, which is relatively intuitive. 
+We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
 
 \begin{definition}
-  Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
+  Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
   
   \begin{itemize}
     \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\alpha_{i} \lesssim \beta_{i}$ with minimal $1 \leq i \leq n$ such that $\alpha_{i} \neq \beta_{i}$ is called \emph{lexicographic ordering}, or ``dictionary ordering'', and denoted as \textsf{lex};
@@ -794,7 +794,7 @@ probability, where the first $v_{1}$ elements of any $y$ are the same.
 We observe the distribution of field elements in vectors after the final
 function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
 $Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
-a $t$-uple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
+a $t$-tuple of ``signatures''. We build the sequence $Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$.
 When part of the vector $y$ is fixed, we instead denote these by
 $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
@@ -853,7 +853,7 @@ elements. However, we note that this is due to the low number of classes,
 discrepancies are largely reduced with $q = 2^{10}$. This is further confirmed
 by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts with quantiles from the standard normal distribution. Such quantiles are called normal order statistics, or rankits~\cite{Ipsen:194405}, which are hereafter referred to as a $K$. 
 
-Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. Let $r \in \mathbb{N}$ be a precision parameter. A number $rq$ of samples are taken from a standard normal distribution and organized into $q$-uples $K_{1}, \dots, K_{r}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The $q$-uple $K$ is calculated as 
+Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. Let $r \in \mathbb{N}$ be a precision parameter. A number $rq$ of samples are taken from a standard normal distribution and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The $q$-tuple $K$ is calculated as 
 \[
     K = (\mu(\{\min(K_{j}, i) : 1 \leq j \leq r\}) : 1 \leq i \leq q).
 \]
