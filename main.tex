@@ -422,14 +422,7 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
       \quad \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
-
-We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
-
-% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
-%   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
-% \end{theorem}
-
-% We invite the reader to consult~\cite{} for a discussion of schemes that do not use the bipolar construction, or that use multiple finite fields in their construction.
+This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently 
 
 The bipolar construction creates a situation in which the schemes
 derived from it are not exclusively based on the polynomial system solving
@@ -438,6 +431,15 @@ compose a single public key. Thus, a scheme using the bipolar construction is
 also based on what is called the extended isomorphism of polynomials (EIP)
 problem. However, there is little information on the difficulty of EIP,
 preventing complete security proofs for most multivariate cryptosystems.
+
+
+We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
+
+% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
+%   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
+% \end{theorem}
+
+% We invite the reader to consult~\cite{} for a discussion of schemes that do not use the bipolar construction, or that use multiple finite fields in their construction.
 
 \begin{definition}
   Cryptographic hash functions
