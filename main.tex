@@ -380,8 +380,9 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
-We now turn to the main construction used in multivariate cryptography. It is
-called bipolar, due to its elegant twofold nature. Consider
+We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea.
+
+Consider
 $n, m \in \mathbb{N}$ as in Definition~\ref{def:quadsys}. The polynomial map
 $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the
 central map, and it is regarded as the trapdoor, that is, a function that is
@@ -433,6 +434,8 @@ which a non-negligible probability of failure in the decryption process
 exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is
 surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$,
 once again by the central map preimage.
+
+% We invite the reader to consult~\cite{} for a discussion of schemes that do not use the bipolar construction, or that use multiple finite fields in their construction.
 
 The bipolar construction creates a situation in which the schemes
 derived from it are not exclusively based on the polynomial system solving
