@@ -139,7 +139,7 @@ Oftentimes it is convenient to interpret elements as those of a different group.
 \end{definition}
 
 \begin{proposition}\label{prop:autgroup}
-  Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathbf{G}}$, then $\mathsf{Aut}(\mathbf{G}) = (\mathsf{Aut}_{\mathbf{G}}, \circ)$ is a group.
+  Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
 Groups carrying the usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
@@ -356,7 +356,7 @@ There are several other examples of ordering strategies~\cite{}, but for efficie
   such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
-We note that the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering~\cite{}. On the other hand, the matrix of Definition~\ref{def:matquad} does not necessarily need a monomial order, but the resulting product may visually differ from the original polynomial. We will also consider the case of multivariate quadratic polynomials with no constant or linear terms, which are known not to interfere with the security of the underlying cryptosystem~\cite{}.
+We note that the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering~\cite{}. On the other hand, the matrix of Definition~\ref{def:matquad} does not necessarily need any ordering, but the resulting product may differ from the original polynomial in this aspect. We also show how to represent multivariate quadratic polynomials with no constant or linear terms, which are known not to interfere with the security of the underlying cryptosystem~\cite{}.
 
 \begin{definition}\label{def:mathom}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
