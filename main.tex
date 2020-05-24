@@ -324,7 +324,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}.
     \end{split}
   \end{align}
-  The set of all such polynomials is denoted by $\mathsf{MQ}(n, m)$.
+  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
 \end{definition}
 
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-uples of exponents, which is relatively intuitive. 
@@ -334,14 +334,12 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   
   \begin{itemize}
     \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\alpha_{i} \lesssim \beta_{i}$ with minimal $1 \leq i \leq n$ such that $\alpha_{i} \neq \beta_{i}$ is called \emph{lexicographic ordering}, or ``dictionary ordering'', and denoted as \textsf{lex};
-    \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\deg \mathbf{x}^{\alpha} \lesssim \deg \mathbf{x}^{\beta}$ or, as a tie-breaker, $\mathbf{x}^{\alpha} \lesssim_{\mathsf{lex}} \mathbf{x}^{\beta}$ is called \emph{graded lexicographic ordering}, and denoted as \textsc{grlex};
-    \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\deg \mathbf{x}^{\alpha} \lesssim \deg \mathbf{x}^{\beta}$ or, as a tie-breaker, 
+    \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\deg \mathbf{x}^{\alpha} \lesssim \deg \mathbf{x}^{\beta}$ or, as a tie-breaker, $\mathbf{x}^{\alpha} \lesssim_{\mathsf{lex}} \mathbf{x}^{\beta}$ is called \emph{graded lexicographic ordering}, and denoted as \textsf{grlex};
+    \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\deg \mathbf{x}^{\alpha} \lesssim \deg \mathbf{x}^{\beta}$ or, as a tie-breaker, the last nonzero element of $\alpha - \beta$ is negative is called \emph{graded reverse lexicographic ordering}, and denoted as \textsf{grevlex}.
   \end{itemize}
 \end{definition}
 
-There are several examples of ordering strategies~\cite{}. For instance, in lexicographic ordering (\textsf{lex}) the exponents of $x_{1}$ are compared and only if they are equal exponents of $x_{2}$ are compared, and so on. In graded lexicographic ordering (\textsf{grlex}), the monomial degree is used as first comparison and \textsc{lex} as tie-breaker. Finally, in graded reverse lexicographic ordering (\textsf{grevlex}) works similarly to \textsf{grlex} but the tie-breaker occurs by checking if the last element of 
-
-For efficiency reasons~\cite{}, \textsf{grevlex} is more commonly employed. In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. 
+There are several other examples of ordering strategies~\cite{}, but for efficiency reasons, \textsf{grevlex} is more commonly employed in algorithms~\cite{}. In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomials, and to solve polynomial systems using Gröbner bases~\cite{}. Additionally, as seen in Section~\ref{}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. 
 
 \begin{definition}
   
