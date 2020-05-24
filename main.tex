@@ -380,6 +380,61 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 \subsection{Bipolar construction}\label{subsec:bipolar}
 
+We now turn to the main construction used in multivariate cryptography. It is
+called bipolar, due to its elegant twofold nature. Consider
+$n, m \in \mathbb{N}$ as in Definition~\ref{}. The polynomial map
+$\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the
+central map, and it is regarded as the trapdoor, that is, a function that is
+easy to compute but difficult to invert without particular information.
+
+Two affine invertible maps
+$\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n}$
+and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ are used to hide the
+central map, by creating the composition
+$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. In
+terms of keys, it is evident that the private key is the $3$-tuple
+$(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$, whereas the public key is
+the map $\mathcal{P}$. With these definitions, it is possible to achieve both
+public-key encryption and signature schemes. This process is summarized in
+Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message
+$\mathbf{h}$. We now observe the relationship between $m$ and $n$ to understand
+how the bipolar construction works. Recall that the lateral maps are not
+considered in this discussion due to their lack of structure.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node (h) at (-2.5, 0) {$\mathbf{h} \in \mathbb{F}^{m}$};
+    \node (x) at (0, 0) {$\mathbf{y} \in \mathbb{F}^{m}$};
+    \node (y) at (2.5, 0) {$\mathbf{x} \in \mathbb{F}^{n}$};
+    \node (z) at (5, 0) {$\mathbf{z} \in \mathbb{F}^{n}$};
+    \draw[-latex] (h) -- (x) node[midway,above] {$\mathcal{L}_{1}^{-1}$};
+    \draw[-latex] (x) -- (y) node[midway,above] {$\mathcal{C}'$}
+      node[midway,yshift=1cm] {decryption / signature generation};
+    \draw[-latex] (y) -- (z) node[midway,above] {$\mathcal{L}_{2}^{-1}$};
+    \draw[-latex] (z) -- (5, -1) -- (-2.5, -1) 
+      node[midway,above] {$\mathcal{P}$} node[midway,yshift=-.5cm] {encryption / signature verification} -- (h);
+  \end{tikzpicture}
+  \caption{Standard flow of operations in the bipolar
+    construction.}\label{fig:bipolar}
+\end{figure}
+
+Consider $m \geq n$. The function $\mathcal{C}$ should be injective, to assure
+that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext
+$\mathbf{h}$, by the preimage step. Indeed, there are encryption schemes in
+which a non-negligible probability of failure in the decryption process
+exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is
+surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$,
+once again by the central map preimage.
+
+The bipolar construction creates a specific situation in which the schemes
+derived from it are not exclusively based on the polynomial system solving
+problem. Instead, it is proven~\cite{} that there exist many private keys that
+compose a single public key. Thus, a scheme using the bipolar construction is
+also based on what is called the extended isomorphism of polynomials (EIP)
+problem. However, there is little information on the difficulty of EIP,
+preventing complete security proofs for most multivariate cryptosystems.
+
 \subsection{Underlying problems}
 
 % \subsection{Cryptographic hash functions}
