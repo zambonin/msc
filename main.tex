@@ -382,7 +382,7 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 We now turn to the main construction used in multivariate cryptography. It is
 called bipolar, due to its elegant twofold nature. Consider
-$n, m \in \mathbb{N}$ as in Definition~\ref{}. The polynomial map
+$n, m \in \mathbb{N}$ as in Definition~\ref{def:polsys}. The polynomial map
 $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the
 central map, and it is regarded as the trapdoor, that is, a function that is
 easy to compute but difficult to invert without particular information.
@@ -418,8 +418,9 @@ considered in this discussion due to their lack of structure.
     \draw[-latex] (z) -- (5, -1.5) -- (-2.5, -1.5) 
       node[midway,below] {$\mathcal{P}$} 
       node[midway,yshift=-1cm] {encryption / signature verification} -- (h);
-    \draw[dashed] (-3.5, -0.75) -- (8, -0.75);
+    \draw[dotted] (-3.5, -0.75) -- (8, -0.75);
     \node at (7, -0.4) {private};
+    \node at (7, -1.1) {public};
   \end{tikzpicture}
   \caption{Standard flow of operations in the bipolar
     construction.}\label{fig:bipolar}
@@ -441,11 +442,15 @@ also based on what is called the extended isomorphism of polynomials (EIP)
 problem. However, there is little information on the difficulty of EIP,
 preventing complete security proofs for most multivariate cryptosystems.
 
+\begin{definition}
+  Cryptographic hash functions
+\end{definition}
+
+\begin{definition}
+  Digital signature schemes
+\end{definition}
+
 \subsection{Underlying problems}
-
-% \subsection{Cryptographic hash functions}
-
-% \subsection{Digital signature schemes}
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
