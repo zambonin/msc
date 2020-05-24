@@ -386,14 +386,16 @@ Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Defin
 
 We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result.
 
-\begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
+% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
   
-\end{theorem}
+% \end{theorem}
 
-In
-terms of keys, it is evident that the private key is the $3$-tuple
-$(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$, whereas the public key is
-the map $\mathcal{P}$. With these definitions, it is possible to achieve both
+In terms of keys, the keypair is composed of a private $3$-tuple and the public composition
+\begin{align}
+  \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}) \\
+  \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} \quad \in \mathsf{MQ}(n, m).
+\end{align}
+With these definitions, it is possible to achieve both
 public-key encryption and signature schemes. This process is summarized in
 Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message
 $\mathbf{h}$. We now observe the relationship between $m$ and $n$ to understand
