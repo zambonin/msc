@@ -400,8 +400,8 @@ The cryptographic hash function is the usual method of transforming a variable-l
   The integer $n$ is called the \emph{security parameter}.
 \end{definition}
 
-The algorithm $\textsc{Gen}$ outputs the key pair, two bit strings known as the signing key and verification key, or private and public keys. The algorithm $\textsc{Sig}$ outputs a signature
-$\textsc{Gen}(1^{n}) \mapsto (\mathbf{sk}, \mathbf{pk})$, $\textsc{Sig}(\mathbf{sk}, w) \mapsto \sigma$ and $\textsc{Ver}(\mathbf{pk}, w, \sigma) \mapsto \{0, 1\}$,
+The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature, usually represented by $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
+
 and of a digital signature scheme, a mathematical framework that ensures authenticity and non-repudiation of the sender, and integrity of the message.
 
 We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
