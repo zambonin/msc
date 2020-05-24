@@ -89,7 +89,7 @@ It is evident that there have been commendable efforts in the creation, validati
 
 \chapter{Mathematical background}\label{chapter:math}
 
-In this chapter, we introduce the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{sec:algebra}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{sec:mult}, we introduce the general bipolar construction of multivariate cryptography and properly define a multivariate signature scheme, with a discussion of its underlying problems. In Section~\ref{sec:ov}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
+In this chapter, we give the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{sec:algebra}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{sec:mult}, a brief panorama of concepts associated with multivariate cryptography is given. In Section~\ref{sec:ov}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
 
 We use the following symbols throughout this work. The symbol $\random$ is read as ``chosen randomly from''. The symbol $\approx_{\varepsilon}$ means that two numbers are equal within a precision of $\varepsilon$. The usual function composition is given by the symbol $\circ$, and the inverse of a function $f$ is given by $f^{-1}$. The usual standard deviation and mean functions for a set of elements $S$ are respectively given by $\sigma(S)$ and $\mu(S)$. The concatenation of two elements up to context is given by $\mid\mid$.
 
@@ -102,7 +102,7 @@ We define below the elementary algebraic structures known as groups, rings, fiel
   
   \begin{itemize}
     \item It is said to be \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
-    \item It is said to be \emph{commutative} if all elements of $G$ commute, that is, we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
+    \item It is said to be \emph{commutative} if we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
     \item It is said to be \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
   \end{itemize}
 \end{definition}
@@ -128,14 +128,14 @@ We are specifically interested in specific types of groups and translations betw
   Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is also called commutative, or \emph{abelian}.
 \end{definition}
 
-Oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below. If it is clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. 
+Oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below. Further, if clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. 
 
 \begin{definition}
   Given two groups $\mathsf{G} = (G, \star)$ and $\mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if we have that $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
 \begin{definition}\label{def:morph}
-  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, then it is invertible, or called an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is an isomorphism and an endomorphism at the same time, it is called an \emph{automorphism}.
+  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is called an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is called an \emph{automorphism}.
 \end{definition}
 
 \begin{proposition}\label{prop:autgroup}
