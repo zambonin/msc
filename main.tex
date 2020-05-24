@@ -330,10 +330,11 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-uples of exponents, which is relatively intuitive. 
 
 \begin{definition}
-  Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by letting $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Some examples of ordering strategies:
+  Let $\mathbb{Z}^{n}$ be the set of $n$-uples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Some examples of ordering strategies:
   
   \begin{itemize}
-    \item If $\alpha_{1} > \beta_{1}$
+    \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\alpha_{i} \lesssim \beta_{i}$ with minimal $1 \leq i \leq n$ such that $\alpha_{i} \neq \beta_{i}$ is called \emph{lexicographic ordering}, or ``dictionary ordering'';
+    \item The ordering 
   \end{itemize}
 \end{definition}
 
