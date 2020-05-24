@@ -392,15 +392,14 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
 
 \begin{definition}
-  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$, and three probabilistic polynomial-time algorithms $\textsc{Gen}(1^{n}) \mapsto (\mathbf{sk}, \mathbf{pk})$
-  
-  a $3$-tuple of probabilistic polynomial time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is said to be a \emph{digital signature scheme} if it satisfies the following conditions:
+  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is said to be a \emph{digital signature scheme} if it satisfies the following conditions:
   
   \begin{enumerate}
     \item 
   \end{enumerate}
 \end{definition}
 
+$\textsc{Gen}(1^{n}) \mapsto (\mathbf{sk}, \mathbf{pk})$, $\textsc{Sig}(\mathbf{sk}, w) \mapsto \sigma$ and $\textsc{Ver}(\mathbf{pk}, w, \sigma) \mapsto \{0, 1\}$,
 and of a digital signature scheme, a mathematical framework that ensures authenticity and non-repudiation of the sender, and integrity of the message.
 
 We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
