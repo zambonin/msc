@@ -390,10 +390,14 @@ We remark that the lateral maps are simply invertible square matrices, in contra
   
 % \end{theorem}
 
-In terms of keys, the keypair is composed of a private $3$-tuple and the public composition
+The private and public keys are respectively a $3$-tuple and the aforementioned composition
 \begin{align}
-  \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}) \\
-  \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} \quad \in \mathsf{MQ}(n, m).
+  \begin{split}
+    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
+      \quad \in \mathsf{MQ}(n, m).
+  \end{split}
 \end{align}
 With these definitions, it is possible to achieve both
 public-key encryption and signature schemes. This process is summarized in
