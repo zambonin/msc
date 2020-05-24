@@ -400,11 +400,7 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
   \end{split}
 \end{align}
 
-The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$. We remark that the map $\mathcal{C}'$ 
-
-We now observe the relationship between $m$ and $n$ to understand
-how the bipolar construction works. Recall that the lateral maps are not
-considered in this discussion due to their lack of structure.
+The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(x)$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading. We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure.
 
 \begin{figure}[htbp]
   \centering
@@ -431,7 +427,7 @@ considered in this discussion due to their lack of structure.
     construction.}\label{fig:bipolar}
 \end{figure}
 
-Consider $m \geq n$. The function $\mathcal{C}$ should be injective, to assure
+Consider $m \geq n$. The function $\mathcal{C}$ should be injective, to ensure
 that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext
 $\mathbf{h}$, by the preimage step. Indeed, there are encryption schemes in
 which a non-negligible probability of failure in the decryption process
