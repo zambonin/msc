@@ -384,23 +384,7 @@ We now turn to the most commonly framework in multivariate cryptography employed
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
-We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
-
-% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
-%   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
-% \end{theorem}
-
-The private and public keys are respectively a $3$-tuple and the aforementioned composition
-\begin{align}
-  \begin{split}
-    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
-      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
-      \quad \in \mathsf{MQ}(n, m).
-  \end{split}
-\end{align}
-
-The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(x)$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading. We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure.
+The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(x)$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
 \begin{figure}[htbp]
   \centering
@@ -427,13 +411,23 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
     construction.}\label{fig:bipolar}
 \end{figure}
 
-Consider $m \geq n$. The function $\mathcal{C}$ should be injective, to ensure
-that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext
-$\mathbf{h}$, by the preimage step. Indeed, there are encryption schemes in
-which a non-negligible probability of failure in the decryption process
-exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is
-surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$,
-once again by the central map preimage.
+We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the function $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. Indeed, there are encryption schemes in which a non-negligible probability of failure in the decryption process exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
+
+The private and public keys are respectively a $3$-tuple and the aforementioned composition
+\begin{align}
+  \begin{split}
+    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
+      \quad \in \mathsf{MQ}(n, m).
+  \end{split}
+\end{align}
+
+We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
+
+% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
+%   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
+% \end{theorem}
 
 % We invite the reader to consult~\cite{} for a discussion of schemes that do not use the bipolar construction, or that use multiple finite fields in their construction.
 
