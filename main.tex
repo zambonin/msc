@@ -299,7 +299,31 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
-With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. 
+With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite{} and~\cite{}.
+
+\begin{definition}
+  Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
+  
+  \begin{enumerate}
+    \item It is \emph{deterministic} and \emph{easy to compute};
+    \item It is \emph{preimage resistant} if it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$, that is, it is hard to invert;
+    \item It is \emph{second preimage resistant} if it is computationally unfeasible to find $m_{2}$ given $m_{1}$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$;
+    \item It is \emph{collision resistant} if it is computationally unfeasible to find a pair $(m_{1}, m_{2})$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
+  \end{enumerate}
+\end{definition}
+
+The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
+
+\begin{definition}
+  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is said to be a \emph{digital signature scheme} if it satisfies
+  \begin{align}
+     \forall (\mathbf{sk}, \mathbf{pk}) \leftarrow \textsc{Gen}(1^{n}),
+       \quad \Pr[\textsc{Ver}(\mathbf{pk}, w, \textsc{Sig}(\mathbf{sk}, w)) = 1] = 1.
+  \end{align}
+  The integer $n$ is called the \emph{security parameter}.
+\end{definition}
+
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message. The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature, usually represented by $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
@@ -376,33 +400,7 @@ We note that the matrix representation of $\mathcal{P}$ itself is highly dependa
   such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
-We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. Now, we recall two essential building blocks of cryptography, with definitions taken from~\cite{} and~\cite{}.
-
-\begin{definition}
-  Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
-  
-  \begin{enumerate}
-    \item It is \emph{deterministic} and \emph{easy to compute};
-    \item It is \emph{preimage resistant} if it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$, that is, it is hard to invert;
-    \item It is \emph{second preimage resistant} if it is computationally unfeasible to find $m_{2}$ given $m_{1}$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$;
-    \item It is \emph{collision resistant} if it is computationally unfeasible to find a pair $(m_{1}, m_{2})$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
-  \end{enumerate}
-\end{definition}
-
-The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
-
-\begin{definition}
-  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is said to be a \emph{digital signature scheme} if it satisfies
-  \begin{align}
-     \forall (\mathbf{sk}, \mathbf{pk}) \leftarrow \textsc{Gen}(1^{n}),
-       \quad \Pr[\textsc{Ver}(\mathbf{pk}, w, \textsc{Sig}(\mathbf{sk}, w)) = 1] = 1.
-  \end{align}
-  The integer $n$ is called the \emph{security parameter}.
-\end{definition}
-
-The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature, usually represented by $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
-
-We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
+We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
@@ -433,7 +431,7 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
     construction.}\label{fig:bipolar}
 \end{figure}
 
-We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the function $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. Indeed, there are encryption schemes in which a non-negligible probability of failure in the decryption process exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
+We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the function $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. Indeed, there are public-key encryption schemes in which a non-negligible probability of failure in the decryption process exists~\cite{}. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
 
 The private and public keys are respectively a $3$-tuple and the aforementioned composition
 \begin{align}
@@ -448,8 +446,8 @@ This description is tailored for schemes that perform calculations over a single
 
 
 
-The bipolar construction creates a situation in which the schemes
-derived from it are not exclusively based on the polynomial system solving
+The bipolar construction creates a situation in which its derived schemes
+are not exclusively based on the polynomial system solving
 problem. Instead, it is proven~\cite{} that there exist many private keys that
 compose a single public key. Thus, a scheme using the bipolar construction is
 also based on what is called the extended isomorphism of polynomials (EIP)
