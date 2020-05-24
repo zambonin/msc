@@ -379,14 +379,16 @@ We note that the matrix representation of $\mathcal{P}$ itself is highly dependa
 We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. Now, we recall the definition of two essential building blocks for a multivariate signature scheme.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a function $\mathcal{H} : X \to Y$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
+  Given $k \in \mathbb{N}$, a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
   
   \begin{enumerate}
     \item It is \emph{deterministic};
-    \item It is \emph{preimage resistant}
+    \item It is \emph{preimage resistant} if it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$, that is, it is hard to invert;
+    \item It is \emph{second preimage resistant} if it is computationally unfeasible to find $m_{2}$ given $m_{1}$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$;
+    \item It is \emph{collision resistant} if it is computationally unfeasible to find a pair $(m_{1}, m_{2})$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
   \end{enumerate}
   
-  The set $X$ is usually the set of all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2^{k}}$ for some small $k$.
+  The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k$.
 \end{definition}
 
 a cryptographic hash function, which is the usual method of transforming a variable-length message into a fixed-length digest, 
