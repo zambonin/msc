@@ -130,7 +130,7 @@ We are specifically interested in specific types of groups and translations betw
 
 Oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below. Further, if clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. 
 
-\begin{definition}
+\begin{definition}\label{def:ghom}
   Given two groups $\mathsf{G} = (G, \star)$ and $\mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if we have that $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
@@ -142,7 +142,7 @@ Oftentimes it is convenient to interpret elements as those of a different group.
   Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
-Groups carrying usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples of groups are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
+Groups carrying usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
@@ -191,7 +191,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Particularly, we aim to precisely define non-prime fields with the following framework.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, an expression $p(x)$ with the form
+  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, an expression $p(x)$ of the form
   \[
     \sum_{i = 0}^{k} a_{i} x^{i} 
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}
@@ -200,7 +200,7 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 \end{definition}
 
 \begin{definition}
-  Given $n \in \mathbb{N}$, a polynomial over a sequence of indeterminates $\mathbf{x} = (x_{1}, \dots, x_{n})$ is called a \emph{multivariate polynomial}. The highest sum of the exponents of the indeterminates in a monomial with a non-zero coefficient is called the \emph{degree} of the polynomial, or $\deg(p(x))$. If all monomials have the same degree, then the polynomial is called \emph{homogeneous}.
+  Given $n \in \mathbb{N}$, a polynomial over a sequence of indeterminates $\mathbf{x} = (x_{1}, \dots, x_{n})$ is called a \emph{multivariate polynomial}. The highest sum of the exponents of the indeterminates in a monomial with a non-zero coefficient is called the \emph{degree} of the polynomial, or $\deg(\cdot)$. If all monomials have the same degree, then the polynomial is called \emph{homogeneous}.
 \end{definition}
 
 Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply summing the coefficients of monomials with the same product of variables, that is, $\sum_{i}^{k} a_{i} x^{i} + \sum_{i}^{k} b_{i} x^{i} = \sum_{i}^{k} (a_{i} + b_{i}) x^{i}$. Multiplication is calculated through repeated applications of the distributive law, and the resulting polynomial has the sum of the degrees of the factors. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends. This allows us to define the following structure.
@@ -278,10 +278,10 @@ We give other useful traits of a vector space before returning to polynomial map
 
 There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is called the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
-Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to homomorphisms. The general form of such functions is presented below.
+Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:ghom}. The general form of such functions is presented below.
 
 \begin{definition}
-  Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbf{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
+  Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbb{F}$, a function $\varphi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
   
   \begin{enumerate}
     \item The \emph{addition operation is preserved}, that is, we must have that $\varphi(\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = \varphi(\mathbf{v_{1}}) \bm{+'} \varphi(\mathbf{v_{2}})$;
@@ -292,7 +292,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
 Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\varphi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\varphi \circ \varphi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p. 418, Cor. 14]{Dummit:2003}}]
-  Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$ be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
+  Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
 \end{proposition}
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work.
