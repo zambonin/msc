@@ -43,7 +43,7 @@ A similar idea introduced at roughly the same time are stepwise triangular syste
 
 STS and TTS were later found to be specialized cases of the general Rainbow construction~\cite{Ding:200806}, due to their similarities in the usage of layers and the central map inversion procedure. These advances, as well as further cryptanalysis of Rainbow itself~\cite{Billet:200609} with the MinRank attack, led to the proposal of new parameters for TTS and Rainbow~\cite{Ding:200806}. This was achieved through the creation of the Rainbow band separation attack, an extension of the UOV reconciliation attack. Further modifications were suggested to salvage the previous schemes~\cite{Tsujii:201005}, but every such variant was broken through a key recovery attack~\cite{Thomae:201207} which stems from the generalization of the theory of equivalent keys.
 
-Equivalent keys are explained in more detail in Section~\ref{subsec:bipolar}, in which it is shown that the bipolar construction leads to a large amount of redundancy in the key space. Indeed, this fact is usually applied to find inconsistencies in the security of proposed schemes, as seen in this section. However, a consequence of this theory is that the associated matrices of the affine transformations that hide the central map structure may be thoroughly simplified. This is explored in~\cite{Czypek:201209}, for instance, to insert instances of UOV and Rainbow into low-resource devices.
+Equivalent keys are explained in more detail in Section~\ref{sec:mult}, in which it is shown that the bipolar construction leads to a large amount of redundancy in the key space. Indeed, this fact is usually applied to find inconsistencies in the security of proposed schemes, as seen in this section. However, a consequence of this theory is that the associated matrices of the affine transformations that hide the central map structure may be thoroughly simplified. This is explored in~\cite{Czypek:201209}, for instance, to insert instances of UOV and Rainbow into low-resource devices.
 
 We note that in the case of STS and TTS, reducing the private key was not the main intention of the authors, and it is thus not trivial to estimate such gains through direct comparison to Rainbow. Indeed, the reduction of keys is a known strategy to increase the performance of operations on signatures. On the other hand, there are several proposals in the literature which focus on the modification of Rainbow with the sole purpose of reducing key sizes. This motivation partially stems from recent efforts to present quantum-safe cryptography as a valid alternative to traditional digital signature schemes~\cite{Bernstein:2008}.
 
@@ -376,15 +376,11 @@ We note that the matrix representation of $\mathcal{P}$ itself is highly dependa
   such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
-We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even.
-
-\subsection{Bipolar construction}\label{subsec:bipolar}
-
-We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
+We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
-The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(x)$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
+The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
 \begin{figure}[htbp]
   \centering
@@ -422,7 +418,9 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
       \quad \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
-This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently 
+This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently from the main idea given. We invite the reader to consult~\cite{} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
+
+
 
 The bipolar construction creates a situation in which the schemes
 derived from it are not exclusively based on the polynomial system solving
@@ -430,7 +428,7 @@ problem. Instead, it is proven~\cite{} that there exist many private keys that
 compose a single public key. Thus, a scheme using the bipolar construction is
 also based on what is called the extended isomorphism of polynomials (EIP)
 problem. However, there is little information on the difficulty of EIP,
-preventing complete security proofs for most multivariate cryptosystems.
+preventing complete security proofs for most multivariate cryptosystems. %mqdss
 
 
 We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
@@ -439,7 +437,7 @@ We remark that the lateral maps are simply invertible square matrices, in contra
 %   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
 % \end{theorem}
 
-% We invite the reader to consult~\cite{} for a discussion of schemes that do not use the bipolar construction, or that use multiple finite fields in their construction.
+
 
 \begin{definition}
   Cryptographic hash functions
@@ -449,7 +447,8 @@ We remark that the lateral maps are simply invertible square matrices, in contra
   Digital signature schemes
 \end{definition}
 
-\subsection{Underlying problems}
+
+
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
