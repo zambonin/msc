@@ -376,7 +376,7 @@ We note that the matrix representation of $\mathcal{P}$ itself is highly dependa
   such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
-We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. Now, we recall the definition of two essential building blocks for a multivariate signature scheme, with definitions takes from~\cite{} and~\cite{}.
+We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. Now, we recall two essential building blocks of cryptography, with definitions taken from~\cite{} and~\cite{}.
 
 \begin{definition}
   Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
@@ -389,7 +389,7 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
   \end{enumerate}
 \end{definition}
 
-The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. Such a well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message.
+The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
 
 \begin{definition}
   Digital signature schemes
