@@ -320,13 +320,13 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \begin{cases}
         p^{(1)}(x_{1}, \dots, x_{n}) = 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
-            + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \gamma^{(1)} \\
+            + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)} \\
         \quad \vdots \\
         p^{(m)}(x_{1}, \dots, x_{n}) = 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
-            + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \gamma^{(m)},
+            + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \delta^{(m)},
       \end{cases} \\
-      \alpha_{ij}, \beta_{i}, \gamma \in \mathbb{F}.
+      \alpha_{ij}, \beta_{i}, \delta \in \mathbb{F}.
     \end{split}
   \end{align}
   The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
@@ -335,7 +335,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
 
 \begin{definition}
-  Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \gamma \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \gamma \lesssim \beta + \gamma$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
+  Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \delta \in \mathbb{Z}^{n}$. Given a well-order $\lesssim$ in $\mathbb{Z}^{n}$ such that $\alpha + \delta \lesssim \beta + \delta$ if $\alpha \lesssim \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
   
   \begin{itemize}
     \item The ordering given by $\mathbf{x}^{\alpha} \lesssim \mathbf{x}^{\beta}$ if $\alpha_{i} \lesssim \beta_{i}$ with minimal $1 \leq i \leq n$ such that $\alpha_{i} \neq \beta_{i}$ is called \emph{lexicographic ordering}, or ``dictionary ordering'', and denoted as \textsf{lex};
@@ -355,7 +355,7 @@ There are several other examples of ordering strategies~\cite{}, but for efficie
                       0 & \alpha^{(i)}_{22} & \cdots & \alpha^{(i)}_{2n} & \beta^{(i)}_{2}  \\
                  \vdots &            \vdots & \ddots &            \vdots & \vdots           \\
                       0 &                 0 & \cdots & \alpha^{(i)}_{nn} & \beta^{(i)}_{n}  \\
-                      0 &                 0 & \cdots &                 0 & \gamma^{(i)}     \\
+                      0 &                 0 & \cdots &                 0 & \delta^{(i)}     \\
     \end{bmatrix}
   \end{align}
   such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
