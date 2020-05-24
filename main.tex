@@ -313,7 +313,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
 
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the proposed degree restriction of the polynomials, to better visualize such systems.
 
-\begin{definition}
+\begin{definition}\label{def:quadsys}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
   \begin{align}
     \begin{split}
@@ -382,7 +382,7 @@ We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagona
 
 We now turn to the main construction used in multivariate cryptography. It is
 called bipolar, due to its elegant twofold nature. Consider
-$n, m \in \mathbb{N}$ as in Definition~\ref{def:polsys}. The polynomial map
+$n, m \in \mathbb{N}$ as in Definition~\ref{def:quadsys}. The polynomial map
 $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ is generally called the
 central map, and it is regarded as the trapdoor, that is, a function that is
 easy to compute but difficult to invert without particular information.
