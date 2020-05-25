@@ -444,9 +444,11 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
 \end{align}
 This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently from the main idea given. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
 
-The bipolar construction creates a situation in which its derived schemes are not exclusively based on the polynomial system solving problem. Instead, it is proven that there exist many private keys that compose a single public key~\cite{Wolf:201104}. The theory of \empn{equivalent keys} has been used to attack several schemes, as seen in Section~\ref{sec:related}. Thus, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials problem}. 
+While its construction is very elegant, the bipolar construction yields a situation in which its derived schemes are not exclusively based on the polynomial system solving problem of Definition~\ref{def:posso}. Instead, it is proven that there exist many private keys that compose a single public key~\cite{Wolf:201104}, and consequently, the theory of \emph{equivalent keys} has been used to attack several schemes, as seen in Section~\ref{sec:related}. This concept is better explained alongside specific schemes, and thus it is done on Section~\ref{sec:ov}.
 
-There are several version
+Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on.
+
+There are several versions of the IP problem. The Oil--Vinegar family is based on the instance called
 
 what is called the extended isomorphism of polynomials (EIP)
 problem. However, there is little information on the difficulty of EIP,
