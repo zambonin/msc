@@ -437,7 +437,7 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
-      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MHQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
     \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
       \quad \in \mathsf{MHQ}(n, m).
   \end{split}
@@ -449,7 +449,7 @@ While its construction is very elegant, the bipolar construction yields a situat
 Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on.
 
 \begin{definition}
-  Let $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MHQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys'' with a structured central map. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is called the \emph{extended isomorphism of polynomials (EIP) problem}.
+  Let $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MHQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is called the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
@@ -457,6 +457,8 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
 Finally, we remark that our description of the bipolar construction is slightly different from the literature, since our maps lie in more restricted sets. The usual description has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. This group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
 
 It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that the underlying IP problems are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Moreover, such results imply that the polynomials in the central map must be homogeneous quadratic. We make use of this technical result and present a coherent description of the schemes in Section~\ref{sec:ov}.
+
+% there is kind of an incongruency here because EIP with fully homogeneous is said to be easy but then the proof of thomae requires homogeneous but does not talk about EIP
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
