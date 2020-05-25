@@ -356,7 +356,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
   The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
 \end{definition}
 
-We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure is not given to order monomials. More precisely, quotients and remainders of a division between two multivariate polynomials depend on which one is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
+We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure to order monomials is not given. More precisely, the quotient and remainder of a division between two multivariate polynomials depend on which is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
 
 \begin{definition}
   Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \delta \in \mathbb{Z}^{n}$. Given a well-order $\prec$ in $\mathbb{Z}^{n}$ such that $\alpha + \delta \prec \beta + \delta$ if $\alpha \prec \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
@@ -368,7 +368,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   \end{itemize}
 \end{definition}
 
-In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems.
+In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:matquad}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
@@ -385,8 +385,6 @@ In the context of multivariate cryptography, monomial ordering is used for insta
   such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
-We note that the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering. On the other hand, the matrix of Definition~\ref{def:matquad} does not necessarily need any ordering, but the resulting product may differ from the original polynomial in this aspect. We also show how to represent multivariate quadratic polynomials with no constant or linear terms.
-
 \begin{definition}\label{def:mathom}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
@@ -400,7 +398,9 @@ We note that the matrix representation of $\mathcal{P}$ itself is highly dependa
   such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
-We remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
+While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:matquad} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. 
+
+We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
