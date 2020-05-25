@@ -454,9 +454,9 @@ Consequently, a scheme using the bipolar construction is also based on some vari
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
 
-We remark that the lateral maps are simply invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. We thus make use of the following result to explain this difference. % TODO
+Finally, we remark that the lateral maps are invertible square matrices, in contrast to other descriptions of the bipolar construction, which restrict $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. Such group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that 
 
-% \begin{theorem}[{\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306}}]
+% \begin{theorem}[{]
 %   The constant part of the lateral maps in the bipolar construction is invariant to the security of resulting cryptosystems.
 % \end{theorem}
 
