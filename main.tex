@@ -436,7 +436,7 @@ We now observe the relationship between $m$ and $n$ to understand how the bipola
 The private and public keys are respectively a $3$-tuple and the aforementioned composition, that is,
 \begin{align}
   \begin{split}
-    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
       \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
     \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
       \quad \in \mathsf{MQ}(n, m).
@@ -449,9 +449,7 @@ While its construction is very elegant, the bipolar construction yields a situat
 Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on.
 
 \begin{definition}
-  Given a multivariate cryptosystem based on the bipolar construction and public and private keys $\mathbf{pk}, (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$, finding maps $\widetilde{\mathcal{L}_{1}}, $
-  
-  the \emph{extended isomorphism of polynomials problem} 
+  Given a multivariate cryptosystem based on the bipolar construction and the key pair $(\mathbf{sk}, \mathbf{pk})$ from its key generation algorithm, finding a decomposition $\mathbf{pk} = \widetilde{\mathcal{L}_{1}} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}_{2}}$ with the same structure as the corresponding parts of $\mathbf{sk}$ is called the \emph{extended isomorphism of polynomials problem}.
 \end{definition}
 
 
