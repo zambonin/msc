@@ -431,7 +431,7 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
     construction.}\label{fig:bipolar}
 \end{figure}
 
-We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the function $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
+We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the map $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
 
 The private and public keys are respectively a $3$-tuple and the aforementioned composition, that is,
 \begin{align}
@@ -454,7 +454,9 @@ Consequently, a scheme using the bipolar construction is also based on some vari
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
 
-Finally, we remark that our description of the bipolar construction is slightly different from the literature, since our maps lie in more restricted sets. The lateral maps are invertible square matrices, in contrast to the usual restriction $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. This group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that the underlying IP problems are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Moreover, such results imply that the polynomials in the central map must be homogeneous quadratic. We make use of this technical result and modify the description of the bipolar construction as well as of schemes in Section~\ref{sec:ov}.
+Finally, we remark that our description of the bipolar construction is slightly different from the literature, since our maps lie in more restricted sets. The usual description has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. This group is called the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
+
+It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that the underlying IP problems are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Moreover, such results imply that the polynomials in the central map must be homogeneous quadratic. We make use of this technical result and present a coherent description of the schemes in Section~\ref{sec:ov}.
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
