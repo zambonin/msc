@@ -353,7 +353,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \alpha_{ij}, \beta_{i}, \delta \in \mathbb{F}.
     \end{split}
   \end{align}
-  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$.
+  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$. If all linear and constant terms are zero, then the resulting system is \emph{homogeneous quadratic}, and the respective set is denoted by $\mathsf{MHQ}(n, m)$.
 \end{definition}
 
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure to order monomials is not given. More precisely, the quotient and remainder of a division between two multivariate polynomials depend on which is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
@@ -386,7 +386,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
 \end{definition}
 
 \begin{definition}\label{def:mathom}
-  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
+  Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     M(p^{(i)}) = 
     \begin{bmatrix}
@@ -402,7 +402,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most commonly framework in multivariate cryptography employed to build cryptosystems. It is called bipolar construction, due to its elegant twofold nature, which yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MHQ}(n, m)$ is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, this mechanism shall be hidden to hinder malicious parties. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -437,9 +437,9 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
-      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
     \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
-      \quad \in \mathsf{MQ}(n, m).
+      \quad \in \mathsf{MHQ}(n, m).
   \end{split}
 \end{align}
 This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently from the main idea given. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
@@ -449,7 +449,7 @@ While its construction is very elegant, the bipolar construction yields a situat
 Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on.
 
 \begin{definition}
-  Let $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys'' with a structured central map. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is called the \emph{extended isomorphism of polynomials (EIP) problem}.
+  Let $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MHQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys'' with a structured central map. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is called the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
