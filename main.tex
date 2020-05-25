@@ -368,7 +368,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   \end{itemize}
 \end{definition}
 
-In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
+In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:matquad}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
@@ -444,11 +444,7 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
 \end{align}
 This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently from the main idea given. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
 
-
-
-The bipolar construction creates a situation in which its derived schemes
-are not exclusively based on the polynomial system solving
-problem. Instead, it is proven~\cite{} that there exist many private keys that
+The bipolar construction creates a situation in which its derived schemes are not exclusively based on the polynomial system solving problem. Instead, it is proven~\cite{Wolf:201104} that there exist many private keys that
 compose a single public key. Thus, a scheme using the bipolar construction is
 also based on what is called the extended isomorphism of polynomials (EIP)
 problem. However, there is little information on the difficulty of EIP,
@@ -976,7 +972,7 @@ and argue that our methods do not facilitate such attacks.
 \subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
 the public key $\mathcal{P}$ tries to solve $\mathcal{P}(x) = d$. This is done
 by fixing some of the variables and applying an algorithm built upon the theory
-of Gröbner basis, such as the Hybrid approach~\cite{Bettale:201207:inproc}.
+of Gröbner basis, such as the Hybrid approach~\cite{}.
 While it is hard to pinpoint the exact running time of such methods, the
 authors give an estimation of its asymptotic complexity in Equation 5 of the
 aforementioned work.
