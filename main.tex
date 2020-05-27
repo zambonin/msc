@@ -142,7 +142,7 @@ Oftentimes it is convenient to interpret elements as those of a different group.
   Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
-Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
+Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
@@ -206,7 +206,7 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 Polynomials of degree zero, one, two and three are respectively \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply summing the coefficients of monomials with the same product of variables, that is, $\sum_{i}^{k} a_{i} x^{i} + \sum_{i}^{k} b_{i} x^{i} = \sum_{i}^{k} (a_{i} + b_{i}) x^{i}$. Multiplication is calculated through repeated applications of the distributive law, and the resulting polynomial has the sum of the degrees of the factors. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends. This allows us to define the following structure.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring}, denoted $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring}, denoted $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
+  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring} $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring} $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
 \end{definition}
 
 \begin{definition}
@@ -226,7 +226,7 @@ We remark that a polynomial by itself is simply a mathematical expression, but t
 Usually several polynomials are used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
-  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, usually denoted
+  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or more commonly,
   \begin{align*}
     \begin{cases}
       p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
@@ -276,7 +276,7 @@ We give other useful traits of a vector space before returning to polynomial map
   Given a vector space and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} \mid \forall f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is the \emph{linear span}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is a \emph{basis of the vector space}.
 \end{definition}
 
-There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
+There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix} $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
 Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:ghom}. The general form of such functions is presented below.
 
@@ -284,8 +284,8 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $f_{1} \in \mathbb{F}$, a function $\phi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
   
   \begin{enumerate}
-    \item The \emph{addition operation is preserved}, that is, we must have that $\phi(\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = \phi(\mathbf{v_{1}}) \bm{+'} \phi(\mathbf{v_{2}})$;
-    \item The \emph{scalar multiplication operation is preserved}, that is, we must have that $\phi(f_{1} \bm{\times} \mathbf{v_{1}}) = f_{1} \bm{\times'} \phi(\mathbf{v_{1}})$.
+    \item The \emph{addition operation is preserved}, that is, $\phi(\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = \phi(\mathbf{v_{1}}) \bm{+'} \phi(\mathbf{v_{2}})$;
+    \item The \emph{scalar multiplication operation is preserved}, that is, $\phi(f_{1} \bm{\times} \mathbf{v_{1}}) = f_{1} \bm{\times'} \phi(\mathbf{v_{1}})$.
   \end{enumerate} 
 \end{definition}
 
@@ -353,7 +353,7 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \alpha_{ij}, \beta_{i}, \delta \in \mathbb{F}.
     \end{split}
   \end{align}
-  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$. If all linear and constant terms are zero, then the resulting system is \emph{homogeneous quadratic}, and the respective set is denoted by $\mathsf{MHQ}(n, m)$.
+  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$. If all linear and constant terms are zero, then the resulting system is \emph{homogeneous quadratic}, and the respective set is $\mathsf{MHQ}(n, m)$.
 \end{definition}
 
 We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure to order monomials is not given. More precisely, the quotient and remainder of a division between two multivariate polynomials depend on which is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
@@ -402,7 +402,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most commonly used framework in multivariate cryptography employed to build cryptosystems. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. Let $\overline{\mathsf{MHQ}}(n, m)$ be a class of structured homogeneous quadratic polynomial maps and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \overline{\mathsf{MHQ}}(n, m)$. This is called the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. Let $\overline{\mathsf{MHQ}}(n, m)$ be a class of structured homogeneous quadratic polynomial maps and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \overline{\mathsf{MHQ}}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -930,7 +930,7 @@ distributed, with small variations due to the random generation of field
 elements. However, we note that this is due to the low number of classes,
 \emph{i.e.} the order of the finite field, and experimentally confirm that such
 discrepancies are largely reduced with $q = 2^{10}$. This is further confirmed
-by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts with quantiles from the standard normal distribution. Such quantiles are called normal order statistics, or rankits~\cite{Ipsen:194405}, which are hereafter referred to as $K$. 
+by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite{Ipsen:194405}, which are hereafter referred to as $K$. 
 
 Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. Let $r \in \mathbb{N}$ be a precision parameter. A number $rq$ of samples are taken from a standard normal distribution and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The $q$-tuple $K$ is calculated as 
 \[
