@@ -176,7 +176,7 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
   Given a unit ring $(R, +, \ast)$, if $(R \setminus \{0\}, \ast)$ forms a group, then the ring is a \emph{division ring}.
 \end{definition}
 
-The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a powerful number system commonly employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations.
+The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a powerful number system employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations.
 
 \begin{definition}
   A commutative division ring is a \emph{field}.
@@ -184,7 +184,7 @@ The ring of integers equipped with usual addition and multiplication $(\mathbb{Z
 
 Particularly, Galois fields or \emph{finite fields} are at the heart of various branches of mathematics and computer science, and especially cryptography. They are denoted as $\mathbb{F}_{q^{n}}$, with $q$ as the characteristic of the field, and $q$ and $n$ omitted for brevity if appropriate.
 
-\begin{proposition}
+\begin{proposition}[~\cite{}]
   The order of a finite field is always of the form $q^{n}$ with $q$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is a \emph{prime field}.
 \end{proposition}
 
@@ -226,7 +226,7 @@ We remark that a polynomial by itself is simply a mathematical expression, but t
 Several polynomials may be used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
-  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or more commonly,
+  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or
   \begin{align*}
     \begin{cases}
       p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
@@ -289,7 +289,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. Such group is also known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p. 418, Cor. 14]{Dummit:2003}}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
@@ -400,7 +400,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
 
 While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:matquad} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. 
 
-We now turn to the most commonly used framework in multivariate cryptography employed to build cryptosystems. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea. 
+We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}. Let $\overline{\mathsf{MHQ}}(n, m)$ be a class of structured homogeneous quadratic polynomial maps and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \overline{\mathsf{MHQ}}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
