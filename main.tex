@@ -101,9 +101,9 @@ We define below the elementary algebraic structures known as groups, rings, fiel
   Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
   
   \begin{itemize}
-    \item It is said to be \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
-    \item It is said to be \emph{commutative} if we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
-    \item It is said to be \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
+    \item It is \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
+    \item It is \emph{commutative} if we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
+    \item It is \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
   \end{itemize}
 \end{definition}
 
@@ -113,8 +113,8 @@ We define below the elementary algebraic structures known as groups, rings, fiel
   \begin{enumerate}
     \item The binary operation $\star$ is \emph{closed under $G$};
     \item The binary operation $\star$ on $G$ is \emph{associative};
-    \item There exists a unique element $e \in G$, called \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$;
-    \item There exists a uniquely determined element $h \in G$, called \emph{the inverse of $g_{1}$}, such that $g_{1} \star h = h \star g_{1} = e$, and indeed the inverse of $h$ is $g_{1}$.
+    \item There exists a unique element $e \in G$, \emph{the identity of $G$}, such that $g_{1} \star e = e \star g_{1} = g_{1}$;
+    \item There exists a uniquely determined element $h \in G$, \emph{the inverse of $g_{1}$}, such that $g_{1} \star h = h \star g_{1} = e$, and indeed the inverse of $h$ is $g_{1}$.
   \end{enumerate}
 \end{definition}
 
@@ -269,7 +269,7 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
 We give other useful traits of a vector space before returning to polynomial maps.
 
 \begin{definition}
-  Given a vector space $(V, \bm{+}, \bm{\times})$ over $\mathbb{F}$, $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$ and $f_{1}, \dots, f_{n} \in \mathbb{F}$, if the unique solution for the linear combination $f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} = 0$ is $f_{1} = \cdots = f_{n} = 0$, then the vectors $\mathbf{v_{1}}, \dots, \mathbf{v_{n}}$ are said to be \emph{linearly independent}.
+  Given a vector space $(V, \bm{+}, \bm{\times})$ over $\mathbb{F}$, $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$ and $f_{1}, \dots, f_{n} \in \mathbb{F}$, if the unique solution for the linear combination $f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} = 0$ is $f_{1} = \cdots = f_{n} = 0$, then the vectors $\mathbf{v_{1}}, \dots, \mathbf{v_{n}}$ are \emph{linearly independent}.
 \end{definition}
 
 \begin{definition}
@@ -302,7 +302,7 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
 
 \begin{definition}
-  Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is said to be a \emph{cryptographic hash function} if it satisfies the following conditions:
+  Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is a \emph{cryptographic hash function} if it satisfies the following conditions:
   
   \begin{enumerate}
     \item It is \emph{deterministic} and \emph{easy to compute};
@@ -315,7 +315,7 @@ With most mathematical machinery defined, we now introduce the building blocks t
 The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
 
 \begin{definition}
-  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is said to be a \emph{digital signature scheme} if it satisfies
+  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is a \emph{digital signature scheme} if it satisfies
   \begin{align}
      \forall (\mathbf{sk}, \mathbf{pk}) \leftarrow \textsc{Gen}(1^{n}),
        \quad \Pr[\textsc{Ver}(\mathbf{pk}, w, \textsc{Sig}(\mathbf{sk}, w)) = 1] = 1.
