@@ -312,10 +312,10 @@ With most mathematical machinery defined, we now introduce the building blocks t
   \end{enumerate}
 \end{definition}
 
-The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ are all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
+The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ are all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for integrity checking.
 
 \begin{definition}
-  Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is a \emph{digital signature scheme} if it satisfies
+  Given $n \in \mathbb{N}$ and any message $w \in \{0, 1\}^{*}$, a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$ is a \emph{digital signature scheme} if it satisfies
   \begin{align}
      \forall (\mathbf{sk}, \mathbf{pk}) \leftarrow \textsc{Gen}(1^{n}),
        \quad \Pr[\textsc{Ver}(\mathbf{pk}, w, \textsc{Sig}(\mathbf{sk}, w)) = 1] = 1.
@@ -323,7 +323,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
   The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
-This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-uple. The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs two bit strings known as the signing key and verification key, or private and public keys, related in some way. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and verifies if the message was signed correctly with corresponding key and outputs a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
