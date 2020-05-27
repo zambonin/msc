@@ -323,7 +323,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
   The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
-This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs two bit strings known as the signing key and verification key, or private and public keys, related in some way. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and verifies if the message was signed correctly with corresponding key and outputs a truth value.
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs two bit strings known as the signing and verification keys, or private and public keys, mathematically related in some way. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
@@ -332,7 +332,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
 \end{definition}
 
 \begin{theorem}[{\cite[Appendix A]{Patarin:199711}}]
-  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{MQ problem}.
+  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the proposed degree restriction of the polynomials, to better visualize such systems.
@@ -395,7 +395,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
                       0 & \cdots & \alpha^{(i)}_{nn}    \\
     \end{bmatrix}
   \end{align}
-  such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
+  such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its unique \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
 While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:matquad} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. 
@@ -433,7 +433,7 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
 
 We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the map $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
 
-The private and public keys are respectively a $3$-tuple and the aforementioned composition, that is,
+The private and public keys are respectively a $3$-tuple and its aforementioned composition, that is,
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
