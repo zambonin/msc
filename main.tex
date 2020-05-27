@@ -121,11 +121,11 @@ We define below the elementary algebraic structures known as groups, rings, fiel
 We are specifically interested in specific types of groups and translations between those. Thus, we also give the following definitions, which will be useful throughout the work.
 
 \begin{definition}
-  Given a group $(G, \star)$, if $G$ is a finite set, then the group is also called \emph{finite}. The number of elements in a group is called its \emph{order}. A group is never ``empty'', due to the existence of the identity.
+  Given a group $(G, \star)$, if $G$ is a finite set, then the group is also \emph{finite}. The number of elements in a group is its \emph{order}. A group is never ``empty'', due to the existence of the identity.
 \end{definition}
 
 \begin{definition}
-  Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is also called commutative, or \emph{abelian}.
+  Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is also commutative, or \emph{abelian}.
 \end{definition}
 
 Oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below. Further, if clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. 
@@ -135,14 +135,14 @@ Oftentimes it is convenient to interpret elements as those of a different group.
 \end{definition}
 
 \begin{definition}\label{def:morph}
-  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is called an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is called an \emph{automorphism}.
+  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is an \emph{automorphism}.
 \end{definition}
 
 \begin{proposition}\label{prop:autgroup}
   Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
-Groups carrying usual addition or multiplication operations are called \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
+Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, usually denoted as $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic-like structures.
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
@@ -155,7 +155,7 @@ Groups carrying usual addition or multiplication operations are called \emph{add
 \end{definition}
 
 \begin{definition}
-  Given a ring $(R, +, \ast)$, if the binary operation $\ast$ is commutative, then the ring is also called \emph{commutative}.
+  Given a ring $(R, +, \ast)$, if the binary operation $\ast$ is commutative, then the ring is also \emph{commutative}.
 \end{definition}
 
 We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emph{multiplicative identity} of a ring, if it exists. Analogously, for any element $r$ of a ring, we denote $-r$ as the \emph{additive inverse of $r$}, and $r^{-1}$ as the \emph{multiplicative inverse of $r$}, if it exists. Indeed, these inverse binary operations are usually called \emph{subtraction} and \emph{division}, respectively.
@@ -165,42 +165,42 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
 \end{definition}
 
 \begin{definition}
-  Given a ring $(R, +, \ast)$ and any $r_{1} \in R, r_{1} \neq 0$, if there exists a unique element $1 \in R$ such that $r_{1} \ast 1 = 1 \ast r_{1} = r_{1}$, then the ring is called a \emph{unit ring}.
+  Given a ring $(R, +, \ast)$ and any $r_{1} \in R, r_{1} \neq 0$, if there exists a unique element $1 \in R$ such that $r_{1} \ast 1 = 1 \ast r_{1} = r_{1}$, then the ring is a \emph{unit ring}.
 \end{definition}
 
 % \begin{definition}
-%   Given a ring $(R, +, \ast)$ and any $r_{1}, r_{2} \in R, r_{1}, r_{2} \neq 0$, if $r_{1} \ast r_{2} \neq 0$, then the ring is called an \emph{integral domain}.
+%   Given a ring $(R, +, \ast)$ and any $r_{1}, r_{2} \in R, r_{1}, r_{2} \neq 0$, if $r_{1} \ast r_{2} \neq 0$, then the ring is an \emph{integral domain}.
 % \end{definition}
 
 \begin{definition}
-  Given a unit ring $(R, +, \ast)$, if $(R \setminus \{0\}, \ast)$ forms a group, then the ring is called a \emph{division ring}.
+  Given a unit ring $(R, +, \ast)$, if $(R \setminus \{0\}, \ast)$ forms a group, then the ring is a \emph{division ring}.
 \end{definition}
 
 The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a powerful number system commonly employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations.
 
 \begin{definition}
-  A commutative division ring is called a \emph{field}.
+  A commutative division ring is a \emph{field}.
 \end{definition}
 
 Particularly, Galois fields or \emph{finite fields} are at the heart of various branches of mathematics and computer science, and especially cryptography. They are denoted as $\mathbb{F}_{q^{n}}$, with $q$ as the characteristic of the field, and $q$ and $n$ omitted for brevity if appropriate.
 
 \begin{proposition}
-  The order of a finite field is always of the form $q^{n}$ with $q$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is called a \emph{prime field}.
+  The order of a finite field is always of the form $q^{n}$ with $q$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is a \emph{prime field}.
 \end{proposition}
 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Particularly, we aim to precisely define non-prime fields with the following framework.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ called \emph{coefficients} and an \emph{indeterminate} $x$, an expression $p(x)$ of the form
+  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ as \emph{coefficients} and an \emph{indeterminate} $x$, an expression $p(x)$ of the form
   \[
     \sum_{i = 0}^{k} a_{i} x^{i} 
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}
   \]
-  is called an \emph{univariate polynomial}. Each of the terms in the summation is called a \emph{monomial}.
+  is an \emph{univariate polynomial}. Each of the terms in the summation is a \emph{monomial}.
 \end{definition}
 
 \begin{definition}
-  Given $n \in \mathbb{N}$, a polynomial over a sequence of indeterminates $\mathbf{x} = (x_{1}, \dots, x_{n})$ is called a \emph{multivariate polynomial}. The highest sum of the exponents of the indeterminates in a monomial with a non-zero coefficient is called the \emph{degree} of the polynomial, or $\deg(\cdot)$. If all monomials have the same degree, then the polynomial is called \emph{homogeneous}.
+  Given $n \in \mathbb{N}$, a polynomial over a sequence of indeterminates $\mathbf{x} = (x_{1}, \dots, x_{n})$ is a \emph{multivariate polynomial}. The highest sum of the exponents of the indeterminates in a monomial with a non-zero coefficient is the \emph{degree} of the polynomial, or $\deg(\cdot)$. If all monomials have the same degree, then the polynomial is \emph{homogeneous}.
 \end{definition}
 
 Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply summing the coefficients of monomials with the same product of variables, that is, $\sum_{i}^{k} a_{i} x^{i} + \sum_{i}^{k} b_{i} x^{i} = \sum_{i}^{k} (a_{i} + b_{i}) x^{i}$. Multiplication is calculated through repeated applications of the distributive law, and the resulting polynomial has the sum of the degrees of the factors. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends. This allows us to define the following structure.
@@ -221,7 +221,7 @@ We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.
 
 Finite fields of the form $\mathbb{F}_{2^{l}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
-We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are called the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are called the zeros of the function or the \emph{roots} of a polynomial. 
+We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial. 
 
 Usually several polynomials are used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
@@ -252,7 +252,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are usually called \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is called \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is called a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
@@ -273,10 +273,10 @@ We give other useful traits of a vector space before returning to polynomial map
 \end{definition}
 
 \begin{definition}
-  Given a vector space and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} \mid \forall f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is called the \emph{linear span}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is called a \emph{basis of the vector space}.
+  Given a vector space and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} \mid \forall f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is the \emph{linear span}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is a \emph{basis of the vector space}.
 \end{definition}
 
-There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is called the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
+There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix}, hereafter denoted as $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
 Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:ghom}. The general form of such functions is presented below.
 
@@ -320,7 +320,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
      \forall (\mathbf{sk}, \mathbf{pk}) \leftarrow \textsc{Gen}(1^{n}),
        \quad \Pr[\textsc{Ver}(\mathbf{pk}, w, \textsc{Sig}(\mathbf{sk}, w)) = 1] = 1.
   \end{align}
-  The integer $n$ is called the \emph{security parameter}.
+  The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
 This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-uple. The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature, usually represented by $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
@@ -328,11 +328,11 @@ This mathematical framework ensures authenticity and non-repudiation of the send
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
 \begin{definition}\label{def:posso}
-  Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is called the \emph{polynomial system solving problem}.
+  Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is the \emph{polynomial system solving problem}.
 \end{definition}
 
 \begin{theorem}[{\cite[Appendix A]{Patarin:199711}}]
-  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is called the \emph{MQ problem}.
+  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{MQ problem}.
 \end{theorem}
 
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the proposed degree restriction of the polynomials, to better visualize such systems.
