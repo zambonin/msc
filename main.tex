@@ -442,21 +442,23 @@ The private and public keys are respectively a $3$-tuple and the aforementioned 
       \quad \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
-This description is tailored for schemes that perform calculations over a single finite field, as is the case of the Oil--Vinegar family. However, the bipolar construction can be extended to work differently from the main idea given. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
+The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of schemes that do not employ the bipolar construction at all, or that use multiple finite fields in their construction.
+
+ There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
 
 While its construction is very elegant, the bipolar construction yields a situation in which its derived schemes are not exclusively based on the polynomial system solving problem of Definition~\ref{def:posso}. Instead, it is proven that there exist many private keys that compose a single public key~\cite{Wolf:201104}, and consequently, the theory of \emph{equivalent keys} has been used to attack several schemes, as seen in Section~\ref{sec:related}. This concept is better explained alongside specific schemes, and thus it is done on Section~\ref{sec:ov}.
 
-Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on.
+Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of this problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}
   Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
-Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on the polynomial system solving problem such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction.
+Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for most multivariate cryptosystems.
 
 Finally, we remark that our description of the bipolar construction is slightly different from the literature, since our maps lie in more restricted sets. The usual description has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. This is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
 
-It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP-class problems are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. As a consequence, such results need the polynomials in the central map to be homogeneous quadratic. We make use of this technical result and present a coherent description of the schemes in Section~\ref{sec:ov}.
+It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP-class problems are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. As a consequence, such results need the polynomials in the central map to be homogeneous quadratic. We make use of this technical result and tailor our description of the bipolar construction to be coherent with the schemes presented in Section~\ref{sec:ov}.
 
 % there is kind of an incongruency here because EIP with fully homogeneous is said to be easy but then the proof of thomae requires homogeneous but does not talk about EIP
 
