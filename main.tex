@@ -101,9 +101,9 @@ We define below the elementary algebraic structures known as groups, rings, fiel
   Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions:
   
   \begin{itemize}
-    \item It is \emph{associative} if we have that $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
-    \item It is \emph{commutative} if we have that $g_{1} \star g_{2} = g_{2} \star g_{1}$;
-    \item It is \emph{closed under $G$} if we have that $g_{1} \star g_{2} \in G$.
+    \item It is \emph{associative} if $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$;
+    \item It is \emph{commutative} if $g_{1} \star g_{2} = g_{2} \star g_{1}$;
+    \item It is \emph{closed under $G$} if $g_{1} \star g_{2} \in G$.
   \end{itemize}
 \end{definition}
 
@@ -131,7 +131,7 @@ We are specifically interested in specific types of groups and translations betw
 Oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below. Further, if clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. 
 
 \begin{definition}\label{def:ghom}
-  Given two groups $\mathsf{G} = (G, \star)$ and $\mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if we have that $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
+  Given two groups $\mathsf{G} = (G, \star), \mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
 \begin{definition}\label{def:morph}
@@ -449,14 +449,14 @@ While very elegant, the bipolar construction yields a situation in which derived
 In other words, there exist many private keys that compose a single public key~\cite{Wolf:201104}, and consequently, the theory of \emph{equivalent keys} has been used to attack several schemes, as seen in Section~\ref{sec:related}. This concept is better explained alongside specific schemes, and thus it is done on Section~\ref{sec:ov}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}
-  Let $\overline{\mathsf{MHQ}}(n, m)$ be a class of structured homogeneous quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MHQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
+  Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for Oil--Vinegar schemes. This is also the case for other IP problems, such that most multivariate cryptosystems simply have \emph{ad hoc} security.
 
 Finally, we remark that our description of the bipolar construction is tailored to be coherent with the schemes presented in Section~\ref{sec:ov}. The usual, broader description in the literature has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
 
-It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. As a consequence, the polynomials in the central map must be homogeneous quadratic. Our description is based on this technical results. There is also independent evidence that using linear transformations and quadratic maps is safe both in UOV~\cite[Section 5]{Kipnis:199808} and Rainbow~\cite[Section 3.1]{Ding:201901}, but that may not be the case with other schemes built upon the bipolar construction.
+It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. As a consequence, the polynomials in the central map must be homogeneous quadratic. Our description is based on these technical results. There is further independent evidence that using linear transformations and quadratic maps is safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}, but that may not be the case with other schemes built upon the bipolar construction.
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
