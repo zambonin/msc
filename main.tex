@@ -150,7 +150,7 @@ Groups carrying usual addition or multiplication operations are \emph{additive} 
   \begin{enumerate}
     \item The ordered pair $(R, +)$ forms an \emph{abelian group};
     \item The binary operation $\ast$ on $R$ is \emph{associative};
-    \item The binary operation \emph{$\ast$ left- and right-distributes over $+$}, that is, we must have that $r_{1} \ast (r_{2} + r_{3}) = (r_{1} \ast r_{2}) + (r_{1} \ast r_{3})$ and $(r_{2} + r_{3}) \ast r_{1} = (r_{2} \ast r_{1}) + (r_{3} \ast r_{1})$.
+    \item The binary operation \emph{$\ast$ left- and right-distributes over $+$}, that is, $r_{1} \ast (r_{2} + r_{3}) = (r_{1} \ast r_{2}) + (r_{1} \ast r_{3})$ and $(r_{2} + r_{3}) \ast r_{1} = (r_{2} \ast r_{1}) + (r_{3} \ast r_{1})$.
   \end{enumerate}
 \end{definition}
 
@@ -223,7 +223,7 @@ Finite fields of the form $\mathbb{F}_{2^{l}}$ are especially useful in computer
 
 We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial. 
 
-Usually several polynomials are used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
+Several polynomials may be used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
   Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or more commonly,
@@ -247,12 +247,12 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \begin{enumerate}
     \item The ordered pair $(V, \bm{+})$ forms an \emph{abelian group};
     \item The binary operation $\bm{\times}$ is \emph{associative}, that is, $f_{1} \bm{\times} (f_{2} \bm{\times} \mathbf{v_{1}}) = (f_{1} \ast f_{2}) \bm{\times} \mathbf{v_{1}}$;
-    \item The binary operation \emph{$\bm{\times}$ left distributes over $\bm{+}$}, that is, we must have that $f_{1} \bm{\times} (\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{1} \bm{\times} \mathbf{v_{2}})$;
-    \item The binary operation \emph{$\bm{+}$ left distributes over $\bm{\times}$}, that is, we must have that $(f_{1} + f_{2}) \bm{\times} \mathbf{v_{1}} = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{2} \bm{\times} \mathbf{v_{1}})$.
+    \item The binary operation \emph{$\bm{\times}$ left distributes over $\bm{+}$}, that is, $f_{1} \bm{\times} (\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{1} \bm{\times} \mathbf{v_{2}})$;
+    \item The binary operation \emph{$\bm{+}$ left distributes over $\bm{\times}$}, that is, $(f_{1} + f_{2}) \bm{\times} \mathbf{v_{1}} = (f_{1} \bm{\times} \mathbf{v_{1}}) \bm{+} (f_{2} \bm{\times} \mathbf{v_{1}})$.
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and usually represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
@@ -289,7 +289,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces are usually represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. In this case, this group is more commonly known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p. 418, Cor. 14]{Dummit:2003}}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\varphi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
@@ -312,7 +312,7 @@ With most mathematical machinery defined, we now introduce the building blocks t
   \end{enumerate}
 \end{definition}
 
-The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. The set $X$ is usually all binary words $\{0, 1\}^{*}$, while $Y$ is usually $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
+The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ are all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for checking the integrity of messages.
 
 \begin{definition}
   Given $n \in \mathbb{N}$, any message $w \in \{0, 1\}^{*}$ and a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$, it is a \emph{digital signature scheme} if it satisfies
@@ -323,7 +323,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
   The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
-This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-uple. The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature, usually represented by $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-uple. The algorithm $\textsc{Gen}$ generates the key pair, two bit strings known as the signing key and verification key, or private and public keys, which are related in some way. The algorithm $\textsc{Sig}$ outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ verifies if the message was signed correctly with corresponding key and outputs a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
