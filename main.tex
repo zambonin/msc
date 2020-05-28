@@ -470,7 +470,7 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 
 Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers represent the quantity of vinegar and oil variables, respectively. Let $V = \{1, \dots, v\}$ and $O = \{v + 1, \dots, v + o\}$. The total number of variables is $n = v + o$, and thus $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) \in \mathbb{F}^{n}$.
 
-\begin{definition}
+\begin{definition}\label{def:ovp}
   Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
   \begin{align}
     \begin{split}
@@ -484,23 +484,22 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
   The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
 \end{definition}
 
-We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
-\begin{align*}
-  \widetilde{M}(p) = \begin{bmatrix}
-    \star & \cdots & \star & \star & \cdots & \star \\
-    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star & \cdots & \star & \star & \cdots & \star \\
-    \star & \cdots & \star & 0 & \cdots & 0 \\
-    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star & \cdots & \star & 0 & \cdots & 0 \\
-  \end{bmatrix}, $p \in \mathsf{OVP}(n) \cap \mathsf{MHQ}(n)$
-\end{align*}
-
 \begin{definition}
   Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
 \end{definition}
 
-Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We are now ready to describe the Oil--Vinegar signature scheme.
+Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(n, m)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
+\begin{align*}
+  \widetilde{M}(p^{(i)}) = \begin{bmatrix}
+    \star & \cdots & \star & \star & \cdots & \star \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \star & \cdots & \star & \star & \cdots & \star \\
+    \star & \cdots & \star & 0 & \cdots & 0 \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \star & \cdots & \star & 0 & \cdots & 0 \\
+  \end{bmatrix}.
+\end{align*}
+We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
 
