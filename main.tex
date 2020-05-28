@@ -460,7 +460,7 @@ It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP probl
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
-\subsection{Unbalanced Oil and Vinegar signature scheme}
+\subsection{Unbalanced Oil and Vinegar signature scheme}\label{subsec:uov}
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
@@ -1153,17 +1153,17 @@ vinegar variables, reducing the inherent overhead.
 
 As seen in Chapter~\ref{chapter:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized by Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. However, we will present evidence that our scheme is not secure due to leakage of information about the private key in signatures.
 
-Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, which is a key recovery attack that separates oil and vinegar variables through manipulation of linear combinations of the public key. It is based on the fact that, in the case of the balanced Oil--Vinegar scheme, a mapping of the oil subspace $\mathcal{O} = \{ x_{1}, \dots, x_{n} \in \mathbb{F}^{n} : x_{1} = \cdots = x_{v} = 0 \}$ to itself can be found in polynomial time. It is discussed in more detail in Subsection~\ref{}.
+Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, which is a key recovery attack that separates oil and vinegar variables through manipulation of linear combinations of the public key. It is based on the fact that, in the case of the balanced Oil--Vinegar scheme, a mapping of the oil subspace $\mathcal{O} = \{ x_{1}, \dots, x_{n} \in \mathbb{F}^{n} : x_{1} = \cdots = x_{v} = 0 \}$ to itself can be found in polynomial time. It is discussed in more detail in Subsection~\ref{subsec:uov}.
 
-The modification of Rainbow-$\eta$ is a fixation of vinegar variables in the signature generation step of the scheme. This is allowed, since the map can be reconstructed through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signature made with the same vinegar variables and usual signatures is not statistically significant, as argued in Section~\ref{}. Moreover, there is no limitation on parameters such that a secure selection is always allowed.
+The modification of Rainbow-$\eta$ is a fixation of vinegar variables in the signature generation step of the scheme. This is allowed, since the map can be reconstructed through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{subsec:scheme}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signature made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that a secure selection is always allowed.
 
 Our attack is a key recovery attack, in the sense that an equivalent key is recovered, and allows for a malicious entity to create signature forgeries in polynomial time. The attacker must collect a large enough set of signatures in order to recover an equivalent key. The key observation is that signatures produced with Rainbow-$\eta$ can be used directly in the construction of a basis for $\mathcal{L}_{2}^{-1}(\mathcal{O})$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be constructed and composed with the public key.
 
-We shortly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$, and $\mathbf{sk} = (\mathcal{F}, \mathcal{T}), \mathbf{pk} = \mathcal{F} \circ \mathcal{T}$ as per Section~\ref{}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in the polynomial systems. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
+We shortly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$, and $\mathbf{sk} = (\mathcal{F}, \mathcal{T}), \mathbf{pk} = \mathcal{F} \circ \mathcal{T}$ as per Section~\ref{sec:ov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{F}$ and $\mathbf{pk}$. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
 
 The first $v$ variables of any $\sigma_{i}$ under the transformation $\mathcal{L}_{2}^{-1}$ are equal to the chosen sequence of vinegar variables $V_{1} = (x_{1}, \dots, x_{v})$, i.e. the preimage $\mathcal{L}_{2}^{-1}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Since this is the case for any $\sigma_{i}$, we have that $\mathcal{L}_{2}^{-1}(\sigma_{i} - \sigma_{i + 1}) = (0, \dots, 0, \ast, \dots, \ast)$. In fact, any subtraction between two signatures in $\rho$ yields vectors starting with $v$ zeroes. Let us call such a vector $\chi_{i}$, and evidently $\chi_{i} \in \mathcal{L}_{2}^{-1}(\mathcal{O})$. Since the attacker's goal is to build a basis of this set, then $m$ linearly independent $\chi_{i}$ must be collected such that it can be constructed.
 
-The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. A standard basis is taken as a blueprint, and the last $m$ rows are substituted with the vectors in $\rho$. We remark that the construction below actually yields $B^\mathsf{T}$, and thus the last step is actually its transposition.
+The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\rho$, and the matrix is then transposed. Equivalently,
 \begin{align*}
   B^{\mathsf{T}} = \begin{bmatrix}
     1 & 0 & 0 & \cdots & 0 \\
@@ -1173,9 +1173,9 @@ The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is giv
     \chi_{11} & \chi_{12} & \chi_{13} & \cdots & \chi_{1n} \\
         \vdots & \vdots & \vdots & \ddots & \vdots \\
     \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
-  \end{bmatrix}
+  \end{bmatrix}.
 \end{align*}
-Then, if $B \in \mathsf{GL}_{n}$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned operation, we obtain an equivalent key. Indeed, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201808}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message.
+Then, if $B \in \mathsf{GL}_{n}$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned operation, we obtain an equivalent key. Indeed, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message.
 
 \chapter{Conclusion}
 
