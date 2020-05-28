@@ -484,7 +484,8 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
   The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
 \end{definition}
 
-We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. Moreover, the matrix representation of an Oil--Vinegar polynomial is of the form
+We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms.
+% Moreover, the matrix representation of an Oil--Vinegar polynomial is of the form
 
 \begin{definition}
   Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
@@ -509,6 +510,8 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 \subsubsection{Signature verification.}
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
+
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
