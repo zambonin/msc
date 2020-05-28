@@ -462,6 +462,8 @@ It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP probl
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
+In this Section, we describe the classic schemes based on the Oil--Vinegar trapdoor, introduced in~\cite{Patarin:199709}. We define the Unbalanced Oil and Vinegar (UOV) signature scheme, alongside with its multi-layer generalization, Rainbow. We discuss the theory of equivalent keys for each scheme and the known cryptanalytic toolbox for challenging the security of such schemes.
+
 \subsection{Unbalanced Oil and Vinegar signature scheme}\label{subsec:uov}
 
 % TODO replace S, F, T by L1, L2 and C
@@ -1181,9 +1183,9 @@ Then, if $B \in \mathsf{GL}_{n}(\mathbb{F})$, the inverse of $\widetilde{\mathca
 
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$. However, we do not endorse ``security through obscurity'' and suggest that our proposed strategy is not applied to Rainbow-like signature schemes. Moreover, our attack is not expensive to perform, as we will see in the following, and thus should be added to the standard toolbox of cryptanalytic methods for Rainbow. Further, it is yet unclear if the fixation of a subset of the vinegar variables leads to a clearer tradeoff between private key size and security.
 
-\chapter{Conclusion}
+% \chapter{Conclusion}
 
-\section{Future work}
+% \section{Future work}
 
 \bibliographystyle{alpha}
 \bibliography{ref}
