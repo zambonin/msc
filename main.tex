@@ -496,14 +496,16 @@ Since $m = o$, after the substitution of vinegar variables, the resulting system
 
 Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{OVH}(n, m)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
 
-As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random{} \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathbf{pk} = \mathcal{C} \circ \mathcal{L}_{2} \in \mathsf{MHQ}(n, m)$.
+As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random{} \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+
+\subsubsection{Signature generation.}
+
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$ and any message $M \in \{0, 1\}^{*}$. To sign $M$, obtain the message digest $d = \mathcal{H}(M)$. The signature is the set of variables which yield the solution to the equation $\mathcal{P}(\mathbf{x}) = d$.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
 % TODO add figures
-% TODO general linear group / affine group
-% TODO bipolar construction, UOV/Rainbow, equivalent keys, that affine relation
-%  * no need for constant part of S, T, and affine/constant part of F
+% TODO UOV/Rainbow, equivalent keys, that affine relation
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
