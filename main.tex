@@ -466,7 +466,11 @@ In this Section, we describe the classic schemes based on the Oil--Vinegar trapd
 
 \subsection{Unbalanced Oil and Vinegar signature scheme}\label{subsec:uov}
 
-The idea of the original Oil and Vinegar signature scheme is to build a
+The idea of the original Oil and Vinegar signature scheme is to build the central map with two sets of variables, \emph{vinegar and oil variables}, such that the multivariate quadratic polynomials do not feature any quadratic oil terms. Thus, by choosing the values of vinegar variables, the systems become linear in the oil variables and consequently easy to solve.
+
+Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers represent the quantity of vinegar and oil variables, respectively. We have then $\mathbf{x} = (x_{1}, \dots, x_{v}, x'_{1}, \dots, x'_{o})$
+
+The total number of variables is $n = v + o$, and the number of equations is $m = o$.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
