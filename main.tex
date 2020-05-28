@@ -20,6 +20,8 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 
+\chapterstyle{article}
+
 \begin{document}
 
 \tableofcontents*
@@ -1053,7 +1055,7 @@ accidental endorsement of untested, and possibly insecure, instances.
   \caption{Reduction of Rainbow key sizes, in bytes, for various instances of the scheme.}\label{tab:1}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-    Instance & Parameters & $n$ & $m$ & $\#\mathsf{sk}$ & $\#\mathsf{sk}$ & Difference \\ \midrule
+    Instance & Parameters & $n$ & $m$ & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & Difference \\ \midrule
     I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &   96 &   64 &   100208 &   33152 & $-66.92\%$ \\
     I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &   92 &   56 &   114308 &   31676 & $-72.29\%$ \\
     I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &   88 &   48 &   143384 &   33024 & $-76.97\%$ \\
@@ -1106,7 +1108,7 @@ RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
   \begin{tabular}{l*{5}{r}}
     \toprule
-    Parameters & Variant & $\#\mathsf{sk}$ & $\#\mathsf{pk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
+    Parameters & Variant & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
     \multirow{3}{*}{$(\mathbb{F}_{256}, 17, 13, 13)$}  &  Classic &  \multirow{3}{*}{ 19546} &  \multirow{3}{*}{ 6524} &   25740 & $-28.76\%$ \\
                                                        &   Cyclic &                          &                         &   10618 & $-62.15\%$ \\
                                                        &     LRS2 &                          &                         &    9789 & $-63.98\%$ \\
