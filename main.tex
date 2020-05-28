@@ -1157,6 +1157,8 @@ Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, whi
 
 The modification of Rainbow-$\eta$ is a fixation of vinegar variables in the signature generation step of the scheme. This is allowed, since the map can be reconstructed through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signature made with the same vinegar variables and usual signatures is not statistically significant, as argued in Section~\ref{}. Moreover, there is no limitation on parameters such that a secure selection is always allowed.
 
+Our attack is a key recovery attack, in the sense that an equivalent key is recovered, and allows for a malicious entity to create signature forgeries in polynomial time. The attacker must collect a large enough set of signatures in order to recover an equivalent key. The key observation is that a pair of signatures produced with Rainbow-$\eta$
+
 \chapter{Conclusion}
 
 \section{Future work}
