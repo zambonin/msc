@@ -502,7 +502,7 @@ As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear 
 
 Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
 
-Then, to sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed.
+To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 % In other words, the signature is the set of variables which yield the solution to the equation $\mathcal{P}(\mathbf{x}) = d$.
 
