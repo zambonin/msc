@@ -479,15 +479,20 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
       + \sum_{i \in O} \beta_{i} x_{i}
       + \delta.
   \end{align}
+  The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
 \end{definition}
 
 We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms.
 
 \begin{definition}
-  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of Oil--Vinegar polynomials is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$.
+  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$.
 \end{definition}
 
-In the Oil--Vinegar signature scheme, we have $m = o$, such that after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables.
+Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We are now ready to describe the Oil--Vinegar signature scheme.
+
+\subsubsection{Key generation.}
+
+
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
