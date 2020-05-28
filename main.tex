@@ -487,16 +487,16 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
 We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms.
 
 \begin{definition}
-  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$.
+  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
 \end{definition}
 
 Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{OV}(n, m)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{OVH}(n, m)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
 
-Further, as discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. Thus, $\mathcal{L}_{2} \random{} \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2})$ and $\mathbf{pk} = \mathcal{C} \circ \mathcal{L}_{2}$.
+As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random{} \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathbf{pk} = \mathcal{C} \circ \mathcal{L}_{2} \in \mathsf{MHQ}(n, m)$.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
