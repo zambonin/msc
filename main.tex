@@ -500,7 +500,9 @@ As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear 
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$ and any message $M \in \{0, 1\}^{*}$. To sign $M$, obtain the message digest $d = \mathcal{H}(M)$. The signature is the set of variables which yield the solution to the equation $\mathcal{P}(\mathbf{x}) = d$.
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables such that a preimage of the message digest can be obtained with overwhelming probability, as per Subsection~\ref{subsec:invert}.
+
+% In other words, the signature is the set of variables which yield the solution to the equation $\mathcal{P}(\mathbf{x}) = d$.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
