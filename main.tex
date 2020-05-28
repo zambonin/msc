@@ -485,6 +485,17 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
 \end{definition}
 
 We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. Moreover, the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial is of the form
+\begin{align*}
+  \begin{bmatrix}
+    \star & \cdots & \star & \star & \cdots & \star \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \star & \cdots & \star & \star & \cdots & \star \\
+    \star & \cdots & \star & 0 & \cdots & 0 \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \star & \cdots & \star & 0 & \cdots & 0 \\
+  \end{bmatrix},
+\end{align*}
+that is, featuring a lower-right block matrix of size $o \times o$ with zeroes.
 
 \begin{definition}
   Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
