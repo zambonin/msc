@@ -473,11 +473,13 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
 \begin{definition}
   Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
   \begin{align}
-    \sum_{i \in V} \sum_{j \in V} \alpha_{ij} x_{i} x_{j}
-      + \sum_{i \in V} \sum_{j \in O} \alpha_{ij} x_{i} x_{j}
-      + \sum_{i \in V} \beta_{i} x_{i}
-      + \sum_{i \in O} \beta_{i} x_{i}
-      + \delta.
+    \begin{split}
+      \sum_{i \in V} \sum_{j \in V} \alpha_{ij} x_{i} x_{j}
+        + \sum_{i \in V} \sum_{j \in O} \beta_{ij} x_{i} x_{j}
+        + \sum_{i \in V \cup O} \gamma_{i} x_{i}
+        + \delta, \\
+      \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
+    \end{split}
   \end{align}
   The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
 \end{definition}
@@ -492,7 +494,7 @@ Since $m = o$, after the substitution of vinegar variables, the resulting system
 
 \subsubsection{Key generation.}
 
-
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{OV}(n, m)$. This random choice is equivalent to picking all coefficients at random.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
