@@ -484,7 +484,7 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
   The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
 \end{definition}
 
-We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms.
+We note that the summation is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. Moreover, the matrix representation of an Oil--Vinegar polynomial is of the form
 
 \begin{definition}
   Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
@@ -502,9 +502,13 @@ As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear 
 
 Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
 
-To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. 
 
-% In other words, the signature is the set of variables which yield the solution to the equation $\mathcal{P}(\mathbf{x}) = d$.
+If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is the result of the inverse linear transformation applied to the preimage. In other words, $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+
+\subsubsection{Signature verification.}
+
+To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
