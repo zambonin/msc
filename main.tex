@@ -1157,7 +1157,7 @@ Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, whi
 
 The modification of Rainbow-$\eta$ is a fixation of vinegar variables in the signature generation step of the scheme. This is allowed, since the map can be reconstructed through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signature made with the same vinegar variables and usual signatures is not statistically significant, as argued in Section~\ref{}. Moreover, there is no limitation on parameters such that a secure selection is always allowed.
 
-Our attack is a key recovery attack, in the sense that an equivalent key is recovered, and allows for a malicious entity to create signature forgeries in polynomial time. The attacker must collect a large enough set of signatures in order to recover an equivalent key. The key observation is that signatures produced with Rainbow-$\eta$ can be used directly in the construction of a basis for $\mathcal{L}_{2}^{-1}(\mathcal{O})$. Consequently, an equivalent linear transformation $\mathcal{L}_{2}'$ can be constructed and composed with the public key.
+Our attack is a key recovery attack, in the sense that an equivalent key is recovered, and allows for a malicious entity to create signature forgeries in polynomial time. The attacker must collect a large enough set of signatures in order to recover an equivalent key. The key observation is that signatures produced with Rainbow-$\eta$ can be used directly in the construction of a basis for $\mathcal{L}_{2}^{-1}(\mathcal{O})$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be constructed and composed with the public key.
 
 We shortly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$ as per Section~\ref{}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in the polynomial systems. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
 
@@ -1175,7 +1175,7 @@ The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is giv
     \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
   \end{bmatrix}
 \end{align*}
-Then, $B^{\mathsf{T}}$ is tested for invertibility.
+Then, if $B \in \mathsf{GL}_{n}$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathcal{P} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$.
 
 \chapter{Conclusion}
 
