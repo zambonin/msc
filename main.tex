@@ -1163,7 +1163,7 @@ We shortly describe the attack for UOV, that is, a Rainbow scheme with a single 
 
 The first $v$ variables of any $\sigma_{i}$ under the transformation $\mathcal{L}_{2}^{-1}$ are equal to the chosen sequence of vinegar variables $V_{1} = (x_{1}, \dots, x_{v})$, i.e. the preimage $\mathcal{L}_{2}^{-1}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Since this is the case for any $\sigma_{i}$, we have that $\mathcal{L}_{2}^{-1}(\sigma_{i} - \sigma_{i + 1}) = (0, \dots, 0, \ast, \dots, \ast)$. In fact, any subtraction between two signatures in $\rho$ yields vectors starting with $v$ zeroes. Let us call such a vector $\chi_{i}$, and evidently $\chi_{i} \in \mathcal{L}_{2}^{-1}(\mathcal{O})$. Since the attacker's goal is to build a basis of this set, then $m$ linearly independent $\chi_{i}$ must be collected such that it can be constructed.
 
-The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\rho$, and the matrix is then transposed. Equivalently,
+The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\rho$, and the matrix is then transposed. More concisely, a simple basis extensions is performed. Equivalently,
 \begin{align*}
   B^{\mathsf{T}} = \begin{bmatrix}
     1 & 0 & 0 & \cdots & 0 \\
@@ -1175,7 +1175,7 @@ The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is giv
     \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
   \end{bmatrix}.
 \end{align*}
-Then, if $B \in \mathsf{GL}_{n}$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned operation, we obtain an equivalent key. Indeed, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message.
+Then, if $B \in \mathsf{GL}_{n}$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
 
 \chapter{Conclusion}
 
