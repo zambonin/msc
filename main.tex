@@ -468,9 +468,15 @@ In this Section, we describe the classic schemes based on the Oil--Vinegar trapd
 
 The idea of the original Oil and Vinegar signature scheme is to build the central map with two sets of variables, \emph{vinegar and oil variables}, such that the multivariate quadratic polynomials do not feature any quadratic oil terms. Thus, by choosing the values of vinegar variables, the systems become linear in the oil variables and consequently easy to solve.
 
-Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers represent the quantity of vinegar and oil variables, respectively. We have then $\mathbf{x} = (x_{1}, \dots, x_{v}, x'_{1}, \dots, x'_{o})$
+Consider a finite field $\mathbb{F}_{q}$ and $v, o \in \mathbb{N}$. These integers represent the quantity of vinegar and oil variables, respectively. We then have $\mathbf{x} = (x_{1}, \dots, x_{v}, x'_{1}, \dots, x'_{o})$. The total number of variables is $n = v + o$.
 
-The total number of variables is $n = v + o$, and the number of equations is $m = o$.
+\begin{definition}
+  Given a polynomial ring $\mathbb{F}_{q}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
+  \begin{align}
+    
+  \end{align}
+  The set of all such polynomials is defined as $\mathsf{OV}(n, m)$.
+\end{definition}
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
