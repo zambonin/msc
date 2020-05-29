@@ -519,12 +519,12 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 Since Oil--Vinegar schemes are based on the bipolar construction, the private key is composed of a central map $\mathcal{C}$ and a linear transformation $\mathcal{L}_{2}$ to hide its structure. We remark that the linear transformation $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key. Then, let
 \begin{align}
   \mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2})
-    \random \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}).
+    \random \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}).
 \end{align}
 
 In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
 \begin{align}
-  \mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o).
+  \mathbf{pk} = \mathcal{P} \in \mathsf{MQ}(v, o).
 \end{align}
 
 \subsubsection{Signature generation.}
@@ -543,10 +543,10 @@ The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to b
 
 The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
-  \#\mathbf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o \right)}_{\mathcal{C}} \;
+  \#\mathbf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
     + \; \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
 \end{align}
-field elements. We note that if the Oil--Vinegar polynomials are not homogeneous quadratic, then the private key size increases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
+field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
   \#\mathsf{pk} = o \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
@@ -555,6 +555,14 @@ field elements.
 \subsubsection{Equivalent keys.}
 
 As mentioned in Section~\ref{sec:mult}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}.
+
+\begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
+  \begin{align}
+    \begin{bmatrix}
+    \end{bmatrix}
+  \end{align}
+\end{theorem}
 
 % TODO add figures
 % TODO equivalent keys
