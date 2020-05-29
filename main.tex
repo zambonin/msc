@@ -404,7 +404,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MHQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MHQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -439,7 +439,7 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
-      \:\quad \in \mathsf{GL}_{n}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+      \:\quad \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
     \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
       \quad \in \mathsf{MHQ}(n, m).
   \end{split}
@@ -451,7 +451,7 @@ While very elegant, the bipolar construction yields a situation in which derived
 In other words, there exist many private keys that compose a single public key~\cite{Wolf:201104}, and consequently, the theory of \emph{equivalent keys} has been used to attack several schemes, as seen in Section~\ref{sec:related}. This concept is better explained alongside specific schemes, and thus it is done on Section~\ref{sec:ov}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}
-  Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}_{n}(\mathbb{F}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{m}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
+  Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}_{m}(\mathbb{F}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$ be a set of ``secret keys''. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \overline{\mathcal{L}_{1}} \circ \overline{\mathcal{C}} \circ \overline{\mathcal{L}_{2}}$ such that $(\overline{\mathcal{L}_{1}}, \overline{\mathcal{C}}, \overline{\mathcal{L}_{2}}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for Oil--Vinegar schemes. This is also the case for other IP problems, such that most multivariate cryptosystems simply have \emph{ad hoc} security.
@@ -505,6 +505,15 @@ Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \m
 
 As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o)$.
 
+\begin{align}
+  \begin{split}
+    \mathbf{sk} &= (\mathcal{C}, \mathcal{L}_{2})
+      \:\quad \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
+      \quad \in \mathsf{MHQ}(n, m).
+  \end{split}
+\end{align}
+
 \subsubsection{Signature generation.}
 
 Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{o}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
@@ -553,8 +562,7 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. This random choice is equivalent to randomly choosing polynomial systems from 
-The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $C_{\ell} = (C_{\ell}^{(1)}, \dots, C_{\ell}^{(o_{\ell})}) \random \mathsf{OVH}(v_{\ell}, o_{\ell})$ and $\mathcal{C} = (C_{1}, \dots, C_{\ell})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. This random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OVH}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
 
 \subsubsection{Signature generation.}
 
