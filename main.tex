@@ -519,7 +519,7 @@ To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the
 
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(v, o)$. The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
-  \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \quad
+  \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \;
     + \; \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}}
 \end{align}
 field elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
@@ -549,7 +549,7 @@ We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
 
-The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random \mathsf{OV}(v_{l}, o_{l})$, and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
 
 \subsubsection{Signature generation.}
 
