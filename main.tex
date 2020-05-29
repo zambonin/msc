@@ -468,10 +468,13 @@ In this Section, we describe the classic schemes based on the Oil--Vinegar trapd
 
 The idea of the original Oil and Vinegar signature scheme is to build the central map with two sets of variables, \emph{vinegar and oil variables}, such that the multivariate quadratic polynomials do not feature any quadratic oil terms. Thus, by choosing the values of vinegar variables, the systems become linear in the oil variables and consequently easy to solve.
 
-Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers represent the quantity of vinegar and oil variables, respectively. Let $V = \{1, \dots, v\}$ and $O = \{v + 1, \dots, v + o\}$. The total number of variables is $n = v + o$, and thus $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) \in \mathbb{F}^{n}$.
+
+
+% Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$.  Let $V = \{1, \dots, v\}$ and $O = \{v + 1, \dots, v + o\}$. The total number of variables is $n = v + o$, and thus  \in \mathbb{F}^{n}$.
+
 
 \begin{definition}\label{def:ovp}
-  Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
+  Given $v, o \in \mathbb{N}$ and let $V = \{1, \dots, v\}$, O = \{v + 1, \dots, v + o\}$ and $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o})$. Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
   \begin{align}
     \begin{split}
       \sum_{i \in V} \sum_{j \in V} \alpha_{ij} x_{i} x_{j}
@@ -481,14 +484,14 @@ Consider a finite field $\mathbb{F}$ and $v, o \in \mathbb{N}$. These integers r
       \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
     \end{split}
   \end{align}
-  The set of all such polynomials is defined as $\mathsf{OVP}(n)$.
+  The set of all such polynomials is defined as $\mathsf{OVP}(v, o)$.
 \end{definition}
 
 \begin{definition}
-  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(n)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
+  Given $m = o$, a polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ consisting of $p^{(1)}, \dots, p^{(m)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
 \end{definition}
 
-Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(n, m)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
+These integers represent the quantity of vinegar and oil variables, respectively. Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(n, m)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
 \begin{align*}
   \widetilde{M}(p^{(i)}) = \begin{bmatrix}
     \star & \cdots & \star & \star & \cdots & \star \\
@@ -541,7 +544,7 @@ The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a gen
 Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{l}, o_{l})$, that is,
 \begin{align}\label{eq:ov}
   \begin{split}
-    P_{l} = \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
+    \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
       + \sum_{i \in V_{l}} \sum_{j \in O_{l}} \beta_{ij} x_{i} x_{j}
       + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} x_{i} + \delta, \\
       \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
