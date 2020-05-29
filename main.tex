@@ -572,23 +572,21 @@ For the central map $\mathcal{C}$, the random choice is equivalent to randomly c
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(d)$. To
-generate $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively.
-Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
-them into the first layer. This brings forth a system of $o_{1}$ linear
-equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(d)$. To obtain the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively. One chooses $(x_{1}, \dots, x_{v_{1}}) \random \mathbb{F}^{v_{1}}$ and substitutes the values into the first layer, or in other words, the first system of $o_{1}$ polynomials. This brings forth a system of $o_{1}$ linear equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
 algorithm such as Gaussian elimination. If the system does not have a solution,
 new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be
 substituted into the next layer, which creates a system of $o_{2}$ linear
 equations, that can be solved analogously. This procedure is repeated until all
-layers are solved. Finally, we compute $\sigma = \mathcal{L}_{2}^{-1}(y)$.
+layers are solved. Finally, we compute $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and otherwise invalid.
 
-Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+The remarks about UOV regarding the size of parameters and chances of failure in the inversion process are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. We note that when $u = 1$, we get the UOV scheme.
+
+Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
   \#\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{L}_{1}} 
     + \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
