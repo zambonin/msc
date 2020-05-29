@@ -471,16 +471,9 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
   such that $\tau \circ \mathcal{C} \circ \omega \in \overline{\mathsf{MQ}}(n, m)$.
 \end{definition}
 
-Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
+Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. 
 
-However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of schemes based on the bipolar construction if 
-
-It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. However, as a consequence, the polynomials in the central map must be homogeneous quadratic. While there is sufficient evidence that homogeneous quadratic maps is sage both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}, but that may not be the case with other schemes built upon the bipolar construction.
-
-Our description is based on these technical results. There is further independent evidence that using linear transformations and quadratic maps is safe both
-
-
- tailored to be coherent with the schemes presented in Section~\ref{sec:ov}
+Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve using linear transformations in place of affine ones. As a consequence, the polynomials in the central map must be homogeneous quadratic. Moreover, there exist works that confirm homogeneous quadratic maps and linear transformations are safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}.
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
