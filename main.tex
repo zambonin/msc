@@ -531,7 +531,6 @@ field elements. The size of a public key is the number of coefficients of $o$ po
 field elements.
 
 % TODO and when polynomials are homogeneous quadratic?
-% TODO replace S, F, T by L1, L2 and C
 % TODO add figures
 % TODO equivalent keys, that affine relation
 
@@ -539,7 +538,7 @@ field elements.
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
-Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the form
+Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form
 \begin{align}\label{eq:ov}
   \begin{split}
     P_{l} = \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
@@ -548,18 +547,11 @@ Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$.
       \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
   \end{split}
 \end{align}
+We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
 
-The central map of Rainbow is defined as
-$\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with the
-following construction: for each layer $1 \leq l \leq u$, we have
-$F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, where the random choice means all
-coefficients chosen randomly,
-and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
-variables in a layer contains all variables from the previous layer, this
-allows for the inversion of this map, as presented further along this description. Let
-$\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ and
+The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{n}(\mathbb{F})$ and
 $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be two affine
 invertible maps, used as the trapdoor to this construction. Let
 $\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
@@ -567,7 +559,6 @@ $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$.
 The private key is the triple
 $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and the public key is the map
 $\mathsf{pk} = \mathcal{P}$.
-% this can expanded removing what we _know_ to be extraneous
 
 \subsubsection{Signature generation.}
 
@@ -1035,7 +1026,7 @@ aforementioned work.
 \subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
 attacks that also work on the UOV signature scheme. This attack was originally
 created by Kipnis and Shamir~\cite{Kipnis:199808} to break the Balanced
-Oil-Vinegar scheme. The objective of this attack is to obtain an equivalent
+Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent
 private key by means of finding the preimage of a specific oil subspace under
 the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced
 schemes~\cite{Kipnis:199904} is
