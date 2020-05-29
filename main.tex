@@ -504,12 +504,8 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
 \begin{align*}
   \widetilde{M}(p^{(i)}) = \begin{bmatrix}
-    \star  & \cdots & \star  & \star  & \cdots & \star  \\
-    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star  & \cdots & \star  & \star  & \cdots & \star  \\
-    \star  & \cdots & \star  & 0      & \cdots & 0      \\
-    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star  & \cdots & \star  & 0      & \cdots & 0      \\
+    \star_{v \times v} & \star_{v \times o} \\
+    \star_{o \times v} & \mathbf{0}_{o \times o} \\
   \end{bmatrix}.
 \end{align*}
 We are now ready to describe the Oil--Vinegar signature scheme.
@@ -557,7 +553,14 @@ field elements.
 As mentioned in Section~\ref{sec:mult}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, if $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ has zeroes in its upper-right $v \times o$ portion, then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
+  \begin{align}
+    \begin{bmatrix}
+      \omega_{v \times v}^{(1)} & \mathbf{0}_{v \times o} \\
+      \omega_{o \times v}^{(2)} & \omega_{o \times o}^{(3)} \\
+    \end{bmatrix},
+  \end{align}
+  then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
 % TODO add figures
