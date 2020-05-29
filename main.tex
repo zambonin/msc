@@ -549,11 +549,12 @@ Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$.
       \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
   \end{split}
 \end{align}
-We are now ready to describe the Rainbow signature scheme.
+We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \times \cdots \times \mathsf{OV}(v_{u}, o_{u})$. We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
 
-The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $C_{\ell} = (C_{\ell}^{(1)}, \dots, C_{\ell}^{(o_{\ell})}) \random \mathsf{OVH}(v_{\ell}, o_{\ell})$ and $\mathcal{C} = (C_{1}, \dots, C_{\ell})$. We define the cartesian product of all $\mathsf{OVH}(v_{\ell}, o_{\ell})$ as $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. This random choice is equivalent to randomly choosing polynomial systems from 
+The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $C_{\ell} = (C_{\ell}^{(1)}, \dots, C_{\ell}^{(o_{\ell})}) \random \mathsf{OVH}(v_{\ell}, o_{\ell})$ and $\mathcal{C} = (C_{1}, \dots, C_{\ell})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
 
 \subsubsection{Signature generation.}
 
