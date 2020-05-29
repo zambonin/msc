@@ -557,14 +557,7 @@ field elements.
 As mentioned in Section~\ref{sec:mult}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
-  \begin{align}
-    \begin{bmatrix}
-      \omega_{v \times v}^{(1)} & \omega_{v \times o}^{(2)} \\
-      \omega_{o \times v}^{(3)} & \mathbf{0}_{o \times o} \\
-    \end{bmatrix},
-  \end{align}
-  then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, if $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ has zeroes in its upper-right $v \times o$ portion, then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
 % TODO add figures
