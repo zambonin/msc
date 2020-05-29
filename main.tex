@@ -519,20 +519,21 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(v, o)$. The size of the private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(v, o)$. The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
     + \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}}
 \end{align}
-field elements. The size of the public key is the number of coefficients of $m$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and thus
+field elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
-  \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
+  \#\mathsf{pk} = o \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
+field elements.
 
+% TODO and when polynomials are homogeneous quadratic?
 % TODO replace S, F, T by L1, L2 and C
-% TODO underlying problems
 % TODO add figures
-% TODO UOV/Rainbow, equivalent keys, that affine relation
+% TODO equivalent keys, that affine relation
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
@@ -607,14 +608,13 @@ Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
       + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}}.
 \end{align}
-The size of a public key is the number of coefficients of $m$ polynomials in the polynomial ring $\mathbb{F}_{q}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for a degree $d \in \mathbb{N}$. In the case of Oil--Vinegar polynomials, we have $d = 2$, and thus
+The size of a public key is similar to the UOV case, and thus
 \begin{align}
-  \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}.
+  \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
-Further details on the construction of Rainbow may be found
-on~\cite[Section 3.3]{Ding:2006}.
+field elements. Further details on the construction of Rainbow may be found on~\cite[Section 3.3]{Ding:2006}.
 
-\section{Cryptanalysis of Oil--Vinegar schemes}\label{subsec:attacks}
+\subsection{Cryptanalysis of Oil--Vinegar schemes}\label{subsec:attacks}
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
