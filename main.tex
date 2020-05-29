@@ -520,9 +520,9 @@ To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(v, o)$. The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \;
-    + \; \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}}
+    + \; \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o \right)}_{\mathcal{C}}
 \end{align}
-field elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
+field elements. Note that if the Oil--Vinegar polynomials are not homogeneous quadratic, then the private key size increases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
   \#\mathsf{pk} = o \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
@@ -536,7 +536,7 @@ field elements.
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
-Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OVH}(v_{l}, o_{l})$, that is,
+Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{l}, o_{l})$, that is,
 \begin{align}\label{eq:ov}
   \begin{split}
     \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
