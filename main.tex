@@ -519,7 +519,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing.
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing.
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
@@ -605,6 +605,8 @@ The size of a public key is the number of coefficients of $m$ polynomials in the
 \end{align}
 Further details on the construction of Rainbow may be found
 on~\cite[Section 3.3]{Ding:2006}.
+
+\section{Cryptanalysis of Oil--Vinegar schemes}\label{subsec:attacks}
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
