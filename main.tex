@@ -438,10 +438,9 @@ We now observe the relationship between $m$ and $n$ to understand how the bipola
 The private and public keys are respectively a $3$-tuple and its aforementioned composition, that is,
 \begin{align}
   \begin{split}
-    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
-      \:\quad \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
-      \quad \in \mathsf{MHQ}(n, m).
+    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+      \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(n, m).
   \end{split}
 \end{align}
 The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
@@ -503,14 +502,12 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 
 Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \mathsf{OVH}(v, o)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1} \in \mathsf{GL}_{o}(\mathbb{F}), \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
 
-As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o)$.
-
+As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{C}, \mathcal{L}_{2})
-      \:\quad \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{m}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2} 
-      \quad \in \mathsf{MHQ}(n, m).
+      \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(v, o).
   \end{split}
 \end{align}
 
