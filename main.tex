@@ -299,6 +299,8 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\varphi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
 
+% TODO abuse of notation GL(n, F) -> GL(F^n)
+
 \section{Multivariate signature schemes}\label{sec:mult}
 
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
@@ -462,10 +464,11 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
 \end{definition}
 
 \begin{definition}
-  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, the linear transformations $\tau \in \mathsf{GL}_{m}(\mathbb{F}), \omega \in \mathsf{GL}_{n}(\mathbb{F})$ are \emph{sustainers} if
+  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, the linear transformations $\tau \in \mathsf{GL}_{m}(\mathbb{F}),\: \omega \in \mathsf{GL}_{n}(\mathbb{F})$ are \emph{sustaining transformations} if
   \begin{align}
-    \mathcal{P} = (\mathcal{L}_{1} \circ \tau^{-1}) \circ () \circ ()
+    \mathcal{P} = (\mathcal{L}_{1} \circ \tau^{-1}) \circ (\tau \circ \mathcal{C} \circ \omega) \circ (\omega^{-1} \circ \mathcal{L}_{2})
   \end{align}
+  such that $\tau \circ \mathcal{C} \circ \omega \in \overline{\mathsf{MQ}}(n, m)$. In other words, $\tau$ and $\omega$ preserve t
 \end{definition}
 
 Finally, we remark that our description of the bipolar construction is tailored to be coherent with the schemes presented in Section~\ref{sec:ov}. The usual, broader description in the literature has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
