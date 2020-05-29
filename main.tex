@@ -519,7 +519,12 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing.
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(v, o)$. The size of the private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
+\begin{align}
+  \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
+    + o \cdot \big( \frac{v \cdot (v + 1)}{2} \big)
+\end{align}
+
 
 % TODO replace S, F, T by L1, L2 and C
 % TODO underlying problems
