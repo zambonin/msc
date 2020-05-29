@@ -406,7 +406,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea. 
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MHQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that has no apparent structure, making recovery of the central map hard.
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We remark that the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -441,8 +441,8 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
-      \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{MHQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(n, m).
+      \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
+    \mathbf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
 The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
@@ -471,9 +471,16 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
   such that $\tau \circ \mathcal{C} \circ \omega \in \overline{\mathsf{MQ}}(n, m)$.
 \end{definition}
 
-Finally, we remark that our description of the bipolar construction is tailored to be coherent with the schemes presented in Section~\ref{sec:ov}. The usual, broader description in the literature has $\mathcal{C} \in \mathsf{MQ}(n, m)$ and $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
+Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{AGL}_{n}(\mathbb{F})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
 
-It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. As a consequence, the polynomials in the central map must be homogeneous quadratic. Our description is based on these technical results. There is further independent evidence that using linear transformations and quadratic maps is safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}, but that may not be the case with other schemes built upon the bipolar construction.
+However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of schemes based on the bipolar construction if 
+
+It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. However, as a consequence, the polynomials in the central map must be homogeneous quadratic. While there is sufficient evidence that homogeneous quadratic maps is sage both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}, but that may not be the case with other schemes built upon the bipolar construction.
+
+Our description is based on these technical results. There is further independent evidence that using linear transformations and quadratic maps is safe both
+
+
+ tailored to be coherent with the schemes presented in Section~\ref{sec:ov}
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
