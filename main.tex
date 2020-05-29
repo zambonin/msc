@@ -538,7 +538,7 @@ field elements.
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
-Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form
+Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{l}, o_{l})$, that is,
 \begin{align}\label{eq:ov}
   \begin{split}
     P_{l} = \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
@@ -551,14 +551,7 @@ We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
 
-The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{n}(\mathbb{F})$ and
-$\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be two affine
-invertible maps, used as the trapdoor to this construction. Let
-$\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
-$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$.
-The private key is the triple
-$\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and the public key is the map
-$\mathsf{pk} = \mathcal{P}$.
+The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F})$ and $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
 
 \subsubsection{Signature generation.}
 
