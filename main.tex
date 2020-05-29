@@ -218,10 +218,10 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
 We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
-  Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = l$, then the finite field $\mathbb{F}_{q^{l}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $p$.
+  Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = \ell$, then the finite field $\mathbb{F}_{q^{\ell}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $p$.
 \end{definition}
 
-Finite fields of the form $\mathbb{F}_{2^{l}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
+Finite fields of the form $\mathbb{F}_{2^{\ell}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
 We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial. 
 
@@ -486,7 +486,7 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
   Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $p^{(1)}, \dots, p^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
-The integer $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
+The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
 \begin{align*}
   \widetilde{M}(p^{(i)}) = \begin{bmatrix}
     \star  & \cdots & \star  & \star  & \cdots & \star  \\
@@ -501,9 +501,9 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \mathsf{OVH}(v, o)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1} \in \mathsf{GL}_{o}(\mathbb{F}), \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \mathsf{OVH}(v, o)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1} \in \mathsf{GL}_{o}(\mathbb{F}), \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
 
-As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o)$.
+As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o)$.
 
 \subsubsection{Signature generation.}
 
@@ -528,20 +528,22 @@ field elements. Note that if the Oil--Vinegar polynomials are not homogeneous qu
 \end{align}
 field elements.
 
+\subsubsection{Equivalent keys.}
+
 % TODO and when polynomials are homogeneous quadratic?
 % TODO add figures
-% TODO equivalent keys, that affine relation
+% TODO equivalent keys
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
-Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{l}, o_{l})$, that is,
+Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{\ell} = \{1, \dots, v_{\ell}\}$ and oil variables as $O_{\ell} = \{v_{\ell} + 1, \dots, v_{\ell + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{\ell} = V_{\ell + 1} - V_{\ell}$. Let $o_{\ell} = |O_{\ell}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{\ell}, o_{\ell})$, that is,
 \begin{align}\label{eq:ov}
   \begin{split}
-    \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
-      + \sum_{i \in V_{l}} \sum_{j \in O_{l}} \beta_{ij} x_{i} x_{j}
-      + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} x_{i} + \delta, \\
+    \sum_{i \in V_{\ell}} \sum_{j \in V_{\ell}} \alpha_{ij} x_{i} x_{j}
+      + \sum_{i \in V_{\ell}} \sum_{j \in O_{\ell}} \beta_{ij} x_{i} x_{j}
+      + \sum_{i \in V_{\ell} \cup O_{\ell}} \gamma_{i} x_{i} + \delta, \\
       \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
   \end{split}
 \end{align}
@@ -549,7 +551,7 @@ We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
 
-The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random \mathsf{OVH}(v_{l}, o_{l})$ and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+The central map of Rainbow is defined as $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with an expanded construction compared to UOV. For each layer $1 \leq l \leq u$, we have $F_{\ell} = (F_{\ell}^{1}, \dots, F_{\ell}^{o_{\ell}}) \random \mathsf{OVH}(v_{\ell}, o_{\ell})$ and $\mathcal{C} = (F_{1}, \dots, F_{\ell})$. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then, $\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}_{m}(\mathbb{F}) \times ... \times \mathsf{GL}_{n}(\mathbb{F})$ and $\mathsf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
 
 \subsubsection{Signature generation.}
 
