@@ -539,40 +539,33 @@ field elements.
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
-Consider a finite field $\mathbb{F}_{q}$ and
-$u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers
-$v_{1}, \dots, v_{u}$ such that
-$0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set
-$V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as
-$V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now,
-we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the
-form
+Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{l} = \{1, \dots, v_{l}\}$ and oil variables as $O_{l} = \{v_{l} + 1, \dots, v_{l + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{l} = V_{l + 1} - V_{l}$. Let $o_{l} = |O_{l}|$ and $m = n - v_{1}$. Now, we define vector spaces spanned by quadratic Oil-Vinegar polynomials of the form
 \begin{align}\label{eq:ov}
   \begin{split}
-    P_{l} = \sum_{i, j \in V_{l}} \alpha_{ij} \cdot x_{i} \cdot x_{j}
-      + \sum_{i \in V_{l}, j \in O_{l}} \beta_{ij} \cdot x_{i} \cdot x_{j}
-      + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} \cdot x_{i} + \delta, \\
-      \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}_{q}.
+    P_{l} = \sum_{i \in V_{l}} \sum_{j \in V_{l}} \alpha_{ij} x_{i} x_{j}
+      + \sum_{i \in V_{l}} \sum_{j \in O_{l}} \beta_{ij} x_{i} x_{j}
+      + \sum_{i \in V_{l} \cup O_{l}} \gamma_{i} x_{i} + \delta, \\
+      \alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}.
   \end{split}
 \end{align}
 
 \subsubsection{Key generation.}
 
 The central map of Rainbow is defined as
-$\mathcal{F} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with the
+$\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m}$, with the
 following construction: for each layer $1 \leq l \leq u$, we have
 $F_{l} = (F_{l}^{1}, \dots, F_{l}^{o_{l}}) \random P_{l}$, where the random choice means all
 coefficients chosen randomly,
-and $\mathcal{F} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
+and $\mathcal{C} = (F_{1}, \dots, F_{l})$. Since each sequence of vinegar
 variables in a layer contains all variables from the previous layer, this
 allows for the inversion of this map, as presented further along this description. Let
-$\mathcal{S} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ and
-$\mathcal{T} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be two affine
+$\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m}$ and
+$\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be two affine
 invertible maps, used as the trapdoor to this construction. Let
 $\mathcal{P} : \mathbb{F}^{n} \to \mathbb{F}^{m}$ as
-$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$.
+$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$.
 The private key is the triple
-$\mathsf{sk} = (\mathcal{S}, \mathcal{F}, \mathcal{T})$ and the public key is the map
+$\mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and the public key is the map
 $\mathsf{pk} = \mathcal{P}$.
 % this can expanded removing what we _know_ to be extraneous
 
@@ -582,8 +575,8 @@ To sign a message $M$, consider a cryptographic hash function
 $\mathcal{H} : {\{0, 1\}}^{*} \to \mathbb{F}^{m}$, and obtain the
 message digest $d = \mathcal{H}(M)$. The signature is the set of variables
 which yield the solution to the equation
-$\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{S}^{-1}(d)$. To
-generate $y = \mathcal{F}^{-1}(x)$, every layer must be inverted recursively.
+$\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{L}_{1}^{-1}(d)$. To
+generate $y = \mathcal{C}^{-1}(x)$, every layer must be inverted recursively.
 Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
 them into the first layer. This brings forth a system of $o_{1}$ linear
 equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
@@ -591,19 +584,19 @@ algorithm such as Gaussian elimination. If the system does not have a solution,
 new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be
 substituted into the next layer, which creates a system of $o_{2}$ linear
 equations, that can be solved analogously. This procedure is repeated until all
-layers are solved. Finally, we compute $\sigma = \mathcal{T}^{-1}(y)$.
+layers are solved. Finally, we compute $\sigma = \mathcal{L}_{2}^{-1}(y)$.
 
 \subsubsection{Signature verification.}
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
 the signature is valid, and otherwise invalid.
 
-Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{S}$ and $\mathcal{T}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+Finally, denote an instance of the scheme by Rainbow$(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$. Note that when $u = 1$, we get the UOV scheme. Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
-  \#\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{S}} 
-    + \underbrace{n^{2} + n}_{\mathcal{T}}
+  \#\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{L}_{1}} 
+    + \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2}
-      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{F}}.
+      + v_{k} \cdot o_{k} + v_{k + 1} + 1 \right)}_{\mathcal{C}}.
 \end{align}
 The size of a public key is similar to the UOV case, and thus
 \begin{align}
@@ -635,8 +628,8 @@ steps of Rainbow-like signature schemes. We propose to reuse the first set of
 vinegar variables for several signatures and replace these only when necessary,
 \emph{i.e.} situations where the central map cannot be inverted and creating a
 signature would fail. By locking such variables and substituting them on the
-central map $\mathcal{F}$ early in the key generation algorithm, we create a
-$\mathcal{F}'$ linear map in $v_{1}$, thus reducing storage requirements. This
+central map $\mathcal{C}$ early in the key generation algorithm, we create a
+$\mathcal{C}'$ linear map in $v_{1}$, thus reducing storage requirements. This
 approach does not modify the underlying structure of the private key, but
 rather of the central map preimages.
 
@@ -647,7 +640,7 @@ shorten private keys are structural in nature, that is, the key space is
 limited by some heuristic with the intent of producing a compact private key.
 Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307}
 prevents alterations to the private key,
-since it indirectly generates $\mathcal{F}$ from a partial public key through
+since it indirectly generates $\mathcal{C}$ from a partial public key through
 linear relations between the maps.
 
 This division of improvements is blurred by our proposal. We present general
@@ -668,39 +661,39 @@ It is best suited to environments in which an efficient generator is previously
 supplied.
 
 We bound the creation of the key pair to a seed $\mathbf{S}$. We are not aware
-of any Rainbow variants that disallow this practice. Thus, $\mathcal{S}$,
-$\mathcal{F}$ and $\mathcal{T}$, as well as the public key
-$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ are generated
+of any Rainbow variants that disallow this practice. Thus, $\mathcal{L}_{1}$,
+$\mathcal{C}$ and $\mathcal{L}_{2}$, as well as the public key
+$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ are generated
 through the target scheme key generation algorithm, seeded by $\mathbf{S}$. We
 set $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$, and substitute these into
-$\mathcal{F}$, giving $\mathcal{F}'$. According to
+$\mathcal{C}$, giving $\mathcal{C}'$. According to
 Subsection~\ref{subsec:invert}, in the rare case that a
 failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
-regenerate $\mathcal{F}$, choose other values for $\widetilde{V}_{1}$ and
-create a different $\mathcal{F}'$. The private key of Rainbow-$\eta_{1}$ is
-$(\mathbf{S}, \mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is
+regenerate $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and
+create a different $\mathcal{C}'$. The private key of Rainbow-$\eta_{1}$ is
+$(\mathbf{S}, \mathcal{L}_{1}, \mathcal{C}', \mathcal{L}_{2})$ and the public key is
 $\mathcal{P}$.
 
 \subsubsection{Rainbow-$\eta_{2}$ key generation.}
 
 This approach is based on the fact that a private key owner is able to recover
-the original $\mathcal{F}$ through the possession of all other private maps and
+the original $\mathcal{C}$ through the possession of all other private maps and
 the public key. We make use of the linear relations given by the authors
 of~\cite{Petzoldt:201006} and applied in the definition of the
 well-known CyclicRainbow scheme. A short explanation is given below, with the
 full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
 
 Consider the public key
-$\mathcal{P} = \mathcal{S} \circ \mathcal{F} \circ \mathcal{T}$ and let
-$\mathcal{Q} = \mathcal{F} \circ \mathcal{T}$. We denote $\widetilde{Q}$ as a
+$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let
+$\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$. We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
 $\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
-Further let $\widetilde{T}$ be the matrix representation of $\mathcal{T}$, with
+Further let $\widetilde{T}$ be the matrix representation of $\mathcal{L}_{2}$, with
 coefficients $t_{ij}, 1 \leq i, j \leq n$, and define $\widetilde{S}$
 analogously. By fixing $t_{ij}$, the composition of $\mathcal{P}$ actually
 represents a linear relation between coefficients $q_{ij}^{k}, f_{ij}^{k}$ of
 the monomial $x_{i} \cdot x_{j}$ in the $k$-th component of, respectively,
-$\mathcal{Q}$ and $\mathcal{F}$, with the form
+$\mathcal{Q}$ and $\mathcal{C}$, with the form
 \begin{align}
   \begin{split}
     q_{ij}^{k} = \sum_{r = 1}^{n} \sum_{s = r}^{n}
@@ -712,7 +705,7 @@ $\mathcal{Q}$ and $\mathcal{F}$, with the form
       v_{1} \leq k \leq n.
   \end{split}
 \end{align}
-This can be simplified, since $\mathcal{F}$ does not allow quadratic monomials
+This can be simplified, since $\mathcal{C}$ does not allow quadratic monomials
 with only oil variables, and results in
 \begin{align}
   q_{ij}^{k} = \sum_{r = 1}^{v_{l}} \sum_{s = r}^{v_{l + 1}}
@@ -732,26 +725,26 @@ We observe that the central map may not feature any linear or constant terms, du
 to the use of the above relations. This does not lower the overall security of
 the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
 With this implication in mind, the usual key generation algorithm for the
-target scheme is employed, yielding $(\mathcal{S}, \mathcal{F}, \mathcal{T})$
+target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
-$\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{F}$, giving
+$\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving
 $\mathcal{F'}$. By the relations above, one is able to reconstruct
-$\mathcal{F}$ with no additional mechanisms if the central map inversion
+$\mathcal{C}$ with no additional mechanisms if the central map inversion
 algorithm fails. The private key of Rainbow-$\eta_{2}$ is
-$(\mathcal{S}, \mathcal{F}', \mathcal{T})$ and the public key is $\mathcal{P}$.
+$(\mathcal{L}_{1}, \mathcal{C}', \mathcal{L}_{2})$ and the public key is $\mathcal{P}$.
 
 \subsubsection{Signature generation.}
 
 A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
-procedure. Compute $x = \mathcal{S}^{-1}(d)$, and attempt to generate the preimage
-$x = \mathcal{F}'(y)$ by inverting every layer recursively. The first
+procedure. Compute $x = \mathcal{L}_{1}^{-1}(d)$, and attempt to generate the preimage
+$x = \mathcal{C}'(y)$ by inverting every layer recursively. The first
 layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
 needs only to be solved by providing appropriate values of $d$. It
 generates a new set of vinegar variables, that can be used on the next layer,
 until all layers are solved. If any of the transitory systems are not solvable,
-a new $\widetilde{V}_{1}$ is chosen and $\mathcal{F}'$ regenerated, according
+a new $\widetilde{V}_{1}$ is chosen and $\mathcal{C}'$ regenerated, according
 to one of the methods given above. We finish by computing
-$\sigma = \mathcal{T}^{-1}(y)$.
+$\sigma = \mathcal{L}_{2}^{-1}(y)$.
 
 \subsubsection{Signature verification.}
 
@@ -762,10 +755,10 @@ By making the first layer linear and substituting the remaining variables, the
 size of the private key is now
 \begin{multline}
   \#\mathsf{pk}^{\eta} = \underbrace{v_{1}}_{\widetilde{V}_{1}}
-    + \underbrace{m^{2} + m}_{\mathcal{S}}
-    + \underbrace{n^{2} + n}_{\mathcal{T}} \\
+    + \underbrace{m^{2} + m}_{\mathcal{L}_{1}}
+    + \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \\
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
-      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\mathcal{F}'},
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\mathcal{C}'},
 \end{multline}
 plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
 used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. One needs to store $\widetilde{V}_{1}$, since it is part of the central
@@ -781,14 +774,14 @@ security against the existential forgery under chosen-message attack (EF-CMA)
 model, whereas the original scheme only offers security against universal
 forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We
 briefly describe this approach, with the intent of preventing the
-recalculation of $\mathcal{F}'$ in the case that $\widetilde{V}_{1}$ is not
+recalculation of $\mathcal{C}'$ in the case that $\widetilde{V}_{1}$ is not
 suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
 
 \subsubsection{Key generation.}
 
 Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
 private and public keys as per Subsection~\ref{subsec:scheme}. The private key
-for this scheme is $(\mathcal{S}, \mathcal{F}', \mathcal{T}, w)$, with the
+for this scheme is $(\mathcal{L}_{1}, \mathcal{C}', \mathcal{L}_{2}, w)$, with the
 addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
 $(\mathcal{P}, w)$.
 
@@ -796,15 +789,15 @@ $(\mathcal{P}, w)$.
 
 Let $r \random {\{0, 1\}}^{w}$. The digest value is calculated as
 $\mathbf{d} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$, where $M$ is the
-message. The value $x = \mathcal{S}^{-1}(\mathbf{d})$ is obtained as usual. In
-the rare case that the $x = \mathcal{F}'(y)$ preimage calculation does not
+message. The value $x = \mathcal{L}_{1}^{-1}(\mathbf{d})$ is obtained as usual. In
+the rare case that the $x = \mathcal{C}'(y)$ preimage calculation does not
 succeed, new variables in $\widetilde{V}_{1}$ are chosen. However, the
 addition of a salt to the original message digest alters $\mathbf{d}$
 completely, due to the cryptographic hash function application. Thus, it is
 only necessary to generate a new $r$ and restart the signature generation
-process, such that $\widetilde{V}_{1}$, and consequently $\mathcal{F}'$, are
+process, such that $\widetilde{V}_{1}$, and consequently $\mathcal{C}'$, are
 not modified. Alternatively, if the preimage is generated successfully, we
-finish by letting $z = \mathcal{T}^{-1}(y)$ and $\sigma = (z, r)$.
+finish by letting $z = \mathcal{L}_{2}^{-1}(y)$ and $\sigma = (z, r)$.
 
 \subsubsection{Signature verification.}
 
@@ -817,9 +810,9 @@ Section~\ref{sec:experiments}.
 
 \section{Statistical argument}
 
-\subsection{Invertibility of $\mathcal{F}$}\label{subsec:invert}
+\subsection{Invertibility of $\mathcal{C}$}\label{subsec:invert}
 
-Recall that, to create a Rainbow signature, the central map $\mathcal{F}$ needs
+Recall that, to create a Rainbow signature, the central map $\mathcal{C}$ needs
 to be inverted. Random guessing of vinegar variables is done in order to create
 a solvable linear system. It is also known that the central map is expressed as
 multivariate systems of equations, which can be themselves interpreted as
@@ -848,7 +841,7 @@ the probability that all vectors chosen are linearly independent is
 In the context of Rainbow, the number of layers directly influences
 $\Pi(q, n)$, since it dictates how many linear systems have to be solved. In
 other words, all square matrices of size $v_{i}, 1 \leq i \leq u$ need to
-be invertible to achieve a preimage under $\mathcal{F}$. Thus, the probability
+be invertible to achieve a preimage under $\mathcal{C}$. Thus, the probability
 \begin{align}
   \Pi(q, n, u) = \prod_{i = 1}^{u} \prod_{k = 1}^{v_{i + 1}} 1 - q^{-k}
 \end{align}
@@ -902,7 +895,7 @@ Thus, Figure~\ref{fig:1} also accurately reflects the behaviour of $\Pi(q)$,
 \emph{i.e.}, current values of $n$ already reach effective upper bounds for
 this probability.
 
-If we consider that the two-dimensional coefficient matrix of $\mathcal{F}$ has
+If we consider that the two-dimensional coefficient matrix of $\mathcal{C}$ has
 an effective size of $\frac{n^{2} + n}{2}$ due to the aforementioned monomial
 ordering strategy, we note that the inversion event happens almost surely.
 This evidence shows that computing a preimage in order to sign a message
@@ -915,7 +908,7 @@ generated.
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
 Vinegar variables chosen to invert the central map are an integral part of the
-preimage $y = \mathcal{F}^{-1}(x)$. For instance, in the case $u = 2$, these
+preimage $y = \mathcal{C}^{-1}(x)$. For instance, in the case $u = 2$, these
 make roughly a third of the output, considering common parameters for Rainbow.
 Further, recall that there are approximately $q^v$ possibilities for $y$. Our
 proposal eliminates this choice by locking vinegar variables into the private
@@ -926,14 +919,14 @@ space generator.
 
 Recall that a message digest $d$ is signed instead of the entire document.
 Evidently, a secure cryptographic hash function shall produce an output that
-appears to be random. The application $x = \mathcal{S}^{-1}(d)$ does not affect
+appears to be random. The application $x = \mathcal{L}_{1}^{-1}(d)$ does not affect
 this behaviour, since the map is also random. Hence, we need not simulate this
 calculation in this analysis. According to Subsection~\ref{subsec:invert}, the
-inversion $y = \mathcal{F}^{-1}(x)$ creates a valid preimage with overwhelming
+inversion $y = \mathcal{C}^{-1}(x)$ creates a valid preimage with overwhelming
 probability, where the first $v_{1}$ elements of any $y$ are the same.
 
 We observe the distribution of field elements in vectors after the final
-function application, that is, $z = \mathcal{T}^{-1}(y)$. Let
+function application, that is, $z = \mathcal{L}_{2}^{-1}(y)$. Let
 $Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
 a $t$-tuple of ``signatures''. We build the sequence $$Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n}).$$
@@ -1044,7 +1037,7 @@ attacks that also work on the UOV signature scheme. This attack was originally
 created by Kipnis and Shamir~\cite{Kipnis:199808} to break the Balanced
 Oil-Vinegar scheme. The objective of this attack is to obtain an equivalent
 private key by means of finding the preimage of a specific oil subspace under
-the map $\mathcal{T}$. The complexity of the generalized attack for unbalanced
+the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced
 schemes~\cite{Kipnis:199904} is
 $o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications.
 
@@ -1223,7 +1216,7 @@ Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, whi
 
 It is classified as a key recovery attack, in the sense that an equivalent key is recovered, and allows for a malicious entity to create signature forgeries in polynomial time. In our variant, the attacker must collect a large enough set of signatures in order to recover an equivalent key. The key observation is that signatures produced with Rainbow-$\eta$ can be used directly in the construction of a basis for $\mathcal{L}_{2}^{-1}(\mathcal{O})$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be built and composed with the public key to yield an equivalent private key.
 
-We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. We note that this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$ and $\mathbf{sk} = (\mathcal{F}, \mathcal{T}), \mathbf{pk} = \mathcal{F} \circ \mathcal{T}$ as per Section~\ref{sec:ov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{F}$ and $\mathbf{pk}$. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
+We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. We note that this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$ and $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}), \mathbf{pk} = \mathcal{C} \circ \mathcal{L}_{2}$ as per Section~\ref{sec:ov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{C}$ and $\mathbf{pk}$. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
 
 The first $v$ variables of any $\sigma_{i}$ under the transformation $\mathcal{L}_{2}^{-1}$ are equal to the chosen sequence of vinegar variables $V_{1} = (x_{1}, \dots, x_{v})$, i.e. the preimage $\mathcal{L}_{2}^{-1}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Since this is the case for any $\sigma_{i}$, we have that $\mathcal{L}_{2}^{-1}(\sigma_{i} - \sigma_{i + 1}) = (0, \dots, 0, \ast, \dots, \ast)$. In fact, any subtraction between two signatures in $\rho$ yields vectors starting with $v$ zeroes. Let us call such a vector $\chi_{i}$, and evidently $\chi_{i} \in \mathcal{L}_{2}^{-1}(\mathcal{O})$. Since the attacker's goal is to build a basis of this set, then $m$ linearly independent $\chi_{i}$ must be collected such that it can be constructed. Let us call this set $\widetilde{\rho}$. Indeed, $\widetilde{\rho} \subseteq \rho$, and at least $m + 1$ signatures need to be collected to perform $m$ subtractions.
 
