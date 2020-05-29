@@ -483,31 +483,31 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 \end{definition}
 
 \begin{definition}
-  A polynomial map $\mathcal{C} : \mathbb{F}^{v + o} \to \mathbb{F}^{o}$ consisting of $p^{(1)}, \dots, p^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, m)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, m)$.
+  Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $p^{(1)}, \dots, p^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
-These integers represent the quantity of vinegar and oil variables, respectively. Since $m = o$, after the substitution of vinegar variables, the resulting system is exactly determined, with $m$ equations and $m$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(n, m)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
+The integer $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
 \begin{align*}
   \widetilde{M}(p^{(i)}) = \begin{bmatrix}
-    \star & \cdots & \star & \star & \cdots & \star \\
+    \star  & \cdots & \star  & \star  & \cdots & \star  \\
     \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star & \cdots & \star & \star & \cdots & \star \\
-    \star & \cdots & \star & 0 & \cdots & 0 \\
+    \star  & \cdots & \star  & \star  & \cdots & \star  \\
+    \star  & \cdots & \star  & 0      & \cdots & 0      \\
     \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-    \star & \cdots & \star & 0 & \cdots & 0 \\
+    \star  & \cdots & \star  & 0      & \cdots & 0      \\
   \end{bmatrix}.
 \end{align*}
 We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{OVH}(n, m)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
+Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \mathsf{OVH}(v, o)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1}, \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306}. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
 
-As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random{} \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(n, m)$.
+As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and $\mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o)$.
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{o}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
 
 To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. 
 
