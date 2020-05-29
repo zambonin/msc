@@ -500,15 +500,15 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o} \random \mathsf{OVH}(v, o)$. This random choice is equivalent to picking all coefficients at random. Since Oil--Vinegar schemes are based on the bipolar construction, lateral maps $\mathcal{L}_{1} \in \mathsf{GL}_{o}(\mathbb{F}), \mathcal{L}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ are also needed to hide the structure of $\mathcal{C}$. We remark that $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key.
-
-As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Thus, $\mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$, or in other words, generate random matrices until one is invertible. Then, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and 
+Since Oil--Vinegar schemes are based on the bipolar construction, the private key is composed of a central map $\mathcal{C}$ and a linear transformation $\mathcal{L}_{2}$ to hide its structure. We remark that the linear transformation $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key. Then, let
 \begin{align}
-  \begin{split}
-    \mathbf{sk} &= (\mathcal{C}, \mathcal{L}_{2})
-      \in \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(v, o).
-  \end{split}
+  \mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2})
+    \random \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}).
+\end{align}
+
+In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Then, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and 
+\begin{align}
+  \mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o).
 \end{align}
 
 \subsubsection{Signature generation.}
@@ -527,8 +527,8 @@ The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to b
 
 The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
-  \#\mathbf{sk} = \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \;
-    + \; \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o \right)}_{\mathcal{C}}
+  \#\mathbf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o \right)}_{\mathcal{C}} \;
+    + \; \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
 \end{align}
 field elements. We note that if the Oil--Vinegar polynomials are not homogeneous quadratic, then the private key size increases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
@@ -558,8 +558,6 @@ Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$.
 We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \times \cdots \times \mathsf{OV}(v_{u}, o_{u})$. We are now ready to describe the Rainbow signature scheme.
 
 \subsubsection{Key generation.}
-
-The private key is composed of a central map $\mathcal{C}$ and a l
 
 Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. This random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OVH}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then,
 \begin{align}
