@@ -506,7 +506,7 @@ Since Oil--Vinegar schemes are based on the bipolar construction, the private ke
     \random \mathsf{OVH}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}).
 \end{align}
 
-In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Then, $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and 
+In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
 \begin{align}
   \mathbf{pk} = \mathcal{P} \in \mathsf{MHQ}(v, o).
 \end{align}
@@ -559,21 +559,21 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 
 \subsubsection{Key generation.}
 
-Choose a central map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \random \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u})$. This random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OVH}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of this map, as presented further along this description. Let $\mathcal{L}_{1} \random \mathsf{GL}_{m}(\mathbb{F}), \mathcal{L}_{2} \random \mathsf{GL}_{n}(\mathbb{F})$ and $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$. Then,
+In the case of Rainbow, all three maps are needed. Therefore,
 \begin{align}
-  \begin{split}
-    \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
-      \in \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}_{n}(\mathbb{F}), \\
-    \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(n, m).
-  \end{split}
+  \mathbf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+    \random \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}_{n}(\mathbb{F}).
+\end{align}
+
+For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OVH}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
+\begin{align}
+  \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(n, m).
 \end{align}
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The signature is the set of variables
-which yield the solution to the equation
-$\mathcal{P}(x_{1}, \dots, x_{n}) = d$. Compute $x = \mathcal{L}_{1}^{-1}(d)$. To
-generate $y = \mathcal{C}^{-1}(x)$, every layer must be inverted recursively.
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(d)$. To
+generate $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively.
 Start by randomly choosing values for $x_{1}, \dots, x_{v_{1}}$ and inserting
 them into the first layer. This brings forth a system of $o_{1}$ linear
 equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an
