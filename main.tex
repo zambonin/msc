@@ -633,9 +633,9 @@ In the case of Rainbow, all three maps are needed. Therefore,
     \random \mathsf{GL}_{m}(\mathbb{F}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}_{n}(\mathbb{F}).
 \end{align}
 
-For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OVH}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
+For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
 \begin{align}
-  \mathbf{pk} &= \mathcal{P} \in \mathsf{MHQ}(n, m).
+  \mathbf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
 \end{align}
 
 \subsubsection{Signature generation.}
@@ -663,7 +663,7 @@ field elements.
 
 \subsubsection{Equivalent keys.}
 
-As a generalization of UOV, Rainbow also has equivalent keys by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that it also works for Rainbow.
+As a generalization of UOV, there exist equivalent keys in Rainbow by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
 \subsection{Cryptanalysis of Oil--Vinegar schemes}\label{subsec:attacks}
 
