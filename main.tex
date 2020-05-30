@@ -574,23 +574,21 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
 
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as the possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
-\begin{theorem}
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$. Let
+\begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$. If
   \begin{align}
     \mathcal{L}_{2} = 
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathcal{L}_{2}^{(2)} \\
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} \\
-    \end{bmatrix}
-  \end{align}  
-  and  of the form
-  \begin{align}
+    \end{bmatrix}, \;
+    \omega =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)}  \\
     \end{bmatrix},
   \end{align}
-  then
+  and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
   \begin{align}
     \omega^{-1} \circ \mathcal{L}_{2} =
     \begin{bmatrix}
@@ -599,26 +597,6 @@ It is a direct consequence of this theorem that there exist at least as many equ
     \end{bmatrix}.
   \end{align}
 \end{theorem}
-
-Then, by dividing $\mathcal{L}_{2}$ into analogous blocks, we have
-\begin{align}
-  \omega^{-1} \circ \mathcal{L}_{2} &= 
-  \begin{bmatrix}
-    \omega_{v \times v}^{(1)} & \mathbf{0}_{v \times o} \\
-    \omega_{o \times v}^{(2)} & \omega_{o \times o}^{(3)} \\
-  \end{bmatrix}
-  \cdot
-  \begin{bmatrix}
-    \mathcal{L}_{2}^{(1)} & \mathcal{L}_{2}^{(2)} \\
-    \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} \\
-  \end{bmatrix} \\
-  &=
-  \begin{bmatrix}
-    \mathbf{I}_{v} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
-    \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
-  \end{bmatrix}
-\end{align}
-for $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$ and $\omega^{(1)} = (\mathcal{L}_{2}^{(1)})^{-1}$
 
 % TODO add figures
 % TODO equivalent keys
