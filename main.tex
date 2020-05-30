@@ -572,7 +572,19 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
   \end{bmatrix}.
 \end{align}
 
-It is a direct consequence of this theorem that there exist at least as many equivalent keys as the possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure. Then, by dividing $\mathcal{L}_{2}$ into analogous blocks, we have
+It is a direct consequence of this theorem that there exist at least as many equivalent keys as the possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
+
+\begin{theorem}
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
+  \begin{align}
+    \begin{bmatrix}
+      \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
+      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -(\mathcal{L}_{2}^{(3)}) \cdot \mathcal{L}_{2}^{(1)} \cdot \mathcal{L}_{2}^{(2)}  \\
+    \end{bmatrix},
+  \end{align}
+\end{theorem}
+
+Then, by dividing $\mathcal{L}_{2}$ into analogous blocks, we have
 \begin{align}
   \omega^{-1} \circ \mathcal{L}_{2} &= 
   \begin{bmatrix}
