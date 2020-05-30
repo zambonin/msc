@@ -563,11 +563,23 @@ As mentioned in Section~\ref{sec:mult}, there exists a specific form of sustaine
   with $\omega^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$ and $\omega^{(3)} \in \mathsf{GL}_{o}(\mathbb{F})$, then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
-It is a direct consequence of this theorem that there exist at least as many equivalent keys as the possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure. We remark that $\omega^{-1}$ has the same form as $\omega$. Then,
+It is a direct consequence of this theorem that there exist at least as many equivalent keys as the possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure. We remark that $\omega^{-1}$ has the same form as $\omega$. Then, by dividing $\mathcal{L}_{2}$ into analogous blocks, we have
 \begin{align}
-  \omega^{-1} \circ \mathcal{L}_{2} = \begin{bmatrix}
-  
+  \omega^{-1} \circ \mathcal{L}_{2} = 
+  \begin{bmatrix}
+    \omega_{v \times v}^{(1)} & \mathbf{0}_{v \times o} \\
+    \omega_{o \times v}^{(2)} & \omega_{o \times o}^{(3)} \\
   \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    \mathcal{L}_{2}^{(1)} & \mathcal{L}_{2}^{(2)} \\
+    \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \mathbf{I}_{v} & \widetilde{\mathcal{L}}_{2}^{(1)} \\
+    \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
+  \end{bmatrix}.
 \end{align}
 
 % TODO add figures
