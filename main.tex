@@ -6,6 +6,8 @@
 \usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, tikz}
 % \usepackage[backref]{hyperref}
 
+\usetikzlibrary{positioning, patterns}
+
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
@@ -648,6 +650,7 @@ For the central map $\mathcal{C}$, the random choice is equivalent to randomly c
 Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(d)$. To obtain the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively. One chooses $(x_{1}, \dots, x_{v_{1}}) \random \mathbb{F}^{v_{1}}$ and substitutes the values into the first layer, or in other words, the first system of $o_{1}$ polynomials. This brings forth a system of $o_{1}$ linear equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an algorithm such as Gaussian elimination. If the system does not have a solution, new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be substituted into the next layer, which creates a system of $o_{2}$ linear equations, that can be solved analogously. This procedure is repeated until all layers are solved, as seen in Figure~\ref{}. Finally, we compute $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \begin{figure}
+  \centering
   \begin{tikzpicture}
     \node (v1v1) at (0.5, 1) {\tiny $V_{1} \times V_{1}$};
     \node (v1o1) at (1.5, 1) {\tiny $V_{1} \times O_{1}$};
@@ -676,6 +679,59 @@ Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F
     \fill[pattern=north west lines] (6, -0.5) rectangle (7.5, -1.25);
     \node (o2c2) at (5.5, -0.875) {$0$};
     \node (lc2)  at (7.75, -0.875) {$\star$};
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \node (v1v1) at (0.5, 1) {\tiny $V_{1} \times V_{1}$};
+    \node (v1o1) at (1.5, 1) {\tiny $V_{1} \times O_{1}$};
+    \node (o1o1) at (2.5, 1) {\tiny $O_{1} \times O_{1}$};
+    \node (v1o2) at (3.5, 1) {\tiny $V_{1} \times O_{2}$};
+    \node (o1o2) at (4.5, 1) {\tiny $O_{1} \times O_{2}$};
+    \node (o2o2) at (5.5, 1) {\tiny $O_{2} \times O_{2}$};
+    \node (v1)   at (6.25, 1) {\tiny $V_{1}$};
+    \node (o1)   at (6.75, 1) {\tiny $O_{1}$};
+    \node (o2)   at (7.25, 1) {\tiny $O_{2}$};
+    \node (l)    at (7.75, 1) {\tiny $\delta$};
+    \foreach \r in {1, ..., 6, 6.5, 7, 7.5}
+      \draw[dotted] (\r, 1.125) to (\r, -1.25);
+
+    \draw (0, 0) rectangle (8, 0.75);
+    \node (l1)   at (-0.75, 0.375) {$\ell = 1$};
+    \fill[pattern=north west lines] (1, 0) rectangle (2, 0.75);
+    \fill[pattern=north west lines] (6.5, 0) rectangle (7, 0.75);
+    \foreach \r in {2.5, ..., 5.5, 7.25} \node at (\r, 0.375) {$0$};
+    \foreach \r in {0.5, 6.25, 7.75} \node at (\r, 0.375) {$\star$};
+
+    \draw (0, -0.5) rectangle (8, -1.25);
+    \node (l1)   at (-0.75, -0.875) {$\ell = 2$};
+    \fill[pattern=north west lines] (1, -0.5) rectangle (2, -1.25);
+    \fill[pattern=crosshatch] (2, -0.5) rectangle (3, -1.25);
+    \fill[pattern=north west lines] (3, -0.5) rectangle (4, -1.25);
+    \fill[pattern=crosshatch] (4, -0.5) rectangle (5, -1.25);
+    \fill[pattern=north west lines] (6.5, -0.5) rectangle (7.5, -1.25);
+    \foreach \r in {0.5, 6.25, 7.75} \node at (\r, -0.875) {$\star$};
+    \node at (5.5, -0.875) {$0$};
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \node (v1v1) at (0.5, 1) {\tiny $V_{1} \times V_{1}$};
+    \node (v1o1) at (1.5, 1) {\tiny $V_{1} \times O_{1}$};
+    \node (o1o1) at (2.5, 1) {\tiny $O_{1} \times O_{1}$};
+    \node (v1o2) at (3.5, 1) {\tiny $V_{1} \times O_{2}$};
+    \node (o1o2) at (4.5, 1) {\tiny $O_{1} \times O_{2}$};
+    \node (o2o2) at (5.5, 1) {\tiny $O_{2} \times O_{2}$};
+    \node (v1)   at (6.25, 1) {\tiny $V_{1}$};
+    \node (o1)   at (6.75, 1) {\tiny $O_{1}$};
+    \node (o2)   at (7.25, 1) {\tiny $O_{2}$};
+    \node (l)    at (7.75, 1) {\tiny $\delta$};
+    \foreach \r in {1, ..., 6, 6.5, 7, 7.5}
+      \draw[dotted] (\r, 1.125) to (\r, 0);
+
+    \draw (0, 0) rectangle (8, 0.75);
+    \node (l2)   at (-0.75, 0.375) {$\ell = 2$};
+    \fill[pattern=north west lines] (3, 0) rectangle (5, 0.75);
+    \fill[pattern=north west lines] (7, 0) rectangle (7.5, 0.75);
+    \foreach \r in {0.5, ..., 2.5, 6.25, 6.75, 7.75}
+      \node at (\r, 0.375) {$\star$};
+    \node at (5.5, 0.375) {$0$};
   \end{tikzpicture}
 \end{figure}
 
