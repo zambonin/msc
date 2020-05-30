@@ -231,13 +231,13 @@ Several polynomials may be used to model a complex structure in which they behav
 
 \begin{definition}\label{def:polsys}
   Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or
-  \begin{align*}
+  \begin{align}
     \begin{dcases}
       p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
       \quad \vdots \\
       p^{(m)}(x_{1}, \dots, x_{n}) &= 0.
     \end{dcases}
-  \end{align*}
+  \end{align}
   If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
 \end{definition}
 
@@ -260,14 +260,14 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
-  \begin{align*}
+  \begin{align}
     j(x_{1}, \dots, x_{n}) =
     \begin{dcases}
       p^{(1)}(x_{1}, \dots, x_{n}) \\
       \quad \vdots \\
       p^{(m)}(x_{1}, \dots, x_{n}).
     \end{dcases}
-  \end{align*}
+  \end{align}
 \end{definition}
 
 We give other useful traits of a vector space before returning to polynomial maps.
@@ -507,13 +507,13 @@ The integers $v$ and $o$ represent the quantity of vinegar and oil variables, re
 
 \begin{definition}
   Given an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
-  \begin{align*}
+  \begin{align}
     \widetilde{M}(p^{(i)}) =
     \begin{bmatrix}
       \star_{v \times v} & \star_{v \times o} \\
       \star_{o \times v} & \mathbf{0}_{o \times o} \\
     \end{bmatrix}.
-  \end{align*}
+  \end{align}
 \end{definition}
 We are now ready to describe the Oil--Vinegar signature scheme.
 
@@ -614,9 +614,6 @@ Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivale
 \end{align}
 and obtain a reduction in the private key of a factor $\frac{n^{2}}{vo}$.
 
-% TODO add figures
-% TODO equivalent keys
-
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
@@ -644,7 +641,7 @@ For the central map $\mathcal{C}$, the random choice is equivalent to randomly c
 \begin{align}
   \mathbf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
 \end{align}
-For $u = 2$ and $1 \leq i \leq m$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is equivalent to
+With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
 \begin{align}
   \begin{split}
     \widetilde{M}(p^{(i)}) =
@@ -688,10 +685,9 @@ If polynomials are homogeneous quadratic, then the private key size decreases in
 field elements.
 
 \subsubsection{Equivalent keys.}
+% TODO expand
 
 As a generalization of UOV, there exist equivalent keys in Rainbow by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
-
-\subsection{Cryptanalysis of Oil--Vinegar schemes}\label{subsec:attacks}
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
@@ -762,6 +758,7 @@ $(\mathbf{S}, \mathcal{L}_{1}, \mathcal{C}', \mathcal{L}_{2})$ and the public ke
 $\mathcal{P}$.
 
 \subsubsection{Rainbow-$\eta_{2}$ key generation.}
+% TODO expand
 
 This approach is based on the fact that a private key owner is able to recover
 the original $\mathcal{C}$ through the possession of all other private maps and
@@ -1295,6 +1292,7 @@ these computations are entirely avoided by choosing a new salt instead of new
 vinegar variables, reducing the inherent overhead.
 
 \chapter{Variant of Kipnis--Shamir attack}
+% TODO expand
 
 As seen in Chapter~\ref{chapter:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
 
@@ -1309,7 +1307,7 @@ We briefly describe the attack for UOV, that is, a Rainbow scheme with a single 
 The first $v$ variables of any $\sigma_{i}$ under the transformation $\mathcal{L}_{2}^{-1}$ are equal to the chosen sequence of vinegar variables $V_{1} = (x_{1}, \dots, x_{v})$, i.e. the preimage $\mathcal{L}_{2}^{-1}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Since this is the case for any $\sigma_{i}$, we have that $\mathcal{L}_{2}^{-1}(\sigma_{i} - \sigma_{i + 1}) = (0, \dots, 0, \ast, \dots, \ast)$. In fact, any subtraction between two signatures in $\rho$ yields vectors starting with $v$ zeroes. Let us call such a vector $\chi_{i}$, and evidently $\chi_{i} \in \mathcal{L}_{2}^{-1}(\mathcal{O})$. Since the attacker's goal is to build a basis of this set, then $m$ linearly independent $\chi_{i}$ must be collected such that it can be constructed. Let us call this set $\widetilde{\rho}$. Indeed, $\widetilde{\rho} \subseteq \rho$, and at least $m + 1$ signatures need to be collected to perform $m$ subtractions.
 
 The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\widetilde{\rho}$, and the matrix is then transposed. More concisely, a simple basis extension is performed. Equivalently,
-\begin{align*}
+\begin{align}
   B^{\mathsf{T}} = \begin{bmatrix}
     1 & 0 & 0 & \cdots & 0 \\
     0 & 1 & 0 & \cdots & 0 \\
@@ -1319,11 +1317,12 @@ The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is giv
         \vdots & \vdots & \vdots & \ddots & \vdots \\
     \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
   \end{bmatrix}.
-\end{align*}
+\end{align}
 Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
 
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$. However, we do not endorse ``security through obscurity'' and suggest that our proposed strategy is not applied to Rainbow-like signature schemes. Moreover, our attack is not expensive to perform, as we will see in the following, and thus should be added to the standard toolbox of cryptanalytic methods for Rainbow. Further, it is yet unclear if the fixation of a subset of the vinegar variables leads to a clearer tradeoff between private key size and security.
 
+% TODO
 % \chapter{Conclusion}
 
 % \section{Future work}
