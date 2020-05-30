@@ -346,11 +346,11 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
   \begin{align}
     \begin{split}
       \begin{dcases}
-        p^{(1)}(x_{1}, \dots, x_{n}) = 
+        p^{(1)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)} \\
         \quad \vdots \\
-        p^{(m)}(x_{1}, \dots, x_{n}) = 
+        p^{(m)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \delta^{(m)},
       \end{dcases} \\
@@ -542,7 +542,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Subsection~\ref{subsec:attacks}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
 
 The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
@@ -650,12 +650,12 @@ With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$
         \star_{v_{1} \times v_{1}}      & \star_{v_{1} \times o_{1}}      & \mathbf{0}_{v_{1} \times o_{2}} \\
         \star_{o_{1} \times v_{1}}      & \mathbf{0}_{o_{1} \times o_{1}} & \mathbf{0}_{o_{1} \times o_{2}} \\
         \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{2}} & \mathbf{0}_{o_{2} \times o_{2}} \\
-      \end{bmatrix} \text{for } p^{(1)}, \dots, p^{(o_{1})}, \\
+      \end{bmatrix} & \text{for } p^{(1)}, \dots, p^{(o_{1})}, \\
       \begin{bmatrix}
         \star_{v_{1} \times v_{1}}      & \star_{v_{1} \times o_{1}}      & \star_{v_{1} \times o_{2}} \\
         \star_{o_{1} \times v_{1}}      & \star_{o_{1} \times o_{1}}      & \mathbf{0}_{o_{1} \times o_{2}} \\
         \star_{o_{2} \times v_{1}}      & \mathbf{0}_{o_{2} \times o_{2}} & \mathbf{0}_{o_{2} \times o_{2}} \\
-      \end{bmatrix} \text{for } p^{(o_{1} + 1)}, \dots, p^{(o_{2})},
+      \end{bmatrix} & \text{for } p^{(o_{1} + 1)}, \dots, p^{(o_{2})},
     \end{dcases} \\
     1 \leq i \leq m.
   \end{split}
@@ -1291,7 +1291,7 @@ average signature generation time. Still, by making use of Rainbow-$\eta_{3}$,
 these computations are entirely avoided by choosing a new salt instead of new
 vinegar variables, reducing the inherent overhead.
 
-\chapter{Variant of Kipnis--Shamir attack}
+\chapter{Variant of Kipnis--Shamir attack}\label{chapter:attack}
 % TODO expand
 
 As seen in Chapter~\ref{chapter:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
