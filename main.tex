@@ -540,7 +540,7 @@ The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to b
 The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathbf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
-    + \; \underbrace{n^{2} + n}_{\mathcal{L}_{2}}
+    + \; \underbrace{n^{2}}_{\mathcal{L}_{2}}
 \end{align}
 field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
@@ -585,7 +585,7 @@ It is a direct consequence of this theorem that there exist at least as many equ
     \omega =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
-      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)}  \\
+      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
     \end{bmatrix},
   \end{align}
   and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
@@ -600,11 +600,12 @@ It is a direct consequence of this theorem that there exist at least as many equ
 
 Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
 \begin{align}
-  \widetilde{\mathcal{L}}_{2} =
   \begin{bmatrix}
-    
+    \mathbf{I}_{v}          & \star_{v \times o} \\
+    \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
   \end{bmatrix}
 \end{align}
+and obtain a reduction in the private key of a factor $\frac{n^{2}}{vo}$.
 
 % TODO add figures
 % TODO equivalent keys
@@ -650,11 +651,11 @@ The remarks about UOV regarding the size of parameters, chances of failure in th
 
 Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
-  \#\mathsf{sk} = \underbrace{m^{2} + m}_{\mathcal{L}_{1}} 
-    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} \right)}_{\mathcal{C}}
-    + \underbrace{n^{2} + n}_{\mathcal{L}_{2}}.
+  \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
+    + \underbrace{n^{2}}_{\mathcal{L}_{2}}.
 \end{align}
-If polynomials are not homogeneous quadratic, then the private key size increases in $\sum_{k = 1}^{u} o_{k} \times (v_{k} + o_{k} + 1)$. The size of a public key is similar to the UOV case, and thus
+If polynomials are homogeneous quadratic, then the private key size decreases in $\sum_{k = 1}^{u} o_{k} \times (v_{k} + o_{k} + 1)$. The size of a public key is similar to the UOV case, and thus
 \begin{align}
   \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
