@@ -299,8 +299,6 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\varphi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
 
-% TODO abuse of notation GL(n, F) -> GL(F^n)
-
 \section{Multivariate signature schemes}\label{sec:mult}
 
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
@@ -582,7 +580,7 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$. If
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$. If matrix representations of the linear transformations are of the form
   \begin{align}
     \mathcal{L}_{2} = 
     \begin{bmatrix}
@@ -595,7 +593,7 @@ It is a direct consequence of this theorem that there exist at least as many equ
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
     \end{bmatrix},
   \end{align}
-  and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
+  with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
   \begin{align}
     \omega^{-1} \circ \mathcal{L}_{2} =
     \begin{bmatrix}
@@ -605,7 +603,7 @@ It is a direct consequence of this theorem that there exist at least as many equ
   \end{align}
 \end{theorem}
 
-Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ of the form
+Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ with its matrix representation of the form
 \begin{align}
   \begin{bmatrix}
     \mathbf{I}_{v}          & \star_{v \times o} \\
