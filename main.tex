@@ -406,7 +406,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea.
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}_{n}(\mathbb{F})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We note that, as a consequence of the degree choice for multivariate cryptography, this is the only possible arrangement of maps. In other words, there always must be a quadratic trapdoor hidden by linear maps such that the composition of the functions is still a quadratic map. Further, the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -441,7 +441,7 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
 \begin{align}
   \begin{split}
     \mathbf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
-      \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}_{n}(\mathbb{F}), \\
+      \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}(\mathbb{F}^{n}), \\
     \mathbf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
@@ -450,7 +450,7 @@ The bipolar construction can be extended to work differently from the main idea 
 While very elegant, the bipolar construction yields a situation in which derived schemes are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on \textsf{PoSSo} such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}\label{def:eip}
-  Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}(\mathbb{F}^{m}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}_{n}(\mathbb{F})$ be a set of private keys. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \widetilde{\mathcal{L}}_{1} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}}_{2}$ such that $(\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
+  Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}(\mathbb{F}^{m}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}(\mathbb{F}^{n})$ be a set of private keys. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \widetilde{\mathcal{L}}_{1} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}}_{2}$ such that $(\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
 Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]{Thomae:201306}, preventing complete security proofs for Oil--Vinegar schemes. This is also the case for other IP problems, such that most multivariate cryptosystems simply have \emph{ad hoc} security. A consequence of EIP is that there exist many private keys that compose a single public key~\cite{Wolf:201104}, and this has been used to attack several schemes, as seen in Section~\ref{sec:related}.
@@ -464,7 +464,7 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
 \end{definition}
 
 \begin{definition}\label{def:sustainer}
-  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, the linear transformations $\tau \in \mathsf{GL}(\mathbb{F}^{m}),\: \omega \in \mathsf{GL}_{n}(\mathbb{F})$ are \emph{sustaining transformations} if they preserve the structure of the central map, that is,
+  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, the linear transformations $\tau \in \mathsf{GL}(\mathbb{F}^{m}),\: \omega \in \mathsf{GL}(\mathbb{F}^{n})$ are \emph{sustaining transformations} if they preserve the structure of the central map, that is,
   \begin{align}
     \mathcal{P} = (\mathcal{L}_{1} \circ \tau^{-1}) \circ (\tau \circ \mathcal{C} \circ \omega) \circ (\omega^{-1} \circ \mathcal{L}_{2})
   \end{align}
@@ -522,7 +522,7 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 Since Oil--Vinegar schemes are based on the bipolar construction, the private key is composed of a central map $\mathcal{C}$ and a linear transformation $\mathcal{L}_{2}$ to hide its structure. We remark that the linear transformation $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p. 71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key. Then, let
 \begin{align}
   \mathbf{sk} = (\mathcal{C}, \mathcal{L}_{2})
-    \random \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F}).
+    \random \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
@@ -560,7 +560,7 @@ field elements.
 As mentioned after Definition~\ref{def:sustainer}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ with a matrix representation of the form
   \begin{align}
     \begin{bmatrix}
       \omega_{v \times v}^{(1)} & \mathbf{0}_{v \times o} \\
@@ -582,7 +582,7 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}_{n}(\mathbb{F})$ and $\omega \in \mathsf{GL}_{n}(\mathbb{F})$. If
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$. If
   \begin{align}
     \mathcal{L}_{2} = 
     \begin{bmatrix}
@@ -605,7 +605,7 @@ It is a direct consequence of this theorem that there exist at least as many equ
   \end{align}
 \end{theorem}
 
-Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}_{n}(\mathbb{F})$ of the form
+Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ of the form
 \begin{align}
   \begin{bmatrix}
     \mathbf{I}_{v}          & \star_{v \times o} \\
@@ -637,7 +637,7 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 In the case of Rainbow, all three maps are needed. Therefore,
 \begin{align}
   \mathbf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
-    \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}_{n}(\mathbb{F}).
+    \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
@@ -1300,7 +1300,7 @@ The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is giv
     \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
   \end{bmatrix}.
 \end{align*}
-Then, if $B \in \mathsf{GL}_{n}(\mathbb{F})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
+Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathbf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
 
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$. However, we do not endorse ``security through obscurity'' and suggest that our proposed strategy is not applied to Rainbow-like signature schemes. Moreover, our attack is not expensive to perform, as we will see in the following, and thus should be added to the standard toolbox of cryptanalytic methods for Rainbow. Further, it is yet unclear if the fixation of a subset of the vinegar variables leads to a clearer tradeoff between private key size and security.
 
