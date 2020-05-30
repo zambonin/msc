@@ -471,9 +471,11 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p. 69]
   such that $\tau \circ \mathcal{C} \circ \omega \in \overline{\mathsf{MQ}}(n, m)$.
 \end{definition}
 
-This concept is further explored in the context of the schemes of Section~\ref{sec:ov}. Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1} \in \mathsf{AGL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} \in \mathsf{AGL}(\mathbb{F}^{n})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. 
+This concept is further explored in the context of the schemes of Section~\ref{sec:ov}. Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1} \in \mathsf{AGL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} \in \mathsf{AGL}(\mathbb{F}^{n})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
 
-Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve using linear transformations in place of affine ones. As a consequence, the polynomials in the central map must be homogeneous quadratic. Moreover, there exist works that confirm homogeneous quadratic maps and linear transformations are safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}.
+However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. 
+
+It is argued in~\cite[Lemmata 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve using linear transformations in place of affine ones. As a consequence, the polynomials in the central map must be homogeneous quadratic. Moreover, there exist works that confirm homogeneous quadratic maps and linear transformations are safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}.
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
@@ -501,13 +503,18 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
   Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $p^{(1)}, \dots, p^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
-The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given by the matrix representation of an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$. The lack of cross-oil terms is represented by zeroes in its lower-right $o \times o$ portion, or equivalently,
-\begin{align*}
-  \widetilde{M}(p^{(i)}) = \begin{bmatrix}
-    \star_{v \times v} & \star_{v \times o} \\
-    \star_{o \times v} & \mathbf{0}_{o \times o} \\
-  \end{bmatrix}.
-\end{align*}
+The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
+
+\begin{definition}
+  Given an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
+  \begin{align*}
+    \widetilde{M}(p^{(i)}) =
+    \begin{bmatrix}
+      \star_{v \times v} & \star_{v \times o} \\
+      \star_{o \times v} & \mathbf{0}_{o \times o} \\
+    \end{bmatrix}.
+  \end{align*}
+\end{definition}
 We are now ready to describe the Oil--Vinegar signature scheme.
 
 \subsubsection{Key generation.}
