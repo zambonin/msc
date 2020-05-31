@@ -593,13 +593,13 @@ It is a direct consequence of this theorem that there exist at least as many equ
     \psi(\omega) =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
-      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
+      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot \mathsf{L}_{2}^{(-1, 2)} \\
     \end{bmatrix}
   \end{align}
   and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
   \begin{align}
     \psi(\omega^{-1} \circ \mathcal{L}_{2}) = \begin{bmatrix}
-      \mathbf{I}_{v} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
+      \mathbf{I}_{v} & \mathsf{L}_{2}^{(-1, 2)} \\
       \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
     \end{bmatrix}.
   \end{align}
@@ -758,17 +758,17 @@ The redundancy is removed by the same rationale, observing the shape of the late
         \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
       \end{bmatrix}.
     \end{align}
-    \item Let $\mathsf{L}_{12}'$ Given $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
+    \item Let $\mathsf{L}_{2}^{(-1, 2)} = (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)}$ and $\mathsf{L}_{2}^{(-1, 3)} = (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)}$. Given $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
     \begin{align}
       \begin{split}
         \psi(\omega) =
         \begin{bmatrix}
           \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
-          \mathcal{L}_{2}^{(4)} & \mathcal{L}_{2}^{(5)} - \mathcal{L}_{2}^{(4)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} & \mathbf{0}_{o_{1} \times o_{2}} \\
-          \mathcal{L}_{2}^{(7)} & \mathcal{L}_{2}^{(8)} - \mathcal{L}_{2}^{(7)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} & \omega^{(6)} \\
+          \mathcal{L}_{2}^{(4)} & \mathcal{L}_{2}^{(5)} - \mathcal{L}_{2}^{(4)} \cdot \mathsf{L}_{2}^{(-1, 2)} & \mathbf{0}_{o_{1} \times o_{2}} \\
+          \mathcal{L}_{2}^{(7)} & \mathcal{L}_{2}^{(8)} - \mathcal{L}_{2}^{(7)} \cdot \mathsf{L}_{2}^{(-1, 2)} & \omega^{(6)} \\
         \end{bmatrix}, \\
         \begin{multlined}[t]
-          \omega^{(6)} = \mathcal{L}_{2}^{(9)} - \mathcal{L}_{2}^{(7)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)} - \omega^{(5)} \\ \cdot (\omega^{3})^{-1} \cdot \mathcal{L}_{2}^{(6)} - \mathcal{L}_{2}^{(4)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)}
+          \omega^{(6)} = \mathcal{L}_{2}^{(9)} - \mathcal{L}_{2}^{(7)} \cdot \mathsf{L}_{2}^{(-1, 3)} - \omega^{(5)} \\ \cdot (\omega^{3})^{-1} \cdot \mathcal{L}_{2}^{(6)} - \mathcal{L}_{2}^{(4)} \cdot \mathsf{L}_{2}^{(-1, 3)}
         \end{multlined}
       \end{split}
     \end{align}
@@ -776,8 +776,8 @@ The redundancy is removed by the same rationale, observing the shape of the late
     \begin{align}
       \psi(\omega^{-1} \circ \mathcal{L}_{2}) =
       \begin{bmatrix}
-        \mathbf{I}_{v_{1}} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)} \\
-        \mathbf{0}_{o_{1} \times v_{1}} & \mathbf{I}_{o_{1}} & (\omega^{(3)})^{-1} \cdot \mathcal{L}_{2}^{(6)} - \mathcal{L}_{2}^{(4)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)} \\
+        \mathbf{I}_{v_{1}} & \mathsf{L}_{2}^{(-1, 2)} & \mathsf{L}_{2}^{(-1, 3)} \\
+        \mathbf{0}_{o_{1} \times v_{1}} & \mathbf{I}_{o_{1}} & (\omega^{(3)})^{-1} \cdot \mathcal{L}_{2}^{(6)} - \mathcal{L}_{2}^{(4)} \cdot \mathsf{L}_{2}^{(-1, 3)} \\
         \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
     \end{bmatrix}
     \end{align}
