@@ -762,10 +762,11 @@ The redundancy is removed by the same rationale, observing the shape of the late
     \begin{align}
       \psi(\omega) =
       \begin{bmatrix}
-        \mathcal{L}_{1}^{(1)} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
-        \mathcal{L}_{1}^{(4)} & \mathcal{L}_{2}^{(5)} & \mathcal{L}_{2}^{(6)} \\
-        \mathcal{L}_{1}^{(7)} & \mathcal{L}_{2}^{(8)} & \mathcal{L}_{2}^{(9)} \\
-      \end{bmatrix}
+        \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
+        \mathcal{L}_{2}^{(4)} & \mathcal{L}_{2}^{(5)} - \mathcal{L}_{2}^{(4)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} & \mathbf{0}_{o_{1} \times o_{2}} \\
+        \mathcal{L}_{2}^{(7)} & \mathcal{L}_{2}^{(8)} - \mathcal{L}_{2}^{(7)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} & \omega^{(6)} \\
+      \end{bmatrix},
+      \omega^{(6)} = \mathcal{L}_{2}^{(9)} - \mathcal{L}_{2}^{(7)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(3)} - \omega^{(5)} \cdot 
     \end{align}
     with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F})$ and $\omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$, then
   \end{enumerate}
