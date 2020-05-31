@@ -379,7 +379,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
 \begin{definition}\label{def:matquad}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    \psi(p^{(i)}) =
+    \overline{M}(p^{(i)}) = 
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \alpha^{(i)}_{12} & \cdots & \alpha^{(i)}_{1n} & \beta^{(i)}_{1}  \\
                       0 & \alpha^{(i)}_{22} & \cdots & \alpha^{(i)}_{2n} & \beta^{(i)}_{2}  \\
@@ -388,13 +388,13 @@ In the context of multivariate cryptography, monomial ordering is used for insta
                       0 &                 0 & \cdots &                 0 & \delta^{(i)}     \\
     \end{bmatrix}
   \end{align}
-  such that $p^{(i)} = \mathbf{x} \cdot \psi(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
+  such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
 \begin{definition}\label{def:mathom}
   Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    \psi(p^{(i)}) = 
+    M(p^{(i)}) = 
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \cdots & \alpha^{(i)}_{1n}    \\
                  \vdots & \ddots &            \vdots    \\
@@ -546,7 +546,7 @@ To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the
 
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We will discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
 
-The size of a private key is the number of elements in the matrix representation of $\mathcal{L}_{2}$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
+The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathbf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
     + \; \underbrace{n^{2}}_{\mathcal{L}_{2}}
@@ -562,18 +562,20 @@ field elements.
 As mentioned after Definition~\ref{def:sustainer}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ with a matrix representation of the form
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
+    \psi(\omega) =
     \begin{bmatrix}
       \omega_{v \times v}^{(1)} & \mathbf{0}_{v \times o} \\
       \omega_{o \times v}^{(2)} & \omega_{o \times o}^{(3)} \\
-    \end{bmatrix},
+    \end{bmatrix}
   \end{align}
   with $\omega^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$ and $\omega^{(3)} \in \mathsf{GL}_{o}(\mathbb{F})$, then $(\mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
-We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictions on $\omega^{(1)}$ and $\omega^{(3)}$, that is,
+We remark that $\psi(\omega^{-1})$ has the same form as $\omega$ due to the restrictions on $\omega^{(1)}$ and $\omega^{(3)}$, that is,
 \begin{align}
+  \psi(\omega^{-1}) =
   \begin{bmatrix}
     (\omega^{(1)})^{-1}                                                 & \mathbf{0}_{v \times o}   \\
     -(\omega^{(3)})^{-1} \cdot \omega^{(2)} \cdot (\omega^{(1)})^{-1}   & (\omega^{(3)})^{-1}       \\
@@ -583,23 +585,22 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$, let the matrix representation of $\mathcal{L}_{2}$ be of the form
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
+    \psi(\mathcal{L}_{2}) =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathcal{L}_{2}^{(2)} \\
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} \\
-    \end{bmatrix}.
-  \end{align}
-  If $\omega$ has a matrix representation of the form
-  \begin{align}
+    \end{bmatrix},\;
+    \psi(\omega) =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
-    \end{bmatrix},
+    \end{bmatrix}
   \end{align}
-  with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then the matrix representation of $\omega^{-1} \circ \mathcal{L}_{2}$ is of the form
+  and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
   \begin{align}
-    \begin{bmatrix}
+    \psi(\omega^{-1} \circ \mathcal{L}_{2}) = \begin{bmatrix}
       \mathbf{I}_{v} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
       \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
     \end{bmatrix}.
