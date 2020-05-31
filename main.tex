@@ -719,8 +719,8 @@ The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms, t
     \psi(\omega^{-1}) &=
     \begin{bmatrix}
       (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}}   & \mathbf{0}_{v_{1} \times o_{2}} \\
-      \omega^{(2)} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
-      \omega^{(4)} & \omega^{(5)} & (\omega^{(6)})^{-1} \\
+      -(\omega^{(3)})^{-1} \omega^{(2)} \cdot (\omega^{(1)})^{-1} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
+      -(-(\omega^{(6)})^{-1} \cdot \omega^{(5)} \cdot (\omega^{(3)})^{-1}) \cdot \omega^{(4)} \cdot -(\omega^{(3)})^{-1} \omega^{(2)} \cdot (\omega^{(1)})^{-1} & -(\omega^{(6)})^{-1} \cdot \omega^{(5)} \cdot (\omega^{(3)})^{-1} & (\omega^{(6)})^{-1} \\
     \end{bmatrix}.
   \end{split}
 \end{align}
