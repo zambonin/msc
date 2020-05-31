@@ -613,7 +613,7 @@ Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivale
     \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
   \end{bmatrix}
 \end{align}
-and obtain a reduction in the private key of a factor $\frac{n^{2}}{vo}$.
+and obtain a reduction in the private key of a factor $\frac{n^{2}}{v o}$.
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
@@ -686,7 +686,6 @@ If polynomials are homogeneous quadratic, then the private key size decreases in
 field elements.
 
 \subsubsection{Equivalent keys.}
-% TODO expand
 
 As a generalization of UOV, there exist equivalent keys in Rainbow by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
@@ -720,6 +719,7 @@ The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by
     \begin{bmatrix}
       (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
       \omega^{(-3^{-1} \cdot 2 \cdot 1^{-1})} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
+      % TODO
       {\color{red} \star} & \omega^{(-6^{-1} \cdot 5 \cdot 3^{-1})} & (\omega^{(6)})^{-1} \\
     \end{bmatrix}.
   \end{split}
@@ -799,7 +799,7 @@ If $\mathcal{L}_{2}^{(1)}$ and $\omega^{(3)}$ are invertible, which once again h
     \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
   \end{bmatrix}.
 \end{align}
-The reductions in the private key size are respectively $\frac{n^{2}}{vo}$ and $\frac{m^{2}}{}$
+The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} o_{2}} + \frac{n^{2}}{v_{1} o_{1} + v_{2} o_{2}}$.
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
