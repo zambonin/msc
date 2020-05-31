@@ -774,7 +774,12 @@ The redundancy is removed by the same rationale, observing the shape of the late
     \end{align}
     with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F})$ and $\omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$, then
     \begin{align}
-      \psi(\omega^{-1} \circ \mathcal{L}_{2}) = 
+      \psi(\omega^{-1} \circ \mathcal{L}_{2}) =
+      \begin{bmatrix}
+        \mathbf{I}_{v_{1}} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
+        \mathbf{0}_{o_{1} \times v_{1}} & \mathbf{I}_{o_{1}} & \mathbf{0}_{o_{1} \times o_{2}} \\
+        \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
+    \end{bmatrix}
     \end{align}
   \end{enumerate}
 \end{theorem}
