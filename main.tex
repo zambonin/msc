@@ -709,22 +709,22 @@ As a generalization of UOV, there exist equivalent keys in Rainbow by a similar 
 \end{theorem}
 
 The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by a similar block inverse calculation.
-We use a compact notation to represent operations between inner block matrices. For example, $-(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}$ is denoted as $\tau^{-3^{-1} \cdot 2 \cdot 1^{-1}}$.
-% \begin{align}
-%   \begin{split}
-%     \psi(\tau^{-1}) &=
-%     \begin{bmatrix}
-%       (\tau^{(1)})^{-1}                                           & \mathbf{0}_{o_{1} \times o_{2}} \\
-%       -(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1} & (\tau^{(3)})^{-1} \\
-%     \end{bmatrix}, \\
-%     \psi(\omega^{-1}) &=
-%     \begin{bmatrix}
-%       (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}}   & \mathbf{0}_{v_{1} \times o_{2}} \\
-%       -(\omega^{(3)})^{-1} \cdot \omega^{(2)} \cdot (\omega^{(1)})^{-1} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
-%       (\omega^{(6)})^{-1} \cdot -\omega^{(5)} \cdot -(\omega^{(3)})^{-1} \cdot \omega^{(4)} \cdot -(\omega^{(3)})^{-1} \cdot \omega^{(2)} \cdot (\omega^{(1)})^{-1} & -(\omega^{(6)})^{-1} \cdot \omega^{(5)} \cdot (\omega^{(3)})^{-1} & (\omega^{(6)})^{-1} \\
-%     \end{bmatrix}.
-%   \end{split}
-% \end{align}
+We use a compact notation to represent operations between inner block matrices. For example, $-(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}$ is denoted as $\tau^{(-3^{-1} \cdot 2 \cdot 1^{-1})}$.
+\begin{align}
+  \begin{split}
+    \psi(\tau^{-1}) &=
+    \begin{bmatrix}
+      (\tau^{(1)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
+      \tau^{(-3^{-1} \cdot 2 \cdot 1^{-1})} & (\tau^{(3)})^{-1} \\
+    \end{bmatrix}, \\
+    \psi(\omega^{-1}) &=
+    \begin{bmatrix}
+      (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
+      \omega^{(-3^{-1} \cdot 2 \cdot 1^{-1})} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
+      \star & \omega^{(-6^{-1} \cdot 5 \cdot 3^{-1})} -(\omega^{(6)})^{-1} \cdot \omega^{(5)} \cdot (\omega^{(3)})^{-1} & (\omega^{(6)})^{-1} \\
+    \end{bmatrix}.
+  \end{split}
+\end{align}
 The redundancy is removed by the same rationale, observing the shape of the lateral maps in the equivalent key.
 
 \begin{theorem}[{\cite[Theorem 3.6]{Petzoldt:201307}}]
