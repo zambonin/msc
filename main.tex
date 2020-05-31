@@ -708,13 +708,21 @@ As a generalization of UOV, there exist equivalent keys in Rainbow by a similar 
   $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
-Analogously to the case of UOV, $\tau^{-1}$ and $\omega^{-1}$ maintain their forms, that is,
+The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms, that is,
 \begin{align}
-  \psi(\tau^{-1}) =
-  \begin{bmatrix}
-    (\tau^{(1)})^{-1}                                             & \mathbf{0}_{o_{1} \times o_{2}} \\
-    -(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}   & (\tau^{(3)})^{-1} \\
-  \end{bmatrix}.
+  \begin{split}
+    \psi(\tau^{-1}) &=
+    \begin{bmatrix}
+      (\tau^{(1)})^{-1}                                           & \mathbf{0}_{o_{1} \times o_{2}} \\
+      -(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1} & (\tau^{(3)})^{-1} \\
+    \end{bmatrix}, \\
+    \psi(\omega^{-1}) &=
+    \begin{bmatrix}
+      (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}}   & \mathbf{0}_{v_{1} \times o_{2}} \\
+      \omega^{(2)} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
+      \omega^{(4)} & \omega^{(5)} & (\omega^{(6)})^{-1} \\
+    \end{bmatrix}.
+  \end{split}
 \end{align}
 
 The redundancy is removed by a similar rationale, observing the shape of the lateral maps in the equivalent key.
