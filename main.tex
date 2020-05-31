@@ -583,13 +583,13 @@ We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictio
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$. If matrix representations of the linear transformations are of the form
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$. Let the matrix representation of $\mathcal{L}_{2}$ be
   \begin{align}
-    \mathcal{L}_{2} = 
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathcal{L}_{2}^{(2)} \\
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} \\
-    \end{bmatrix}, \;
+    \end{bmatrix}.
+  \end{align}
     \omega =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
@@ -708,7 +708,11 @@ As a generalization of UOV, there exist equivalent keys in Rainbow by a similar 
   with $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
-Analogously to the case of UOV, 
+Analogously to the case of UOV, $\tau^{-1}$ and $\omega^{-1}$ maintain their forms. The redundancy is removed by a similar rationale, observing the shape of the lateral maps in the equivalent key.
+
+\begin{theorem}
+
+\end{theorem}
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
