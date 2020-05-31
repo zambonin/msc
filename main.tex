@@ -785,19 +785,21 @@ The redundancy is removed by the same rationale, observing the shape of the late
   \end{enumerate}
 \end{theorem}
 
-If $\mathcal{L}_{2}^{(1)}$ and $\omega^{(3)}$ are invertible, which once again happens with overwhelming probability, then there exists an equivalent key for Rainbow with $\widetilde{\mathcal{L}}_{1} \in \mathsl{GL}(\mathbb{F}^{m})$ and $\widetilde{\mathcal{L}}_{2} \in \mathsl{GL}(\mathbb{F}^{2})$ such that
+If $\mathcal{L}_{2}^{(1)}$ and $\omega^{(3)}$ are invertible, which once again happens with overwhelming probability, then there exists an equivalent key for Rainbow with $\widetilde{\mathcal{L}}_{1} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ such that
 \begin{align}
   \psi(\widetilde{\mathcal{L}}_{1}) =
   \begin{bmatrix}
     \mathbf{I}_{o_{1}} & \star_{o_{1} \times o_{2}} \\
     \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
-  \end{bmatrix} \text{and }
+  \end{bmatrix},
   \psi(\widetilde{\mathcal{L}}_{2}) =
   \begin{bmatrix}
-    \mathbf{I}_{v}          & \star_{v \times o} \\
-    \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
-  \end{bmatrix}
+    \mathbf{I}_{v_{1}} & \star_{v_{1} \times o_{1}} & \star_{v_{1} \times o_{2}} \\
+    \mathbf{0}_{o_{1} \times v_{1}} & \mathbf{I}_{o_{1}} & \star_{o_{1} \times o_{2}} \\
+    \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
+  \end{bmatrix}.
 \end{align}
+The reductions in the private key size are respectively $\frac{n^{2}}{vo}$ and $\frac{m^{2}}{}$
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
