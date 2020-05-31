@@ -301,6 +301,8 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\varphi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
 
+% TODO define notation for "matrix representation"
+
 \section{Multivariate signature schemes}\label{sec:mult}
 
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
@@ -572,7 +574,6 @@ As mentioned after Definition~\ref{def:sustainer}, there exists a specific form 
 
 We remark that $\omega^{-1}$ has the same form as $\omega$ due to the restrictions on $\omega^{(1)}$ and $\omega^{(3)}$, that is,
 \begin{align}
-  \omega^{-1} =
   \begin{bmatrix}
     (\omega^{(1)})^{-1}                                                 & \mathbf{0}_{v \times o}   \\
     -(\omega^{(3)})^{-1} \cdot \omega^{(2)} \cdot (\omega^{(1)})^{-1}   & (\omega^{(3)})^{-1}       \\
@@ -595,9 +596,8 @@ It is a direct consequence of this theorem that there exist at least as many equ
       \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
     \end{bmatrix},
   \end{align}
-  with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
+  with $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then the matrix representation of $\omega^{-1} \circ \mathcal{L}_{2}$ is of the form
   \begin{align}
-    \omega^{-1} \circ \mathcal{L}_{2} =
     \begin{bmatrix}
       \mathbf{I}_{v} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
       \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
@@ -707,6 +707,8 @@ As a generalization of UOV, there exist equivalent keys in Rainbow by a similar 
   \end{align}
   with $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
+
+Analogously to the case of UOV, 
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
