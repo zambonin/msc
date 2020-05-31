@@ -689,6 +689,14 @@ field elements.
 
 As a generalization of UOV, there exist equivalent keys in Rainbow by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
+\begin{theorem}[{\cite[Theorem 4.17]{Wolf:201104}}]
+  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{m}), \; \tau \in  \mathsf{GL}(\mathbb{F}^{m}), \; \omega \in  \mathsf{GL}(\mathbb{F}^{n})$ with matrix representations of the form
+  \begin{align}
+      
+  \end{align}
+  and $...$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2}$ is an equivalent private key.
+\end{theorem}
+
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
