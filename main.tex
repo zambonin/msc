@@ -709,6 +709,7 @@ As a generalization of UOV, there exist equivalent keys in Rainbow by a similar 
 \end{theorem}
 
 The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by a similar block inverse calculation.
+We use a compact notation to represent operations between inner block matrices. For example, $-(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}$ is denoted as $\tau^{-3^{-1} \cdot 2 \cdot 1^{-1}}$.
 % \begin{align}
 %   \begin{split}
 %     \psi(\tau^{-1}) &=
@@ -768,7 +769,7 @@ The redundancy is removed by the same rationale, observing the shape of the late
           \mathcal{L}_{2}^{(7)} & \mathcal{L}_{2}^{(8)} - \mathcal{L}_{2}^{(7)} \cdot \mathsf{L}_{2}^{(-1, 2)} & \omega^{(6)} \\
         \end{bmatrix}, \\
         \begin{multlined}[t]
-          \omega^{(6)} = \mathcal{L}_{2}^{(9)} - \mathcal{L}_{2}^{(7)} \cdot \mathsf{L}_{2}^{(-1, 3)} - \omega^{(5)} \\ \cdot (\omega^{3})^{-1} \cdot \mathcal{L}_{2}^{(6)} - \mathcal{L}_{2}^{(4)} \cdot \mathsf{L}_{2}^{(-1, 3)}
+          \omega^{(6)} = \mathsf{L}_{2}^{((9 - 7 \cdot 1^{-1} \cdot 3) -(8 - 7 \cdot 1^{-1} \cdot 2) \cdot (5 - 4 \cdot 1^{-1} \cdot 2)^{-1} \cdot (6 - 4 \cdot 1^{-1} \cdot 3))}
         \end{multlined}
       \end{split}
     \end{align}
