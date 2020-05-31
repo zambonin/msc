@@ -721,7 +721,7 @@ We use a compact notation to represent operations between inner block matrices. 
     \begin{bmatrix}
       (\omega^{(1)})^{-1} & \mathbf{0}_{v_{1} \times o_{1}} & \mathbf{0}_{v_{1} \times o_{2}} \\
       \omega^{(-3^{-1} \cdot 2 \cdot 1^{-1})} & (\omega^{(3)})^{-1} & \mathbf{0}_{o_{1} \times o_{2}} \\
-      \star & \omega^{(-6^{-1} \cdot 5 \cdot 3^{-1})} -(\omega^{(6)})^{-1} \cdot \omega^{(5)} \cdot (\omega^{(3)})^{-1} & (\omega^{(6)})^{-1} \\
+      \omega^{(-(-3^{-1} \cdot 2 \cdot 1^{-1})^{-1} \cdot 4 \cdot (-6^{-1} \cdot 5 \cdot 3^{-1})^{-1})} & \omega^{(-6^{-1} \cdot 5 \cdot 3^{-1})} & (\omega^{(6)})^{-1} \\
     \end{bmatrix}.
   \end{split}
 \end{align}
@@ -747,7 +747,7 @@ The redundancy is removed by the same rationale, observing the shape of the late
     \begin{align}
       \psi(\tau) =
       \begin{bmatrix}
-        \mathcal{L}_{1}^{(1)} - \mathcal{L}_{1}^{(2)} \cdot (\mathcal{L}_{1}^{(4)})^{-1} \cdot \mathcal{L}_{1}^{(3)} & \mathbf{0}_{o_{1} \times o_{2}} \\
+        \mathcal{L}_{1}^{(1 - 2 \cdot 4^{-1} \cdot 3)} & \mathbf{0}_{o_{1} \times o_{2}} \\
         \mathcal{L}_{1}^{(3)} & \mathcal{L}_{1}^{(4)} \\
       \end{bmatrix}
     \end{align}
@@ -755,7 +755,7 @@ The redundancy is removed by the same rationale, observing the shape of the late
     \begin{align}
       \psi(\mathcal{L}_{1} \circ \tau^{-1}) =
       \begin{bmatrix}
-        \mathbf{I}_{o_{1}} & \mathcal{L}_{1}^{(2)} \cdot (\mathcal{L}_{1}^{(4)})^{-1} \\
+        \mathbf{I}_{o_{1}} & \mathcal{L}_{1}^{(2 \cdot 4^{-1})} \\
         \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{I}_{o_{2}} \\
       \end{bmatrix}.
     \end{align}
