@@ -301,8 +301,6 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\psi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v}_{1} \in \mathbf{V}$, then $\phi(\mathbf{v_{1}}) = M\mathbf{v_{1}}$.
 
-% TODO define notation for "matrix representation"
-
 \section{Multivariate signature schemes}\label{sec:mult}
 
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential building blocks of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
@@ -607,8 +605,9 @@ It is a direct consequence of this theorem that there exist at least as many equ
   \end{align}
 \end{theorem}
 
-Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ with its matrix representation of the form
+Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivalent key for UOV. This happens with overwhelming probability as per Subsection~\ref{subsec:invert}. Hence, one may simply choose $\widetilde{\mathcal{L}}_{2} \in \mathsf{GL}(\mathbb{F}^{n})$ such that
 \begin{align}
+  \psi(\widetilde{\mathcal{L}}_{2}) =
   \begin{bmatrix}
     \mathbf{I}_{v}          & \star_{v \times o} \\
     \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
@@ -674,7 +673,7 @@ the signature is valid, and otherwise invalid.
 
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
-Measured in field elements, the size of a private key is the number of elements in the matrix representations of $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
   \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
@@ -692,22 +691,21 @@ field elements.
 As a generalization of UOV, there exist equivalent keys in Rainbow by a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
 \begin{theorem}[{\cite[Theorem 4.17]{Wolf:201104}}]
-  Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{m})$ with $u = 2$. Given $\tau \in \mathsf{GL}(\mathbb{F}^{m})$ with a matrix representation of the form
+  Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n})$ with $u = 2$. Given $\tau \in \mathsf{GL}(\mathbb{F}^{m})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
+    \psi(\tau) =
     \begin{bmatrix}
       \tau_{o_{1} \times o_{1}}^{(1)} & \mathbf{0}_{o_{1} \times o_{2}} \\
       \tau_{o_{2} \times o_{1}}^{(2)} & \tau_{o_{2} \times o_{2}}^{(3)} \\
-    \end{bmatrix},
-  \end{align}
-  and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ with a matrix representation of the form
-  \begin{align}
+    \end{bmatrix},\;
+    \psi(\omega) =
     \begin{bmatrix}
       \omega_{v_{1} \times v_{1}}^{(1)} & \mathbf{0}_{v_{1} \times o_{1}}   & \mathbf{0}_{v_{1} \times o_{2}} \\
       \omega_{o_{1} \times v_{1}}^{(2)} & \omega_{o_{1} \times o_{1}}^{(3)} & \mathbf{0}_{o_{1} \times o_{2}} \\
       \omega_{o_{2} \times v_{1}}^{(4)} & \omega_{o_{2} \times o_{1}}^{(5)} & \omega_{o_{2} \times o_{2}}^{(6)} \\
-    \end{bmatrix}
+    \end{bmatrix},
   \end{align}
-  with $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
+  $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
 Analogously to the case of UOV, $\tau^{-1}$ and $\omega^{-1}$ maintain their forms. The redundancy is removed by a similar rationale, observing the shape of the lateral maps in the equivalent key.
