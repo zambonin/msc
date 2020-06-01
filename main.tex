@@ -260,14 +260,9 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
 Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
-  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
+  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by an $m$-tuple of polynomial functions
   \begin{align}
-    j(x_{1}, \dots, x_{n}) =
-    \begin{dcases}
-      p^{(1)}(x_{1}, \dots, x_{n}) \\
-      \quad \vdots \\
-      p^{(m)}(x_{1}, \dots, x_{n}).
-    \end{dcases}
+    j(x_{1}, \dots, x_{n}) = (p^{(1)}(x_{1}, \dots, x_{n}), \dots, p^{(m)}(x_{1}, \dots, x_{n})).
   \end{align}
 \end{definition}
 
@@ -340,7 +335,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
   Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
-Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
+Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
 
 \begin{definition}\label{def:quadsys}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
