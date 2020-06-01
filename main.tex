@@ -132,21 +132,21 @@ We are particularly interested in specific types of groups and transformations b
   Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is commutative, or \emph{abelian}.
 \end{definition}
 
-If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. Further, oftentimes it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below.
+If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. Furthermore, often it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below.
 
 \begin{definition}\label{def:ghom}
-  Given two groups $\mathsf{G} = (G, \star), \mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is an \emph{homomorphism} if $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
+  Given two groups $\mathsf{G} = (G, \star), \mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is a \emph{homomorphism} if $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
 \begin{definition}\label{def:morph}
-  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if an homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is an \emph{automorphism}.
+  Given two groups $\mathsf{G}$ and $\mathsf{H}$, if a homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is an \emph{automorphism}.
 \end{definition}
 
 \begin{proposition}\label{prop:autgroup}
   Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
-Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further restrictions to groups leads to more usual arithmetic structures.
+Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further operations to groups leads to more usual arithmetic structures.
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
@@ -195,12 +195,12 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Particularly, we aim to precisely define non-prime fields with the following framework.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of expressions $A$ with $a_{0}, \dots, a_{k} \in A$ as \emph{coefficients} and an \emph{indeterminate} $x$, an expression of the form
+  Given $k \in \mathbb{N}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$ and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
   \[
     \sum_{i = 0}^{k} a_{i} x^{i} 
-      = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}
+      = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}.
   \]
-  is an \emph{univariate polynomial}. Each of the terms in the summation is a \emph{monomial}.
+  Each of the terms in the summation is a \emph{monomial}.
 \end{definition}
 
 \begin{definition}
@@ -375,7 +375,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:matquad}
-  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(m, n)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
+  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     \overline{M}(p^{(i)}) = 
     \begin{bmatrix}
@@ -390,7 +390,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
 \end{definition}
 
 \begin{definition}\label{def:mathom}
-  Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(m, n)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
+  Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(n, m)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     M(p^{(i)}) = 
     \begin{bmatrix}
@@ -506,7 +506,7 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
 
 \begin{definition}
-  Given an homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
+  Given a homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
   \begin{align}
     \widetilde{M}(p^{(i)}) =
     \begin{bmatrix}
