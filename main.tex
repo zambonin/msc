@@ -220,7 +220,7 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
 We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
-  Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = \ell$, then the finite field $\mathbb{F}_{q^{\ell}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $p$.
+  Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = \ell$, then the finite field $\mathbb{F}_{q^{\ell}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < \ell$ carrying the usual polynomial arithmetic operations modulo $p$.
 \end{definition}
 
 Finite fields of the form $\mathbb{F}_{2^{\ell}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
@@ -233,7 +233,7 @@ Several polynomials may be used to model a complex structure in which they behav
   Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or
   \begin{align}
     \begin{dcases}
-      p^{(1)}(x_{1}, \dots, x_{n}) &= 0 \\
+      p^{(1)}(x_{1}, \dots, x_{n}) &= 0, \\
       \quad \vdots \\
       p^{(m)}(x_{1}, \dots, x_{n}) &= 0.
     \end{dcases}
@@ -241,7 +241,7 @@ Several polynomials may be used to model a complex structure in which they behav
   If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
 \end{definition}
 
-A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively and there exist several different methods to calculate one or all roots~\cite[Chapter 9]{Press:2007}. We will be mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Section 2.2]{Press:2007}.
+A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively and there exist several different methods to calculate one or all roots~\cite[Chapter 9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Section 2.2]{Press:2007}.
 
 To generalize the notion of grouping polynomials into a system, it is useful to define an algebraic structure which falls outside of the class of pure ring-like structures.
 
@@ -256,7 +256,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and represented by $\mathbb{F}^{c}$, with element-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
