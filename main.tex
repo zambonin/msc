@@ -186,7 +186,7 @@ The ring of integers equipped with usual addition and multiplication $(\mathbb{Z
   A commutative division ring is a \emph{field}.
 \end{definition}
 
-Particularly, Galois fields or \emph{finite fields} are at the heart of various branches of mathematics and computer science, and especially cryptography. They are denoted as $\mathbb{F}_{q^{n}}$, with $q$ as the characteristic of the field, and $q$ and $n$ omitted for brevity if appropriate.
+Particularly, Galois fields or \emph{finite fields} are at the heart of various branches of mathematics and computer science, and especially cryptography. They are denoted as $\mathbb{F}_{q^{n}}$, with $q$ a prime number as the characteristic of the field, and $q$ and $n$ omitted for brevity if appropriate.
 
 \begin{proposition}[{\cite[Corollary 2.18]{Mullen:2013}}]
   The order of a finite field is always of the form $q^{n}$ with $q$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is a \emph{prime field}.
@@ -195,7 +195,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Particularly, we aim to precisely define non-prime fields with the following framework.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$ and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
+  Given $k \in \mathbb{N}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
   \[
     \sum_{i = 0}^{k} a_{i} x^{i} 
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}.
