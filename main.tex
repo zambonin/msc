@@ -256,7 +256,7 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} and represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by a system of polynomial functions
@@ -273,14 +273,14 @@ Vector spaces are the object of study of linear algebra. The members of $V$ are 
 We give other useful traits of a vector space before returning to polynomial maps.
 
 \begin{definition}
-  Given a vector space $(V, \bm{+}, \bm{\times})$ over $\mathbb{F}$, $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$ and $f_{1}, \dots, f_{n} \in \mathbb{F}$, if the unique solution for the linear combination $f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} = 0$ is $f_{1} = \cdots = f_{n} = 0$, then the vectors $\mathbf{v_{1}}, \dots, \mathbf{v_{n}}$ are \emph{linearly independent}.
+  Given a vector space $(V, \bm{+}, \bm{\times})$ over $\mathbb{F}$, $\mathbf{v_{1}}, \dots, \mathbf{v_{n}} \in V$ and $f_{1}, \dots, f_{n} \in \mathbb{F}$, if the unique solution for the linear combination $f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \cdots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} = 0$ is $f_{1} = \cdots = f_{n} = 0$, then the vectors $\mathbf{v_{1}}, \dots, \mathbf{v_{n}}$ are \emph{linearly independent}.
 \end{definition}
 
 \begin{definition}
-  Given a vector space and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \dots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} \mid \forall f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is the \emph{linear span}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is a \emph{basis of the vector space}.
+  Given a vector space $\mathbf{V}$ and $B = \{\mathbf{v_{1}}, \dots, \mathbf{v_{n}}\} \subseteq V$, the set of all linear combinations $S = \{ f_{1} \bm{\times} \mathbf{v_{1}} \bm{+} \cdots \bm{+} f_{n} \bm{\times} \mathbf{v_{n}} \mid f_{1}, \dots, f_{n} \in \mathbb{F} \}$ is the \emph{linear span of $B$}. If the elements of $B$ are linearly independent and $S = V$, then $B$ is a \emph{basis of the vector space $\mathbf{V}$}.
 \end{definition}
 
-There always exists at least one basis for a vector space~\cite[p. 409, Prop. 1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix} $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
+There always exists at least one basis for a vector space~\cite[p. 409, Prop.~1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix} $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p. 411, Cor. 4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
 Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:ghom}. The general form of such functions is presented below.
 
@@ -296,7 +296,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
 Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying usual function composition. Such group is also known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p. 418, Cor. 14]{Dummit:2003}}]
-  Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$ $\mathsf{GL}_{n}(\mathbb{F})$} be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\psi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
+  Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$, $\mathsf{GL}_{n}(\mathbb{F})$}, be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\psi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
 \end{proposition}
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\psi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v} \in \mathbf{V}$, then $\phi(\mathbf{v}) = M\mathbf{v}$.
@@ -339,7 +339,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
   Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
-Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking in account the proposed degree restriction of the polynomials, to better visualize such systems.
+Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on such equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
 
 \begin{definition}\label{def:quadsys}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
@@ -1276,7 +1276,7 @@ possible that there may exist information leaks when applying our methods to
 Rainbow-like schemes.
 
 We do not discard the possibility that specialized attacks exist,
-particularly ones that take in account multiple signatures, due to our fixing
+particularly ones that take into account multiple signatures, due to our fixing
 of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
 that signatures generated by our method are comparably random with respect to
 conventional Rainbow signatures. Furthermore, we note that most attacks look
