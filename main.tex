@@ -159,17 +159,17 @@ Groups carrying usual addition or multiplication operations are \emph{additive} 
 \end{definition}
 
 \begin{definition}
-  Given a ring $(R, +, \ast)$, if the binary operation $\ast$ is commutative, then the ring is also \emph{commutative}.
+  Given a ring $(R, +, \ast)$, if the binary operation $\ast$ is commutative, then the ring is \emph{commutative}.
 \end{definition}
 
 We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emph{multiplicative identity} of a ring, if it exists. Analogously, for any element $r$ of a ring, we denote $-r$ as the \emph{additive inverse of $r$}, and $r^{-1}$ as the \emph{multiplicative inverse of $r$}, if it exists. Indeed, these inverse binary operations are respectively known as \emph{subtraction} and \emph{division}.
 
 \begin{definition}
-  Given a ring $(R, +, \ast)$, the smallest integer $n$ such that $1 + 1 + \dots + 1 = 0$, summed $n$ times, is the \emph{characteristic} of the ring. If $n$ does not exist, then the characteristic is zero.
+  Given a ring $(R, +, \ast)$, the smallest integer $n$ such that $1 + 1 + \dots + 1 = 0$, where $1$ is added $n - 1$ times, is the \emph{characteristic} of the ring. If such $n$ does not exist, then the characteristic is zero.
 \end{definition}
 
 \begin{definition}
-  Given a ring $(R, +, \ast)$ and any $r \in R, r \neq 0$, if there exists a unique element $1 \in R$ such that $r \ast 1 = 1 \ast r = r$, then the ring is a \emph{unit ring}.
+  Given a ring $\mathsf{R}$ and any $r \in R, r \neq 0$, if there exists a unique element $1 \in R$ such that $r \ast 1 = 1 \ast r = r$, then $\mathsf{R}$ is a \emph{ring with unity}.
 \end{definition}
 
 % \begin{definition}
@@ -177,10 +177,10 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
 % \end{definition}
 
 \begin{definition}
-  Given a unit ring $(R, +, \ast)$, if $(R \setminus \{0\}, \ast)$ forms a group, then the ring is a \emph{division ring}.
+  Given a ring $\mathsf{R}$ with unity, if $(R \setminus \{0\}, \ast)$ forms a group, then $\mathsf{R}$ is a \emph{division ring}.
 \end{definition}
 
-The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative unit ring. The quaternions, a powerful number system employed in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations.
+The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative ring with unity. The quaternions, a powerful number system employed, for example, in three-dimensional computer graphics, form a noncommutative division ring with its usual binary operations.
 
 \begin{definition}
   A commutative division ring is a \emph{field}.
@@ -348,19 +348,18 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
       \begin{dcases}
         p^{(1)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
-            + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)} \\
+            + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)}, \\
         \quad \vdots \\
         p^{(m)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \delta^{(m)},
-      \end{dcases} \\
-      \alpha_{ij}, \beta_{i}, \delta \in \mathbb{F}.
+      \end{dcases}
     \end{split}
   \end{align}
-  The set of all such systems is denoted by $\mathsf{MQ}(n, m)$. If all linear and constant terms are zero, then the resulting system is \emph{homogeneous quadratic}, and the respective set is $\mathsf{MHQ}(n, m)$.
+  where $\alpha_{ij}^{(k)}, \beta_{i}^{(k)}, \delta^{(k)} \in \mathbb{F},\; 1 \leq k \leq m$. The set of all such systems is denoted by $\mathsf{MQ}(n, m)$. If all linear and constant terms are zero, then the resulting system is \emph{homogeneous quadratic}, and the respective set is $\mathsf{MHQ}(n, m)$.
 \end{definition}
 
-We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure to order monomials is not given. More precisely, the quotient and remainder of a division between two multivariate polynomials depend on which is considered the divisor, that is, one that represents the ``largest quantity''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
+We recall that division of polynomials in a multivariate polynomial ring is ambiguous if a structure to order monomials is not given. More precisely, the quotient and remainder of a division between two multivariate polynomials depend on which is considered the divisor, that is, one that represents the ``largest monomial''. Thus, we give a short discussion on how to order multivariate polynomials. The definition below amounts to ordering monomials according to their associated $n$-tuples of exponents, which is relatively intuitive. 
 
 \begin{definition}
   Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \delta \in \mathbb{Z}^{n}$. Given a well-order $\prec$ in $\mathbb{Z}^{n}$ such that $\alpha + \delta \prec \beta + \delta$ if $\alpha \prec \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
