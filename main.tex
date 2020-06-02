@@ -579,7 +579,6 @@ We remark that $\psi(\omega^{-1})$ has the same form as $\omega$ due to the rest
 
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
-% TODO
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
   Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
@@ -800,6 +799,7 @@ If $\mathcal{L}_{2}^{(1)}$ and $\omega^{(3)}$ are invertible, which once again h
 The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} o_{2}} + \frac{n^{2}}{v_{1} o_{1} + v_{2} o_{2}}$.
 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
+% TODO review
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
