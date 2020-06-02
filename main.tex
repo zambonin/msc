@@ -324,7 +324,7 @@ Multivariate cryptography is based on public-key cryptography. Within this syste
   The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
-This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs a key pair as two bit strings. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature $\sigma$, uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs a key pair as two bit strings. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
@@ -413,12 +413,12 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
     \node (y) at (0, 0) {$\mathbf{y} \in \mathbb{F}^{m}$};
     \node (x) at (2.5, 0) {$\mathbf{x} \in \mathbb{F}^{n}$};
     \node (z) at (5, 0) {$\mathbf{z} \in \mathbb{F}^{n}$};
-    \draw[-latex] (h) -- (x) 
+    \draw[-latex] (h) -- (y) 
       node[midway,above] {$\mathcal{L}_{1}^{-1}$};
     \draw[-latex] (y) -- (x) 
       node[midway,above] {$\mathcal{C}'$}
       node[midway,yshift=1.2cm] {decryption / signature generation};
-    \draw[-latex] (y) -- (z) 
+    \draw[-latex] (x) -- (z) 
       node[midway,above] {$\mathcal{L}_{2}^{-1}$};
     \draw[-latex] (z) -- (5, -1.5) -- (-2.5, -1.5) 
       node[midway,below] {$\mathcal{P}$} 
@@ -528,15 +528,15 @@ In the case of $\mathcal{C}$, the random choice amounts to picking all coefficie
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{o}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = d$. 
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{o}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $\mathbf{h} = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = \mathbf{h}$. 
 
-To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = d$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. 
+To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = \mathbf{h}$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. 
 
-If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is the result of the inverse linear transformation applied to the preimage. In other words, $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is the result of the inverse linear transformation applied to the preimage. In other words, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
-To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then the signature is valid, and otherwise invalid.
+To verify a signature, compute $d' = \mathcal{P}(\mathbf{z})$. If $d = d'$, then the signature is valid, and otherwise invalid.
 
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
 
@@ -660,11 +660,11 @@ With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$
 
 \subsubsection{Signature generation.}
 
-Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $d = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(d)$. To obtain the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively. One chooses $(x_{1}, \dots, x_{v_{1}}) \random \mathbb{F}^{v_{1}}$ and substitutes the values into the first layer, or in other words, the first system of $o_{1}$ polynomials. This brings forth a system of $o_{1}$ linear equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an algorithm such as Gaussian elimination. If the system does not have a solution, new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be substituted into the next layer, which creates a system of $o_{2}$ linear equations, that can be solved analogously. This procedure is repeated until all layers are solved. Finally, we compute $\sigma = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{m}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. To obtain the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$, every layer must be inverted recursively. One chooses $(x_{1}, \dots, x_{v_{1}}) \random \mathbb{F}^{v_{1}}$ and substitutes the values into the first layer, or in other words, the first system of $o_{1}$ polynomials. This brings forth a system of $o_{1}$ linear equations in $x_{v_{1} + 1}, \dots, x_{v_{2}}$. It can be solved with an algorithm such as Gaussian elimination. If the system does not have a solution, new vinegar variables $x_{1}, \dots, x_{v_{1}}$ have to be chosen. These solutions can then be substituted into the next layer, which creates a system of $o_{2}$ linear equations, that can be solved analogously. This procedure is repeated until all layers are solved. Finally, we compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
-To verify a signature, compute $d' = \mathcal{P}(\sigma)$. If $d = d'$, then
+To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then
 the signature is valid, and otherwise invalid.
 
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
