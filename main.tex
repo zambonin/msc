@@ -214,28 +214,28 @@ where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i
 \end{definition}
 
 \begin{definition}
-  Given $p_{1}, p_{2}, p_{3} \in \mathsf{R}[\mathbf{x}]$ with $\deg(p_{1}) > 0$, if $p_{1} = p_{2} \ast p_{3}$ implies that either $\deg(p_{2}) = 0$ or $\deg(p_{3}) = 0$, then $p_{1}$ is an \emph{irreducible polynomial over $\mathsf{R}[\mathbf{x}]$}.
+  Given $f_{1}, f_{2}, f_{3} \in \mathsf{R}[\mathbf{x}]$ with $\deg(f_{1}) > 0$, if $f_{1} = f_{2} \ast f_{3}$ implies that either $\deg(f_{2}) = 0$ or $\deg(f_{3}) = 0$, then $f_{1}$ is an \emph{irreducible polynomial over $\mathsf{R}[\mathbf{x}]$}.
 \end{definition}
 
 We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
-  Given $p \in \mathbb{F}_{q}[x]$ irreducible with $\deg(p) = \ell$, then the finite field $\mathbb{F}_{q^{\ell}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < \ell$ carrying the usual polynomial arithmetic operations modulo $p$.
+  Given $f \in \mathbb{F}_{q}[x]$ irreducible with $\deg(f) = \ell$, then the finite field $\mathbb{F}_{q^{\ell}}$ is the set of polynomials with coefficients in $\mathbb{F}_{q}$ and $\deg(\cdot) < \ell$ carrying the usual polynomial arithmetic operations modulo $f$.
 \end{definition}
 
 Finite fields of the form $\mathbb{F}_{2^{\ell}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
-We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are the \emph{variables} of the function $p(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $p(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial. 
+We remark that a polynomial by itself is simply a mathematical expression, but they are commonly used to define \emph{polynomial functions}. In this case, the indeterminates are the \emph{variables} of the function $f(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $f(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial. 
 
 Several polynomials may be used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
 \begin{definition}\label{def:polsys}
-  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $p^{(1)}(\mathbf{x}) = 0, \dots, p^{(m)}(\mathbf{x}) = 0$, or
+  Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $f^{(1)}(\mathbf{x}) = 0, \dots, f^{(m)}(\mathbf{x}) = 0$, or
   \begin{align}
     \begin{dcases}
-      p^{(1)}(x_{1}, \dots, x_{n}) &= 0, \\
+      f^{(1)}(x_{1}, \dots, x_{n}) &= 0, \\
       \quad \vdots \\
-      p^{(m)}(x_{1}, \dots, x_{n}) &= 0.
+      f^{(m)}(x_{1}, \dots, x_{n}) &= 0.
     \end{dcases}
   \end{align}
   If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
@@ -259,9 +259,9 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
 Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
 
 \begin{definition}\label{def:polymap}
-  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by an $m$-tuple of polynomial functions
+  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $f^{(1)}, \dots, f^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by an $m$-tuple of polynomial functions
   \begin{align}
-    j(x_{1}, \dots, x_{n}) = (p^{(1)}(x_{1}, \dots, x_{n}), \dots, p^{(m)}(x_{1}, \dots, x_{n})).
+    j(x_{1}, \dots, x_{n}) = (f^{(1)}(x_{1}, \dots, x_{n}), \dots, f^{(m)}(x_{1}, \dots, x_{n})).
   \end{align}
 \end{definition}
 
@@ -339,15 +339,15 @@ We note that public keys in multivariate cryptography are polynomial systems wit
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
 
 \begin{definition}\label{def:quadsys}
-  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $p^{(1)}, \dots, p^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
+  Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $f^{(1)}, \dots, f^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
   \begin{align}
     \begin{split}
       \begin{dcases}
-        p^{(1)}(x_{1}, \dots, x_{n}) &= 
+        f^{(1)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)}, \\
         \quad \vdots \\
-        p^{(m)}(x_{1}, \dots, x_{n}) &= 
+        f^{(m)}(x_{1}, \dots, x_{n}) &= 
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \delta^{(m)},
       \end{dcases}
@@ -371,9 +371,9 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:matquad}
-  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
+  Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    \overline{M}(p^{(i)}) = 
+    \overline{M}(f^{(i)}) = 
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \alpha^{(i)}_{12} & \cdots & \alpha^{(i)}_{1n} & \beta^{(i)}_{1}  \\
                       0 & \alpha^{(i)}_{22} & \cdots & \alpha^{(i)}_{2n} & \beta^{(i)}_{2}  \\
@@ -382,20 +382,20 @@ In the context of multivariate cryptography, monomial ordering is used for insta
                       0 &                 0 & \cdots &                 0 & \delta^{(i)}     \\
     \end{bmatrix}
   \end{align}
-  such that $p^{(i)} = \mathbf{x} \cdot \overline{M}(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
+  such that $f^{(i)} = \mathbf{x} \cdot \overline{M}(f^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
 \begin{definition}\label{def:mathom}
-  Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(n, m)$, the \emph{matrix representation of a homogeneous quadratic polynomial $p^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
+  Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(n, m)$, the \emph{matrix representation of a homogeneous quadratic polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    M(p^{(i)}) = 
+    M(f^{(i)}) = 
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \cdots & \alpha^{(i)}_{1n}    \\
                  \vdots & \ddots &            \vdots    \\
                       0 & \cdots & \alpha^{(i)}_{nn}    \\
     \end{bmatrix}
   \end{align}
-  such that $p^{(i)} = \mathbf{x} \cdot M(p^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its unique \emph{symmetric} version is given by $\widetilde{M}(p^{(i)}) = M(p^{(i)}) + M(p^{(i)})^{\mathsf{T}}$.
+  such that $f^{(i)} = \mathbf{x} \cdot M(f^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its unique \emph{symmetric} version is given by $\widetilde{M}(f^{(i)}) = M(f^{(i)}) + M(f^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
 While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:matquad} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. 
@@ -496,15 +496,15 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 \end{definition}
 
 \begin{definition}
-  Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $p^{(1)}, \dots, p^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
+  Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $f^{(1)}, \dots, f^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
 The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
 
 \begin{definition}
-  Given a homogeneous quadratic Oil--Vinegar polynomial $p^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
+  Given a homogeneous quadratic Oil--Vinegar polynomial $f^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
   \begin{align}
-    \widetilde{M}(p^{(i)}) =
+    \widetilde{M}(f^{(i)}) =
     \begin{bmatrix}
       \star_{v \times v} & \star_{v \times o} \\
       \star_{o \times v} & \mathbf{0}_{o \times o} \\
@@ -536,7 +536,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 \subsubsection{Signature verification.}
 
-To verify a signature, compute $d' = \mathcal{P}(\mathbf{z})$. If $d = d'$, then the signature is valid, and otherwise invalid.
+To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
 
@@ -641,18 +641,18 @@ For the central map $\mathcal{C}$, the random choice is equivalent to randomly c
 With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
 \begin{align}
   \begin{split}
-    \widetilde{M}(p^{(i)}) =
+    \widetilde{M}(f^{(i)}) =
     \begin{dcases}
       \begin{bmatrix}
         \star_{v_{1} \times v_{1}}      & \star_{v_{1} \times o_{1}}      & \mathbf{0}_{v_{1} \times o_{2}} \\
         \star_{o_{1} \times v_{1}}      & \mathbf{0}_{o_{1} \times o_{1}} & \mathbf{0}_{o_{1} \times o_{2}} \\
         \mathbf{0}_{o_{2} \times v_{1}} & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{0}_{o_{2} \times o_{2}} \\
-      \end{bmatrix} & \text{for } p^{(1)}, \dots, p^{(o_{1})} \in \mathcal{C}, \\
+      \end{bmatrix} & \text{for } f^{(1)}, \dots, f^{(o_{1})} \in \mathcal{C}, \\
       \begin{bmatrix}
         \star_{v_{1} \times v_{1}}      & \star_{v_{1} \times o_{1}}      & \star_{v_{1} \times o_{2}} \\
         \star_{o_{1} \times v_{1}}      & \star_{o_{1} \times o_{1}}      & \mathbf{0}_{o_{1} \times o_{2}} \\
         \star_{o_{2} \times v_{1}}      & \mathbf{0}_{o_{2} \times o_{1}} & \mathbf{0}_{o_{2} \times o_{2}} \\
-      \end{bmatrix} & \text{for } p^{(o_{1} + 1)}, \dots, p^{(o_{2})} \in \mathcal{C},
+      \end{bmatrix} & \text{for } f^{(o_{1} + 1)}, \dots, f^{(o_{2})} \in \mathcal{C},
     \end{dcases} \\
     1 \leq i \leq m.
   \end{split}
