@@ -810,15 +810,17 @@ We recall that, as per Subsection~\ref{subsec:priv}, most variants that shorten 
 
 Alternatively, our proposal does not modify the underlying structure of the key pair, but rather of the central map preimages, and consequently of the signatures. We thus present three general methods based on different techniques that shorten private keys in all Rainbow-like schemes. We collectively denote these by Rainbow-$\eta$, as an easy way to refer to the general method, and use the same definitions as in Subsection~\ref{subsec:rainbow}, further denoting the vinegar variables for the first layer as $\widetilde{V}_{1} = (x_{1}, \dots, x_{v_{1}})$.
 
-\subsubsection{Rainbow-$\eta_{1}$ key generation.}
+\subsection{Usage of a seed}
 
 We use the fact that a PRNG has the ability to regenerate the same sequence of
 numbers given a seed. The choice of such a generator is outside the scope of
 our work, and we assume that a cryptographically secure PRNG is chosen. This
-approach is similar to Lite-Rainbow-0, but it is not as costly, since the
+approach is similar to~\cite{Shim:201512}, but it is not as costly, since the
 private key does not need to be regenerated before every signature generation.
 It is best suited to environments in which an efficient generator is previously
-supplied.
+supplied. We denote this variant as Rainbow-$\eta_{1}$.
+
+\subsubsection{Key generation.}
 
 We bound the creation of the key pair to a seed $\mathbf{S}$. We are not aware
 of any Rainbow variants that disallow this practice. Thus, $\mathcal{L}_{1}$,
@@ -833,6 +835,8 @@ regenerate $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and
 create a different $\overline{\mathcal{C}}$. The private key of Rainbow-$\eta_{1}$ is
 $(\mathbf{S}, \widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key is
 $\mathcal{P}$.
+
+\subsection{Linear relations of Petzoldt}
 
 \subsubsection{Rainbow-$\eta_{2}$ key generation.}
 % TODO expand
@@ -927,7 +931,7 @@ used. We note that all coefficients related to monomials with variables in $\wid
 map preimage, used on further map applications. The public key size does not
 change.
 
-% \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
+\subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
 The Rainbow submission to the NIST standardization
 process~\cite{Ding:201712} presents a scheme description that diverges
