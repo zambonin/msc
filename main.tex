@@ -804,21 +804,9 @@ In Section~\ref{sec:eta}, we give a formal description of our modifications, alo
 
 \section{Modifications to the original scheme}\label{sec:eta}
 
-Our approach consists of modifications to the key and signature generation
-steps of Rainbow-like signature schemes. We propose to reuse the first set of
-vinegar variables for several signatures and replace these only when necessary,
-\emph{i.e.} situations where the central map cannot be inverted and creating a
-signature would fail. By locking such variables and substituting them on the
-central map $\mathcal{C}$ early in the key generation algorithm, we create a
-$\overline{\mathcal{C}}$ map linear in $v_{1}$, thus reducing storage requirements. This
-approach does not modify the underlying structure of the private key, but
-rather of the central map preimages.
+Our approach consists of modifications to the key and signature generation steps of Rainbow-like signature schemes. We propose to reuse the first set of vinegar variables for several signatures and replace these only when necessary. In other words, situations where the central map cannot be inverted and creating a signature would fail. By locking such variables and substituting them on the central map $\mathcal{C}$ early in the key generation algorithm, we create a $\overline{\mathcal{C}}$ map linear in $v_{1}$, thus reducing storage requirements. 
 
-To induce lower storage requirements for key pairs of Rainbow-like schemes, we
-explore constructions given in the literature and suggest general alterations
-to use our proposal. As per Section~\ref{sec:related}, most variants that
-shorten private keys are structural in nature, that is, the key space is
-limited by some heuristic with the intent of producing a compact private key.
+This approach does not modify the underlying structure of the private key, but rather of the central map preimages, and consequently of the signatures. To induce lower storage requirements for key pairs of Rainbow-like schemes, we explore constructions given in the literature and suggest general alterations to use our proposal. As per Section~\ref{subsec:priv}, most variants that shorten private keys are structural in nature. Hence, the key space is limited by some heuristic with the intent of producing a compact private key.
 Moreover, the main approach to reduce public keys~\cite{Petzoldt:201307}
 prevents alterations to the private key,
 since it indirectly generates $\mathcal{C}$ from a partial public key through
