@@ -404,7 +404,7 @@ We now turn to the most used framework to build cryptosystems in multivariate cr
 
 Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
 
-The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We note that, as a consequence of the degree choice for multivariate cryptography, this is the only possible arrangement of maps. In other words, there always must be a quadratic trapdoor hidden by linear maps such that the composition of the functions is still a quadratic map. Further, the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathbf{y} = \mathcal{C}(\mathbf{x})$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
+The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We note that, as a consequence of the degree choice for multivariate cryptography, this is the only possible arrangement of maps. In other words, there always must be a quadratic trapdoor hidden by linear maps such that the composition of the functions is still a quadratic map. Further, the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
 \begin{figure}[htbp]
   \centering
@@ -467,7 +467,7 @@ Unfortunately, there is little information on the difficulty of EIP~\cite[p.~69]
   such that $\tau \circ \mathcal{C} \circ \omega \in \overline{\mathsf{MQ}}(n, m)$.
 \end{definition}
 
-This concept is further explored in the context of the schemes of Section~\ref{sec:ov}. Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1} \in \mathsf{AGL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} \in \mathsf{AGL}(\mathbb{F}^{n})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{y})$ that encode the affine transformation $\mathbf{x} \mapsto M\mathbf{x} \bm{+} \mathbf{y}$. By setting the translation vector $\mathbf{y} = (0, \dots, 0)$, we get a linear transformation. 
+This concept is further explored in the context of the schemes of Section~\ref{sec:ov}. Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1} \in \mathsf{AGL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} \in \mathsf{AGL}(\mathbb{F}^{n})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{b})$ that encode the affine transformation $\mathbf{a} \mapsto M\mathbf{a} \bm{+} \mathbf{b}$. By setting the translation vector $\mathbf{b} = (0, \dots, 0)$, we get a linear transformation. 
 
 However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. 
 
@@ -538,7 +538,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F},v, o)$. 
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
 
 The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
@@ -667,7 +667,7 @@ Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then
 the signature is valid, and otherwise invalid.
 
-The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}_{q}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
+The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
 Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
 \begin{align}
