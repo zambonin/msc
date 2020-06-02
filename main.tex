@@ -1,10 +1,10 @@
-\documentclass[draft, 12pt, a4paper, oneside]{memoir}
+\documentclass[12pt, a4paper, oneside]{memoir}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, tikz}
-% \usepackage[backref]{hyperref}
+\usepackage[backref]{hyperref}
 
 \usetikzlibrary{positioning, patterns}
 
@@ -802,10 +802,7 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
-\section{Our proposal}\label{sec:proposal}
-
-We describe our improvement to Rainbow-like signature schemes below, as
-well as supporting research on its soundness. Subsections~\ref{subsec:scheme}
+Subsections~\ref{subsec:scheme}
 and~\ref{subsec:efcma} give a formal description of our modifications. In
 Subsection~\ref{subsec:invert}, we look into the probability of matrices with
 elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
@@ -813,7 +810,7 @@ we present a statistical analysis of the structure of signatures created by our
 method, and finish with a security overview in
 Subsection~\ref{subsec:analysis}.
 
-\subsection{Modification to the original scheme}\label{subsec:scheme}
+\section{Modifications to the original scheme}\label{subsec:scheme}
 
 Our approach consists of modifications to the key and signature generation
 steps of Rainbow-like signature schemes. We propose to reuse the first set of
@@ -959,7 +956,7 @@ used. We note that all coefficients related to monomials with variables in $\wid
 map preimage, used on further map applications. The public key size does not
 change.
 
-\subsection{Application to the EF-CMA variant}\label{subsec:efcma}
+% \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
 The Rainbow submission to the NIST standardization
 process~\cite{Ding:201712} presents a scheme description that diverges
