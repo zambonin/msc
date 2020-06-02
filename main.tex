@@ -172,10 +172,6 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
   Given a ring $\mathsf{R}$ and any $r \in R, r \neq 0$, if there exists a unique element $1 \in R$ such that $r \ast 1 = 1 \ast r = r$, then $\mathsf{R}$ is a \emph{ring with unity}.
 \end{definition}
 
-% \begin{definition}
-%   Given a ring $(R, +, \ast)$ and any $r_{1}, r_{2} \in R, r_{1}, r_{2} \neq 0$, if $r_{1} \ast r_{2} \neq 0$, then the ring is an \emph{integral domain}.
-% \end{definition}
-
 \begin{definition}
   Given a ring $\mathsf{R}$ with unity, if $(R \setminus \{0\}, \ast)$ forms a group, then $\mathsf{R}$ is a \emph{division ring}.
 \end{definition}
@@ -195,7 +191,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
 For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dots, q - 1\}$ equipped with usual addition and multiplication modulo $q$. The respective inverse operations are subtraction modulo $q$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Notwithstanding the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Particularly, we aim to precisely define non-prime fields with the following framework.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
+  Given $k \in \mathbb{N}_{0}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
   \begin{align}
     \sum_{i = 0}^{k} a_{i} x^{i} 
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}.
@@ -211,10 +207,10 @@ Polynomials of degree zero, one, two and three are respectively called \emph{con
 \begin{align}
   \sum_{i = 0}^{k} a_{i} \mathbf{x}^{i} \pm \sum_{i = 0}^{k} b_{i} \mathbf{x}^{i} = \sum_{i = 0}^{k} (a_{i} \pm b_{i}) \mathbf{x}^{i}
 \end{align}
-where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i_{n} \in \mathbb{N}$. Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends, in the case of univariate polynomials. This allows us to define the following structure.
+where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i_{n} \in \mathbb{N}_{0}$. Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends, in the case of univariate polynomials. This allows us to define the following structure.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring} $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring} $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
+  Given $k \in \mathbb{N}_{0}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring} $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring} $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
 \end{definition}
 
 \begin{definition}
