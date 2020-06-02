@@ -196,10 +196,10 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 
 \begin{definition}
   Given $k \in \mathbb{N}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
-  \[
+  \begin{align}
     \sum_{i = 0}^{k} a_{i} x^{i} 
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}.
-  \]
+  \end{align}
   Each of the terms in the summation is a \emph{monomial}.
 \end{definition}
 
@@ -208,7 +208,12 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
 \end{definition}
 
 % TODO univariate formula
-Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply operating coefficients of monomials with the same product of variables, that is, $\sum_{i}^{k} a_{i} x^{i} \pm \sum_{i}^{k} b_{i} x^{i} = \sum_{i}^{k} (a_{i} \pm b_{i}) x^{i}$. Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends. This allows us to define the following structure.
+Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply operating coefficients of monomials with the same product of variables, that is,
+\begin{align}
+  \sum_{i = 0}^{k} a_{i} \mathbf{x}^{i} \pm \sum_{i = 0}^{k} b_{i} \mathbf{x}^{i} = \sum_{i = 0}^{k} (a_{i} \pm b_{i}) \mathbf{x}^{i}
+\end{align}
+where $\mathbf{x}^{i} = x_{1}^{i_{1}}$
+Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends, in the case of univariate polynomials. This allows us to define the following structure.
 
 \begin{definition}
   Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring} $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring} $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
