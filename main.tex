@@ -816,15 +816,17 @@ We use the fact that a PRNG has the ability to regenerate the same sequence of n
 
 \subsubsection{Key generation.}
 
-We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$. Thus, $\mathcal{L}_{1}$, $\mathcal{C}$ and $\mathcal{L}_{2}$ are generated through the target scheme key generation algorithm, seeded by $\mathbf{S}$. The composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ must be obtained before the substitution of the vinegar variables such that it does not need to be recreated. We then choose $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ and substitute these into $\mathcal{C}$, giving $\overline{\mathcal{C}} \in \mathsf{RB}(v_{2}, o_{2}, \dots, o_{u})$. The private key of Rainbow-$\eta_{1}$ is $(\mathbf{S}, \widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key is $\mathcal{P}$.
+We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$. Thus, $\mathcal{L}_{1}$, $\mathcal{C}$ and $\mathcal{L}_{2}$ are generated through the target scheme key generation algorithm, seeded by $\mathbf{S}$. The composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ must be obtained before the substitution of the vinegar variables such that it does not need to be recreated. We then choose $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ and substitute these into $\mathcal{C}$, giving $\overline{\mathcal{C}} \in \mathsf{RB}(v_{2}, o_{2}, \dots, o_{u})$. Finally,
+\begin{align}
+  \begin{split}
+    \mathbf{sk}^{\eta_{1}} &= (\mathbf{S}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\\
+    \mathbf{pk}^{\eta_{1}} &= \mathcal{P}.
+  \end{split}
+\end{align}
 
 \subsubsection{Signature generation.}
 
-According to
-Subsection~\ref{subsec:invert}, in the rare case that a
-failure occurs in the central map inversion algorithm, we invoke the key generation step through $\mathbf{S}$ to
-obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and
-create a different $\overline{\mathcal{C}}$. 
+According to Subsection~\ref{subsec:invert}, in the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$. 
 
 \subsection{Linear relations of Petzoldt}
 
@@ -917,8 +919,7 @@ size of the private key is now
       + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
 \end{multline}
 plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
-used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. One needs to store $\widetilde{V}_{1}$, since it is part of the central
-map preimage, used on further map applications. The public key size does not
+used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
 change.
 
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
