@@ -831,7 +831,7 @@ Subsection~\ref{subsec:invert}, in the rare case that a
 failure occurs in the central map inversion algorithm, we use $\mathbf{S}$ to
 regenerate $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and
 create a different $\overline{\mathcal{C}}$. The private key of Rainbow-$\eta_{1}$ is
-$(\mathbf{S}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key is
+$(\mathbf{S}, \widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key is
 $\mathcal{P}$.
 
 \subsubsection{Rainbow-$\eta_{2}$ key generation.}
@@ -916,7 +916,7 @@ valid, and invalid otherwise.
 By making the first layer linear and substituting the remaining variables, the
 size of the private key is now
 \begin{multline}
-  \#\mathsf{pk}^{\eta} = \underbrace{v_{1}}_{\widetilde{V}_{1}}
+  \#\mathsf{sk}^{\eta} = \underbrace{v_{1}}_{\widetilde{V}_{1}}
     + \underbrace{m^{2} + m}_{\mathcal{L}_{1}}
     + \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \\
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
