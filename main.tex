@@ -207,13 +207,11 @@ For instance, the prime field $\mathbb{F}_{q}$ is composed of the set $\{0, \dot
   Given $n \in \mathbb{N}$, a polynomial over a sequence of indeterminates $\mathbf{x} = (x_{1}, \dots, x_{n})$ is a \emph{multivariate polynomial}. The highest sum of the exponents of the indeterminates in a monomial with a non-zero coefficient is the \emph{degree} of the polynomial, or $\deg(\cdot)$. If all monomials have the same degree, then the polynomial is \emph{homogeneous}.
 \end{definition}
 
-% TODO univariate formula
 Polynomials of degree zero, one, two and three are respectively called \emph{constant}, \emph{linear}, \emph{quadratic} and \emph{cubic}. We note that addition and subtraction between polynomials is done by simply operating coefficients of monomials with the same product of variables, that is,
 \begin{align}
   \sum_{i = 0}^{k} a_{i} \mathbf{x}^{i} \pm \sum_{i = 0}^{k} b_{i} \mathbf{x}^{i} = \sum_{i = 0}^{k} (a_{i} \pm b_{i}) \mathbf{x}^{i}
 \end{align}
-where $\mathbf{x}^{i} = x_{1}^{i_{1}}$
-Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends, in the case of univariate polynomials. This allows us to define the following structure.
+where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i_{n} \in \mathbb{N}$. Multiplication is calculated through repeated applications of the distributive law. Division is calculated with the Euclidean algorithm, considering $x^{0} < x^{1} < \cdots < x^{k}$ as an intuitive ordering to identify divisors and dividends, in the case of univariate polynomials. This allows us to define the following structure.
 
 \begin{definition}
   Given $k \in \mathbb{N}$, coefficients $a_{0}, \dots, a_{k}$ in a commutative ring $\mathsf{R}$ and indeterminate $x$, the set of polynomials $\sum_{i}^{k} a_{i} x^{i}$ form an \emph{univariate polynomial ring} $\mathsf{R}[x]$. Given $n \in \mathbb{N}$ and indeterminates $\mathbf{x}$, the respective set of polynomials form a \emph{multivariate polynomial ring} $\mathsf{R}[x_{1}, \dots, x_{n}]$ or $\mathsf{R}[\mathbf{x}]$.
