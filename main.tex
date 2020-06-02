@@ -802,15 +802,14 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 
 The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
-Subsections~\ref{subsec:scheme}
-and~\ref{subsec:efcma} give a formal description of our modifications. In
+Section~\ref{sec:eta} gives a formal description of our modifications. In
 Subsection~\ref{subsec:invert}, we look into the probability of matrices with
 elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
 we present a statistical analysis of the structure of signatures created by our
 method, and finish with a security overview in
 Subsection~\ref{subsec:analysis}.
 
-\section{Modifications to the original scheme}\label{subsec:scheme}
+\section{Modifications to the original scheme}\label{sec:eta}
 
 Our approach consists of modifications to the key and signature generation
 steps of Rainbow-like signature schemes. We propose to reuse the first set of
@@ -998,6 +997,80 @@ the signature is valid, and invalid otherwise.
 The size of the private and public keys increase in exactly one element due to
 the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
+
+\subsection{Security analysis}\label{subsec:analysis}
+
+A variety of attacks currently thwart the security of Rainbow-like signature
+schemes if parameters are not chosen carefully. We briefly state each of
+those, along with their estimated complexities~\cite{Petzoldt:201005},
+and argue that our methods do not facilitate such attacks.
+
+\subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
+the public key $\mathcal{P}$ tries to solve $\mathcal{P}(x) = d$. This is done
+by fixing some of the variables and applying an algorithm built upon the theory
+of Gröbner basis, such as the Hybrid approach~\cite{Bettale:201207}.
+While it is hard to pinpoint the exact running time of such methods, the
+authors give an estimation of its asymptotic complexity in Equation 5 of the
+aforementioned work.
+
+\subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
+attacks that also work on the UOV signature scheme. This attack was originally
+created by Kipnis and Shamir~\cite{Kipnis:199808} to break the Balanced
+Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent
+private key by means of finding the preimage of a specific oil subspace under
+the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced
+schemes~\cite{Kipnis:199904} is
+$o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications.
+
+\subsubsection{MinRank attack.} All systems of polynomials in the public key
+$\mathcal{P}$ may be individually represented as matrices. This attack
+consists in finding linear combinations of these, such that they have a lesser
+rank than $v_{2}$, in the case of Rainbow. This allows an attacker to isolate
+the central map polynomials from the first layer of Rainbow, and analogously
+recover the remaining layers with a much lower effort. In the context of
+Rainbow~\cite{Billet:200609}, its complexity is
+$q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field
+multiplications.
+
+\subsubsection{HighRank attack.} In a similar way to MinRank, linear
+combinations of public key matrices are used to find the variables which
+appear the lowest number of times in the central map. This is used to identify
+the last Rainbow layer, and obtain the previous layers similarly. The
+complexity of the improved attack~\cite{Ding:200806} is
+$q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
+
+\subsubsection{Rainbow-Band-Separation attack.} An extension of
+UOV-Reconciliation by the same authors~\cite{Ding:200806} that
+targets Rainbow, with the intent of producing an equivalent private key. It
+explores the fact that the central map matrix representation is composed of
+zeroes on its lower right corner. These yield quadratic equations which, if
+solved, lead to an alternative private key. The complexity of this attack is
+given by the hardness of solving a large system of equations, as seen
+above, is hard to estimate.
+
+\subsubsection{Side-channel attacks.} It may be observed that none of the
+proposed Rainbow variants, as well as the original scheme, present constant
+time signature generation algorithms. Particularly, in Rainbow-$\eta_2$, a
+considerable amount of computation is added to the signature algorithm when one
+of the systems is not solvable. In a chosen message attack, one may observe the
+time spent on multiple signature generation steps and easily check if the
+linear systems are solvable, thus obtaining information about the central map.
+Although there are no known attacks that make use of this technique, it is
+possible that there may exist information leaks when applying our methods to
+Rainbow-like schemes.
+
+We do not discard the possibility that specialized attacks exist,
+particularly ones that take into account multiple signatures, due to our fixing
+of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
+that signatures generated by our method are comparably random with respect to
+conventional Rainbow signatures. Furthermore, we note that most attacks look
+for special structures within the private key. While our methods indeed modify
+the private key representation, it is still present in its entirety on the
+public key composition, which is the only information available to malicious
+entities that can be possibly used to forge signatures. We thus suggest that
+the right choice of parameters is made whenever our methods are applied,
+\emph{e.g.} according to~\cite{Petzoldt:201005}, to protect the scheme
+instance against these attacks.
 
 \section{Statistical argument}
 
@@ -1208,83 +1281,7 @@ pattern with high efficacy. Hence, an attacker with possession of multiple
 signatures created by our method would not be more capable of forging a new
 signature or deducing private information.
 
-\section{}
-
-\subsection{Security analysis}\label{subsec:analysis}
-
-A variety of attacks currently thwart the security of Rainbow-like signature
-schemes if parameters are not chosen carefully. We briefly state each of
-those, along with their estimated complexities~\cite{Petzoldt:201005},
-and argue that our methods do not facilitate such attacks.
-
-\subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
-the public key $\mathcal{P}$ tries to solve $\mathcal{P}(x) = d$. This is done
-by fixing some of the variables and applying an algorithm built upon the theory
-of Gröbner basis, such as the Hybrid approach~\cite{Bettale:201207}.
-While it is hard to pinpoint the exact running time of such methods, the
-authors give an estimation of its asymptotic complexity in Equation 5 of the
-aforementioned work.
-
-\subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
-attacks that also work on the UOV signature scheme. This attack was originally
-created by Kipnis and Shamir~\cite{Kipnis:199808} to break the Balanced
-Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent
-private key by means of finding the preimage of a specific oil subspace under
-the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced
-schemes~\cite{Kipnis:199904} is
-$o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications.
-
-\subsubsection{MinRank attack.} All systems of polynomials in the public key
-$\mathcal{P}$ may be individually represented as matrices. This attack
-consists in finding linear combinations of these, such that they have a lesser
-rank than $v_{2}$, in the case of Rainbow. This allows an attacker to isolate
-the central map polynomials from the first layer of Rainbow, and analogously
-recover the remaining layers with a much lower effort. In the context of
-Rainbow~\cite{Billet:200609}, its complexity is
-$q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field
-multiplications.
-
-\subsubsection{HighRank attack.} In a similar way to MinRank, linear
-combinations of public key matrices are used to find the variables which
-appear the lowest number of times in the central map. This is used to identify
-the last Rainbow layer, and obtain the previous layers similarly. The
-complexity of the improved attack~\cite{Ding:200806} is
-$q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
-
-\subsubsection{Rainbow-Band-Separation attack.} An extension of
-UOV-Reconciliation by the same authors~\cite{Ding:200806} that
-targets Rainbow, with the intent of producing an equivalent private key. It
-explores the fact that the central map matrix representation is composed of
-zeroes on its lower right corner. These yield quadratic equations which, if
-solved, lead to an alternative private key. The complexity of this attack is
-given by the hardness of solving a large system of equations, as seen
-above, is hard to estimate.
-
-\subsubsection{Side-channel attacks.} It may be observed that none of the
-proposed Rainbow variants, as well as the original scheme, present constant
-time signature generation algorithms. Particularly, in Rainbow-$\eta_2$, a
-considerable amount of computation is added to the signature algorithm when one
-of the systems is not solvable. In a chosen message attack, one may observe the
-time spent on multiple signature generation steps and easily check if the
-linear systems are solvable, thus obtaining information about the central map.
-Although there are no known attacks that make use of this technique, it is
-possible that there may exist information leaks when applying our methods to
-Rainbow-like schemes.
-
-We do not discard the possibility that specialized attacks exist,
-particularly ones that take into account multiple signatures, due to our fixing
-of vinegar variables. However, we have seen in Subsection~\ref{subsec:similar}
-that signatures generated by our method are comparably random with respect to
-conventional Rainbow signatures. Furthermore, we note that most attacks look
-for special structures within the private key. While our methods indeed modify
-the private key representation, it is still present in its entirety on the
-public key composition, which is the only information available to malicious
-entities that can be possibly used to forge signatures. We thus suggest that
-the right choice of parameters is made whenever our methods are applied,
-\emph{e.g.} according to~\cite{Petzoldt:201005}, to protect the scheme
-instance against these attacks.
-
-\subsection{Enhancement of existing schemes}\label{sec:experiments}
+\section{Enhancement of existing schemes}\label{sec:experiments}
 
 Our method does not depend on special structures inserted on the private key.
 Consequently, it can be applied to all known Rainbow-like schemes. We
