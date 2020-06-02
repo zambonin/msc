@@ -826,7 +826,7 @@ We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$.
 
 \subsubsection{Signature generation.}
 
-According to Subsection~\ref{subsec:invert}, in the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$. 
+This step does not change significantly from the original scheme, described in Subsection~\ref{subsec:rainbow}. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. The preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ is obtained by recursively solving the remaining linear systems arising from the first layer, which already has $\widetilde{V}_{1}$ set. In the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$.
 
 \subsection{Linear relations of Petzoldt}
 
