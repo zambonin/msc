@@ -71,9 +71,7 @@ A development by the name of BACUOV~\cite{Szepieniec:201908} forces matrices rep
 
 We also classify the work in~\cite{Szepieniec:201706} as relevant, since it is a general method motivated by the context of public key infrastructures, in which the size of a public key and signature bundle must be minimized. The strategy, which consists of a trade-off between signature and public key sizes with their combined length still reduced, was initially proposed for multivariate trapdoors, and subsequently generalized~\cite{Beullens:201808} to work in different security models and other signature schemes.
 
-The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{subsec:scheme}. Schemes that make use of this framework are discussed below. 
-
-% This framework is also featured in some of the works previously described in Subsection~\ref{}. A limitation of this approach is that one has no control over the generated private key, consequently preventing the combination of the cyclic approach with the methods above, for instance. Furthermore, key generation procedures in schemes that make use of these mathematical relations are inefficient when compared to Rainbow.
+The approach proposed in~\cite{Petzoldt:201006} is, to the best of our knowledge, the most scrutinized method for public key reduction without compromises to the signature size. It was originally used to create cyclic UOV, which has cyclic relations built into the public key, reducing its size by up to $80.5\%$. It explores the fact that specific parts of the public key do not contribute to the security of the scheme, and thus can be structured at will. A detailed discussion of the mathematical relations that allow for this class of improvements, as well as its limitations, are shown in Section~\ref{sec:eta}. Schemes that make use of this framework are discussed below. 
 
 A strategy analogous to a manipulation between base and extension fields is given in~\cite{Petzoldt:201109}. The resulting scheme is 0/1 UOV, in which coefficients of the public key are in $\mathbb{F}_{2}$. The proposal consists of creating the matrix associated with the structured part of the key according to a graph structure. Such graph describes a relationship of coefficients that, while sparse, does not facilitate known attacks over UOV, reducing the public key size by up to $88.6\%$. However, it is unknown if this proposal can be extended to Rainbow.
 
@@ -800,13 +798,9 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 \chapter{New approach to reduce private keys}\label{chapter:eta}
 % TODO review
 
-The contents of this chapter are an extended version of the work published as~\cite{Zambonin:201907}. We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
+We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5. \emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.}
 
-In Section~\ref{sec:eta}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters are needed to maintain performance and randomness of creating signatures. 
-Subsection~\ref{subsec:invert}, we look into the probability of matrices with
-elements in finite fields being invertible. In Subsection~\ref{subsec:similar},
-we present a statistical analysis of the structure of signatures created by our
-method. In Section~\ref{sec:experiments}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
+In Section~\ref{sec:eta}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:experiments}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
 
 \section{Modifications to the original scheme}\label{sec:eta}
 
@@ -969,7 +963,7 @@ suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
 \subsubsection{Key generation.}
 
 Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
-private and public keys as per Subsection~\ref{subsec:scheme}. The private key
+private and public keys as per Subsection~\ref{subsec:rainbow}. The private key
 for this scheme is $(\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, w)$, with the
 addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
 $(\mathcal{P}, w)$.
@@ -1072,6 +1066,8 @@ the right choice of parameters is made whenever our methods are applied,
 instance against these attacks.
 
 \section{Statistical argument}\label{sec:stats}
+
+In Subsection~\ref{subsec:invert}, we look into the probability of matrices with elements in finite fields being invertible. In Subsection~\ref{subsec:similar}, we present a structural analysis of signatures created by our method.
 
 \subsection{Invertibility of the central map}\label{subsec:invert}
 
@@ -1378,7 +1374,7 @@ harm to the resulting scheme.
 
 The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is
 recommended. These variants are based on the linear relations described in
-Subsection~\ref{subsec:scheme}, and resulting implementations may be
+Subsection~\ref{sec:eta}, and resulting implementations may be
 effortlessly modified to use our proposal. Moreover, in the case that higher
 parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that
 the key pair is reduced more aggressively. Thus, our results reflect
@@ -1400,7 +1396,7 @@ vinegar variables, reducing the inherent overhead.
 
 As seen in Chapter~\ref{chapter:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
 
-The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{subsec:scheme}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
+The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:eta}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
 
 Our attack is inspired by the method of Kipnis--Shamir~\cite{Kipnis:199808}, which is a key recovery attack that separates oil and vinegar variables through manipulation of linear combinations of the public key. It is based on the fact that, in the case of the balanced Oil--Vinegar scheme, a mapping of the oil subspace $\mathcal{O} = \{ (x_{1}, \dots, x_{n}) \in \mathbb{F}^{n} : x_{1} = \cdots = x_{v} = 0 \}$ to itself can be found in polynomial time. This allows for the reconstruction of the accompanying linear transformation $\mathcal{L}_{2}$. It is discussed in more detail in Subsection~\ref{subsec:uov}.
 
