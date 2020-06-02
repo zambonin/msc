@@ -591,13 +591,13 @@ It is a direct consequence of this theorem that there exist at least as many equ
     \psi(\omega) =
     \begin{bmatrix}
       \mathcal{L}_{2}^{(1)} & \mathbf{0}_{v \times o} \\
-      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot \mathsf{L}_{2}^{(-1, 2)} \\
+      \mathcal{L}_{2}^{(3)} & \mathcal{L}_{2}^{(4)} -\mathcal{L}_{2}^{(3)} \cdot (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
     \end{bmatrix}
   \end{align}
   and $\mathcal{L}_{2}^{(1)} \in \mathsf{GL}_{v}(\mathbb{F})$, then
   \begin{align}
     \psi(\omega^{-1} \circ \mathcal{L}_{2}) = \begin{bmatrix}
-      \mathbf{I}_{v} & \mathsf{L}_{2}^{(-1, 2)} \\
+      \mathbf{I}_{v} & (\mathcal{L}_{2}^{(1)})^{-1} \cdot \mathcal{L}_{2}^{(2)} \\
       \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
     \end{bmatrix}.
   \end{align}
@@ -611,7 +611,7 @@ Then, as long as $\mathcal{L}_{2}^{(1)}$ is invertible, there exists an equivale
     \mathbf{0}_{o \times v} & \mathbf{I}_{o} \\
   \end{bmatrix}
 \end{align}
-and obtain a reduction in the private key of a factor $\frac{n^{2}}{v o}$.
+and obtain a reduction in the private key size of a factor $\frac{n^{2}}{v o}$.
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
