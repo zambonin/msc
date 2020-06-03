@@ -831,14 +831,21 @@ This step does not change significantly from the original scheme. Consider a mes
 
 This step does not change. To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
+By making the first layer linear and substituting the remaining variables, the size of the private key is now
+\begin{multline}
+  \#\mathsf{sk}^{\eta_{1}} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
+    + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
+\end{multline}
+plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
+used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
+change.
+
 \subsection{Linear relations of Petzoldt}
 % TODO expand
 
-This approach is based on the fact that a private key owner is able to recover the original $\mathcal{C}$ through the possession of all other private maps and
-the public key. We make use of the linear relations given by the authors
-of~\cite{Petzoldt:201006} and applied in the definition of the
-well-known CyclicRainbow scheme. A short explanation is given below, with the
-full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
+This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. A brief explanation is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
 
 Consider the public key
 $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let
@@ -911,19 +918,6 @@ $\sigma = \mathcal{L}_{2}^{-1}(y)$.
 
 This step does not change. If $d = \mathcal{P}(\sigma)$, then the signature is
 valid, and invalid otherwise.
-
-By making the first layer linear and substituting the remaining variables, the
-size of the private key is now
-\begin{multline}
-  \#\mathsf{sk}^{\eta} = \underbrace{v_{1}}_{\widetilde{V}_{1}}
-    + \underbrace{m^{2} + m}_{\mathcal{L}_{1}}
-    + \underbrace{n^{2} + n}_{\mathcal{L}_{2}} \\
-    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
-      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
-\end{multline}
-plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
-used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
-change.
 
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
