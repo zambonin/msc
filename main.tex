@@ -915,11 +915,11 @@ We first recall what it means for a digital signature scheme to be strong existe
       &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A}) \\ 
       &\quad (\mathsf{sk}, \mathsf{pk}) \gets \textsc{Gen}(1^{n}) \\
       &\quad (M', \mathbf{z'}) \gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
-      &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \\
+      &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \text{ are the queries to } \textsc{Sig}(\mathsf{sk}, \cdot) \\
       &\quad \text{Return 1 iff } \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1 \land M' \not\in \rho
     \end{split}
   \end{align}
-    
+  A signature scheme $\textsc{Dss}(1^{n})$
 \end{definition}
 
 \subsubsection{Key generation.}
