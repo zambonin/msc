@@ -956,18 +956,11 @@ The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ pl
 
 \subsection{Security analysis}\label{subsec:analysis}
 
-A variety of attacks currently thwart the security of Rainbow-like signature
-schemes if parameters are not chosen carefully. We briefly state each of
-those, along with their estimated complexities~\cite{Petzoldt:201005},
-and argue that our methods do not facilitate such attacks.
+A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities~\cite{Petzoldt:201005}, and argue that our methods do not facilitate such attacks.
 
-\subsubsection{Direct attack.} An attacker with possession of a digest $d$ and
-the public key $\mathcal{P}$ tries to solve $\mathcal{P}(x) = d$. This is done
-by fixing some of the variables and applying an algorithm built upon the theory
-of Gröbner basis, such as the Hybrid approach~\cite{Bettale:201207}.
-While it is hard to pinpoint the exact running time of such methods, the
-authors give an estimation of its asymptotic complexity in Equation 5 of the
-aforementioned work.
+\subsubsection{Direct attack.} 
+
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity in~\cite[Eq.~5]{Bettale:201207}.
 
 \subsubsection{UOV attack.} The multi-layer approach of Rainbow does not hinder
 attacks that also work on the UOV signature scheme. This attack was originally
