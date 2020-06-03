@@ -906,18 +906,17 @@ The current Rainbow submission to the NIST standardization process~\cite{Ding:20
 
 \subsubsection{Key generation.}
 
-Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate
-private and public keys as per Subsection~\ref{subsec:rainbow}. The private key
+Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the key generation algorithm of choice
+private and public keys. The private key
 for this scheme is $(\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, w)$, with the
 addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
 $(\mathcal{P}, w)$.
 
+% -----8<-----
+
 \subsubsection{Signature generation.}
 
 Let $r \random {\{0, 1\}}^{w}$. Consider a message $M$ and obtain its digest by calculating $\mathbf{h} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. In the rare case that this does not succeed, other variables in $\widetilde{V}_{1}$ would be chosen and a new $\overline{\mathcal{C}}$ created. However, the concatenation of a salt to the original message digest alters $\mathbf{h}$ completely, due to the cryptographic hash function application. Thus, it is only necessary to generate a new $r$ and restart the signature generation process, such that $\widetilde{V}_{1}$, and consequently $\overline{\mathcal{C}}$, need not be modified. Alternatively, if the preimage is generated successfully, we finish by computing $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. The signature is the pair $\mathbf{z'} = (\mathbf{z}, r)$.
-
-% -----8<-----
-
 \subsubsection{Signature verification.}
 
 We recall that $r$ is used to obtain $\mathbf{h}$ again. Then, if $\mathbf{h} = \mathcal{P}(\mathbf{z})$, the signature is valid, and otherwise invalid.
