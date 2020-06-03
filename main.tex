@@ -918,7 +918,10 @@ model, whereas the original scheme only offers security against universal
 forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We
 briefly describe this approach, with the intent of preventing the
 recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not
-suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$.
+suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$. 
+Concrete implementations of Rainbow-$\eta_{3}$ are tested on
+Section~\ref{sec:experiments}.
+
 
 \subsubsection{Key generation.}
 
@@ -947,7 +950,7 @@ finish by letting $z = \mathcal{L}_{2}^{-1}(y)$ and $\sigma = (z, r)$.
 Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
 the signature is valid, and invalid otherwise.
 
-We are now able to discuss private key sizes. It is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
+We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change. It is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
 
 \begin{proposition}
   The size of a Rainbow-$\eta$ private key, denoted by $\mathsf{sk}^{\eta}$, is
@@ -960,16 +963,7 @@ We are now able to discuss private key sizes. It is evident that the aforementio
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 
-The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, there is no difference in the private key size. For Rainbow-$\eta_{3}$, 
-
-The size of the private and public keys increase in exactly one element due to
-the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
-Section~\ref{sec:experiments}.
-
-By making the first layer linear and substituting the remaining variables, the size of the private key is now
-plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
-used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
-change.
+The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, there is no difference in the private key size. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus the representation of this integer in the underlying field is added to $\#\mathsf{sk}^{\eta}$. We remark that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
 
 \subsection{Security analysis}\label{subsec:analysis}
 
