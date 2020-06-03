@@ -901,7 +901,7 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the target security model.
 
-\begin{definition}[{\cite[Definition 1.2]{}}]
+\begin{definition}[{\cite[Def.~1.2]{Chen:201612}}]
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ which can perform $Q \in \mathbb{N}$ queries, usually called the \emph{adversary}, let the following experiment be defined.
   \begin{align}
     \begin{split}
@@ -909,7 +909,7 @@ The Rainbow submission to the second round of the NIST standardization process~\
       &\quad (\mathsf{sk}, \mathsf{pk}) \gets \textsc{Gen}(1^{n}) \\
       &\quad (M', \mathbf{z'}) \gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
       &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \text{ are the queries to } \textsc{Sig}(\mathsf{sk}, \cdot) \\
-      &\quad \text{Return 1 iff } \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1 \land M' \not\in \rho
+      &\quad \text{Return 1 iff } \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1 \text{ and } M' \not\in \rho.
     \end{split}
   \end{align}
   A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$.
