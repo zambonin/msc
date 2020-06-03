@@ -836,9 +836,9 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 % TODO expand
 % -----8<-----
 
-This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. First, a brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
+This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. 
 
-Consider the public key
+First, a brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. Consider the public key
 $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let
 $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$. We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
@@ -877,14 +877,13 @@ $\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
 performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
 it is a general technique that works on all Rainbow-like schemes.
 
-We observe that the central map may not feature any linear or constant terms, due
-to the use of the above relations. This does not lower the overall security of
-the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
-
 % -----8<-----
 
 \subsubsection{Key generation.}
 
+We observe that the central map may not feature any linear or constant terms, due
+to the use of the above relations. This does not lower the overall security of
+the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
