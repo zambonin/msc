@@ -881,17 +881,13 @@ it is a general technique that works on all Rainbow-like schemes.
 
 \subsubsection{Key generation.}
 
-We observe that the central map may not feature any linear or constant terms, due
-to the use of the above relations. This does not lower the overall security of
-the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
-With this implication in mind, the usual key generation algorithm for the
-target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$
-and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
-$\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving
-$\mathcal{C'}$. By the relations above, one is able to reconstruct
-$\mathcal{C}$ with no additional mechanisms if the central map inversion
-algorithm fails. The private key of Rainbow-$\eta_{2}$ is
-$(\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key is $\mathcal{P}$.
+We observe that there is a clear restriction of the method above, in the sense that $\mathcal{C}$ must be homogeneous quadratic. We recall that this does not lower the overall security of the scheme, due to the fact that linear and constant terms are not mixed with constant terms. With this implication in mind, the usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. By the relations above, one is able to reconstruct $\mathcal{C}$ with no additional mechanisms if the central map inversion algorithm fails. Then, 
+\begin{align}
+  \begin{split}
+    \mathsf{sk}^{\eta_{2}} &= (\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
+    \mathsf{pk}^{\eta_{2}} &= \mathcal{P}.
+  \end{split}
+\end{align}
 
 \subsubsection{Signature generation.}
 
