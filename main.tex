@@ -910,8 +910,12 @@ We first recall what it means for a digital signature scheme to be strong existe
 
 \begin{definition}[{\cite{}}]
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ usually called the \emph{adversary}, let the following experiment be defined.
-  
-  \textbf{Experiment} $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$
+  \[
+    \textbf{Experiment} \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})
+    
+    (\mathsf{sk}, \mathsf{pk} \gets \textsc{Gen}(1^{n})
+  \]
+    
 \end{definition}
 
 \subsubsection{Key generation.}
