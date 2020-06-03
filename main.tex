@@ -909,10 +909,9 @@ The Rainbow submission to the second round of the NIST standardization process~\
 We first recall what it means for a digital signature scheme to be strong existentially unforgeable under adaptive chosen message attacks.
 
 \begin{definition}[{\cite{}}]
-  Given a digital signature scheme $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$ and an adversary $\mathcal{A}$, let the following experiment be performed.
-  \begin{enumerate}
-    \item \textbf{Setup.} A
-  \end{enumerate}
+  Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ usually called the \emph{adversary}, let the following experiment be defined.
+  
+  \textbf{Experiment} $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$
 \end{definition}
 
 \subsubsection{Key generation.}
