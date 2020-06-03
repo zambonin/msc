@@ -902,17 +902,19 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 % TODO add eu-cma definition
 % -----8<-----
 
-The current Rainbow submission to the NIST standardization process~\cite{Ding:201901} presents a scheme description that diverges from the original works. The authors introduce modifications that provide security against the existential forgery under chosen-message attack (EF-CMA) model, whereas the original scheme only offers security against universal forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
+The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the existential forgery under chosen-message attack (EF-CMA) model, whereas the original scheme only offers security against universal forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
+
+% -----8<-----
 
 \subsubsection{Key generation.}
 
-Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the key generation algorithm of choice
-private and public keys. The private key
-for this scheme is $(\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, w)$, with the
-addition of $\mathbf{S}$ in the case of Rainbow-$\eta_{1}$. The public key is
-$(\mathcal{P}, w)$.
-
-% -----8<-----
+Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. We remark that the approach of Rainbow-$\eta_{1}$ may be applied here, that is, using a seed $\mathbf{S}$ to yield the maps. Then,
+\begin{align}
+  \begin{split}
+    \mathsf{sk}^{\eta_{3}} &= (\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, w), \\
+    \mathsf{pk}^{\eta_{3}} &= (\mathcal{P}, w).
+  \end{split}
+\end{align}
 
 \subsubsection{Signature generation.}
 
