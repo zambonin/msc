@@ -899,10 +899,7 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 \subsection{Application to the EU-CMA variant}\label{subsec:efcma}
 
-% TODO add eu-cma definition
-% -----8<-----
-
-The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only offers security against universal forgery. We first recall the definition of this security model.
+The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the definition of the target security model.
 
 \begin{definition}[{\cite{}}]
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ usually called the \emph{adversary}, let the following experiment be defined.
