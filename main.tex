@@ -662,8 +662,7 @@ Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F
 
 \subsubsection{Signature verification.}
 
-To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then
-the signature is valid, and otherwise invalid.
+To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
@@ -812,7 +811,7 @@ Alternatively, our proposal does not modify the underlying structure of the key 
 
 \subsection{Usage of a seed}
 
-We use the fact that a PRNG has the ability to regenerate the same sequence of numbers given a seed. The choice of such a generator is outside the scope of our work, and we assume that a cryptographically secure PRNG is chosen. This approach is similar to~\cite{Shim:201512}, but it is not as costly, since the private key does not need to be regenerated before every signature generation. It is best suited to environments in which an efficient generator is previously supplied. We denote this variant as Rainbow-$\eta_{1}$. We are not aware of any Rainbow variants that disallow this practice.
+We use the fact that a PRNG has the ability to regenerate the same sequence of numbers given a seed. The choice of such a generator is outside the scope of our work, and we assume that a cryptographically secure PRNG is chosen. This approach is similar to~\cite{Shim:201512}, but it is not as costly, since the private key does not need to be recreated before every signature generation. It is best suited to environments in which an efficient generator is previously supplied. We denote this variant as Rainbow-$\eta_{1}$. We are not aware of any Rainbow variants that disallow this practice.
 
 \subsubsection{Key generation.}
 
@@ -826,15 +825,16 @@ We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$.
 
 \subsubsection{Signature generation.}
 
-This step does not change significantly from the original scheme, described in Subsection~\ref{subsec:rainbow}. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. The preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ already has its first $v_{1}$ elements set in the form of $\widetilde{V}_{1}$. The rest are obtained by recursively solving the remaining linear systems arising from the first layer. In the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$.
+This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. The preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ already has its first $v_{1}$ elements set in the form of $\widetilde{V}_{1}$. The rest are obtained by recursively solving the remaining linear systems arising from the first layer. In the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+
+\subsubsection{Signature verification.}
+
+This step does not change. To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
 \subsection{Linear relations of Petzoldt}
-
-\subsubsection{Rainbow-$\eta_{2}$ key generation.}
 % TODO expand
 
-This approach is based on the fact that a private key owner is able to recover
-the original $\mathcal{C}$ through the possession of all other private maps and
+This approach is based on the fact that a private key owner is able to recover the original $\mathcal{C}$ through the possession of all other private maps and
 the public key. We make use of the linear relations given by the authors
 of~\cite{Petzoldt:201006} and applied in the definition of the
 well-known CyclicRainbow scheme. A short explanation is given below, with the
@@ -882,6 +882,9 @@ it is a general technique that works on all Rainbow-like schemes.
 We observe that the central map may not feature any linear or constant terms, due
 to the use of the above relations. This does not lower the overall security of
 the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
+
+\subsubsection{Rainbow-$\eta_{2}$ key generation.}
+
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$
 and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence
