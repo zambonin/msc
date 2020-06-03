@@ -915,7 +915,7 @@ The Rainbow submission to the second round of the NIST standardization process~\
   A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$.
 \end{definition}
 
-What occurs in the experiment is that the adversary, given a public key, can obtain 
+What occurs in the experiment is that the adversary, given a public key, can obtain signatures from at most $q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones.
 
 These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
 
