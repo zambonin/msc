@@ -833,8 +833,9 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 \subsection{Linear relations of Petzoldt}
 % TODO expand
+% -----8<-----
 
-This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. A brief explanation is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
+This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. First, a brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}.
 
 Consider the public key
 $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let
@@ -879,7 +880,9 @@ We observe that the central map may not feature any linear or constant terms, du
 to the use of the above relations. This does not lower the overall security of
 the scheme~\cite[Section 3.1]{Ding:201901}, due to the fact that they are not multiplied with quadratic terms.
 
-\subsubsection{Rainbow-$\eta_{2}$ key generation.}
+% -----8<-----
+
+\subsubsection{Key generation.}
 
 With this implication in mind, the usual key generation algorithm for the
 target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$
@@ -905,13 +908,12 @@ $\sigma = \mathcal{L}_{2}^{-1}(y)$.
 
 \subsubsection{Signature verification.}
 
-This step does not change. If $d = \mathcal{P}(\sigma)$, then the signature is
-valid, and invalid otherwise.
+This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
 The Rainbow submission to the NIST standardization
-process~\cite{Ding:201712} presents a scheme description that diverges
+process~\cite{Ding:201901} presents a scheme description that diverges
 from the original works. The authors introduce modifications that provide
 security against the existential forgery under chosen-message attack (EF-CMA)
 model, whereas the original scheme only offers security against universal
@@ -921,7 +923,6 @@ recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ i
 suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$. 
 Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
-
 
 \subsubsection{Key generation.}
 
@@ -947,8 +948,7 @@ finish by letting $z = \mathcal{L}_{2}^{-1}(y)$ and $\sigma = (z, r)$.
 
 \subsubsection{Signature verification.}
 
-Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
-the signature is valid, and invalid otherwise.
+This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
 We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
 
