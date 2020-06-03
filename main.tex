@@ -831,17 +831,6 @@ This step does not change significantly from the original scheme. Consider a mes
 
 This step does not change. To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-By making the first layer linear and substituting the remaining variables, the size of the private key is now
-\begin{multline}
-  \#\mathsf{sk}^{\eta_{1}} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
-    + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
-    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
-      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
-\end{multline}
-plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
-used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
-change.
-
 \subsection{Linear relations of Petzoldt}
 % TODO expand
 
@@ -958,9 +947,32 @@ finish by letting $z = \mathcal{L}_{2}^{-1}(y)$ and $\sigma = (z, r)$.
 Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
 the signature is valid, and invalid otherwise.
 
+We are now able to discuss the private key sizes. It is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
+
+\begin{proposition}
+  The size of a Rainbow-$\eta$ private key, denoted by $\mathbf{sk}_{\eta}$, is
+  \begin{multline}
+  \#\mathsf{sk}^{\eta_{1}} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
+    + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
+  \end{multline}
+\end{proposition}
+
 The size of the private and public keys increase in exactly one element due to
 the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
+
+By making the first layer linear and substituting the remaining variables, the size of the private key is now
+\begin{multline}
+  \#\mathsf{sk}^{\eta_{1}} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
+    + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
+    + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
+      + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}},
+\end{multline}
+plus the additional size of $\mathbf{S}$ if the Rainbow-$\eta_{1}$ method is
+used. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not
+change.
 
 \subsection{Security analysis}\label{subsec:analysis}
 
