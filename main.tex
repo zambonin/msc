@@ -960,6 +960,8 @@ We are now able to discuss private key sizes. It is evident that the aforementio
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 
+The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, there is no difference in the private key size. For Rainbow-$\eta_{3}$, 
+
 The size of the private and public keys increase in exactly one element due to
 the addition of $w$. Concrete implementations of Rainbow-$\eta_{3}$ are tested on
 Section~\ref{sec:experiments}.
