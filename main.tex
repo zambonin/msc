@@ -825,13 +825,14 @@ We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$.
 
 \subsubsection{Signature generation.}
 
-This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. The preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ already has its first $v_{1}$ elements set in the form of $\widetilde{V}_{1}$. The rest are obtained by recursively solving the remaining linear systems arising from the first layer. In the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$. The preimage $\overline{\mathcal{C}}(\mathbf{x}) = \mathbf{y}$ already has its first $v_{1}$ elements set in the form of $\widetilde{V}_{1}$. The rest are obtained by recursively solving the remaining linear systems arising from the first layer. In the rare case that a failure occurs in the central map inversion algorithm, we invoke the key generation step with $\mathbf{S}$ to obtain $\mathcal{C}$, choose other values for $\widetilde{V}_{1}$ and create a different $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
 This step does not change. To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
 \subsection{Linear relations of Petzoldt}
+
 % TODO expand
 % -----8<-----
 
@@ -895,16 +896,7 @@ $(\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2})$ and the public key 
 
 \subsubsection{Signature generation.}
 
-A digest $d = \mathcal{H}(M)$ from a message $M$ is signed with a similar
-procedure. Compute $x = \mathcal{L}_{1}^{-1}(d)$, and attempt to generate the preimage
-$x = \mathcal{C}(y)$ by inverting every layer recursively. The first
-layer already has $\widetilde{V}_{1}$ set, and the remaining linear system
-needs only to be solved by providing appropriate values of $d$. It
-generates a new set of vinegar variables, that can be used on the next layer,
-until all layers are solved. If any of the transitory systems are not solvable,
-a new $\widetilde{V}_{1}$ is chosen and $\overline{\mathcal{C}}$ regenerated, according
-to one of the methods given above. We finish by computing
-$\sigma = \mathcal{L}_{2}^{-1}(y)$.
+This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. If any of the transitory systems are not solvable, the original central map is computed from the aforementioned mathematical relations, a new $\widetilde{V}_{1}$ is chosen and a new $\overline{\mathcal{C}}$ created. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
