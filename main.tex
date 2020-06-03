@@ -950,7 +950,7 @@ finish by letting $z = \mathcal{L}_{2}^{-1}(y)$ and $\sigma = (z, r)$.
 Recalculate the digest value $\mathbf{d}$. If $\mathbf{d} = \mathcal{P}(z)$,
 the signature is valid, and invalid otherwise.
 
-We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change. It is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
+We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
 
 \begin{proposition}
   The size of a Rainbow-$\eta$ private key, denoted by $\mathsf{sk}^{\eta}$, is
@@ -963,7 +963,7 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 
-The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, there is no difference in the private key size. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus the representation of this integer in the underlying field is added to $\#\mathsf{sk}^{\eta}$. We remark that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
+The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, there is no difference in the private key size. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
 
 \subsection{Security analysis}\label{subsec:analysis}
 
