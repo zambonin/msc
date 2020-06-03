@@ -881,7 +881,7 @@ it is a general technique that works on all Rainbow-like schemes.
 
 \subsubsection{Key generation.}
 
-We observe that there is a clear restriction of the method above, in the sense that $\mathcal{C}$ must be homogeneous quadratic. We recall that this does not lower the overall security of the scheme, due to the fact that linear and constant terms are not mixed with constant terms. With this implication in mind, the usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. By the relations above, one is able to reconstruct $\mathcal{C}$ with no additional mechanisms if the central map inversion algorithm fails. Then, 
+We observe that there is a clear restriction of the method above, in the sense that $\mathcal{C}$ must be homogeneous quadratic. We recall that this does not lower the overall security of the scheme, due to the fact that linear and constant terms are not mixed with constant terms. With this implication in mind, the usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
 \begin{align}
   \begin{split}
     \mathsf{sk}^{\eta_{2}} &= (\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
@@ -891,7 +891,7 @@ We observe that there is a clear restriction of the method above, in the sense t
 
 \subsubsection{Signature generation.}
 
-This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. If any of the transitory systems are not solvable, the original central map is computed from the aforementioned mathematical relations, a new $\widetilde{V}_{1}$ is chosen and a new $\overline{\mathcal{C}}$ created. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. By the relations above, one is able to reconstruct $\mathcal{C}$ with no additional mechanisms if any transitory systems are not solvable, choose other vinegar variables and create another $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
@@ -899,17 +899,8 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 \subsection{Application to the EF-CMA variant}\label{subsec:efcma}
 
-The Rainbow submission to the NIST standardization
-process~\cite{Ding:201901} presents a scheme description that diverges
-from the original works. The authors introduce modifications that provide
-security against the existential forgery under chosen-message attack (EF-CMA)
-model, whereas the original scheme only offers security against universal
-forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We
-briefly describe this approach, with the intent of preventing the
-recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not
-suitable. Let us denote this method as \textbf{Rainbow-}$\mathbf{\eta_{3}}$. 
-Concrete implementations of Rainbow-$\eta_{3}$ are tested on
-Section~\ref{sec:experiments}.
+% TODO add eu-cma definition
+The current Rainbow submission to the NIST standardization process~\cite{Ding:201901} presents a scheme description that diverges from the original works. The authors introduce modifications that provide security against the existential forgery under chosen-message attack (EF-CMA) model, whereas the original scheme only offers security against universal forgery. These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
 
 \subsubsection{Key generation.}
 
