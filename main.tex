@@ -667,7 +667,7 @@ To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mat
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
 Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
-\begin{align}
+\begin{align}\label{eq:priv}
   \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
     + \underbrace{n^{2}}_{\mathcal{L}_{2}}.
@@ -919,8 +919,6 @@ The adversary, given a public key, can obtain signatures from at most $q$ messag
 
 These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
 
-% -----8<-----
-
 \subsubsection{Key generation.}
 
 Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. We remark that the approach of Rainbow-$\eta_{1}$ may be applied here, that is, using a seed $\mathbf{S}$ to yield the maps. Then,
@@ -950,6 +948,9 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   \end{multline}
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
+\begin{proof}
+  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:priv}.
+\end{proof}
 
 The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
 
