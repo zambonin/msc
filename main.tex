@@ -912,11 +912,11 @@ We first recall what it means for a digital signature scheme to be strong existe
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ usually called the \emph{adversary}, let the following experiment be defined.
   \begin{align}
     \begin{split}
-      \textbf{Experiment }& \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A}) \\ 
-      \quad (\mathsf{sk}, \mathsf{pk}) &\gets \textsc{Gen}(1^{n}) \\
-      \quad (M', \mathbf{z'}) &\gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
-      \rho \gets \{ M_{i} : 1 \leq i \leq Q \}
-      \quad \text{Return 1 iff }& \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1
+      &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A}) \\ 
+      &\quad (\mathsf{sk}, \mathsf{pk}) \gets \textsc{Gen}(1^{n}) \\
+      &\quad (M', \mathbf{z'}) \gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
+      &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \\
+      &\quad \text{Return 1 iff } \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1 \land M' \not\in \rho
     \end{split}
   \end{align}
     
