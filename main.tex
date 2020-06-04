@@ -1059,10 +1059,12 @@ preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 
 
 We recall that a message digest $\mathbf{h}$ is signed instead of the entire document. Evidently, a secure cryptographic hash function shall produce an output that appears to be random. The application $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$ does not affect this behaviour, since the map is also random. Hence, we need not simulate this calculation in our analysis. According to Subsection~\ref{subsec:invert}, the operation $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ creates a valid preimage with overwhelming probability, where the first $v_{1}$ elements of any $\mathbf{x}$ are the same.
 
-We observe the distribution of field elements in vectors after the final
-function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Let
-$Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}^{n},\; t \in \mathbb{N}$ be
-a $t$-tuple of ``signatures''. We build the $(n \times t)$-tuple $$Z_{t} = (z_{1}^{1},
+We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+
+
+Let
+$Z'_{t} = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}) \random \mathbb{F}^{n},\; t \in \mathbb{N}$ be
+a $t$-tuple acting as the control group of unmodified signatures, and its unpacked notation $(n \times t)$-tuple extension $$Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n}).$$
 When part of the vector $y$ is fixed, we instead denote these by
 $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
