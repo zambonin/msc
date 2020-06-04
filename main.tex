@@ -1057,16 +1057,10 @@ Hence, we note that the inversion event happens almost surely. Moreover, this ev
 Vinegar variables chosen to invert the central map are an integral part of the
 preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
 
-Recall that a message digest $d$ is signed instead of the entire document.
-Evidently, a secure cryptographic hash function shall produce an output that
-appears to be random. The application $x = \mathcal{L}_{1}^{-1}(d)$ does not affect
-this behaviour, since the map is also random. Hence, we need not simulate this
-calculation in this analysis. According to Subsection~\ref{subsec:invert}, the
-inversion $y = \mathcal{C}^{-1}(x)$ creates a valid preimage with overwhelming
-probability, where the first $v_{1}$ elements of any $y$ are the same.
+We recall that a message digest $\mathbf{h}$ is signed instead of the entire document. Evidently, a secure cryptographic hash function shall produce an output that appears to be random. The application $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$ does not affect this behaviour, since the map is also random. Hence, we need not simulate this calculation in our analysis. According to Subsection~\ref{subsec:invert}, the operation $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ creates a valid preimage with overwhelming probability, where the first $v_{1}$ elements of any $\mathbf{x}$ are the same.
 
 We observe the distribution of field elements in vectors after the final
-function application, that is, $z = \mathcal{L}_{2}^{-1}(y)$. Let
+function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Let
 $Z'_{t} = (z_{1}, \dots, z_{t}) \random \mathbb{F}_{q}^{n}, t \in \mathbb{N}$ be
 a $t$-tuple of ``signatures''. We build the sequence $$Z_{t} = (z_{1}^{1},
 z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n}).$$
