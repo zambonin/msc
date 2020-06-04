@@ -1059,7 +1059,7 @@ preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 
 
 We recall that a message digest $\mathbf{h}$ is signed instead of the entire document. Evidently, a secure cryptographic hash function shall produce an output that appears to be random. The application $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$ does not affect this behaviour, since the map is also random. Hence, we need not simulate this calculation in our analysis. According to Subsection~\ref{subsec:invert}, the operation $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ creates a valid preimage with overwhelming probability, where the first $v_{1}$ elements of any $\mathbf{x}$ are the same.
 
-We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements in $\mathbb{F}$. When part of the vector $\mathbf{x}$ is fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
+We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements in $\mathbb{F}$. When the first $v_{1}$ elements of the vector $\mathbf{x}$ are fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
 
 Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. Indeed, any element of $\mathbb{F}$ is equally likely to be picked to compose the matrix representation of a linear transformation, or be the coefficient of a monomial in an Oil--Vinegar polynomial.
 
@@ -1070,7 +1070,7 @@ Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to obser
   \end{align}
 \end{definition}
 
-Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of picking an element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, it is expected that
+Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of picking an element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, we expect that
 \begin{align}
   \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
 \end{align}
@@ -1078,12 +1078,12 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
 
 \begin{figure}[ht]
   \subfloat[
-    $d_{\sigma}^{t}$ for $n = 42, v_{1} = 17$.\label{fig:2a}
+    $d_{\sigma}(t)$ for $n = 42, v_{1} = 17$.\label{fig:2a}
   ]{
     % \includegraphics[width=.49\columnwidth]{charts/measure-diff/std-diff-n42}
   }
   \subfloat[
-    $d_{\sigma}^{t}$ for $n = 90, v_{1} = 35$.\label{fig:2b}
+    $d_{\sigma}(t)$ for $n = 90, v_{1} = 35$.\label{fig:2b}
   ]{
     % \includegraphics[width=.425\columnwidth]{charts/measure-diff/std-diff-n90}
   }
@@ -1091,17 +1091,7 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
     and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:2}
 \end{figure}
 
-Let us denote the absolute difference between standard deviations for
-$t$ as $d_{\sigma}^{t} = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$.
-Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
-and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
-fields of higher orders and lower $t$. For instance, given the vector space
-$\mathbb{F}_{223}^{42}$, we have $d_{\sigma}^{1} \approx 8.25$, and for a
-slightly higher $t$, we obtain a much lower value
-$d_{\sigma}^{11} \approx 0.24$. This behaviour is also observed within absolute
-differences of means, defined analogously as $d_{\mu}^{t}$. The vector space
-$\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}^{1} \approx 5.31$ and,
-comparatively, $d_{\mu}^{9} \approx 1.14$.
+Let us denote the absolute difference between standard deviations for $t$ as $d_{\sigma}(t) = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$. Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$ and $t$. We note that the largest values of $d_{\sigma}(t)$ occur for finite fields of higher orders and lower $t$. For instance, given the vector space $\mathbb{F}_{223}^{42}$, we have $d_{\sigma}(1) \approx 8.25$, and for a slightly higher $t$, we obtain a much lower value $d_{\sigma}(11) \approx 0.24$. This behaviour is also observed within absolute differences of means, defined analogously as $d_{\mu}(t)$. The vector space $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}(1) \approx 5.31$ and, comparatively, $d_{\mu}(1) \approx 1.14$.
 
 The comparison of expected with obtained standard deviations and means in our
 experiments gives positive results and confirms the law of large numbers.
