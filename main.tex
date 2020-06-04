@@ -538,6 +538,7 @@ To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mat
 
 The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
 
+\vspace{4mm}\noindent
 The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathsf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
@@ -664,6 +665,7 @@ Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
+\vspace{4mm}\noindent
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
 Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
@@ -915,7 +917,7 @@ The Rainbow submission to the second round of the NIST standardization process~\
   A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$.
 \end{definition}
 
-The adversary, given a public key, can obtain signatures from at most $q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature that were not in a previous query. The \textsf{EU-CMA} model is considered the strongest notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
+Given a public key, the adversary can obtain signatures from at most $Q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature that were not in a previous query. The \textsf{EU-CMA} model is considered the strongest notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
 
 These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
 
@@ -936,6 +938,7 @@ Let $r \random {\{0, 1\}}^{w}$. Consider a message $M$ and obtain its digest by 
 
 We recall that $r$ is used to obtain $\mathbf{h}$ again. Then, if $\mathbf{h} = \mathcal{P}(\mathbf{z})$, the signature is valid, and otherwise invalid.
 
+\vspace{4mm}\noindent
 We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
 
 \begin{proposition}
@@ -956,13 +959,7 @@ The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ pl
 
 \subsection{Security analysis}\label{subsec:analysis}
 
-A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such attacks. We follow the analysis of~\cite[Section 8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in a classical setting.
-
-We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the only information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks.
-
-Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. However, we argue in Section~\ref{sec:stats} that signatures generated by our method are comparably random with respect to conventional Rainbow signatures. 
-
-It is also relevant to mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks.
+A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such strategies. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. We follow the analysis of~\cite[Section 8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting.
 
 \subsubsection{Direct attack.} 
 
@@ -993,6 +990,11 @@ An extension of UOV-Reconciliation by the same authors~\cite{Ding:200806} that t
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. Such an implementation is only given in the NIST standardization submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable.
 
 In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
+
+\vspace{4mm}\noindent
+We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the only information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks.
+
+Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. However, we argue in Section~\ref{sec:stats} that signatures generated by our method are comparably random with respect to conventional Rainbow signatures. 
 
 \section{Statistical argument}\label{sec:stats}
 
