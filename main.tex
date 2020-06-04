@@ -1019,16 +1019,7 @@ In the context of Rainbow, the number of layers directly influences $\Pi(q, n)$,
 \end{align}
 more accurately represents the upper bound for these chances. We denote tbe common case of $u = 2$ as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$, and we observe that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a lower probability of success in the signature generation preimage step.
 
-Parameters for Rainbow are selected according to a number of restrictions,
-imposed by attacks that may harm the security of the scheme. Furthermore, note
-that the central map can be represented as square matrices of order $n$. Hence,
-we choose $56 \leq n \leq 90$
-according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the
-probability that a random matrix is invertible in finite fields of typical
-orders. For instance, $\Pi(16, 90) \approx 93.3594\%$ and
-$\Pi(256, 56) \approx 99.6078\%$. Figure~\ref{fig:1} depicts the lowest
-probabilities computed for the appropriate range. To simulate layering, we set
-$v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
+Parameters for Rainbow are selected according to a number of restrictions, imposed by attacks that may harm the security of the scheme. Furthermore, we recall Definition~\ref{def:mathom}, which states that the central map can be represented as square matrices of order $n$. Hence, we choose $56 \leq n \leq 90$ according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the probability that a random matrix is invertible in finite fields of typical orders. Figure~\ref{fig:1} depicts the lowest probabilities computed for the appropriate range. For instance, $\Pi(16, 90) \approx 93.3594\%$ and $\Pi(256, 56) \approx 99.6078\%$. To simulate layering, we set $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
 
 \begin{figure}[htbp]
   \subfloat[
@@ -1042,8 +1033,8 @@ $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
   ]{
     % \includegraphics[width=.458\columnwidth]{charts/inv-prob/inv-prob-zoom}
   }
-  \caption{Probability of obtaining an invertible matrix, populated with field
-    elements where $2 \leq q \leq 256$ and $q$ is a prime power, given the
+  \caption{Probability of obtaining $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$
+    with $2 \leq q \leq 256$ and $q$ a prime power, given the
     quantity of layers of Rainbow.}\label{fig:1}
 \end{figure}
 
