@@ -1097,12 +1097,12 @@ The comparison of expected with obtained standard deviations and means in our ex
 
 Figure~\ref{fig:3} shows the cumulative distribution function (CDF) plot and the Q-Q (quantile-quantile) plot for such samples. The expected CDF, as well as examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly distributed, with small variations due to the random generation of field elements. However, we note that this is due to the low number of classes, that is, the order of the finite field, and experimentally confirm that such discrepancies are largely reduced with $q = 2^{10}$.  
 
-This is further confirmed by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{F}^{q}$.
+This is further confirmed by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts $Z_{t,k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$.
 
-Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. Let $r \in \mathbb{N}$ be a precision parameter. A number $r \times q$ of samples are taken from a standard normal distribution and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The $q$-tuple $K$ is calculated as 
-\[
-    K = (\mu(\{\min(K_{j}, i) : 1 \leq j \leq r\}) : 1 \leq i \leq q).
-\]
+Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. Let $r \in \mathbb{N}$ be a precision parameter. A number $r \times q$ of samples are taken from a standard normal distribution $\mathcal{N}(0, 1)$ and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, let $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. The final $K$ is composed of the means of the $i$-th smallest values in all $K_{j}$, that is,
+\begin{align}
+  K = \left( \mu(\{\min(K_{j}, i) : 1 \leq j \leq r\}) : 1 \leq i \leq q \right).
+\end{align}
 We have found experimentally that the lowest precision parameter $r = 1$ is still useful to interpret the graph. The resulting plot shows that points are sufficiently close to the $y = x$ expected line.
 
 \begin{figure}[htbp]
