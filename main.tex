@@ -1061,7 +1061,7 @@ We recall that a message digest $\mathbf{h}$ is signed instead of the entire doc
 
 We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements in $\mathbb{F}$. When part of the vector $\mathbf{x}$ is fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
 
-Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. Indeed, every element of $\mathbb{F}$ is equally likely to be picked to compose a linear transformation or central map.
+Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. Indeed, any element of $\mathbb{F}$ is equally likely to be picked to compose the matrix representation of a linear transformation, or be the coefficient of a monomial in an Oil--Vinegar polynomial.
 
 \begin{definition}
   Let $\mathcal{U}(a, b)$ be a discrete uniform distribution with $a, b \in \mathbb{Z},\; a \leq b$. The \emph{standard deviation of $\mathcal{U}(a, b)$} is
@@ -1069,6 +1069,9 @@ Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to obser
     \sigma = \sqrt{\frac{(b - a + 1)^{2} - 1}{12}}.
   \end{align}
 \end{definition}
+
+Let $\mathcal{U}(1, q)$ be the discrete uniform distribution associated with $\mathbb{F}$. Since all elements of a finite field are distinct, there exists a 
+
 It is known that its
 standard deviation, where $r$ values are observed in an equally likely manner,
 is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. We set $r = q$ in the context of $\mathbb{F}_{q}$, and thus it is expected that
