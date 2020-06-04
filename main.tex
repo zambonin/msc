@@ -970,21 +970,17 @@ The multi-layer approach of Rainbow does not hinder attacks that also work on th
 
 We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609}, its complexity is $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications.
 
-\subsubsection{HighRank attack.} In a similar way to MinRank, linear
-combinations of public key matrices are used to find the variables which
-appear the lowest number of times in the central map. This is used to identify
-the last Rainbow layer, and obtain the previous layers similarly. The
-complexity of the improved attack~\cite{Ding:200806} is
-$q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
+\subsubsection{HighRank attack.} 
 
-\subsubsection{Rainbow-Band-Separation attack.} An extension of
-UOV-Reconciliation by the same authors~\cite{Ding:200806} that
-targets Rainbow, with the intent of producing an equivalent private key. It
-explores the fact that the central map matrix representation is composed of
-zeroes on its lower right corner. These yield quadratic equations which, if
-solved, lead to an alternative private key. The complexity of this attack is
-given by the hardness of solving a large system of equations, as seen
-above, is hard to estimate.
+In a similar way to MinRank, linear combinations of public key matrices are used to find the variables which appear the lowest number of times in the central map. This is used to identify the last Rainbow layer, and obtain the previous layers similarly. The complexity of the improved attack~\cite{Ding:200806} is $q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
+
+\subsubsection{Rainbow-Band-Separation attack.} 
+
+An extension of UOV-Reconciliation by the same authors~\cite{Ding:200806} that targets Rainbow, with the intent of producing an equivalent private key. It explores the fact that the central map matrix representation is composed of zeroes on its lower right corner. These yield quadratic equations which, if solved, lead to an alternative private key. The complexity of this attack is given by the hardness of solving a large system of equations, as seen above, is hard to estimate.
+
+It is also relevant to mention attacks which do not target the structure of Rainbow, but a concrete implementation or one of the building blocks.
+
+\subsubsection{Collision attacks.}
 
 \subsubsection{Side-channel attacks.} It may be observed that none of the
 proposed Rainbow variants, as well as the original scheme, present constant
