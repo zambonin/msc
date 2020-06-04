@@ -1124,6 +1124,9 @@ We have found experimentally that the lowest precision parameter $r = 1$ is stil
 Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods.
 
 \section{Enhancement of existing schemes}\label{sec:experiments}
+% TODO use homogeneous quadratic + linear maps on first table, comment on that
+% TODO add new rainbow parameters for cyclic (nist 2nd round) on second table
+% TODO review text
 
 Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. However, we only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances.
 
