@@ -1038,22 +1038,17 @@ Parameters for Rainbow are selected according to a number of restrictions, impos
     quantity of layers of Rainbow.}\label{fig:1}
 \end{figure}
 
-It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known to a well-known series.
+It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known series representation.
 
 \begin{theorem}[{\cite[Theorem 14.3]{Apostol:2010}}]
-  Euler's pentagonal number theorem.
+  Euler's pentagonal number theorem
   \begin{align}
-    \sum_{k = 1}^{\infty} 1 - x^{k} = \sum_{k = -\infty}^{\infty}
+    \sum_{k = 1}^{\infty} 1 - q^{k} = \sum_{k = -\infty}^{\infty}
     {(-1)}^{k} q^{\frac{3 \cdot k^{2} + k}{2}}.
   \end{align}
 \end{theorem}
 
-~. Thus, we can make use of the identity
-\begin{align}
-  \Pi(q) = \sum_{k = -\infty}^{\infty}
-    {(-1)}^{k} q^{\frac{-3 \cdot k^{2} + k}{2}}
-\end{align}
-and obtain a fast approximation of the probability when $n$ tends to infinity.
+Thus, by simply swapping signs in the exponents, we can use this identity and obtain a fast approximation of the probability when $n$ tends to infinity.
 We use the SageMath language, which features arbitrary precision real numbers,
 to obtain these values and find out that, when $n \geq 56$,
 $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and
