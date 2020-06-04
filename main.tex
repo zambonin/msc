@@ -1055,14 +1055,7 @@ Hence, we note that the inversion event happens almost surely. Moreover, this ev
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
 Vinegar variables chosen to invert the central map are an integral part of the
-preimage $y = \mathcal{C}^{-1}(x)$. For instance, in the case $u = 2$, these
-make roughly a third of the output, considering common parameters for Rainbow.
-Further, recall that there are approximately $q^v$ possibilities for $y$. Our
-proposal eliminates this choice by locking vinegar variables into the private
-key. Hence, it is essential to know if such variables create patterns in which
-private information may leak through a multi-target attack. We use the SageMath
-PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel
-space generator.
+preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
 
 Recall that a message digest $d$ is signed instead of the entire document.
 Evidently, a secure cryptographic hash function shall produce an output that
