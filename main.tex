@@ -1038,8 +1038,17 @@ Parameters for Rainbow are selected according to a number of restrictions, impos
     quantity of layers of Rainbow.}\label{fig:1}
 \end{figure}
 
-It is also useful to calculate $\lim_{n \to \infty} \Pi(q, n)$ to observe
-changes in the probability with the growth of the number of equations. We note that this limit is equivalent to the pentagonal number theorem due to Euler~\cite[Theorem 14.3]{Apostol:2010}. Thus, we can make use of the identity
+It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known to a well-known series.
+
+\begin{theorem}[{\cite[Theorem 14.3]{Apostol:2010}}]
+  Euler's pentagonal number theorem.
+  \begin{align}
+    \sum_{k = 1}^{\infty} 1 - x^{k} = \sum_{k = -\infty}^{\infty}
+    {(-1)}^{k} q^{\frac{3 \cdot k^{2} + k}{2}}.
+  \end{align}
+\end{theorem}
+
+~. Thus, we can make use of the identity
 \begin{align}
   \Pi(q) = \sum_{k = -\infty}^{\infty}
     {(-1)}^{k} q^{\frac{-3 \cdot k^{2} + k}{2}}
