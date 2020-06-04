@@ -1055,19 +1055,13 @@ Hence, we note that the inversion event happens almost surely. Moreover, this ev
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
 Vinegar variables chosen to invert the central map are an integral part of the
-preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
+preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$, with $q$ the order of the base field. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
 
 We recall that a message digest $\mathbf{h}$ is signed instead of the entire document. Evidently, a secure cryptographic hash function shall produce an output that appears to be random. The application $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$ does not affect this behaviour, since the map is also random. Hence, we need not simulate this calculation in our analysis. According to Subsection~\ref{subsec:invert}, the operation $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ creates a valid preimage with overwhelming probability, where the first $v_{1}$ elements of any $\mathbf{x}$ are the same.
 
-We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements in $\mathbb{F}$. When part of the vector $\mathbf{x}$ is fixed, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
 
-
-Let
-$Z'_{t} = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}) \random \mathbb{F}^{n},\; t \in \mathbb{N}$ be
-a $t$-tuple acting as the control group of unmodified signatures, and its unpacked notation $(n \times t)$-tuple extension $$Z_{t} = (z_{1}^{1},
-z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n}).$$
-When part of the vector $y$ is fixed, we instead denote these by
-$\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. Our hypothesis is that $Z_{t}$
+Our hypothesis is that $Z_{t}$
 and $\widetilde{Z}_{t}$ behave similarly to observations sampled from the
 discrete uniform distribution $\mathcal{U}\{0, q - 1\}$. It is known that its
 standard deviation, where $r$ values are observed in an equally likely manner,
