@@ -1070,16 +1070,11 @@ Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to obser
   \end{align}
 \end{definition}
 
-Let $\mathcal{U}(1, q)$ be the discrete uniform distribution associated with $\mathbb{F}$. Since all elements of a finite field are distinct, there exists a 
-
-It is known that its
-standard deviation, where $r$ values are observed in an equally likely manner,
-is equal to $\sqrt{\frac{r^{2} - 1}{12}}$. We set $r = q$ in the context of $\mathbb{F}_{q}$, and thus it is expected that
+Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of picking an element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, it is expected that
 \begin{align}
   \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
 \end{align}
-suggesting that greater values of $n$ and $t$ approximate faster to the
-theoretical standard deviation.
+suggesting that greater values of $n$ and $t$ approximate faster to the theoretical standard deviation.
 
 \begin{figure}[ht]
   \subfloat[
@@ -1096,7 +1091,7 @@ theoretical standard deviation.
     and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:2}
 \end{figure}
 
-Let us denote the absolute difference between standard deviations for a value
+Let us denote the absolute difference between standard deviations for
 $t$ as $d_{\sigma}^{t} = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$.
 Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$
 and $t$. We note that the largest values of $d_{\sigma}^{t}$ occur for finite
