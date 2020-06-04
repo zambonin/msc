@@ -1000,24 +1000,13 @@ In Subsection~\ref{subsec:invert}, we look into the probability of matrices with
 
 \subsection{Invertibility of the central map}\label{subsec:invert}
 
-Recall that, to create a Rainbow signature, a preimage of central map $\mathcal{C}$ needs to be calculated. Random guessing of vinegar variables is performed in order to create a solvable linear system. It is also known that the central map is expressed as multivariate quadratic polynomial systems, which can be themselves interpreted as multidimensional matrices of coefficients. With this in mind, we first derive the probability that a random matrix with elements in $\mathbb{F}$ is invertible.
+Recall that, to create a Rainbow signature, a preimage of central map $\mathcal{C}$ needs to be calculated. Random guessing of vinegar variables is performed in order to create a solvable linear system. It is also known that the central map is expressed as multivariate quadratic polynomial systems, which can be themselves interpreted as multidimensional matrices of coefficients. With this in mind, we first derive the probability that a random matrix with elements in $\mathbb{F}$ is invertible, starting by a well-known result.
 
 \begin{proposition}[{\cite[Remark 13.2.14]{Mullen:2013}}]
-  Given a square matrix $M$
-Assume a square matrix $M$ of order $n \times n$ such that
-$m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. 
+  The order of $\mathsf{GL}_{n}(\mathbb{F}_{q})$ is $\prod_{k = 1}^{n} 1 - q^{-k}$.
 \end{proposition}
 \begin{proof}
-  For $M$ to be
-invertible, all of its rows
-$m_{i} \in \mathbb{F}^{n}$ have to be linearly independent. The zero vector
-$(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors.
-Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors
-eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and
-$q^{n} - q$ vectors remain. Without loss of generality,
-$m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1},
-c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then,
-the probability that all vectors chosen are linearly independent is
+  Let a square matrix $M$ of order $n \times n$ such that $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. For $M$ to be invertible, all of its rows $m_{i} \in \mathbb{F}^{n}$ have to be linearly independent. The zero vector $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors. Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and $q^{n} - q$ vectors remain. Without loss of generality, $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1}, c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then, the probability that all vectors chosen are linearly independent is
 \begin{align}
   \Pi(q, n) = \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} \quad
     = \prod_{k = 1}^{n} 1 - q^{-k}.
