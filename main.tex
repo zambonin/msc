@@ -1006,32 +1006,24 @@ Recall that, to create a Rainbow signature, a preimage of central map $\mathcal{
   The order of $\mathsf{GL}_{n}(\mathbb{F}_{q})$ is $\prod_{k = 1}^{n} 1 - q^{-k}$.
 \end{proposition}
 \begin{proof}
-  Let a square matrix $M$ of order $n \times n$ such that $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. For $M$ to be invertible, all of its rows $m_{i} \in \mathbb{F}^{n}$ have to be linearly independent. The zero vector $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors. Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and $q^{n} - q$ vectors remain. Without loss of generality, $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1}, c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then, the probability that all vectors chosen are linearly independent is
+  Consider a square matrix $M$ of order $n \times n$ such that $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$. We recall that $M$ is invertible if and only if $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$. This happens if the set of all rows $m_{i} \in \mathbb{F}^{n}$ is linearly independent. The zero vector $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors. Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and $q^{n} - q$ vectors remain. Without loss of generality, $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1}, c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then, the probability that all vectors chosen are linearly independent is
 \begin{align}
   \Pi(q, n) = \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} \quad
     = \prod_{k = 1}^{n} 1 - q^{-k}.
 \end{align}
 \end{proof}
 
-In the context of Rainbow, the number of layers directly influences
-$\Pi(q, n)$, since it dictates how many linear systems have to be solved. In
-other words, all square matrices of size $v_{i}, 1 \leq i \leq u$ need to
-be invertible to achieve a preimage under $\mathcal{C}$. Thus, the probability
+In the context of Rainbow, the number of layers directly influences $\Pi(q, n)$, since it dictates how many linear systems have to be solved. In other words, all square matrices of size $v_{i}, 1 \leq i \leq u$ need to be invertible to achieve a preimage under $\mathcal{C}$. Thus, the probability
 \begin{align}
   \Pi(q, n, u) = \prod_{i = 1}^{u} \prod_{k = 1}^{v_{i + 1}} 1 - q^{-k}
 \end{align}
-more accurately represents the upper bound for these chances. In the
-literature, the usual number of layers for a Rainbow instance is two, and we
-denote this common case as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$. We observe
-that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a
-slightly lower probability of success in the signature generation preimage
-step.
+more accurately represents the upper bound for these chances. We denote tbe common case of $u = 2$ as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$, and we observe that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a lower probability of success in the signature generation preimage step.
 
 Parameters for Rainbow are selected according to a number of restrictions,
 imposed by attacks that may harm the security of the scheme. Furthermore, note
 that the central map can be represented as square matrices of order $n$. Hence,
 we choose $56 \leq n \leq 90$
-from~\cite[Tables 6.4, 6.8, 6.13]{Petzoldt:201307} and calculate the
+according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the
 probability that a random matrix is invertible in finite fields of typical
 orders. For instance, $\Pi(16, 90) \approx 93.3594\%$ and
 $\Pi(256, 56) \approx 99.6078\%$. Figure~\ref{fig:1} depicts the lowest
