@@ -1171,24 +1171,24 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \renewcommand{\arraystretch}{1.2}
   \centering
   \caption{Total reduction of Rainbow key pairs, in bytes, for variants of the scheme.}\label{tab:2}
-  \begin{tabular}{lp{3cm}*{5}{r}}
+  \begin{tabular}{p{3cm}l*{5}{r}}
     \toprule
-    Parameters & Variant & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
-    \multirow{3}{*}{Pc-080}  & \multirow{3}{\linewidth}{Pc-080 $(\mathbb{F}_{256}, 17, 13, 13)$}  & Classic  &  \multirow{3}{*}{  16757} &  \multirow{3}{*}{   4177} &    24596 &  $-30.42\%$ \\
-                             &                                                    & Cyclic   &                           &                           &     9474 &  $-66.99\%$ \\
-                             &                                                    & LRS2     &                           &                           &     8645 &  $-68.99\%$ \\
-    \multirow{3}{*}{Pc-100}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 26, 16, 17)$}  & Classic  &  \multirow{3}{*}{  41163} &  \multirow{3}{*}{   8364} &    58410 &  $-32.94\%$ \\
-                             &                                                    & Cyclic   &                           &                           &    20266 &  $-71.25\%$ \\
-                             &                                                    & LRS2     &                           &                           &    18682 &  $-72.84\%$ \\
-    \multirow{3}{*}{Pc-128}  & \multirow{3}{*}{$(\mathbb{F}_{256}, 36, 21, 22)$}  & Classic  &  \multirow{3}{*}{  96288} &  \multirow{3}{*}{  17754} &   135880 &  $-33.83\%$ \\
-                             &                                                    & Cyclic   &                           &                           &    44971 &  $-72.98\%$ \\
-                             &                                                    & LRS2     &                           &                           &    42107 &  $-74.22\%$ \\
-    \multirow{2}{*}{   I-a}  & \multirow{2}{*}{$(\mathbb{F}_{ 16}, 32, 32, 32)$}  & Classic  &  \multirow{2}{*}{  92928} &  \multirow{2}{*}{  26896} &   148992 &  $-27.29\%$ \\
-                             &                                                    & nCyclic  &                           &                           &    58112 &  $-64.86\%$ \\
-    \multirow{2}{*}{ III-c}  & \multirow{2}{*}{$(\mathbb{F}_{256}, 68, 36, 36)$}  & Classic  &  \multirow{2}{*}{ 511416} &  \multirow{2}{*}{  78188} &   710640 &  $-35.45\%$ \\
-                             &                                                    & nCyclic  &                           &                           &   206712 &  $-76.69\%$ \\
-    \multirow{2}{*}{   V-c}  & \multirow{2}{*}{$(\mathbb{F}_{256}, 92, 48, 48)$}  & Classic  &  \multirow{2}{*}{1227072} &  \multirow{2}{*}{ 180572} &  1705536 &  $-35.68\%$ \\
-                             &                                                    & nCyclic  &                           &                           &   491904 &  $-77.07\%$ \\
+    Instance & Variant & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
+    \multirow{3}{\linewidth}{Pc-080 $(\mathbb{F}_{256}, 17, 13, 13)$}  & Classic  &  \multirow{3}{*}{  16757} &  \multirow{3}{*}{   4177} &    24596 &  $-30.42\%$ \\
+                                                                       & Cyclic   &                           &                           &     9474 &  $-66.99\%$ \\
+                                                                       & LRS2     &                           &                           &     8645 &  $-68.99\%$ \\
+    \multirow{3}{\linewidth}{Pc-100 $(\mathbb{F}_{256}, 26, 16, 17)$}  & Classic  &  \multirow{3}{*}{  41163} &  \multirow{3}{*}{   8364} &    58410 &  $-32.94\%$ \\
+                                                                       & Cyclic   &                           &                           &    20266 &  $-71.25\%$ \\
+                                                                       & LRS2     &                           &                           &    18682 &  $-72.84\%$ \\
+    \multirow{3}{\linewidth}{Pc-128 $(\mathbb{F}_{256}, 36, 21, 22)$}  & Classic  &  \multirow{3}{*}{  96288} &  \multirow{3}{*}{  17754} &   135880 &  $-33.83\%$ \\
+                                                                       & Cyclic   &                           &                           &    44971 &  $-72.98\%$ \\
+                                                                       & LRS2     &                           &                           &    42107 &  $-74.22\%$ \\
+    \multirow{2}{\linewidth}{I-a $(\mathbb{F}_{ 16}, 32, 32, 32)$}  & Classic  &  \multirow{2}{*}{  92928} &  \multirow{2}{*}{  26896} &   148992 &  $-27.29\%$ \\
+                                                                       & nCyclic  &                           &                           &    58112 &  $-64.86\%$ \\
+    \multirow{2}{\linewidth}{III-c $(\mathbb{F}_{256}, 68, 36, 36)$}  & Classic  &  \multirow{2}{*}{ 511416} &  \multirow{2}{*}{  78188} &   710640 &  $-35.45\%$ \\
+                                                                       & nCyclic  &                           &                           &   206712 &  $-76.69\%$ \\
+    \multirow{2}{\linewidth}{V-c $(\mathbb{F}_{256}, 92, 48, 48)$}  & Classic  &  \multirow{2}{*}{1227072} &  \multirow{2}{*}{ 180572} &  1705536 &  $-35.68\%$ \\
+                                                                       & nCyclic  &                           &                           &   491904 &  $-77.07\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
