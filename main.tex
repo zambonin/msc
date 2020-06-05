@@ -1159,7 +1159,7 @@ We only show results for known secure parameter sets to prevent accidental endor
   \end{tabular}
 \end{table}
 
-We show results for the application of our method in Table~\ref{tab:1}, considering the following Rainbow instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Table 6.12]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the security level in bits. 
+We show results for the application of our method in Table~\ref{tab:1}, considering the following Rainbow instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits. 
 
 Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to further reduce the private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
 
@@ -1193,16 +1193,9 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \end{tabular}
 \end{table}
 
-We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:2} presents results for sets of parameters from~\cite[Table 9.8]{Petzoldt:201307}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eq.~9.2,~9.4]{Petzoldt:201307}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. We obtain positive results, with key pair size reductions of up to factors of 3.
+We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:2} presents results for some sets of parameters from Table~\ref{tab:1}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eq.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to factors of 3.
 
-The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is
-recommended. These variants are based on the linear relations described in
-Subsection~\ref{sec:eta}, and resulting implementations may be
-effortlessly modified to use our proposal. Moreover, in the case that higher
-parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that
-the key pair is reduced more aggressively. Thus, our results reflect
-changes over a wide variety of platforms and possible Rainbow deployments that
-benefit from lower storage requirements.
+The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:eta}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
 % TODO argument of Petzoldt from PQCrypto 2020 in that it's efficient
 We also briefly discuss the effect of these changes on the signature generation
