@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    view = {135}{30}, grid = both, grid style = {dotted},
+    ticklabel style = {font = \tiny}, minor x tick num = 2,
+    minor y tick num = 2, colormap = {bw}{gray(0cm) = (1); gray(1cm) = (0)},
+    label style = {sloped}, zlabel style = {rotate = 270}, xlabel = $q$,
+    ylabel = $t$, xtick = {2, 32, 64, 128, 256}, zmax = 10, zmajorticks = false
+  ]
+    \addplot3 [surf] gnuplot [raw gnuplot] {
+      set dgrid3d 48, 48, 48;
+      splot 'q256-t512-n90.txt' using 1:2:8 with lines
+    };
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}

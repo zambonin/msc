@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{axis}[xmin = -4, xmax = 4, ylabel = {Cumulative probability},
+    xlabel = {Samples from $\mathcal{N}(0, 1)$}, yticklabel = {
+      \pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%
+    }, legend pos=south east, legend style = {
+      draw = none, font = \footnotesize
+    },
+  ]
+    \addplot[thick, opacity = 0.4] gnuplot [raw gnuplot] {
+      stats 't65536-nofix.txt' using 2 nooutput;
+      plot 't65536-nofix.txt' using ((column(2) - STATS_mean) / STATS_stddev):1
+        smooth cnormal
+    };
+    \addlegendentry{$Z_{t, k}$}
+    \addplot[thick, opacity = 0.8] gnuplot [raw gnuplot] {
+      stats 't65536-fix.txt' using 2 nooutput;
+      plot 't65536-fix.txt' using ((column(2) - STATS_mean) / STATS_stddev):1
+        smooth cnormal
+    };
+    \addlegendentry{$\widetilde{Z}_{t, k}$}
+    \addplot[ultra thick, opacity = 0.15] gnuplot [raw gnuplot] {
+      plot norm(x)
+    };
+    \addlegendentry{$\mathcal{N}(0, 1)$}
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}

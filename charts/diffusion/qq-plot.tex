@@ -1,0 +1,38 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{axis}[xmin = -4, xmax = 4,
+    xlabel = {Theoretical $\mathcal{N}(0, 1)$ quantiles},
+    ylabel = {Normalised sample quantiles}, legend pos = south east,
+    legend style = {
+      draw = none, font = \footnotesize
+    },
+  ]
+    \addplot[
+      only marks, mark = -, mark size = 1, opacity = 0.4
+    ] gnuplot [raw gnuplot] {
+      stats 't65536-nofix.txt' using 2 nooutput;
+      plot 't65536-nofix.txt' using ((column(2) - STATS_mean) / STATS_stddev):3
+    };
+    \addlegendentry{$Z_{t, k}$}
+    \addplot[
+      only marks, mark = |, mark size = 1, opacity = 0.8
+   ] gnuplot [raw gnuplot] {
+      stats 't65536-fix.txt' using 2 nooutput;
+      plot 't65536-fix.txt' using ((column(2) - STATS_mean) / STATS_stddev):3
+    };
+    \addlegendentry{$\widetilde{Z}_{t, k}$}
+    \addplot[thick, opacity = 0.15] gnuplot [raw gnuplot] {
+      plot x
+    };
+    \addlegendentry{$\mathcal{N}(0, 1)$}
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}
