@@ -838,11 +838,12 @@ This approach is based on the fact that a private key owner is able to recover t
 
 % TODO expand
 % -----8<-----
-Consider the key pair of a Rainbow signature scheme as described in Equation~\ref{}. Since $\mathcal{L}_{2}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let 
-Consider the public key $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$. Since quadratic terms do not mix with linear and constant terms, we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of any $q \in \mathcal{Q}$ be denoted as
+Consider the key pair of a Rainbow signature scheme as described in Equation~\ref{}. Since $\mathcal{L}_{2}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. Moreover, it is known that quadratic terms do not mix with linear and constant terms in the case of Rainbow, and thus we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of the $k$-th polynomial $q \in \mathcal{Q}$ be denoted as
 \begin{align}
-  \widetilde{c} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij} x_{i} x_{j}.
+  \widetilde{q} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij} x_{i} x_{j}.
 \end{align}
+Further, 
+
 
 We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
