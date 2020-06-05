@@ -834,14 +834,11 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 \subsection{Linear relations of Petzoldt}
 
+This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
+
 % TODO expand
 % -----8<-----
-
-This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. 
-
-First, a brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. Consider the public key
-$\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let
-$\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$. We denote $\widetilde{Q}$ as a
+Consider the public key $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$. We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
 $\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
 Further let $\widetilde{T}$ be the matrix representation of $\mathcal{L}_{2}$, with
@@ -882,7 +879,7 @@ it is a general technique that works on all Rainbow-like schemes.
 
 \subsubsection{Key generation.}
 
-We observe that there is a clear restriction of the method above, in the sense that $\mathcal{C}$ must be homogeneous quadratic. We recall that this does not lower the overall security of the scheme, due to the fact that linear and constant terms are not mixed with constant terms. With this implication in mind, the usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ at a marginally faster rate. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
+The usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
 \begin{align}
   \begin{split}
     \mathsf{sk}^{\eta_{2}} &= (\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
