@@ -544,11 +544,11 @@ The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, 
   \#\mathsf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
     + \; \underbrace{n^{2}}_{\mathcal{L}_{2}}
 \end{align}
-field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases in $o \times (v + o + 1)$ elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
+field elements. The size of a public key is the number of coefficients of $o$ polynomials in the ring $\mathbb{F}[x_{1}, \dots, x_{n}]$, which is known to be $\binom{n + d}{d}$ for the degree $d \in \mathbb{N}$. Since Oil--Vinegar polynomials are quadratic, we have $d = 2$, and hence
 \begin{align}
   \#\mathsf{pk} = o \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
-field elements.
+field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases in $o \cdot (v + o + 1)$ elements, and the public key size decreases in $o \cdot (n + 1)$ elements.
 
 \subsubsection{Equivalent keys.}
 
@@ -674,11 +674,11 @@ Measured in field elements, the size of a private key is the number of elements 
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
     + \underbrace{n^{2}}_{\mathcal{L}_{2}}.
 \end{align}
-If polynomials are homogeneous quadratic, then the private key size decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k} + o_{k} + 1)$. The size of a public key is similar to the UOV case, and thus we have
+The size of a public key is similar to the UOV case, and thus we have
 \begin{align}
   \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
-field elements.
+field elements. If polynomials are homogeneous quadratic, then the private key size decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k} + o_{k} + 1)$ elements, and the public key size decreases in $m \cdot (n + 1)$ elements.
 
 \subsubsection{Equivalent keys.}
 
