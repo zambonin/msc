@@ -721,7 +721,7 @@ The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by
 \end{align}
 The redundancy is removed by the same rationale, observing the shape of the lateral maps in the equivalent key.
 
-\begin{theorem}[{\cite[Theorem 3.6]{Petzoldt:201307}}]
+\begin{theorem}[{\cite[Theorem 3.6]{Petzoldt:201307}}]\label{thm:eqrb}
   Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n})$ with $u = 2$, such that
   \begin{align}
     \psi(\mathcal{L}_{1}) =
@@ -1130,7 +1130,7 @@ Our argument indicates that, even if part of the preimage created by the central
 
 Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. 
 
-We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials and simplified linear transformations according to Theorems~\cite{} and~\cite{}.
+We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials and simplified linear transformations according to Theorem~\ref{thm:eqrb}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
