@@ -1125,9 +1125,6 @@ We have found experimentally that the lowest precision parameter $r = 1$ is stil
 Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods.
 
 \section{Enhancement of existing schemes}\label{sec:experiments}
-% TODO use homogeneous quadratic + linear maps on first table, comment on that
-% TODO add new rainbow parameters for cyclic (nist 2nd round) on second table
-% TODO review text
 
 Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. 
 
@@ -1197,16 +1194,7 @@ We compare key pair sizes when our method is used alongside Rainbow variants tha
 
 The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:eta}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
-% TODO argument of Petzoldt from PQCrypto 2020 in that it's efficient
-We also briefly discuss the effect of these changes on the signature generation
-step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary
-greatly due to the fast regeneration of the central map elements from a given
-PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate
-techniques to reconstruct the central map if vinegar variables are not
-suitable.  This process is not without cost, and it may negatively affect the
-average signature generation time. Still, by making use of Rainbow-$\eta_{3}$,
-these computations are entirely avoided by choosing a new salt instead of new
-vinegar variables, reducing the inherent overhead.
+We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary greatly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
 \chapter{Variant of Kipnis--Shamir attack}\label{chapter:attack}
 % TODO expand
