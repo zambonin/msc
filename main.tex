@@ -945,14 +945,15 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   The size of a Rainbow-$\eta$ private key, denoted by $\mathsf{sk}^{\eta}$, is
   \begin{multline}
   \#\mathsf{sk}^{\eta} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
-    + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
+    + \underbrace{n^{2}}_{\mathcal{L}_{2}} 
+    + \underbrace{\widetilde{V}_{1}}_{v_{1}} + \\
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
       + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}}.
   \end{multline}
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 \begin{proof}
-  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:priv}.
+  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:priv}, and add $\widetilde{V}_{1}$ such that whole preimages are computed.
 \end{proof}
 
 The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
