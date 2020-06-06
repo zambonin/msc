@@ -628,13 +628,13 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 \subsubsection{Key generation.}
 
 In the case of Rainbow, all three maps are needed. Therefore,
-\begin{align}
+\begin{align}\label{eq:skrb}
   \mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
     \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
-\begin{align}
+\begin{align}\label{eq:pkrb}
   \mathsf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
 \end{align}
 With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
@@ -864,16 +864,17 @@ If we recall Equation~\ref{eq:pkquad}, the coefficient associated with the monom
 \begin{align}\label{eq:linear}
   \nu_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is achieved by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$.
+By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~100]{Petzoldt:201307}.
 
-The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{} and~\ref{} show the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
-\begin{align}\label{eq:linear}
+The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{eq:skrb} and~\ref{eq:pkrb} show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
+\begin{align}
   q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
 and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{kl}, 1 \leq k, l \leq m$, then
 \begin{align}
   \nu_{ij}^{(k)} = \sum_{l = 1}^{m} e_{kl} q_{ij}^{(k)}.
 \end{align}
+
 
 A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
 the previous equations. Given a particular monomial ordering, let
