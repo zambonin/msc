@@ -845,19 +845,19 @@ per Equation~\ref{eq:ov}. Further, we analogously denote $h^{(k)} \in \mathcal{P
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
 Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation~\ref{eq:pkquad} may be rewritten as
-\begin{align}
+\begin{align}\label{eq:pkquadmult}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{s} \right).
 \end{align}
-Focusing on the inner summation, we can represent it as
+Focusing on the inner summation, we can represent it in a more compact way by defining
 \begin{align}
   \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s}, 
   \quad \text{where } b_{rs}^{ij} =
   \begin{dcases}
-    d_{ir} \cdot d_{jr}                         & \text{if } r = s, \\
-    d_{ir} \cdot d_{js} + d_{is} \cdot d_{jr}   & \text{otherwise}.
+    d_{ri} \cdot d_{rj}                         & \text{if } r = s, \\
+    d_{ri} \cdot d_{sj} + d_{si} \cdot d_{rj}   & \text{otherwise}.
   \end{dcases}
 \end{align}
-The public polynomial of Equation~\ref{} is then rewritten as
+Equation~\ref{eq:pkquadmult} is then rewritten as
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s} \right).
 \end{align}
