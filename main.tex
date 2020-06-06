@@ -848,9 +848,9 @@ Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \
 \begin{align}\label{eq:pkquadmult}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{s} \right).
 \end{align}
-Focusing on the inner summation, we can represent the coefficients of the matrix multiplication by $\psi(\mathcal{L}_{2})$ by letting
+Focusing on the inner summation, we can represent the matrix multiplication by $\psi(\mathcal{L}_{2})$ in a compact way by letting
 \begin{align}
-  d_{rs}^{ij} =
+  d_{rs}^{(ij)} =
   \begin{dcases}
     d_{ri} \cdot d_{rj}                         & \text{if } r = s, \\
     d_{ri} \cdot d_{sj} + d_{si} \cdot d_{rj}   & \text{otherwise},
@@ -858,13 +858,13 @@ Focusing on the inner summation, we can represent the coefficients of the matrix
 \end{align}
 allowing the rewrite of Equation~\ref{eq:pkquadmult} as
 \begin{align}
-  \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{ij} x_{r} x_{s} \right).
+  \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)} x_{r} x_{s} \right).
 \end{align}
-The coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
-\begin{align}
-  \nu_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} d_{rs}^{ij}.
+If we recall Equation~\ref{eq:pkquad}, the coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
+\begin{align}\label{eq:linear}
+  \nu_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed.
+By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed.
 
 The process for Rainbow is analogous, with a small difference due to the existence of two lateral maps. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{k}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
 \begin{align}
