@@ -795,9 +795,9 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 
 \chapter{New approach to reduce private keys}\label{ch:eta}
 
-We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a set of modifications to the Rainbow scheme, enabling private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5. \emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.}
+We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a set of modifications to the Rainbow scheme, enabling a reduction in private key sizes of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5. 
 
-In Section~\ref{sec:mod}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:exp}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
+\emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.} In Section~\ref{sec:mod}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:exp}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
 
 \section{Modifications to the original scheme}\label{sec:mod}
 
@@ -809,14 +809,14 @@ Alternatively, our proposal does not modify the underlying structure of the key 
 
 \subsection{Usage of a seed}
 
-We use the fact that a PRNG has the ability to regenerate the same sequence of numbers given a seed. The choice of such a generator is outside the scope of our work, and we assume that a cryptographically secure PRNG is chosen. This approach is similar to~\cite{Shim:201512}, but it is not as costly, since the private key does not need to be recreated before every signature generation. It is best suited to environments in which an efficient generator is previously supplied. We denote this variant as Rainbow-$\eta_{1}$. We are not aware of any Rainbow variants that disallow this practice.
+We use the fact that a PRNG has the ability to recreate the same sequence of numbers given a seed. The choice of such a generator is outside the scope of our work, and we assume that a cryptographically secure PRNG is chosen. This approach is similar to~\cite{Shim:201512}, but it is not as costly, since the private key does not need to be recreated before every signature generation. It is best suited to environments in which an efficient generator is previously supplied. We are not aware of any Rainbow variants that disallow this practice. We denote this variant as Rainbow-$\eta_{1}$.
 
 \subsubsection{Key generation.}
 
 We bound the creation of the key pair to a seed $\mathbf{S} \in \mathbb{N}_{0}$. Thus, $\mathcal{L}_{1}$, $\mathcal{C}$ and $\mathcal{L}_{2}$ are generated through the target scheme key generation algorithm, seeded by $\mathbf{S}$. The composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ must be obtained before the substitution of the vinegar variables such that it does not need to be recreated. We then choose $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ and substitute these into $\mathcal{C}$, giving $\overline{\mathcal{C}} \in \mathsf{RB}(v_{2}, o_{2}, \dots, o_{u})$. Finally,
 \begin{align}
   \begin{split}
-    \mathsf{sk}^{\eta_{1}} &= (\mathbf{S}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
+    \mathsf{sk}^{\eta_{1}} &= (\mathbf{S}, \widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
     \mathsf{pk}^{\eta_{1}} &= \mathcal{P}.
   \end{split}
 \end{align}
