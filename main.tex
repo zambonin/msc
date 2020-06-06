@@ -874,7 +874,7 @@ and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{kl}, 1 
 \begin{align}
   \nu_{ij}^{(k)} = \sum_{l = 1}^{m} e_{kl} q_{ij}^{(k)}.
 \end{align}
-We note that the performance of this method is lower than that of Rainbow-$\eta_{1}$, due to the efficiency of PRNGs, and the size of the aforementioned matrices with . However, it is a general technique that works on all Rainbow-like schemes.
+We note that the performance of this method is lower than that of Rainbow-$\eta_{1}$, due to the efficiency of PRNGs and the inherent amount of matrix multiplications to recreate $\mathcal{C}$. However, it is a general technique that works on all Rainbow-like schemes if the polynomials in the central map are homogeneous quadratic, or their linear and constant parts are stored separately.
 
 \subsubsection{Key generation.}
 
