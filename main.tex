@@ -494,7 +494,7 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 \end{definition}
 
 \begin{definition}
-  Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $f^{(1)}, \dots, f^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(n, o)$.
+  Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $f^{(1)}, \dots, f^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(n, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
 The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:oil-vinegar-poly} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
@@ -536,9 +536,8 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{ch:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{ch:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known to the date of writing, if the correct choice of parameters is performed. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
 
-\vspace{4mm}\noindent
 The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
   \#\mathsf{sk} = \underbrace{o \cdot \left( \frac{v \cdot (v + 1)}{2} + v \cdot o + v + o + 1 \right)}_{\mathcal{C}} \;
@@ -552,10 +551,10 @@ field elements. We note that if the Oil--Vinegar polynomials are homogeneous qua
 
 \subsubsection{Equivalent keys.}
 
-As mentioned after Definition~\ref{def:sustainer}, there exists a specific form of sustainer for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
+We recall that there exists a specific form of sustainers of Definition~\ref{def:sustainer} for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\omega) =
     \begin{bmatrix}
@@ -574,11 +573,10 @@ We remark that $\psi(\omega^{-1})$ has the same form as $\omega$ due to the rest
     -(\omega^{(3)})^{-1} \cdot \omega^{(2)} \cdot (\omega^{(1)})^{-1}   & (\omega^{(3)})^{-1}       \\
   \end{bmatrix}.
 \end{align}
-
 It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
+  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\mathcal{L}_{2}) =
     \begin{bmatrix}
@@ -627,7 +625,7 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 
 \subsubsection{Key generation.}
 
-In the case of Rainbow, all three maps are needed. Therefore,
+In the case of Rainbow, all three maps are needed to securely hide the structure of the central map. Therefore,
 \begin{align}\label{eq:sk-rainbow}
   \mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
     \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
