@@ -836,11 +836,11 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
 
-Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:skov} and~\ref{eq:pkov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$ be denoted as
+Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:skov} and~\ref{eq:pkov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Equation~\ref{eq:ov}, be denoted as
 \begin{align}
-  \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}
+  \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
-per Equation~\ref{eq:ov}. Further, we analogously denote $h^{(k)} \in \mathcal{P}$ as
+Further, we analogously denote the quadratic part of $h^{(k)} \in \mathcal{P}$ as
 \begin{align}\label{eq:pkquad}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
@@ -850,8 +850,8 @@ Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \
 \end{align}
 Focusing on the inner summation, we can represent it in a more compact way by defining
 \begin{align}
-  \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s}, 
-  \quad \text{where } b_{rs}^{ij} =
+  \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{ij} x_{r} x_{s}, 
+  \quad \text{where } d_{rs}^{ij} =
   \begin{dcases}
     d_{ri} \cdot d_{rj}                         & \text{if } r = s, \\
     d_{ri} \cdot d_{sj} + d_{si} \cdot d_{rj}   & \text{otherwise}.
@@ -859,7 +859,7 @@ Focusing on the inner summation, we can represent it in a more compact way by de
 \end{align}
 Equation~\ref{eq:pkquadmult} is then rewritten as
 \begin{align}
-  \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s} \right).
+  \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{ij} x_{r} x_{s} \right).
 \end{align}
 The coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
 \begin{align}
