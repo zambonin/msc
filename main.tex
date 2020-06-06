@@ -514,13 +514,13 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 \subsubsection{Key generation.}
 
 Since Oil--Vinegar schemes are based on the bipolar construction, the private key is composed of a central map $\mathcal{C}$ and a linear transformation $\mathcal{L}_{2}$ to hide its structure. We remark that the linear transformation $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p.~71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key. Then, let
-\begin{align}\ref{eq:skov}
+\begin{align}\label{eq:skov}
   \mathsf{sk} = (\mathcal{C}, \mathcal{L}_{2})
     \random \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
-\begin{align}\ref{eq:pkov}
+\begin{align}\label{eq:pkov}
   \mathsf{pk} = \mathcal{P} \in \mathsf{MQ}(v, o).
 \end{align}
 
@@ -836,13 +836,15 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
 
-Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:skov} and~\ref{eq:pkov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$, and respectively $h^{(k)} \in \mathcal{P}$, be denoted as
+Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:skov} and~\ref{eq:pkov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$ be denoted as
 \begin{align}
   \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}
-  \quad \text{ and } \quad
+\end{align}
+per Equation~\ref{eq:ov}. Further, we analogously denote $h^{(k)} \in \mathcal{P}$ as
+\begin{align}\label{eq:pkquad}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
-Further, let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, the quadratic part of $h^{(k)}$ may be rewritten as
+Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation~\ref{eq:pkquad} may be rewritten as
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{s} \right).
 \end{align}
