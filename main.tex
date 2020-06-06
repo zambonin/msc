@@ -870,9 +870,9 @@ The process for Rainbow is analogous, with a small difference due to the existen
 \begin{align}\label{eq:linear}
   q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{ij}, 1 \leq i, j \leq m$, then
+and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{kl}, 1 \leq k, l \leq m$, then
 \begin{align}
-  \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} e_{i - v{1}\; j - v_{1}}.
+  \nu_{ij}^{(k)} = \sum_{k = 1}^{m} \sum_{l = 1}^{m} e_{kl} q_{ij}^{(k)}.
 \end{align}
 
 A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
