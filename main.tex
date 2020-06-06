@@ -336,7 +336,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
 
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:poly-map} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
 
-\begin{definition}\label{def:poly-sys-quad}
+\begin{definition}\label{def:quad-poly-sys}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $f^{(1)}, \dots, f^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
   \begin{align}
     \begin{split}
@@ -368,7 +368,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 
 In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
-\begin{definition}\label{def:matquad}
+\begin{definition}\label{def:poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     \overline{M}(f^{(i)}) = 
@@ -383,7 +383,7 @@ In the context of multivariate cryptography, monomial ordering is used for insta
   such that $f^{(i)} = \mathbf{x} \cdot \overline{M}(f^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n}, 1)$.
 \end{definition}
 
-\begin{definition}\label{def:mathom}
+\begin{definition}\label{def:quad-poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(n, m)$, the \emph{matrix representation of a homogeneous quadratic polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
     M(f^{(i)}) = 
@@ -396,11 +396,11 @@ In the context of multivariate cryptography, monomial ordering is used for insta
   such that $f^{(i)} = \mathbf{x} \cdot M(f^{(i)}) \cdot \mathbf{x}^{\textsf{T}}$ for $\mathbf{x} = (x_{1}, \dots, x_{n})$. Its unique \emph{symmetric} version is given by $\widetilde{M}(f^{(i)}) = M(f^{(i)}) + M(f^{(i)})^{\mathsf{T}}$.
 \end{definition}
 
-While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:matquad} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:mathom} has a diagonal of zeroes if the underlying field characteristic is even. 
+While the matrix representation of $\mathcal{P}$ itself is highly dependant on a monomial ordering, the matrix of Definition~\ref{def:poly-mat-repr} does not necessarily need any. However, the resulting product may differ from the original polynomial in this aspect. Further, we remark that the symmetric matrix of Definition~\ref{def:quad-poly-mat-repr} has a diagonal of zeroes if the underlying field characteristic is even. 
 
 We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea.
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:poly-sys-quad}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quad-poly-sys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We note that, as a consequence of the degree choice for multivariate cryptography, this is the only possible arrangement of maps. In other words, there always must be a quadratic trapdoor hidden by linear maps such that the composition of the functions is still a quadratic map. Further, the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -479,7 +479,7 @@ In this Section, we describe the classic schemes based on the Oil--Vinegar trapd
 
 The idea of the original Oil and Vinegar signature scheme is to build the central map with two sets of variables, \emph{vinegar and oil variables}, such that the multivariate quadratic polynomials do not feature any quadratic oil terms. Thus, by choosing the values of vinegar variables, the systems become linear in the oil variables and consequently easy to solve.
 
-\begin{definition}\label{def:ovp}
+\begin{definition}\label{def:oil-vinegar-poly}
   Given $v, o \in \mathbb{N}$ and let $V = \{1, \dots, v\}$, $O = \{v + 1, \dots, v + o\}$ and $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o})$. Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
   \begin{align}
     \begin{split}
@@ -497,7 +497,7 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
   Let $n = v + o$. A polynomial map $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{o}$ consisting of $f^{(1)}, \dots, f^{(o)} \in \mathsf{OVP}(v, o)$ is an \emph{Oil--Vinegar polynomial map}. The set of all such maps is defined as $\mathsf{OV}(v, o)$. If all polynomials are homogeneous quadratic, then the respective set is $\mathsf{OVH}(v, o)$.
 \end{definition}
 
-The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:ovp} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
+The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:oil-vinegar-poly} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
 
 \begin{definition}
   Given a homogeneous quadratic Oil--Vinegar polynomial $f^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
@@ -514,13 +514,13 @@ We are now ready to describe the Oil--Vinegar signature scheme.
 \subsubsection{Key generation.}
 
 Since Oil--Vinegar schemes are based on the bipolar construction, the private key is composed of a central map $\mathcal{C}$ and a linear transformation $\mathcal{L}_{2}$ to hide its structure. We remark that the linear transformation $\mathcal{L}_{1} = \mathsf{id}$ always, since it simply performs a permutation of its coefficients~\cite[p.~71]{Thomae:201306} and is not relevant to the security of the scheme. Hence, we do not consider $\mathcal{L}_{1}$ to be part of the private key. Then, let
-\begin{align}\label{eq:skov}
+\begin{align}\label{eq:sk-uov}
   \mathsf{sk} = (\mathcal{C}, \mathcal{L}_{2})
     \random \mathsf{OV}(v, o) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same rationale occurs for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
-\begin{align}\label{eq:pkov}
+\begin{align}\label{eq:pk-uov}
   \mathsf{pk} = \mathcal{P} \in \mathsf{MQ}(v, o).
 \end{align}
 
@@ -615,7 +615,7 @@ and obtain a reduction in the private key size of a factor $\frac{n^{2}}{v o}$.
 The Rainbow signature scheme, originally defined in~\cite{Ding:200506}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
 Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{\ell} = \{1, \dots, v_{\ell}\}$ and oil variables as $O_{\ell} = \{v_{\ell} + 1, \dots, v_{\ell + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{\ell} = V_{\ell + 1} - V_{\ell}$. Let $o_{\ell} = |O_{\ell}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{\ell}, o_{\ell})$, that is,
-\begin{align}\label{eq:ov}
+\begin{align}\label{eq:oil-vinegar-space}
   \begin{split}
     \sum_{i \in V_{\ell}} \sum_{j \in V_{\ell}} \alpha_{ij} x_{i} x_{j}
       + \sum_{i \in V_{\ell}} \sum_{j \in O_{\ell}} \beta_{ij} x_{i} x_{j}
@@ -628,13 +628,13 @@ We define $\mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) = \mathsf{OV}(v_{1}, o_{1}) \
 \subsubsection{Key generation.}
 
 In the case of Rainbow, all three maps are needed. Therefore,
-\begin{align}\label{eq:skrb}
+\begin{align}\label{eq:sk-rainbow}
   \mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
     \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
 For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
-\begin{align}\label{eq:pkrb}
+\begin{align}\label{eq:pk-rainbow}
   \mathsf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
 \end{align}
 With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
@@ -668,7 +668,7 @@ To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mat
 \vspace{4mm}\noindent
 The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
-Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:ov}. In other words,
+Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:oil-vinegar-space}. In other words,
 \begin{align}\label{eq:priv}
   \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
@@ -836,7 +836,7 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
 
-Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:skov} and~\ref{eq:pkov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Equation~\ref{eq:ov}, be denoted as
+Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:sk-uov} and~\ref{eq:pk-uov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Equation~\ref{eq:oil-vinegar-space}, be denoted as
 \begin{align}
   \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
@@ -866,7 +866,7 @@ If we recall Equation~\ref{eq:pkquad}, the coefficient associated with the monom
 \end{align}
 By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~94]{Petzoldt:201307}.
 
-The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{eq:skrb} and~\ref{eq:pkrb} show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
+The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{eq:sk-rainbow} and~\ref{eq:pk-rainbow} show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
 \begin{align}
   q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
@@ -1015,7 +1015,7 @@ In the context of Rainbow, the number of layers directly influences $\Pi(q, n)$,
 \end{align}
 more accurately represents the upper bound for these chances. We denote tbe common case of $u = 2$ as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$, and we observe that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a lower probability of success in the signature generation preimage step.
 
-Parameters for Rainbow are selected according to a number of restrictions, imposed by attacks that may harm the security of the scheme. Furthermore, we recall Definition~\ref{def:mathom}, which states that the central map can be represented as square matrices of order $n$. Hence, we choose $56 \leq n \leq 90$ according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the probability that a random matrix is invertible in finite fields of typical orders. Figure~\ref{fig:1} depicts the lowest probabilities computed for the appropriate range. For instance, $\Pi(16, 90) \approx 93.3594\%$ and $\Pi(256, 56) \approx 99.6078\%$. To simulate layering, we set $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
+Parameters for Rainbow are selected according to a number of restrictions, imposed by attacks that may harm the security of the scheme. Furthermore, we recall Definition~\ref{def:quad-poly-mat-repr}, which states that the central map can be represented as square matrices of order $n$. Hence, we choose $56 \leq n \leq 90$ according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the probability that a random matrix is invertible in finite fields of typical orders. Figure~\ref{fig:1} depicts the lowest probabilities computed for the appropriate range. For instance, $\Pi(16, 90) \approx 93.3594\%$ and $\Pi(256, 56) \approx 99.6078\%$. To simulate layering, we set $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
 
 \begin{figure}[htbp]
   \subfloat[
