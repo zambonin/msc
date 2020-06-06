@@ -857,7 +857,7 @@ Focusing on the inner summation, we can represent it as
     d_{ir} \cdot d_{js} + d_{is} \cdot d_{jr}   & \text{otherwise}.
   \end{dcases}
 \end{align}
-Rewriting the public polynomial, we have
+Rewriting the public polynomial of Equation~\ref{}, we have
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s} \right).
 \end{align}
@@ -867,6 +867,8 @@ A single coefficient from that polynomial is thus exactly
 \end{align}
 
 %  Since $\mathcal{L}_{2}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$.
+
+By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{} becomes a linear relation between the coefficients of the private and public keys. 
 
 We denote $\widetilde{Q}$ as a
 matrix containing only coefficients of the quadratic monomials from
