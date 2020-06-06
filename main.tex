@@ -28,7 +28,7 @@
 
 \tableofcontents*
 
-\chapter{Introduction}\label{chapter:intro}
+\chapter{Introduction}\label{ch:intro}
 
 % TODO write some pages here introducing the subject and problems
 % TODO define hypothesis, objectives and scope before searching the literature
@@ -61,7 +61,7 @@ In the ELSA variant~\cite{Shim:201712}, a hidden layer of quadratic equations is
 
 Some non intrusive approaches are also found in the literature. The authors of Lite-Rainbow-0~\cite{Shim:201512} propose the replacement of the entire private key with a small pseudorandom number generator (PRNG) seed. This shortens the private key by a factor of approximately $99.8\%$, but evidently increases the cost for signature generation. In~\cite{Borges:201209}, it is suggested to use the RC4 stream cipher in the private key generation of UOV~\cite{Borges:201209}, presenting analogous decreases in the private key size but no noticeable effects on signature generation performance. Such approach also works with Rainbow~\cite{Dornelles:201910}. A similar result is also given in another work~\cite{Seo:201403}, in which AES-CTR is employed as the PRNG of choice.
 
-The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the proposal by the authors of~\cite{Zambonin:201907} is discussed in more detail in~\cite{Bittencourt:201911} and further expanded in Chapter~\ref{chapter:eta}.
+The precomputation of UOV signatures such that the private key is not required is proposed in~\cite{Chen:201603}. This ``online-offline'' approach does not modify the key itself but can be used to yield signatures without the need to load the private key, thus reducing total storage requirements. Finally, the proposal by the authors of~\cite{Zambonin:201907} is discussed in more detail in~\cite{Bittencourt:201911} and further expanded in Chapter~\ref{ch:eta}.
 
 \subsection{Improvements to public key size}\label{subsec:pub}
 
@@ -85,11 +85,11 @@ A modification that consists of adding cross-terms of oil variables in the last 
 
 The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. Repaired versions CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
-It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Chapter~\ref{chapter:eta}.
+It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Chapter~\ref{ch:eta}.
 
 % TODO table w/ schemes
 
-\chapter{Mathematical background}\label{chapter:math}
+\chapter{Mathematical background}\label{ch:math}
 
 In this chapter, we give the mathematical toolbox necessary in order to fully comprehend the remainder of this work. In Section~\ref{sec:algebra}, we define basic algebraic structures that rule the operations of mathematical structures within our scope. In Section~\ref{sec:mult}, a brief panorama of concepts associated with multivariate cryptography is given. In Section~\ref{sec:ov}, we discuss the Unbalanced Oil and Vinegar signature scheme, its generalized form Rainbow, and how this trapdoor is impacted by cryptanalytic methods.
 
@@ -132,15 +132,15 @@ We are particularly interested in specific types of groups and transformations b
 
 If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. Furthermore, often it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below.
 
-\begin{definition}\label{def:ghom}
+\begin{definition}\label{def:group-hom}
   Given two groups $\mathsf{G} = (G, \star), \mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is a \emph{homomorphism} if $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
 \end{definition}
 
-\begin{definition}\label{def:morph}
+\begin{definition}\label{def:group-iso}
   Given two groups $\mathsf{G}$ and $\mathsf{H}$, if a homomorphism $\varphi : \mathsf{G} \to \mathsf{H}$ is a bijection, it is an \emph{isomorphism}. If $\mathsf{G} = \mathsf{H}$, $\varphi$ is an \emph{endomorphism}. If the function is simultaneously an isomorphism and an endomorphism, it is an \emph{automorphism}.
 \end{definition}
 
-\begin{proposition}\label{prop:autgroup}
+\begin{proposition}\label{prop:group-aut}
   Given a group $\mathsf{G}$ and the set of all its automorphisms $\mathsf{Aut}_{\mathsf{G}}$, then $\mathsf{Aut}(\mathsf{G}) = (\mathsf{Aut}_{\mathsf{G}}, \circ)$ is a group.
 \end{proposition}
 
@@ -227,7 +227,7 @@ We remark that a polynomial by itself is simply a mathematical expression, but t
 
 Several polynomials may be used to model a complex structure in which they behave concurrently. It is thus useful to have a relevant mathematical concept to represent this situation.
 
-\begin{definition}\label{def:polsys}
+\begin{definition}\label{def:poly-sys}
   Given $m \in \mathbb{N}$, a \emph{polynomial system} is a simultaneous sequence of polynomial equations $f^{(1)}(\mathbf{x}) = 0, \dots, f^{(m)}(\mathbf{x}) = 0$, or
   \begin{align}
     \begin{dcases}
@@ -254,9 +254,9 @@ To generalize the notion of grouping polynomials into a system, it is useful to 
   \end{enumerate}
 \end{definition}
 
-Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:polsys} and create a function of several polynomials.
+Vector spaces are the object of study of linear algebra. The members of $V$ are \emph{vectors}, and the members of $\mathbb{F}$ are \emph{scalars}. It follows that the binary operation $\bm{\times}$ is the \emph{scalar multiplication}. If clear from the context, we hereafter name vector spaces by capital boldface letters, without mentioning the associated binary operations. Given $c \in \mathbb{N}$, if members of $V$ are $c$-tuples of elements of $\mathbb{F}$, the resulting vector space is a \emph{coordinate space} represented by $\mathbb{F}^{c}$, with component-wise addition, subtraction and scalar multiplication. We can thus recall Definition~\ref{def:poly-sys} and create a function of several polynomials.
 
-\begin{definition}\label{def:polymap}
+\begin{definition}\label{def:poly-map}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $f^{(1)}, \dots, f^{(m)} \in \mathsf{F}$, a \emph{polynomial map} is a function $j : \mathbb{F}^{n} \to \mathbb{F}^{m}$ defined by an $m$-tuple of polynomial functions
   \begin{align}
     j(x_{1}, \dots, x_{n}) = (f^{(1)}(x_{1}, \dots, x_{n}), \dots, f^{(m)}(x_{1}, \dots, x_{n})).
@@ -275,7 +275,7 @@ We give other useful traits of a vector space before returning to polynomial map
 
 There always exists at least one basis for a vector space~\cite[p.~409, Prop.~1]{Dummit:2003}. Indeed, it is a compact way of representing the entire set of vectors. For example, the \emph{standard basis} is a sequence of unit vectors $(1, 0, \dots, 0), \dots, (0, \dots, 0, 1)$ over $\mathbb{F}^{n}$. The ordered arrangement of the standard basis yields the \emph{identity matrix} $\mathbf{I}_{n}$. Furthermore, all bases have the same number of elements~\cite[p.~411, Cor.~4]{Dummit:2003}, which is the \emph{dimension} of the vector space, or $\dim(\cdot)$. 
 
-Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:ghom}. The general form of such functions is presented below.
+Analogously to group- and ring-like structures, there also exist mappings between vector spaces that must ``preserve'' both binary operations, akin to Definition~\ref{def:group-hom}. The general form of such functions is presented below.
 
 \begin{definition}
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $s \in \mathbb{F}$, a function $\phi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
@@ -286,7 +286,7 @@ Analogously to group- and ring-like structures, there also exist mappings betwee
   \end{enumerate} 
 \end{definition}
 
-Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:morph} and Proposition~\ref{prop:autgroup} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying the usual function composition operation. Such group is also known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
+Such functions between coordinate spaces can be represented by polynomial maps. A trivial example of a linear transformation is the identity function $\mathsf{id} : \mathbf{V} \to \mathbf{V}$ such that $\mathsf{id}(\mathbf{v_{1}}) = \mathbf{v_{1}}$. Moreover, if $\dim \mathbf{V} = \dim \mathbf{V'}$, there may exist an inverse function $\phi^{-1} : \mathbf{V'} \to \mathbf{V}$ such that $\phi \circ \phi^{-1} = \mathsf{id}$. We remark that Definition~\ref{def:group-iso} and Proposition~\ref{prop:group-aut} are analogous in the setting of vector spaces. Indeed, there exists an automorphism group $\mathsf{Aut}(\mathbf{V})$, which is the set of all invertible linear transformations carrying the usual function composition operation. Such group is also known as the \emph{general linear group} $\mathsf{GL}(\mathbf{V})$.
 
 \begin{proposition}[{\cite[p.~418, Cor.~14]{Dummit:2003}}]
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$, $\mathsf{GL}_{n}(\mathbb{F})$}, be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\psi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
@@ -327,16 +327,16 @@ This mathematical framework ensures authenticity and non-repudiation of the send
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
 \begin{definition}\label{def:posso}
-  Given a polynomial system of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is the \emph{polynomial system solving problem}, or \textsf{PoSSo}.
+  Given a polynomial system of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is the \emph{polynomial system solving problem}, or \textsf{PoSSo}.
 \end{definition}
 
 \begin{theorem}[{\cite[Appendix A]{Patarin:199711}}]
-  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:polsys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
+  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
-Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:polymap} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
+Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:poly-map} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
 
-\begin{definition}\label{def:quadsys}
+\begin{definition}\label{def:poly-sys-quad}
   Given $n, m \in \mathbb{N}$, a polynomial ring $\mathsf{F} = \mathbb{F}[x_{1}, \dots, x_{n}]$ and $f^{(1)}, \dots, f^{(m)} \in \mathsf{F}$, a \emph{system of multivariate quadratic polynomials over $\mathbb{F}$} is defined as
   \begin{align}
     \begin{split}
@@ -400,7 +400,7 @@ While the matrix representation of $\mathcal{P}$ itself is highly dependant on a
 
 We now turn to the most used framework to build cryptosystems in multivariate cryptography. The \emph{bipolar construction}, due to its elegant twofold nature, yields the possibility of building public-key encryption or signature schemes with the same idea.
 
-Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:quadsys}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
+Consider $n, m \in \mathbb{N}$ the number of variables and equations as in Definition~\ref{def:poly-sys-quad}, and $\mathcal{C} : \mathbb{F}^{n} \to \mathbb{F}^{m} \in \mathsf{MQ}(n, m)$. This is the \emph{central map} and regarded as the trapdoor, that is, a function that is easy to compute but difficult to invert without particular information. Evidently, it shall be hidden to prevent signature forgery. Two \emph{lateral maps} $\mathcal{L}_{1} : \mathbb{F}^{m} \to \mathbb{F}^{m} \in \mathsf{GL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} : \mathbb{F}^{n} \to \mathbb{F}^{n} \in \mathsf{GL}(\mathbb{F}^{n})$ are used to hide the structure of $\mathcal{C}$, by creating the composition $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ that looks random, making recovery of the central map hard. 
 
 The sequence of operations in the bipolar construction is summarized in Figure~\ref{fig:bipolar}. It depicts the steps used to operate on a message $\mathbf{h}$ or ciphertext $\mathbf{z}$. We note that, as a consequence of the degree choice for multivariate cryptography, this is the only possible arrangement of maps. In other words, there always must be a quadratic trapdoor hidden by linear maps such that the composition of the functions is still a quadratic map. Further, the symbol $\mathcal{C}'$ is an abuse of language that means precisely the act of obtaining the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. Since usually $m \neq n$, by definition the central map cannot be invertible, and thus using the symbol $\mathcal{C}^{-1}$ could be misleading.
 
@@ -536,7 +536,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{chapter:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{ch:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known with a correct choice of parameters, to the date of writing. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
 
 \vspace{4mm}\noindent
 The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
@@ -796,7 +796,7 @@ If $\mathcal{L}_{2}^{(1)}$ and $\omega^{(3)}$ are invertible, which once again h
 \end{align}
 The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} o_{2}} + \frac{n^{2}}{v_{1} o_{1} + v_{2} o_{2}}$.
 
-\chapter{New approach to reduce private keys}\label{chapter:eta}
+\chapter{New approach to reduce private keys}\label{ch:eta}
 
 We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5. \emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.}
 
@@ -874,7 +874,7 @@ and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{kl}, 1 
 \begin{align}
   \nu_{ij}^{(k)} = \sum_{l = 1}^{m} e_{kl} q_{ij}^{(k)}.
 \end{align}
-We note that the performance of this method is lower than that of Rainbow-$\eta_{1}$, due to the efficiency of PRNGs and the inherent amount of matrix multiplications to recreate $\mathcal{C}$. However, it is a general technique that works on all Rainbow-like schemes if the polynomials in the central map are homogeneous quadratic, or their linear and constant parts are stored separately.
+We note that the performance of this method is lower than that of Rainbow-$\eta_{1}$, due to the efficiency of PRNGs and the inherent amount of matrix multiplications to recreate $\mathcal{C}$. However, it is a general technique that works on all Rainbow-like schemes if the polynomials in the central map are homogeneous quadratic, or their linear and constant parts are independently stored.
 
 \subsubsection{Key generation.}
 
@@ -894,7 +894,7 @@ This step does not change significantly from the original scheme. Consider a mes
 
 This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
-\subsection{Application to the EU-CMA variant}\label{subsec:efcma}
+\subsection{Application to the EU-CMA variant}\label{subsec:eucma}
 
 The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the target security model.
 
@@ -963,7 +963,7 @@ An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathca
 
 \subsubsection{UOV attack.} 
 
-The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. This attack was originally created by Kipnis and Shamir~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key by means of finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications. We discuss the UOV attack in more detail on Chapter~\ref{chapter:attack}.
+The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. This attack was originally created by Kipnis and Shamir~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key by means of finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $o_{u}^{4} \cdot q^{n - 1 - 2 \cdot o_{u}}$ field multiplications. We discuss the UOV attack in more detail on Chapter~\ref{ch:attack}.
 
 \subsubsection{MinRank attack.} 
 
@@ -1191,10 +1191,10 @@ The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. 
 
 We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary greatly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
-\chapter{Variant of Kipnis--Shamir attack}\label{chapter:attack}
+\chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
 % TODO expand
 
-As seen in Chapter~\ref{chapter:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
+As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
 
 The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:eta}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
 
