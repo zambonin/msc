@@ -836,8 +836,6 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
 
-% TODO expand
-% -----8<-----
 Consider the key pair of a UOV signature scheme as described in Equation~\ref{}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$, and respectively $h^{(k)} \in \mathcal{P}$, be denoted as
 \begin{align}
   \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}
@@ -876,34 +874,6 @@ and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{ij}, 1 
   \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} e_{k - v{1}, l - v_{1}}.
 \end{align}
 
-We denote $\widetilde{Q}$ as a
-matrix containing only coefficients of the quadratic monomials from
-$\mathcal{Q}$, and define $\widetilde{F}$ and $\widetilde{P}$ similarly.
-Further let $\widetilde{T}$ be the matrix representation of $\mathcal{L}_{2}$, with
-coefficients $t_{ij}, 1 \leq i, j \leq n$, and define $\widetilde{S}$
-analogously. By fixing $t_{ij}$, the composition of $\mathcal{P}$ actually
-represents a linear relation between coefficients $q_{ij}^{k}, f_{ij}^{k}$ of
-the monomial $x_{i} \cdot x_{j}$ in the $k$-th component of, respectively,
-$\mathcal{Q}$ and $\mathcal{C}$, with the form
-\begin{align}
-  \begin{split}
-    q_{ij}^{k} = \sum_{r = 1}^{n} \sum_{s = r}^{n}
-      \alpha_{ij}^{rs} \cdot f_{rs}^{k}, \quad
-      \alpha_{ij}^{rs} = 
-      \begin{dcases}
-        t_{ri} \cdot t_{si}                         & \text{if } i = j, \\
-        t_{ri} \cdot t_{sj} + t_{rj} \cdot t_{si}   & \text{otherwise},
-      \end{dcases} \\
-      v_{1} \leq k \leq n.
-  \end{split}
-\end{align}
-This can be simplified, since $\mathcal{C}$ does not allow quadratic monomials
-with only oil variables, and results in
-\begin{align}
-  q_{ij}^{k} = \sum_{r = 1}^{v_{l}} \sum_{s = r}^{v_{l + 1}}
-    \alpha_{ij}^{rs} \cdot f_{rs}^{k},
-      \quad k \in O_{l}, \quad 1 \leq l \leq u.
-\end{align}
 A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
 the previous equations. Given a particular monomial ordering, let
 $A = (\alpha_{ij}^{rs})$ such that $1 \leq i, j, r, s \leq n$, where
@@ -912,8 +882,6 @@ have that $\widetilde{P} = \widetilde{S} \cdot \widetilde{Q}$ and
 $\widetilde{Q} = \widetilde{F} \cdot A^{\text{T}}$. We note that the
 performance of this method is lower than that of Rainbow-$\eta_{1}$. However,
 it is a general technique that works on all Rainbow-like schemes.
-
-% -----8<-----
 
 \subsubsection{Key generation.}
 
