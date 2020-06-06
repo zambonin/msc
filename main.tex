@@ -31,7 +31,7 @@
 \chapter{Introduction}\label{ch:intro}
 
 % TODO write some pages here introducing the subject and problems
-% TODO define hypothesis, objectives and scope before searching the literature
+%      define hypothesis, objectives and scope before searching the literature
 
 \section{Related work}\label{sec:related}
 
@@ -528,7 +528,7 @@ In the case of $\mathcal{C}$, the random choice amounts to picking all coefficie
 
 Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F}^{o}$, any message $M \in \{0, 1\}^{*}$, and obtain the message digest $\mathbf{h} = \mathcal{H}(M)$. The Oil--Vinegar trapdoor is built to allow the signer to randomly choose vinegar variables $x_{1}, \dots, x_{v}$ such that a preimage of the message digest can be obtained, by solving for the remaining oil variables $\mathcal{C}(x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o}) = \mathbf{h}$. 
 
-To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = \mathbf{h}$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:experiments}, such that special methods for solving linear systems are not needed. 
+To sign a message, one chooses $(x_{1}, \dots, x_{v}) \random \mathbb{F}^{v}$, substitutes these values into $\mathcal{C}(\mathbf{x}) = \mathbf{h}$ and solves the resulting linear system with, for instance, Gaussian elimination, obtaining the remaining values of $\mathbf{x}$. Usual parameters for Oil--Vinegar schemes are small enough, as per Subsection~\ref{sec:exp}, such that special methods for solving linear systems are not needed. 
 
 If the linear system is inconsistent due to a bad choice of vinegar variables, new ones are simply picked again. This happens with a very low probability, as seen in Subsection~\ref{subsec:invert}. Then, the signature is the result of the inverse linear transformation applied to the preimage. In other words, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
@@ -800,7 +800,7 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 
 We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and thus, of the entire private key. We analyze the security implications of this strategy and present a modification to the Rainbow scheme, enabling a private key size reduction of up to $85\%$ with secure parameters. Additionally, this framework can be applied on top of already existing schemes that shorten either private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5. \emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.}
 
-In Section~\ref{sec:mod}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:experiments}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
+In Section~\ref{sec:mod}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:exp}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
 
 \section{Modifications to the original scheme}\label{sec:mod}
 
@@ -841,11 +841,11 @@ Consider the key pair of a UOV signature scheme as described in Equations~\ref{e
   \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
 Further, we analogously denote the quadratic part of $h^{(k)} \in \mathcal{P}$ as
-\begin{align}\label{eq:pkquad}
+\begin{align}\label{eq:quad-part-uov-pk}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
-Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation~\ref{eq:pkquad} may be rewritten as
-\begin{align}\label{eq:pkquadmult}
+Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation~\ref{eq:quad-part-uov-pk} may be rewritten as
+\begin{align}\label{eq:quad-part-uov-pk-subst}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{s} \right).
 \end{align}
 Focusing on the inner summation, we can represent the matrix multiplication by $\psi(\mathcal{L}_{2})$ in a compact way by letting
@@ -856,15 +856,15 @@ Focusing on the inner summation, we can represent the matrix multiplication by $
     d_{ri} \cdot d_{sj} + d_{si} \cdot d_{rj}   & \text{otherwise},
   \end{dcases}
 \end{align}
-allowing the rewrite of Equation~\ref{eq:pkquadmult} as
+allowing the rewrite of Equation~\ref{eq:quad-part-uov-pk-subst} as
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)} x_{r} x_{s} \right).
 \end{align}
-If we recall Equation~\ref{eq:pkquad}, the coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
-\begin{align}\label{eq:linear}
+If we recall Equation~\ref{eq:quad-part-uov-pk}, the coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
+\begin{align}\label{eq:sk-pk-linear-rel}
   \nu_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~94]{Petzoldt:201307}.
+By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:sk-pk-linear-rel} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~94]{Petzoldt:201307}.
 
 The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{eq:sk-rainbow} and~\ref{eq:pk-rainbow} show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
 \begin{align}
@@ -914,7 +914,7 @@ The Rainbow submission to the second round of the NIST standardization process~\
 
 Given a public key, the adversary can obtain signatures from at most $Q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature that were not in a previous query. The \textsf{EU-CMA} model is considered the strongest notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
 
-These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:experiments}.
+These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:exp}.
 
 \subsubsection{Key generation.}
 
@@ -1015,23 +1015,23 @@ In the context of Rainbow, the number of layers directly influences $\Pi(q, n)$,
 \end{align}
 more accurately represents the upper bound for these chances. We denote tbe common case of $u = 2$ as $\Pi(q, n, 2) = \widetilde{\Pi}(q, n)$, and we observe that $\Pi(q, n, 1) = \Pi(q, n)$. Hence, schemes with more layers have a lower probability of success in the signature generation preimage step.
 
-Parameters for Rainbow are selected according to a number of restrictions, imposed by attacks that may harm the security of the scheme. Furthermore, we recall Definition~\ref{def:quad-poly-mat-repr}, which states that the central map can be represented as square matrices of order $n$. Hence, we choose $56 \leq n \leq 90$ according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the probability that a random matrix is invertible in finite fields of typical orders. Figure~\ref{fig:1} depicts the lowest probabilities computed for the appropriate range. For instance, $\Pi(16, 90) \approx 93.3594\%$ and $\Pi(256, 56) \approx 99.6078\%$. To simulate layering, we set $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
+Parameters for Rainbow are selected according to a number of restrictions, imposed by attacks that may harm the security of the scheme. Furthermore, we recall Definition~\ref{def:quad-poly-mat-repr}, which states that the central map can be represented as square matrices of order $n$. Hence, we choose $56 \leq n \leq 90$ according to~\cite[Tables~6.4,~6.8,~6.13]{Petzoldt:201307} and calculate the probability that a random matrix is invertible in finite fields of typical orders. Figure~\ref{fig:prob-inv} depicts the lowest probabilities computed for the appropriate range. For instance, $\Pi(16, 90) \approx 93.3594\%$ and $\Pi(256, 56) \approx 99.6078\%$. To simulate layering, we set $v_{i} = i \cdot \ceil{\frac{n}{u}}$ and approximate to $n$ when needed.
 
 \begin{figure}[htbp]
   \subfloat[
     $\argmin_{56 \leq n \leq 90}$ of $\Pi(q, n)$
-    and $\widetilde{\Pi}(q, n)$.\label{fig:1a}
+    and $\widetilde{\Pi}(q, n)$.\label{fig:prob-inv-normal-size}
   ]{
     % \includegraphics[width=.49\columnwidth]{charts/inv-prob/inv-prob}
   }
   \subfloat[
-    Figure~\ref{fig:1a}, with $q \geq 16$.\label{fig:1b}
+    Figure~\ref{fig:prob-inv-normal-size}, with $q \geq 16$.\label{fig:prob-inv-zoomed}
   ]{
     % \includegraphics[width=.458\columnwidth]{charts/inv-prob/inv-prob-zoom}
   }
   \caption{Probability of obtaining $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$
     with $2 \leq q \leq 256$ and $q$ a prime power, given the
-    quantity of layers of Rainbow.}\label{fig:1}
+    quantity of layers of Rainbow.}\label{fig:prob-inv}
 \end{figure}
 
 It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known series representation.
@@ -1044,7 +1044,7 @@ It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to obser
   \end{align}
 \end{theorem}
 
-By simply swapping signs in the exponents, we can use this identity and obtain a fast approximation of the probability when $n$ tends to infinity. We use the SageMath language, which offers arbitrary precision real numbers, to obtain these values and find out that, when $n \geq 56$, $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and $\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$. Thus, Figure~\ref{fig:1} also accurately reflects the behaviour of $\Pi(q)$, that is, current values of $n$ already reach effective upper bounds for this probability.
+By simply swapping signs in the exponents, we can use this identity and obtain a fast approximation of the probability when $n$ tends to infinity. We use the SageMath language, which offers arbitrary precision real numbers, to obtain these values and find out that, when $n \geq 56$, $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and $\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$. Thus, Figure~\ref{fig:prob-inv} also accurately reflects the behaviour of $\Pi(q)$, that is, current values of $n$ already reach effective upper bounds for this probability.
 
 Hence, we note that the inversion event happens almost surely. Moreover, this evidence shows that computing a preimage in order to sign a message happens at the first try with high probability in a wide range of Rainbow configurations. Therefore, the cost of a central map reconfiguration, in the case that chosen vinegar variables do not lead to an invertible central map, is amortized by the overwhelming probability that a signature is successfully generated.
 
@@ -1066,7 +1066,7 @@ Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to obser
   \end{align}
 \end{definition}
 
-Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of picking an element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, we expect that
+Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of randomly picking any element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, we expect that
 \begin{align}
   \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
 \end{align}
@@ -1074,24 +1074,24 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
 
 \begin{figure}[ht]
   \subfloat[
-    $d_{\sigma}(t)$ for $n = 42, v_{1} = 17$.\label{fig:2a}
+    $d_{\sigma}(t)$ for $n = 42, v_{1} = 17$.\label{fig:std-diff-n42}
   ]{
     % \includegraphics[width=.49\columnwidth]{charts/measure-diff/std-diff-n42}
   }
   \subfloat[
-    $d_{\sigma}(t)$ for $n = 90, v_{1} = 35$.\label{fig:2b}
+    $d_{\sigma}(t)$ for $n = 90, v_{1} = 35$.\label{fig:std-diff-n90}
   ]{
     % \includegraphics[width=.425\columnwidth]{charts/measure-diff/std-diff-n90}
   }
   \caption{Difference of standard deviations when $1 \leq t \leq 512$,
-    and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:2}
+    and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:std-diff}
 \end{figure}
 
-Let us denote the absolute difference between standard deviations for $t$ as $d_{\sigma}(t) = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$. Figure~\ref{fig:2} shows the amplitude of such values for various values of $q$ and $t$. We note that the largest values of $d_{\sigma}(t)$ occur for finite fields of higher orders and lower $t$. For instance, given the vector space $\mathbb{F}_{223}^{42}$, we have $d_{\sigma}(1) \approx 8.25$, and for a slightly higher $t$, we obtain a much lower value $d_{\sigma}(11) \approx 0.24$. This behaviour is also observed within absolute differences of means, defined analogously as $d_{\mu}(t)$. The vector space $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}(1) \approx 5.31$ and, comparatively, $d_{\mu}(1) \approx 1.14$.
+Let us denote the absolute difference between standard deviations for $t$ as $d_{\sigma}(t) = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$. Figure~\ref{fig:std-diff} shows the amplitude of such values for various values of $q$ and $t$. We note that the largest values of $d_{\sigma}(t)$ occur for finite fields of higher orders and lower $t$. For instance, given the vector space $\mathbb{F}_{223}^{42}$, we have $d_{\sigma}(1) \approx 8.25$, and for a slightly higher $t$, we obtain a much lower value $d_{\sigma}(11) \approx 0.24$. This behaviour is also observed within absolute differences of means, defined analogously as $d_{\mu}(t)$. The vector space $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}(1) \approx 5.31$ and, comparatively, $d_{\mu}(1) \approx 1.14$.
 
 The comparison of expected with obtained standard deviations and means in our experiments gives positive results and confirms the law of large numbers. Still, it is interesting to look at the diffusion of values within $\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and standard deviation for a known discrete uniform. We count the amount of values for each class $1 \leq k \leq q$ and refer to them by $Z_{t, k}$ and $\widetilde{Z}_{t, k}$. By the central limit theorem, these counts should be normally distributed.
 
-Figure~\ref{fig:3} shows the cumulative distribution function (CDF) plot and the Q-Q (quantile-quantile) plot for such samples. The expected CDF, as well as examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly distributed, with small variations due to the random generation of field elements. However, we note that this is due to the low number of classes, that is, the order of the finite field, and experimentally confirm that such discrepancies are largely reduced with $q = 2^{10}$.  
+Figure~\ref{fig:dist-plot} shows the cumulative distribution function (CDF) plot and the Q-Q (quantile-quantile) plot for such samples. The expected CDF, as well as examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly distributed, with small variations due to the random generation of field elements. However, we note that this is due to the low number of classes, that is, the order of the finite field, and experimentally confirm that such discrepancies are largely reduced with $q = 2^{10}$.  
 
 This is further confirmed by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts $Z_{t, k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$. Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. 
 
@@ -1103,23 +1103,23 @@ We have found experimentally that the lowest precision parameter $r = 1$ is stil
 
 \begin{figure}[htbp]
   \subfloat[
-    CDF plot.\label{fig:3a}
+    CDF plot.\label{fig:cdf-plot}
   ]{
     % \includegraphics[width=.49\columnwidth]{charts/diffusion/cdf-plot}
   }
   \subfloat[
-    Q-Q plot.\label{fig:3b}
+    Q-Q plot.\label{fig:qq-plot}
   ]{
     % \includegraphics[width=.47\columnwidth]{charts/diffusion/qq-plot}
   }
   \caption{Distribution of counts of elements in $Z_{t}$ and
     $\widetilde{Z}_{t}$ such that $t = 2^{16}$ for
-    $\mathbb{F}_{256}^{90}$.}\label{fig:3}
+    $\mathbb{F}_{256}^{90}$.}\label{fig:dist-plot}
 \end{figure}
 
 Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods.
 
-\section{Enhancement of existing schemes}\label{sec:experiments}
+\section{Enhancement of existing schemes}\label{sec:exp}
 
 Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. 
 
