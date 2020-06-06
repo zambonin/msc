@@ -631,11 +631,11 @@ In the case of Rainbow, all three maps are needed to securely hide the structure
     \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
-For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the inversion of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
+For the central map $\mathcal{C}$, the random choice is equivalent to randomly choosing polynomial systems from each $\mathsf{OV}(v_{\ell}, o_{\ell})$ with $1 \leq l \leq u$, analogous to multiple UOV systems. The linear transformations are random invertible matrices. Since each sequence of vinegar variables in a layer contains all oil and vinegar variables from the previous layer, this allows for the correct preimage calculation of $\mathcal{C}$. Let $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$ and
 \begin{align}\label{eq:pk-rainbow}
   \mathsf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
 \end{align}
-With $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
+For $u = 2$, the matrix representation of a homogeneous quadratic $\mathcal{C}$ is
 \begin{align}
   \begin{split}
     \widetilde{M}(f^{(i)}) =
@@ -663,8 +663,7 @@ Consider a cryptographic hash function $\mathcal{H} : \{0, 1\}^{*} \to \mathbb{F
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-\vspace{4mm}\noindent
-The remarks about UOV regarding the size of parameters, chances of failure in the inversion process and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
+The remarks about UOV regarding the size of parameters, chances of failure in the central map preimage calculation and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
 Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:oil-vinegar-space}. In other words,
 \begin{align}\label{eq:sk-size-rainbow}
@@ -931,7 +930,6 @@ Let $r \random {\{0, 1\}}^{w}$. Consider a message $M$ and obtain its digest by 
 
 We recall that $r$ is used to obtain $\mathbf{h}$ again. Then, if $\mathbf{h} = \mathcal{P}(\mathbf{z})$, the signature is valid, and otherwise invalid.
 
-\vspace{4mm}\noindent
 We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
 
 \begin{proposition}
@@ -983,7 +981,6 @@ Since only the message digest is signed in the case of multivariate signature sc
 
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
-\vspace{4mm}\noindent
 We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the only information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks.
 
 Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. However, we argue in Section~\ref{sec:stats} that signatures generated by our method are comparably random with respect to conventional Rainbow signatures. 
