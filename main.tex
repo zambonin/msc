@@ -1032,7 +1032,7 @@ It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to obser
 \begin{theorem}[{\cite[Theorem 14.3]{Apostol:2010}}]
   Euler's pentagonal number theorem states that
   \begin{align}
-    \sum_{k = 1}^{\infty} 1 - q^{k} = \sum_{k = -\infty}^{\infty}
+    \prod_{k = 1}^{\infty} 1 - q^{k} = \sum_{k = -\infty}^{\infty}
     {(-1)}^{k} q^{\frac{3 \cdot k^{2} + k}{2}}.
   \end{align}
 \end{theorem}
@@ -1043,14 +1043,14 @@ Hence, we note that the inversion event happens almost surely. Moreover, this ev
 
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
-Vinegar variables chosen to invert the central map are an integral part of the
-preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$, with $q$ the order of the base field. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
+Vinegar variables chosen to compute a preimage of the central map are an integral part of the
+preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. For instance, in the case $u = 2$, these make roughly a third of the output, considering common parameters for Rainbow. Further, we recall that there are approximately $q^{m}$ possibilities for $\mathbf{x}$, for any $\mathbb{F}_{q}$. Our proposal eliminates this choice by locking vinegar variables into the private key. Hence, it is essential to know if such variables create patterns in which private information may leak through a multi-target attack. Throughout this subsection, we use the SageMath PRNG, which implements a front-end to the \texttt{/dev/urandom} Linux kernel space generator.
 
 We recall that a message digest $\mathbf{h}$ is signed instead of the entire document. Evidently, a secure cryptographic hash function shall produce an output that appears to be random. The application $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$ does not affect this behaviour, since the map is also random. Hence, we need not simulate this calculation in our analysis. According to Subsection~\ref{subsec:invert}, the operation $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ creates a valid preimage with overwhelming probability, where the first $v_{1}$ elements of any $\mathbf{x}$ are the same.
 
-We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements in $\mathbb{F}$. When the first $v_{1}$ elements of the vector $\mathbf{x}$ are fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
+We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements of $\mathbb{F}_{q}$. When the first $v_{1}$ elements of the vector $\mathbf{x}$ are fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
 
-Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. Indeed, any element of $\mathbb{F}$ is equally likely to be picked to compose the matrix representation of a linear transformation, or be the coefficient of a monomial in an Oil--Vinegar polynomial.
+Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. Indeed, any element of $\mathbb{F}_{q}$ is equally likely to be picked to compose the matrix representation of a linear transformation, or be the coefficient of a monomial in an Oil--Vinegar polynomial.
 
 \begin{definition}
   Let $\mathcal{U}(a, b)$ be a discrete uniform distribution with $a, b \in \mathbb{Z},\; a \leq b$. The \emph{standard deviation of $\mathcal{U}(a, b)$} is
@@ -1059,7 +1059,7 @@ Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to obser
   \end{align}
 \end{definition}
 
-Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of randomly picking any element from $\mathbb{F}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, we expect that
+Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the chance of randomly picking any element from $\mathbb{F}_{q}$. We note that if the field characteristic is even, there exists a mapping to the natural numbers that allows this choice to be performed. Thus, we expect that
 \begin{align}
   \lim_{t \to \infty} \sigma(\widetilde{Z}_{t}) = \sqrt{\frac{q^{2} - 1}{12}},
 \end{align}
