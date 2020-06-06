@@ -878,7 +878,7 @@ We note that the performance of this method is lower than that of Rainbow-$\eta_
 The usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
 \begin{align}
   \begin{split}
-    \mathsf{sk}^{\eta_{2}} &= (\mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
+    \mathsf{sk}^{\eta_{2}} &= (\widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
     \mathsf{pk}^{\eta_{2}} &= \mathcal{P}.
   \end{split}
 \end{align}
@@ -944,10 +944,10 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 \begin{proof}
-  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:sk-size-rainbow}, and add $\widetilde{V}_{1}$ such that whole preimages are computed.
+  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:sk-size-rainbow}, and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
 \end{proof}
 
-The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
+The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. Moreover, $\widetilde{V}_{1}$ need not be stored, since $\overline{\mathcal{C}}$ is never recomputed. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
 
 \subsection{Security analysis}\label{subsec:analysis}
 
