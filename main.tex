@@ -867,10 +867,13 @@ The coefficient associated with the monomial $x_{i} x_{j}$ of the public key is 
 \end{align}
 By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. 
 
-The process for Rainbow is analogous, with a small difference due to the existence of two lateral maps. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{k}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. It is equal to the right-hand side of Equation~\ref{}.
-
+The process for Rainbow is analogous, with a small difference due to the existence of two lateral maps. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{k}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
 \begin{align}
-  \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} s_{k - v{1}, l - v_{1}}
+  q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} b_{rs}^{ij},
+\end{align}
+and 
+\begin{align}
+  \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} s_{k - v{1}, l - v_{1}}.
 \end{align}
 
 We denote $\widetilde{Q}$ as a
