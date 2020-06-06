@@ -838,15 +838,16 @@ This approach is based on the fact that a private key owner is able to recover t
 
 % TODO expand
 % -----8<-----
-Consider the key pair of a UOV signature scheme as described in Equation~\ref{}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$ be denoted as
+Consider the key pair of a UOV signature scheme as described in Equation~\ref{}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Per Equation~\ref{eq:ov}, let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C}$, and respectively $h^{(k)} \in \mathcal{P}$, be denoted as
 \begin{align}
-  \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}.
+  \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j} \text{ and }
+  \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
-Further, let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a matrix multiplication operation. The quadratic part of $k$-th polynomial $h^{(k)} \in \mathcal{P}$ is then denoted as
+Further, let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a matrix multiplication operation. The quadratic part of $h^{(k)} \in \mathcal{P}$ is then denoted as
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{j} \right).
 \end{align}
-Focusing on the inner summation, we have
+Focusing on the inner summation, we can represent it as
 \begin{align}
   \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} b_{rs}^{ij} x_{r} x_{s}, 
   \quad \text{where } b_{rs}^{ij} =
