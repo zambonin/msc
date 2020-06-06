@@ -866,13 +866,13 @@ If we recall Equation~\ref{eq:pkquad}, the coefficient associated with the monom
 \end{align}
 By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:linear} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed.
 
-The process for Rainbow is analogous, with a small difference due to the existence of two lateral maps. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{k}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
-\begin{align}
-  q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} b_{rs}^{ij},
+The process for Rainbow is analogous, with a small difference due to the existence of two lateral maps. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
+\begin{align}\label{eq:linear}
+  q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{ij}, 1 \leq i, j \leq n$, then
+and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{ij}, 1 \leq i, j \leq m$, then
 \begin{align}
-  \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} e_{k - v{1}, l - v_{1}}.
+  \nu_{ij}^{(k)} = \sum_{l = v_{1} + 1}^{n} q_{ij}^{(l)} e_{i - v{1}\; j - v_{1}}.
 \end{align}
 
 A square matrix of order $\frac{n^{2} + n}{2}$ is created to further streamline
