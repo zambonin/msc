@@ -1082,17 +1082,11 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
 
 Let us denote the absolute difference between standard deviations for $t$ as $d_{\sigma}(t) = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$. Figure~\ref{fig:std-diff} shows the amplitude of such values for various values of $q$ and $t$. We note that the largest values of $d_{\sigma}(t)$ occur for finite fields of higher orders and lower $t$. For instance, given the vector space $\mathbb{F}_{223}^{42}$, we have $d_{\sigma}(1) \approx 8.25$, and for a slightly higher $t$, we obtain a much lower value $d_{\sigma}(11) \approx 0.24$. This behaviour is also observed within absolute differences of means, defined analogously as $d_{\mu}(t)$. The vector space $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}(1) \approx 5.31$ and, comparatively, $d_{\mu}(1) \approx 1.14$.
 
-The comparison of expected with obtained standard deviations and means in our experiments gives positive results and confirms the law of large numbers. Still, it is interesting to look at the diffusion of values within $\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and standard deviation for a known discrete uniform. We count the amount of values for each class $1 \leq k \leq q$ and refer to them by $Z_{t}^{k}$ and $\widetilde{Z}_{t}^{k}$. By the central limit theorem, these counts should be normally distributed.
+The comparison of expected with obtained standard deviations and means in our experiments gives positive results and confirms the law of large numbers. Still, it is interesting to look at the diffusion of values within $\widetilde{Z}_{t}$ and infer that it does not simply simulate the mean and standard deviation for a known discrete uniform. We count the amount of values for each class $1 \leq k \leq q$ and refer to them by $Z_{t, k}$ and $\widetilde{Z}_{t, k}$. By the central limit theorem, these counts should be normally distributed.
 
 Figure~\ref{fig:dist-plot} shows the cumulative distribution function (CDF) plot and the Q-Q (quantile-quantile) plot for such samples. The expected CDF, as well as examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly distributed, with small variations due to the random generation of field elements. However, we note that this is due to the low number of classes, that is, the order of the finite field, and experimentally confirm that such discrepancies are largely reduced with $q = 2^{10}$.  
 
-This is further confirmed by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts $Z_{t, k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$. Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used. 
-
-Let $r \in \mathbb{N}$ be a precision parameter, and $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. A number $r \times q$ of samples are taken from a standard normal distribution $\mathcal{N}(0, 1)$ and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, $K$ is composed of the means of the $i$-th smallest values in all $K_{j}$, that is,
-\begin{align}
-  K = \left( \mu(\{\min(K_{j}, i) : 1 \leq j \leq r\}) : 1 \leq i \leq q \right).
-\end{align}
-We have found experimentally that the lowest precision parameter $r = 1$ is still useful to interpret the graph. The resulting plot shows that points are sufficiently close to the $y = x$ expected line.
+This is further confirmed by the Q-Q plot, which in this case is more commonly referred to as a normal probability plot. It is built by pairing the normalized counts $Z_{t, k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$. Generating precise values for $K$ is non-trivial, and thus a method to yield approximate values is used.
 
 \begin{figure}[htbp]
   \subfloat[
@@ -1110,13 +1104,19 @@ We have found experimentally that the lowest precision parameter $r = 1$ is stil
     $\mathbb{F}_{256}^{90}$.}\label{fig:dist-plot}
 \end{figure}
 
+Let $r \in \mathbb{N}$ be a precision parameter, and $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. A number $r \times q$ of samples are taken from a standard normal distribution $\mathcal{N}(0, 1)$ and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, $K$ is composed of the means of the $i$-th smallest values in all $K_{j}$, that is,
+\begin{align}
+  K = \left( \mu(\{\min(K_{j}, i) : 1 \leq j \leq r\}) : 1 \leq i \leq q \right).
+\end{align}
+We have found experimentally that the lowest precision parameter $r = 1$ is still useful to interpret the graph. The resulting plot shows that points are sufficiently close to the $y = x$ expected line.
+
 Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods.
 
 \section{Enhancement of existing schemes}\label{sec:exp}
 
 Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. 
 
-We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials and simplified linear transformations according to Theorem~\ref{thm:eq-keys-rainbow}.
+We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials, and simplified linear transformations due to Theorem~\ref{thm:eq-keys-rainbow}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1178,7 +1178,7 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \end{tabular}
 \end{table}
 
-We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eq.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to factors of 3.
+We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eqs.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to factors of 3.
 
 The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:mod}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
