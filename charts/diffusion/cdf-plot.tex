@@ -8,11 +8,8 @@
 
 \begin{tikzpicture}
   \begin{axis}[xmin = -4, xmax = 4, ylabel = {Cumulative probability},
-    xlabel = {Samples from $\mathcal{N}(0, 1)$}, yticklabel = {
-      \pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%
-    }, legend pos=south east, legend style = {
-      draw = none, font = \footnotesize
-    },
+    xlabel = {Samples from $\mathcal{N}(0, 1)$}, legend pos = south east,
+    legend style = { draw = none, font = \footnotesize },
   ]
     \addplot[thick, opacity = 0.4] gnuplot [raw gnuplot] {
       stats 't65536-nofix.txt' using 2 nooutput;

@@ -7,11 +7,9 @@
 \begin{document}
 
 \begin{tikzpicture}
-  \begin{axis}[ylabel = Probability, xlabel = $q$, yticklabel = {
-      \pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%
-    }, legend pos = south east, legend style = {
-      draw = none, font = \footnotesize
-    },
+  \begin{axis}[
+    ylabel = Probability, xlabel = $q$, legend pos = south east,
+    legend style = { draw = none, font = \footnotesize },
   ]
     \addplot[densely dotted, thick] gnuplot [raw gnuplot] {
       plot 'prob.txt' using 1:3 every 36
