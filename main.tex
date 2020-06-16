@@ -986,7 +986,7 @@ Recall that, to create a Rainbow signature, a preimage of central map $\mathcal{
   Given a square matrix $M$ of order $n \times n$ such that $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$, the probability that $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$ is $\prod_{k = 1}^{n} 1 - q^{-k}$.
 \end{proposition}
 \begin{proof}
-  We recall that $M$ is invertible if and only if $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$. This happens if the set of all rows $m_{i} \in \mathbb{F}^{n}$ is linearly independent. The zero vector $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors. Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and $q^{n} - q$ vectors remain. Without loss of generality, $m_{k} \ne c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{k - 1} v_{k - 1}, c_{k} \in \mathbb{F}$, and $q^{n} - q^{k - 1}$ vectors can be selected. Then, the probability that all vectors chosen are linearly independent is
+  We recall that $M$ is invertible if and only if $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$. This happens if the set of all rows $m_{i} \in \mathbb{F}^{n}$ is linearly independent. The zero vector $(0, \dots, 0) \in \mathbb{F}^{n}$ is linearly dependent of all other vectors. Thus, $m_{1} \neq (0, \dots, 0)$, with all other $q^{n} - 1$ possible vectors eligible. The row $m_{2}$ must not be any of the $q$ multiples of $m_{1}$, and $q^{n} - q$ vectors remain. Without loss of generality, $m_{k}$ must not be any of the $q$ multiples of $m_{k - 1}$, and so $q^{n} - q^{k - 1}$ vectors can be selected. Then, the probability that all vectors chosen are linearly independent is
   \begin{align}
     \Pi(q, n) = \prod_{k = 1}^{n} \frac{q^{n} - q^{k - 1}}{q^{n}} \quad
       = \prod_{k = 1}^{n} 1 - q^{-k}.
@@ -1101,7 +1101,7 @@ Let $r \in \mathbb{N}$ be a precision parameter, and $\min(S, i)$ represent the 
 \end{align}
 We have found experimentally that the lowest precision parameter $r = 1$ is still useful to interpret the graph. The resulting plot shows that points are sufficiently close to the $y = x$ expected line.
 
-Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods.
+Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods, than an attacker with no such knowledge.
 
 \section{Enhancement of existing schemes}\label{sec:exp}
 
