@@ -656,7 +656,7 @@ To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mat
 
 The remarks about UOV regarding the size of parameters, chances of failure in the central map preimage calculation and lack of security weaknesses are maintained in the case of Rainbow. An instance of Rainbow is denoted by $\mathsf{Rainbow}(\mathbb{F}, v_{1}, o_{1}, \dots, o_{u})$, with usually $u = 2$ for efficiency reasons. We note that when $u = 1$, we get the UOV scheme.
 
-Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation~\ref{eq:oil-vinegar-space}. In other words,
+Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation (\ref{eq:oil-vinegar-space}). In other words,
 \begin{align}\label{eq:sk-size-rainbow}
   \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
@@ -690,7 +690,7 @@ As a generalization of UOV, there exist equivalent keys in Rainbow using a simil
   $\omega^{(1)} \in \mathsf{GL}_{v_{1}}(\mathbb{F}),\; \tau^{(1)}, \omega^{(3)} \in \mathsf{GL}_{o_{1}}(\mathbb{F})$ and $\tau^{(3)}, \omega^{(6)} \in \mathsf{GL}_{o_{2}}(\mathbb{F})$, then $(\mathcal{L}_{1} \circ \tau^{-1}, \tau \circ \mathcal{C} \circ \omega, \omega^{-1} \circ \mathcal{L}_{2})$ is an equivalent private key.
 \end{theorem}
 
-The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by a similar block inverse calculation, as seen below. We use a compact notation to represent operations between inner block matrices for easier reading. For example, $-(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}$ is denoted as $\tau^{(-3^{-1} \cdot 2 \cdot 1^{-1})}$.
+The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by a similar block inverse calculation, as seen below. We use a compact notation to represent operations between inner block matrices for easier reading. For example, $-(\tau^{(3)})^{-1} \cdot \tau^{(2)} \cdot (\tau^{(1)})^{-1}$ is denoted as $\tau^{(-3^{-1} \cdot 2 \cdot 1^{-1})}$. Then,
 \begin{align}
   \begin{split}
     \psi(\tau^{-1}) &=
@@ -824,7 +824,7 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
 
-Consider the key pair of a UOV signature scheme as described in Equations~\ref{eq:sk-uov} and~\ref{eq:pk-uov}. It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Definition~\ref{def:oil-vinegar-poly}, be denoted as
+Consider the key pair of a UOV signature scheme as described in Equations (\ref{eq:sk-uov}) and (\ref{eq:pk-uov}). It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Definition~\ref{def:oil-vinegar-poly}, be denoted as
 \begin{align}
   \widetilde{c}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
@@ -832,7 +832,7 @@ Further, we analogously denote the quadratic part of $h^{(k)} \in \mathcal{P}$ a
 \begin{align}\label{eq:quad-part-uov-pk}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \nu_{ij}^{(k)} x_{i} x_{j}.
 \end{align}
-Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation~\ref{eq:quad-part-uov-pk} may be rewritten as
+Let the elements of $\psi(\mathcal{L}_{2})$ be denoted as $d_{ij}, 1 \leq i, j \leq n$. We recall that the function composition $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ can be represented as a series of matrix multiplication operations. For instance, Equation (\ref{eq:quad-part-uov-pk}) may be rewritten as
 \begin{align}\label{eq:quad-part-uov-pk-subst}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} d_{ri} x_{r} \sum_{s = 1}^{n} d_{sj} x_{s} \right).
 \end{align}
@@ -844,19 +844,19 @@ Focusing on the inner summation, we can represent the matrix multiplication by $
     d_{ri} \cdot d_{sj} + d_{si} \cdot d_{rj}   & \text{otherwise},
   \end{dcases}
 \end{align}
-allowing the rewrite of Equation~\ref{eq:quad-part-uov-pk-subst} as
+allowing the rewrite of Equation (\ref{eq:quad-part-uov-pk-subst}) as
 \begin{align}
   \widetilde{h}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \left( \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)} x_{r} x_{s} \right).
 \end{align}
-If we recall Equation~\ref{eq:quad-part-uov-pk}, the coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
+If we recall Equation (\ref{eq:quad-part-uov-pk}), the coefficient associated with the monomial $x_{i} x_{j}$ of the public key is thus exactly
 \begin{align}\label{eq:sk-pk-linear-rel}
   \nu_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
 \end{align}
-By fixing a specific $\mathcal{L}_{2}$, Equation~\ref{eq:sk-pk-linear-rel} becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~94]{Petzoldt:201307}.
+By fixing a specific $\mathcal{L}_{2}$, Equation (\ref{eq:sk-pk-linear-rel}) becomes a linear relation between the coefficients of the private and public keys. This allows for the reconstruction of the quadratic part of $\mathcal{C}$ from $\mathcal{P}$ and $\mathcal{L}_{2}$. Thus, if the scheme uses homogeneous quadratic polynomials, the entire central map can be reconstructed. In the literature, this is depicted by representing the coefficients of maps $\mathcal{C}$ and $\mathcal{P}$ as a matrix with respect to some monomial ordering, and analogously for $d_{rs}^{(ij)}$~\cite[p.~94]{Petzoldt:201307}.
 
-The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations~\ref{eq:sk-rainbow} and~\ref{eq:pk-rainbow} show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
+The process for Rainbow is similar, with a small difference due to the presence of two lateral maps in the private key. Equations (\ref{eq:sk-rainbow}) and (\ref{eq:pk-rainbow}) show, respectively, the private and public keys of Rainbow. Since $\mathcal{L}_{1}$ simply permutes coefficients maintaining the structure of $\mathcal{C}$, we let $\mathcal{Q} = \mathcal{C} \circ \mathcal{L}_{2}$, and consequently $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{Q}$. The relationship between $\mathcal{Q}$ and $\mathcal{C}$ is exactly as described above in the case of UOV. Let $q_{ij}^{(k)}$ be the coefficient associated with the monomial $x_{i} x_{j}$ in the $k$-th component of $\mathcal{Q}$. Then,
 \begin{align}
-  q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)}.
+  q_{ij}^{(k)} = \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(k)} \sum_{r = 1}^{n} \sum_{s = 1}^{n} d_{rs}^{(ij)},
 \end{align}
 and by letting the elements of $\psi(\mathcal{L}_{1})$ be denoted as $e_{kl}, 1 \leq k, l \leq m$, then
 \begin{align}
@@ -887,10 +887,10 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the target security model.
 
 \begin{definition}[{\cite[Def.~1.2]{Chen:201612}}]
-  Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted as $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ which can perform $Q \in \mathbb{N}$ queries, usually called the \emph{adversary}, let the following experiment be defined.
+  Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted by $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ which can perform $Q \in \mathbb{N}$ queries, usually called the \emph{adversary}, let the following experiment be defined:
   \begin{align}
     \begin{split}
-      &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A}) \\ 
+      &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\textsc{eu-cma}}(\mathcal{A}) \\ 
       &\quad (\mathsf{sk}, \mathsf{pk}) \gets \textsc{Gen}(1^{n}) \\
       &\quad (M', \mathbf{z'}) \gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
       &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \text{ are the queries to } \textsc{Sig}(\mathsf{sk}, \cdot) \\
@@ -935,7 +935,7 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases by $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 \begin{proof}
-  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:sk-size-rainbow}, and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
+  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation (\ref{eq:sk-size-rainbow}), and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
 \end{proof}
 
 The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
