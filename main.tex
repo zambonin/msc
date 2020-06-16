@@ -946,7 +946,7 @@ A variety of attacks currently thwart the security of Rainbow-like signature sch
 
 \subsubsection{Direct attack.} 
 
-An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity in~\cite[Eq.~5]{Bettale:201207}.
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \omega (1.38 - 0.44 \omega \log (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207} for the linear algebra constant $2 \leq \omega \leq 3$.
 
 \subsubsection{UOV attack.} 
 
