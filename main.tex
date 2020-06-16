@@ -544,7 +544,7 @@ field elements. The size of a public key is the number of coefficients of $o$ po
 \begin{align}
   \#\mathsf{pk} = o \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
-field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases in $o \cdot (v + o + 1)$ elements, and the public key size decreases in $o \cdot (n + 1)$ elements.
+field elements. We note that if the Oil--Vinegar polynomials are homogeneous quadratic, then the private key size decreases by $o \cdot (v + o + 1)$ elements, and the public key size decreases by $o \cdot (n + 1)$ elements.
 
 \subsubsection{Equivalent keys.}
 
@@ -672,7 +672,7 @@ The size of a public key is similar to the UOV case, and thus we have
 \begin{align}
   \#\mathsf{pk} = m \cdot \frac{(n + 1) \cdot (n + 2)}{2}
 \end{align}
-field elements. If polynomials are homogeneous quadratic, then the private key size decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k} + o_{k} + 1)$ elements, and the public key size decreases in $m \cdot (n + 1)$ elements.
+field elements. If polynomials are homogeneous quadratic, then the private key size decreases by $\sum_{k = 1}^{u} o_{k} \cdot (v_{k} + o_{k} + 1)$ elements, and the public key size decreases by $m \cdot (n + 1)$ elements.
 
 \subsubsection{Equivalent keys.}
 
@@ -938,7 +938,7 @@ We are now able to discuss private key sizes. We note that all coefficients rela
       + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - v_{1})(v_{k} - v_{1} + 1)}{2}
         + (v_{k} - v_{1}) \cdot o_{k} + (v_{k + 1} - v_{1}) + 1 \right)}_{\overline{\mathcal{C}}}.
   \end{multline}
-  field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases in $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
+  field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases by $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 \begin{proof}
   We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation~\ref{eq:sk-size-rainbow}, and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
