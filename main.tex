@@ -897,7 +897,7 @@ The Rainbow submission to the second round of the NIST standardization process~\
       &\quad \text{Return 1 iff } \textsc{Ver}(\mathsf{pk}, M', \mathsf{z'}) = 1 \text{ and } M' \not\in \rho.
     \end{split}
   \end{align}
-  A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\mathsf{eu-cma}}(\mathcal{A})$.
+  A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\textsc{eu-cma}}(\mathcal{A})$.
 \end{definition}
 
 Given a public key, the adversary can obtain signatures from at most $Q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature that were not in a previous query. The \textsf{EU-CMA} model is considered the strongest notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
@@ -966,7 +966,7 @@ An extension of UOV-Reconciliation by the same authors~\cite{Ding:200806} that t
 
 \subsubsection{Collision attacks.}
 
-Since only the message digest is signed in the case of multivariate signature schemes, it is imperative that the cryptographic hash function $\mathcal{H}$ used to calculate such digest is secure against collision attacks. It is not within the scope of this work to consider attacks against specific functions, but we remark that these must also be taken into account. The message digest is a $m$-tuple of elements in $\mathbb{F}$, which has order $q$. We assume that elements of $\mathbb{F}$ are trivially represented as a collection of bits of length $\log_{2} q$. Thus, one must require at least $\sqrt{2^{m \cdot \log_{2} q}}$ evaluations of $\mathcal{H}$ to compute a collision, due to the birthday attack.
+Since only the message digest is signed in the case of multivariate signature schemes, it is imperative that the cryptographic hash function $\mathcal{H}$ used to calculate such digest is secure against collision attacks. It is not within the scope of this work to consider attacks against specific functions, but we remark that these must also be taken into account. The message digest is an $m$-tuple of elements in $\mathbb{F}$, which has order $q$. We assume that elements of $\mathbb{F}$ are trivially represented as a collection of bits of length $\log_{2} q$. Thus, one must require at least $\sqrt{2^{m \cdot \log_{2} q}}$ evaluations of $\mathcal{H}$ to compute a collision, due to the birthday attack.
 
 \subsubsection{Side-channel attacks.} 
 
@@ -1024,7 +1024,7 @@ It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to obser
   Euler's pentagonal number theorem states that
   \begin{align}
     \prod_{k = 1}^{\infty} 1 - q^{k} = \sum_{k = -\infty}^{\infty}
-    {(-1)}^{k} q^{\frac{3 \cdot k^{2} + k}{2}}.
+    {(-1)}^{k} q^{\frac{3k^{2} + k}{2}}.
   \end{align}
 \end{theorem}
 
@@ -1169,9 +1169,9 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \end{tabular}
 \end{table}
 
-We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eqs.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to factors of 3.
+We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eqs.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to a factor of 3.
 
-The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:mod}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, \emph{e.g.} a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
+The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:mod}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, for example a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
 We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary greatly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
