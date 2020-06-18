@@ -972,15 +972,6 @@ Since only the message digest is signed in the case of multivariate signature sc
 
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
-\begin{figure}
-    \centering
-    % \includegraphics{}
-    \caption{Minimum classic security level in bits for $q = 256, u = 2$ and $20 \leq v_{1}, o_{1}, o_{2} \leq 40$.}
-    \label{fig:attack-comp}
-\end{figure}
-
-
-
 % TODO graph comparing attack complexities
 
 We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the only information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. 
