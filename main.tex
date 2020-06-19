@@ -976,6 +976,17 @@ Since only the message digest is signed in the case of multivariate signature sc
 
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{cc}
+         & 
+  \end{tabular}
+  \caption{}
+  \label{tab:sec}
+\end{table}
+
+We show the classical security level, in bits, for several parameter sets in the literature. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits. 
+
 % TODO graph comparing attack complexities
 
 We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the only information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. 
@@ -1141,9 +1152,7 @@ We only show results for known secure parameter sets to prevent accidental endor
   \end{tabular}
 \end{table}
 
-We show results for the application of our method in Table~\ref{tab:eta-diff}, considering the following Rainbow instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits. 
-
-Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to further reduce the private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
+We show results for the application of our method in Table~\ref{tab:eta-diff}, considering parameter sets of Table~\ref{tab:sec}. Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to further reduce the private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
 
 The case of Rainbow variants is slightly more convoluted. Schemes claim optimizations of the private key often through the inclusion of inner structuring. To measure the impact of our method within the context of these schemes, it is imperative to understand such structures. For instance, it may be the case that a method introduces sparseness related to specific vinegar variables. Thus, the reduction would not be equally distributed over the private key elements and, as such, our method would have its efficiency reduced.
 
