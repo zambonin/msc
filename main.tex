@@ -950,7 +950,7 @@ A variety of attacks currently thwart the security of Rainbow-like signature sch
 
 \subsubsection{Direct attack.} 
 
-An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \omega (1.38 - 0.44 \omega \log_{2} (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \omega \leq 3$. 
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$. 
 
 \subsubsection{UOV attack.} 
 
@@ -985,7 +985,9 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
   \label{tab:sec}
 \end{table}
 
-We show the classical security level, in bits, for several parameter sets in the literature. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits. 
+We show the classical security level, in bits, for several parameter sets in the literature and most of the attacks described above. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from Petzoldt~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
+
+
 
 % TODO graph comparing attack complexities
 
@@ -1122,9 +1124,7 @@ Our argument indicates that, even if part of the preimage created by the central
 
 \section{Enhancement of existing schemes}\label{sec:exp}
 
-Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. 
-
-We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials, and simplified linear transformations due to Theorem~\ref{thm:eq-keys-rainbow}.
+Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials, and simplified linear transformations due to Theorem~\ref{thm:eq-keys-rainbow}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
