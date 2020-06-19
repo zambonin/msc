@@ -1,27 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# pylint: disable=C0103,C0111,W0641,R0914
+# pylint: disable=C0103,C0111,C0330,W0641,R0912,R0913,R0914
 
 from __future__ import absolute_import, division
-from math import ceil, log2
-
-
-def parse_param(args):
-    p = {
-        "q": args[0],
-        "v1": args[1],
-        "n": sum(args[1:]),
-        "m": sum(args[2:]),
-        "u": len(args[2:]),
-    }
-
-    for k in range(p["u"]):
-        p[f"o{k + 1}"] = args[k + 2]
-        vk, ok = p[f"v{k + 1}"], p[f"o{k + 1}"]
-        p[f"v{k + 2}"] = vk + ok
-        p[f"D{k + 1}"] = vk * ok + (vk ** 2 + vk) / 2
-
-    return p
+import param
 
 
 def public_key_size(
@@ -30,7 +12,7 @@ def public_key_size(
     convert=True,  # output count in bytes instead of field elements
     homogeneous=True,  # use homogeneous quadratic polynomials only
 ):
-    p = parse_param(args)
+    p = param.parse(args)
     pk = p["m"] * (p["n"] + 1) * (p["n"] + 2) / 2
     blocks = sum(p[f"o{k + 1}"] * p[f"D{k + 1}"] for k in range(p["u"]))
 
@@ -61,7 +43,7 @@ def private_key_size(
     equivalent=False,  # use "equivalent key" lateral maps (implies linear)
     homogeneous=True,  # use homogeneous quadratic polynomials only
 ):
-    p = parse_param(args)
+    p = param.parse(args)
     sk = 0
 
     if p["u"] <= 2 and equivalent:
@@ -111,26 +93,6 @@ def prk_wrapper(args):
 
 
 def table_1():
-    nist = {
-        "I-a": (16, 32, 32, 32),
-        "I-b": (31, 36, 28, 28),
-        "I-c": (256, 40, 24, 24),
-        "III-b": (31, 64, 32, 48),
-        "III-c": (256, 68, 36, 36),
-        "IV-a": (16, 56, 48, 48),
-        "V-c": (256, 92, 48, 48),
-        "VI-a": (16, 76, 64, 64),
-        "VI-b": (31, 84, 56, 56),
-    }
-
-    petzoldt_98_612 = {
-        "P-080": (256, 17, 13, 13),
-        "P-100": (256, 26, 16, 17),
-        "P-128": (256, 36, 21, 22),
-        "P-192": (256, 63, 46, 22),
-        "P-256": (256, 85, 63, 30),
-    }
-
     t1_line = (
         "{:<6} & {:<33} & {:>4} & {:>4} & {:>8.0f} & {:>7.0f} "
         "&  ${:>+6.2f}\\%$ \\\\\n"
@@ -138,12 +100,12 @@ def table_1():
     param_fmt = "$(\\mathbb{{F}}_{{{:>3}}}, {:>2}, {:>2}, {:>2})$"
 
     contents = ""
-    for name, param in sorted(nist.items()) + sorted(petzoldt_98_612.items()):
-        n, m = sum(param[1:]), sum(param[2:])
-        size, new_size = prk_wrapper(param)
+    for name, par in param.get():
+        n, m = sum(par[1:]), sum(par[2:])
+        size, new_size = prk_wrapper(par)
         diff = 100 * -(1 - new_size / size)
         contents += t1_line.format(
-            name, param_fmt.format(*param), n, m, size, new_size, diff
+            name, param_fmt.format(*par), n, m, size, new_size, diff
         )
 
     return contents
@@ -156,12 +118,12 @@ def helper_table_2(params, variants):
     multi = "\\multirow{{{}}}{{*}}".format(len(variants))
 
     contents = ""
-    for name, param in params.items():
-        sk, new_sk = prk_wrapper(param)
-        pk = public_key_size(param)
+    for name, par in params.items():
+        sk, new_sk = prk_wrapper(par)
+        pk = public_key_size(par)
 
         for var in variants:
-            new_pk = public_key_size(param, variant=var)
+            new_pk = public_key_size(par, variant=var)
             diff = 100 * -(1 - (new_sk + new_pk) / (sk + pk))
             sk_m, new_sk_m, name_m = [""] * 3
 
@@ -178,17 +140,7 @@ def helper_table_2(params, variants):
 
 
 def table_2():
-    petzoldt_98 = {
-        "P-080": (256, 17, 13, 13),
-        "P-100": (256, 26, 16, 17),
-        "P-128": (256, 36, 21, 22),
-    }
-
-    nist_round2 = {
-        "I-a": (16, 32, 32, 32),
-        "III-c": (256, 68, 36, 36),
-        "V-c": (256, 92, 48, 48),
-    }
+    petzoldt_98, nist_round2 = param.get_simple()
 
     contents = ""
     contents += helper_table_2(petzoldt_98, ["Classic", "Cyclic", "LRS2"])
