@@ -977,8 +977,15 @@ Since only the message digest is signed in the case of multivariate signature sc
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
 \begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.2}
+%   \setlength{\tabcolsep}{6.5pt}
   \centering
+  \caption{Classical security level, in bits, for several instances of Rainbow.}
+  \label{tab:sec}
   \begin{tabular}{*{2}l*{5}r}
+    \toprule
+      & Parameters & $\mathcal{H}$ & Direct & UOV & MinRank & HighRank \\
+    \midrule
     I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &  $\mathbf{ 128}$ &              154 &              144 &              150 &              146 \\
     I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &  $\mathbf{ 139}$ &              145 &              193 &              201 &              156 \\
     I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &              192 &  $\mathbf{ 138}$ &              331 &              346 &              209 \\
@@ -993,9 +1000,8 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
     P-128  & $(\mathbb{F}_{256}, 36, 21, 22)$  &              172 &  $\mathbf{ 123}$ &              290 &              313 &              193 \\
     P-192  & $(\mathbb{F}_{256}, 63, 46, 22)$  &              272 &  $\mathbf{ 195}$ &              706 &              532 &  $\mathbf{ 195}$ \\
     P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &              372 &              266 &              956 &              709 &  $\mathbf{ 260}$ \\
+    \bottomrule
   \end{tabular}
-  \caption{Classical security level, in bits, for several instances of Rainbow.}
-  \label{tab:sec}
 \end{table}
 
 In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712,Ding:201901} to fit security categories as requested by NIST\@. 
