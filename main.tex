@@ -946,11 +946,11 @@ The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ pl
 
 \subsection{Security analysis}\label{subsec:analysis}
 
-A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such strategies. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. We follow the analysis of~\cite[Section 8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting.
+A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such strategies. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. We follow the analysis of~\cite[Section 8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting. 
 
 \subsubsection{Direct attack.} 
 
-An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$. 
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
 
 \subsubsection{UOV attack.} 
 
@@ -976,13 +976,15 @@ Since only the message digest is signed in the case of multivariate signature sc
 
 We remark that none of our proposed Rainbow variants, as well as the original scheme, present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and easily check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, it is possible that there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
+Direct and collision attacks aim for signature forgery, since there exist $\mathbf{x}$ for any digest $\mathbf{h}$. Side-channel attacks are a general definition that may encompass either signature forgery or key recovery attacks. All
+
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
   \caption{Classical security level, in bits, for several instances of Rainbow.}
   \label{tab:sec}
-  \begin{tabular}{*{2}{l}*{5}{|r}}
+  \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
     Instance & Parameters & Direct & UOV & MR & HR & Collision \\
     \midrule
