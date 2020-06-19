@@ -956,11 +956,11 @@ An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathca
 
 The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. This attack was originally created by Kipnis and Shamir~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key by means of finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $q^{n - 1 - 2 \cdot o_{u}} \cdot o_{u}^{4}$ field multiplications. We discuss the UOV attack in more detail on Chapter~\ref{ch:attack}.
 
-\subsubsection{MinRank attack.} 
+\subsubsection{MinRank attack (MR).} 
 
 We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609}, its complexity is $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications.
 
-\subsubsection{HighRank attack.} 
+\subsubsection{HighRank attack (HR).} 
 
 In a similar way to MinRank, linear combinations of public key matrices are used to find the variables which appear the lowest number of times in the central map. This is used to identify the last Rainbow layer, and obtain the previous layers similarly. The complexity of the improved attack~\cite{Ding:200806} is $q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
 
@@ -978,12 +978,13 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{7pt}
   \centering
   \caption{Classical security level, in bits, for several instances of Rainbow.}
   \label{tab:sec}
   \begin{tabular}{*{2}l*{5}r}
     \toprule
-    Instance & Parameters & Collision & Direct & UOV & MinRank & HighRank \\
+    Instance & Parameters & Collision & Direct & UOV & MR & HR \\
     \midrule
     I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &              154 &              144 &              150 &              146 &  $\mathbf{ 128}$ \\
     I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &              145 &              193 &              201 &              156 &  $\mathbf{ 139}$ \\
