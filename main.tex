@@ -30,6 +30,69 @@
 
 \chapter{Introduction}\label{ch:intro}
 
+Handwritten signatures are one of the ubiquitous ways to ensure trust, in the
+case that a contract is sealed between parties. However, they present various
+logistical and security shortcomings. For instance, individuals are advised to
+be physically present to sign any documents, for they cannot be truthfully
+identified otherwise. Additionally, this kind of personal calligraphy can be
+forged with little effort. A solution coherent with the rise of the Information
+Age is found within mathematical frameworks known as signature schemes, that
+enable explicit assertions on the security of signatures.
+
+A vibrant discipline of public-key cryptography, signature schemes are often
+associated with digital systems, in which transit of sensitive messages is
+expected to be secure. However, a specific scheme used within this situation
+drastically alters matters of security and performance compared to others. This
+is due to their natural connection to hard computational problems, that prevent
+forgery of signatures in various threat models. It is thus known that advances
+in computer engineering present direct consequences on the development of
+signature schemes.
+
+Classical computers are electronic in nature, using circuits to perform
+computations. However, a new paradigm has emerged in the form of quantum
+computers, in which computations are performed outside the scope of classical
+mechanics. Although these computers are physically hard to implement,
+algorithms that make use of quantum phenomena have already been proposed and
+provably present a speed-up compared to classical computers. One of these
+algorithms, due to Shor~\cite{Shor:199710:article}, simplifies the complexity
+of integer factorisation, and can be theoretically used to break widely used
+signature schemes.
+
+Post-quantum cryptography addresses this issue by defining signature schemes
+which are either not known to be affected by quantum computers, or provably
+so~\cite{Bernstein:2008:book}. A popular technique employed to build
+quantum-resistant signatures is the usage of systems of equations over finite
+fields with multiple variables within the algorithms that rule the scheme.
+Primitives that use this strategy populate the area known as multivariate
+cryptography, and are extremely time- and space-efficient when creating and
+verifying signatures, while key generation is comparatively very slow and of
+large output.
+
+Families of multivariate public-key cryptosystems are defined according to the
+types of finite fields used in the computations. This enables the focus on
+specific improvements, such as trade-offs between key and signature sizes, or
+larger security parameters. Particularly interesting are signature schemes
+based on the Oil--Vinegar principle, of which Rainbow~\cite{Ding:200506:inproc}
+receives primary attention. It performs computations on a single field and
+presents a balanced nature and simple, elegant definitions.
+
+Large key sizes often impose constraints on the use of signature schemes in
+devices of limited storage and processing power. In multivariate cryptography,
+keys are often orders of magnitude larger than the ones used in conventional
+signature schemes. Due to this fact, several distinct approaches to reduce the
+key sizes of multivariate public-key cryptosystems have been proposed in the
+literature. In the case of Rainbow, to the best of our knowledge, these are
+distributed into methods that reduce exclusively private or public keys, but
+never both at the same time.
+
+We address this fact by presenting a general framework that works for any
+Rainbow-like signature scheme, in which vinegar variables of the first layer
+are fixed in order to shorten the private key. This method allows for the use
+of techniques that reduce the public key on top of the existing modification,
+thus creating a Rainbow variant that has shorter private and public keys when
+compared to the classical scheme. We analyse the security implications of our
+proposal and show improvements with various parameter sets.
+
 % TODO write some pages here introducing the subject and problems
 %      define hypothesis, objectives and scope before searching the literature
 
@@ -86,8 +149,6 @@ A modification that consists of adding cross-terms of oil variables in the last 
 The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. Repaired versions CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
 It is evident that there have been commendable efforts in the creation, validation and correction of signature schemes based on Oil--Vinegar polynomials. However, it should be noted that most works which introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. It is thus our intention with this review to suggest that such approaches should be applied with caution, and to suggest a distinct approach, as presented in Chapter~\ref{ch:eta}.
-
-% TODO table w/ schemes
 
 \chapter{Mathematical background}\label{ch:math}
 
