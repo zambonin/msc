@@ -38,17 +38,10 @@ Key pairs are mathematically bound to a computationally hard to solve problem, w
 
 Signatures in the form of seals, stamps, or ink drawings present various logistical and security shortcomings. For instance, individuals are advised to be physically present to sign any documents, for they cannot be truthfully identified otherwise. Additionally, this kind of personal calligraphy or symbolism can be forged with little effort. A modern solution is found within mathematical frameworks known as \emph{signature schemes}, that enable explicit assertions on the security of signatures. 
 
-A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is again expected to be secure. The initial public discovery of digital signature schemes is given in~\cite{rsa}, which is still widely used at the time of the writing. It is based on the difficulty of integer factorization, which is known to be computationally hard to solve with classical computers. Other popular schemes, such as~\cite{}, are based in some instance of the discrete logarithm problem.
+A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is again expected to be secure. The initial public discovery of digital signature schemes is given in~\cite{rsa}, which is still widely used at the time of the writing. It is based on the difficulty of integer factorization. Other popular schemes, such as~\cite{}, are based on the difficulty of calculating a discrete logarithm. There is no known polynomial time algorithm to solve such problems on a classical computer.
 
-Classical computers are electronic in nature, using circuits to perform
-computations. However, a new paradigm has emerged in the form of quantum
-computers, in which computations are performed outside the scope of classical
-mechanics. Although these computers are physically hard to implement,
-algorithms that make use of quantum phenomena have already been proposed and
-provably present a speed-up compared to classical computers. One of these
-algorithms, due to Shor~\cite{Shor:199710:article}, simplifies the complexity
-of integer factorisation, and can be theoretically used to break widely used
-signature schemes.
+Classical computers are electronic in nature, using circuits to perform computations. However, a new paradigm has emerged in the form of quantum computers, in which computations are performed outside the scope of classical mechanics. Although these computers are physically hard to implement, algorithms that make use of quantum phenomena have already been proposed and provably present a speed-up compared to classical computers. One of these algorithms~\cite{Shor:199710:article} simplifies the complexity
+of factoring integers and calculating discrete logarithms. Consequently, it can be theoretically used to break widely used signature schemes.
 
 Post-quantum cryptography addresses this issue by defining signature schemes
 which are either not known to be affected by quantum computers, or provably
