@@ -45,17 +45,19 @@ of factoring integers and calculating discrete logarithms. Consequently, it can 
 
 \emph{Post-quantum cryptography} addresses this issue by defining public-key cryptosystems which are either not known to be affected by quantum computers, or provably so~\cite{Bernstein:2008}. While a recent discipline, post-quantum cryptography has generated considerable research effort with the intent of replacing current cryptosystems with comparatively practical, quantum-safe counterparts. A noteworthy example is the standardization call by the National Institute of Standards and Technology (NIST)~\cite{}, which houses proposals based on several distinct mathematical structures as the theoretical bases for underlying problems.
 
-\subsubsection{Scope.}
+\subsubsection{Scope of our research.}
 
-\subsubsection{}
+It is known that the difficulty of solving polynomial systems over multiple variables does not change in the quantum setting, as discussed in Section~\ref{sec:mult}. The discipline of cryptographic primitives based on this problem is known as \textit{multivariate public-key cryptography}, or simply multivariate cryptography. Families of multivariate cryptosystems are defined according to the usage of finite fields in the computations. This enables the focus on specific improvements, such as trade-offs between key and signature sizes, or larger security parameters.
 
-% for instance the difficulty of solving polynomial systems over multiple variables. Primitives that use this strategy are altogether known as \textit{multivariate public-key cryptography}, or simply multivariate cryptography, and are extremely time- and space-efficient when operating over messages. 
+Multivariate cryptosystems are extremely time- and space-efficient when operating over messages. However, public and private keys are defined by large polynomial systems with little opportunity for compression or sparseness. Large key sizes frequently impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than the ones used in conventional signature schemes.
 
-% Nonetheless, public and private keys are defined by large polynomial systems with little opportunity for compression or sparseness. Large key sizes frequently impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than the ones used in conventional signature schemes.
+\subsubsection{Our contributions.}
+
+\subsubsection{Outline of this thesis.}
 
 % Due to this fact, several distinct approaches to reduce the key sizes of multivariate public-key cryptosystems have been proposed in the literature.
 
-% Families of multivariate public-key cryptosystems are defined according to the types of finite fields used in the computations. This enables the focus on specific improvements, such as trade-offs between key and signature sizes, or larger security parameters. Particularly interesting are signature schemes based on the Oil--Vinegar principle, of which Rainbow~\cite{Ding:200506} receives primary attention. It performs computations over a single field and presents a balanced nature and simple, elegant definitions.
+% Particularly interesting are signature schemes based on the Oil--Vinegar principle, of which Rainbow~\cite{Ding:200506} receives primary attention. It performs computations over a single field and presents a balanced nature and simple, elegant definitions.
 
 % In the case of Rainbow, to the best of our knowledge, these are distributed into methods that reduce exclusively private or public keys, but never both at the same time.
 
