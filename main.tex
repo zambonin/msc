@@ -51,13 +51,15 @@ It is known that the difficulty of solving polynomial systems over multiple vari
 
 Multivariate cryptosystems are extremely time- and space-efficient when operating over messages. However, public and private keys are defined by large polynomial systems with little opportunity for compression or sparseness. Large key sizes frequently impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than the ones used in conventional signature schemes.
 
+In this thesis, we solely discuss multivariate signature schemes based on the Oil--Vinegar principle. More precisely, UOV~\cite{} and its generalization Rainbow~\cite{Ding:200506} receives primary attention. It performs computations over a single field and presents a balanced nature and simple, elegant definitions. As such, schemes of a different structure such as HFE~\cite{}, or multivariate public-key encryption schemes such as~\cite{}, are not addressed. Furthermore, we specifically discuss strategies for reducing key sizes of Rainbow-like signature schemes and the security implications of such methods.
+
 \subsubsection{Our contributions.}
 
 \subsubsection{Outline of this thesis.}
 
 % Due to this fact, several distinct approaches to reduce the key sizes of multivariate public-key cryptosystems have been proposed in the literature.
 
-% Particularly interesting are signature schemes based on the Oil--Vinegar principle, of which Rainbow~\cite{Ding:200506} receives primary attention. It performs computations over a single field and presents a balanced nature and simple, elegant definitions.
+% 
 
 % In the case of Rainbow, to the best of our knowledge, these are distributed into methods that reduce exclusively private or public keys, but never both at the same time.
 
