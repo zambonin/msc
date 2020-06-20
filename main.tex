@@ -32,15 +32,15 @@
 
 Cryptography is the discipline in which techniques for secure communications are studied. Historically, information was hidden from adversaries by scrambling its contents with an algorithm that received a single key as input. The possession of the key is paramount in obtaining the original information, such that a well-designed algorithm would prevent its discovery by any means other than the usage of the specific key. This practice persists nowadays with increasingly complex algorithms, and is known as symmetric cryptography, since said key can \emph{encrypt} plain text or \emph{decrypt} the corresponding ciphered text.
 
-Evidently, storage, transportation and communication of keys are sensitive procedures. More precisely, an insecure channel can yield a cryptographic key due to a logistical failure or a malicious actor that controls part of the channel. With the advent of computers and the consequent facilitation of communications, this situation became apparent to a greater extent. In order to solve this problem, a new paradigm of cryptography was introduced in~\cite{}, called asymmetric, or \emph{public-key cryptography}.
+Evidently, storage, transportation and communication of such keys are sensitive procedures. More precisely, an insecure channel can yield a cryptographic key due to a logistical failure or a malicious actor that controls part of the channel. With the advent of computers and the consequent facilitation of communications, this situation became apparent to a greater extent. In order to solve this problem, a new paradigm of cryptography was introduced in~\cite{}, called asymmetric, or \emph{public-key cryptography}. Within this system, an entity holds a key pair, composed of a private key and a public key. 
 
-Within this system, an entity holds a key pair, composed of a private key and a public key, hereafter referred to as $\mathsf{sk}$ and $\mathsf{pk}$, respectively. Key pairs are mathematically bound to a computationally hard to solve problem, which is the basis for the security of the resulting cryptosystem. This allows for several frameworks that may ensure distinct properties. Particularly, public-key cryptography can provide a digital alternative to signatures.
+Key pairs are mathematically bound to a computationally hard to solve problem, which is the basis for the security of the resulting cryptosystem. there exist various methods of constructing a public-key cryptosystem, with direct consequences on its resulting security, performance and assurance of distinct properties. Particularly, public-key cryptography can provide a digital alternative to signatures.
 
 Handwritten signatures are one of the ubiquitous ways to ensure trust when a contract is sealed between parties. However, they present various logistical and security shortcomings. For instance, individuals are advised to be physically present to sign any documents, for they cannot be truthfully identified otherwise. Additionally, this kind of personal calligraphy can be forged with little effort. A modern solution is found within mathematical frameworks known as signature schemes, that enable explicit assertions on the security of signatures.
 
-Signature schemes are one of the main applications of public-key cryptography, introduced in~\cite{dh} and~\cite{rsa}.
+% Signature schemes are one of the main applications of public-key cryptography, introduced in~\cite{dh} and~\cite{rsa}.
 
-A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is expected to be secure. However, there exist various methods of constructing a digital signature scheme, with direct consequences on its resulting security and performance. This is due to their natural connection to hard computational problems, that prevent forgery of signatures in various threat models.
+% A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is expected to be secure. However, . This is due to their natural connection to hard computational problems, that prevent forgery of signatures in various threat models.
 
 Classical computers are electronic in nature, using circuits to perform
 computations. However, a new paradigm has emerged in the form of quantum
@@ -366,6 +366,8 @@ With most mathematical machinery defined, we now introduce the building blocks t
 
 The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ is composed of all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs an unpredictable string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a very useful tool for integrity checking.
 
+Multivariate cryptography is based on public-key cryptography. Let us denote private and public keys as $\mathsf{sk}$ and $\mathsf{pk}$, respectively. We give the formal definition of a signature scheme below.
+
 \begin{definition}
   Given $n \in \mathbb{N}$ and any message $w \in \{0, 1\}^{*}$, a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$ is a \emph{digital signature scheme} if every signature generated by $\textsc{Sig}$ verifies under $\textsc{Ver}$ for every possible key pair generated by $\textsc{Gen}$. Equivalently,
   \begin{align}
@@ -377,7 +379,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
 
 This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs a key pair as two bit strings. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
 
-Multivariate cryptography is based on public-key cryptography. We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
+We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
 \begin{definition}\label{def:posso}
   Given a polynomial system of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is the \emph{polynomial system solving problem}, or \textsf{PoSSo}.
