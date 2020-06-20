@@ -53,11 +53,13 @@ Multivariate cryptosystems are extremely time- and space-efficient when operatin
 
 In this thesis, we solely discuss multivariate signature schemes based on the Oil--Vinegar principle. More precisely, UOV~\cite{Kipnis:199904} and its generalization Rainbow~\cite{Ding:200506} receive primary attention. Such schemes perform computations over a single field and present a balanced nature and simple, elegant definitions. Consequently, signature schemes of a different structure such as HFE~\cite{}, or multivariate public-key encryption schemes such as~\cite{}, are not addressed. Furthermore, we specifically discuss strategies for reducing key sizes of Rainbow-like signature schemes and the security implications of such methods.
 
-\subsubsection{Our contributions.}
+\subsubsection{Contributions and outline of this thesis.}
 
-\subsubsection{Outline of this thesis.}
+We intend to provide the reader with a complete overview of the mathematical background necessary to understand the family of Oil--Vinegar signature schemes and related discussions of its security. Thus, in Chapter~\ref{ch:math}, we start by introducing the mathematical concepts used in the description of such schemes, and then proceed to present the UOV and Rainbow signature schemes. 
 
-We intend to provide the reader with a complete overview of the mathematical background necessary to understand the family of Oil--Vinegar signature schemes and related discussions of its security. Thus, in Chapter~\ref{ch:math}, we start by introducing the mathematical concepts used in the description of such schemes, and then proceed to present the UOV and Rainbow signature schemes. We develop upon Rainbow on Chapter~\ref{ch:eta}, where we propose a novel approach to reduce the private key size with three possible implementations. We discuss the consequences of our modifications through a statistical analysis and show its consequences on key pair sizes for several parameter sets. In Chapter~\ref{ch:attack}, we show that our modification is susceptible to a key recovery attack, and discuss mitigations in order to preserve some reduction in key sizes while maintaining reasonable levels of security. Finally, in Chapter~\ref{chap:conc}, we summarize and finish our discussion with pointers to open research topics.
+We develop upon Rainbow on Chapter~\ref{ch:eta}, where we propose a novel approach to reduce the private key size with three possible implementations. We discuss the consequences of our modifications through a statistical analysis and show its consequences on key pair sizes for several parameter sets. The contents of this chapter were published as paper in a peer-reviewed conference proceedings~\cite{Zambonin:201907}. 
+
+In Chapter~\ref{ch:attack}, we show that our modification is susceptible to a key recovery attack, and discuss mitigations in order to preserve some reduction in key sizes while maintaining reasonable levels of security. Finally, in Chapter~\ref{ch:conc}, we summarize and finish our discussion with pointers to open research topics.
 
 \section{Related work}\label{sec:related}
 
@@ -1265,7 +1267,7 @@ Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathca
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$. However, we do not endorse ``security through obscurity'' and suggest that our proposed strategy is not applied to Rainbow-like signature schemes. Moreover, our attack is not expensive to perform, as we observe in the following, and thus should be added to the standard toolbox of cryptanalytic methods for Rainbow. Further, it is yet unclear if fixing a subset of the vinegar variables leads to a clearer tradeoff between private key size and security.
 
 % TODO
-% \chapter{Conclusion}
+% \chapter{Conclusion}\label{ch:conc}
 
 % \section{Future work}
 
