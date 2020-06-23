@@ -43,7 +43,17 @@ def get():
         "P-256": (256, 85, 63, 30),
     }
 
-    return sorted(nist.items()) + sorted(petzoldt_98_612.items())
+    new_nist = {
+        "I": (16, 36, 32, 32),
+        "III": (256, 68, 32, 48),
+        "V": (256, 96, 36, 64),
+    }
+
+    return (
+        sorted(nist.items())
+        + sorted(petzoldt_98_612.items())
+        + sorted(new_nist.items())
+    )
 
 
 def get_simple():
@@ -53,10 +63,18 @@ def get_simple():
         "P-128": (256, 36, 21, 22),
     }
 
-    nist_round2 = {
-        "I-a": (16, 32, 32, 32),
-        "III-c": (256, 68, 36, 36),
-        "V-c": (256, 92, 48, 48),
+    new_nist = {
+        "I": (16, 36, 32, 32),
+        "III": (256, 68, 32, 48),
+        "V": (256, 96, 36, 64),
     }
 
-    return petzoldt_98, nist_round2
+    return petzoldt_98, new_nist
+
+
+def get_new_sec_levels():
+    return {
+        "I": (164, 143, 147, 157, 162, 150),
+        "III": (234, 207, 217, 437, 228, 410),
+        "V": (285, 272, 281, 567, 296, 539),
+    }

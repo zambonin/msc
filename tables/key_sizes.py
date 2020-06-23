@@ -140,11 +140,11 @@ def helper_table_2(params, variants):
 
 
 def table_2():
-    petzoldt_98, nist_round2 = param.get_simple()
+    petzoldt_98, new_nist = param.get_simple()
 
     contents = ""
     contents += helper_table_2(petzoldt_98, ["Classic", "Cyclic", "LRS2"])
-    contents += helper_table_2(nist_round2, ["Classic", "nCyclic"])
+    contents += helper_table_2(new_nist, ["Classic", "nCyclic"])
 
     return contents
 
