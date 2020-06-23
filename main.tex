@@ -1008,8 +1008,6 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
 
 In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712,Ding:201901} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
 
-Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels.
-
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
@@ -1037,21 +1035,24 @@ Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have imp
   \end{tabular}
 \end{table}
 
+The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of Rainbow-Band-Separation is respected for all parameters sets with $q > 16$. 
+
+Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels.
+
 \begin{table}[htbp]
   \centering
-  \caption{Caption}\label{tab:newsec}
+  \renewcommand{\arraystretch}{1.2}
+  \caption{New parameters of Rainbow according to~\cite[Section 4]{} and related classical security levels, in bits.}\label{tab:newsec}
   \begin{tabular}{*{2}{l}*{6}{r}}
     \toprule
     Instance & Parameters & Direct & Collision & RBS & UOV & MR & HR \\
     \midrule
-    I   & $(\mathbb{F}_{ 16}, 36, 32, 32)$  &  164 &  143 &  147 &  157 &  162 &  150 \\
-    III & $(\mathbb{F}_{256}, 68, 32, 48)$  &  234 &  207 &  217 &  437 &  228 &  410 \\
-    V   & $(\mathbb{F}_{256}, 96, 36, 64)$  &  285 &  272 &  281 &  567 &  296 &  539 \\
+    I   & $(\mathbb{F}_{ 16}, 36, 32, 32)$  &  164 &  $\mathbf{143}$ &  147 &  157 &  162 &  150 \\
+    III & $(\mathbb{F}_{256}, 68, 32, 48)$  &  234 &  $\mathbf{207}$ &  217 &  437 &  228 &  410 \\
+    V   & $(\mathbb{F}_{256}, 96, 36, 64)$  &  285 &  $\mathbf{272}$ &  281 &  567 &  296 &  539 \\
     \bottomrule
   \end{tabular}
 \end{table}
-
-The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of Rainbow-Band-Separation is respected for all parameters sets with $q > 16$. 
 
 We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the principal information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. 
 
