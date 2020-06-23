@@ -1008,14 +1008,13 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
 
 In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712,Ding:201901} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
 
-Recent developments of Rainbow cryptanalysis, as summarized in~\cite{} have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in the second pat of Table~\ref{tab:sec} as given by the authors of the works. We refer to the revised parameters simply by the highest NIST category 
+Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Classical security level, in bits, for several instances of Rainbow.}
-  \label{tab:sec}
+  \caption{Classical security level, in bits, for several instances of Rainbow.}\label{tab:sec}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
     Instance & Parameters & Direct & Collision & UOV & MR & HR \\
@@ -1034,6 +1033,18 @@ Recent developments of Rainbow cryptanalysis, as summarized in~\cite{} have impr
     P-128  & $(\mathbb{F}_{256}, 36, 21, 22)$  &  $\mathbf{ 123}$ &              172 &              290 &              313 &              193 \\
     P-192  & $(\mathbb{F}_{256}, 63, 46, 22)$  &  $\mathbf{ 195}$ &              272 &              706 &              532 &  $\mathbf{ 195}$ \\
     P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &              266 &              372 &              956 &              709 &  $\mathbf{ 260}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Caption}\label{tab:newsec}
+  \begin{tabular}{*{2}{l}*{6}{r}}
+    \toprule
+    Instance & Parameters & Direct & Collision & RBS & UOV & MR & HR \\
+    \midrule
+    I   & $(\mathbb{F}_{ 16}, 36, 32, 32)$  & 154 &  200 &  144 &              150 &              146 \\
     \bottomrule
   \end{tabular}
 \end{table}
