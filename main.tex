@@ -990,7 +990,7 @@ The multi-layer approach of Rainbow does not hinder attacks that also work on th
 
 \subsubsection{MinRank attack (MR).} 
 
-We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609}, its complexity was considered to be $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications. However, recent developments~\cite{} have greatly improved the complexity of the attack. This fact is discussed briefly further into the text.
+We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609}, its complexity was considered to be $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications. However, recent developments~\cite[Table 3]{} have greatly improved the complexity of the attack. This fact is discussed briefly further into the text.
 
 \subsubsection{HighRank attack (HR).} 
 
@@ -1006,7 +1006,9 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
 
 \subsubsection{Comparison.}
 
-In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Conservative choices were made by the Rainbow submission authors~\cite{Ding:201712,Ding:201901} to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
+In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Further, we must remark that our calculations are presented as approximate measures and reflect only an estimate of the complexities.
+
+Conservative choices were made by the Rainbow submission authors in the first~\cite{Ding:201712} and second~\cite{Ding:201901} rounds to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tables~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1035,9 +1037,9 @@ In Table~\ref{tab:sec}, we show the security level for several parameter sets in
   \end{tabular}
 \end{table}
 
-The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of Rainbow-Band-Separation is respected for all parameters sets with $q > 16$. 
+The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$. 
 
-Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{}. Finally, we must remark that our calculations are presented as approximate measures and reflect only an estimate of the complexities.
+Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}.
 
 \begin{table}[htbp]
   \centering
@@ -1215,7 +1217,7 @@ Our method does not depend on special structures inserted on the private key. Co
   \end{tabular}
 \end{table}
 
-We show results for the application of our method in Table~\ref{tab:eta-diff}, considering parameter sets of Table~\ref{tab:sec}. Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to further reduce the private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
+We show results for the application of our method in Table~\ref{tab:eta-diff}, considering parameter sets of Tables~\ref{tab:sec} and~\ref{tab:newsec}. Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to further reduce the private key size. Indeed, we suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
 
 The case of Rainbow variants is slightly more convoluted. Schemes claim optimizations of the private key often through the inclusion of inner structuring. To measure the impact of our method within the context of these schemes, it is imperative to understand such structures. For instance, it may be the case that a method introduces sparseness related to specific vinegar variables. Thus, the reduction would not be equally distributed over the private key elements and, as such, our method would have its efficiency reduced.
 
