@@ -1039,12 +1039,12 @@ Conservative choices were made by the Rainbow submission authors in the first~\c
 
 The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$. 
 
-Recent developments of Rainbow cryptanalysis, as summarized in~\cite{}, have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}.
+Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved the complexity of Rainbow-Band-Separation and MinRank attacks. Due to the lack of precise formulas for the case of Rainbow, we present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}.
 
 \begin{table}[htbp]
   \centering
   \renewcommand{\arraystretch}{1.2}
-  \caption{New parameters of Rainbow according to~\cite[Section 4]{} and related classical security levels, in bits.}\label{tab:newsec}
+  \caption{New parameters of Rainbow according to~\cite[Section 4]{Ding:202006} and related classical security levels, in bits.}\label{tab:newsec}
   \begin{tabular}{*{2}{l}*{6}{r}}
     \toprule
     Instance & Parameters & Direct & Collision & RBS & UOV & MR & HR \\
@@ -1213,6 +1213,9 @@ Our method does not depend on special structures inserted on the private key. Co
     P-128  & $(\mathbb{F}_{256}, 36, 21, 22)$  &   79 &   43 &    96288 &   17754 &  $-81.56\%$ \\
     P-192  & $(\mathbb{F}_{256}, 63, 46, 22)$  &  131 &   68 &   416998 &   52417 &  $-87.43\%$ \\
     P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &  178 &   93 &  1043295 &  128950 &  $-87.64\%$ \\
+    I      & $(\mathbb{F}_{ 16}, 36, 32, 32)$  &  100 &   64 &   103616 &   27026 &  $-73.92\%$ \\
+    III    & $(\mathbb{F}_{256}, 68, 32, 48)$  &  148 &   80 &   626016 &  107652 &  $-82.80\%$ \\
+    V      & $(\mathbb{F}_{256}, 96, 36, 64)$  &  196 &  100 &  1408704 &  204384 &  $-85.49\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -1239,12 +1242,12 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
     \multirow{3}{*}{P-128}  & Classic  &  \multirow{3}{*}{  96288} &  \multirow{3}{*}{  17754} &   135880 &  $-33.83\%$ \\
                             & Cyclic   &                           &                           &    44971 &  $-72.98\%$ \\
                             & LRS2     &                           &                           &    42107 &  $-74.22\%$ \\
-    \multirow{2}{*}{I-a  }  & Classic  &  \multirow{2}{*}{  92928} &  \multirow{2}{*}{  26896} &   148992 &  $-27.29\%$ \\
-                            & nCyclic  &                           &                           &    58112 &  $-64.86\%$ \\
-    \multirow{2}{*}{III-c}  & Classic  &  \multirow{2}{*}{ 511416} &  \multirow{2}{*}{  78188} &   710640 &  $-35.45\%$ \\
-                            & nCyclic  &                           &                           &   206712 &  $-76.69\%$ \\
-    \multirow{2}{*}{V-c  }  & Classic  &  \multirow{2}{*}{1227072} &  \multirow{2}{*}{ 180572} &  1705536 &  $-35.68\%$ \\
-                            & nCyclic  &                           &                           &   491904 &  $-77.07\%$ \\
+    \multirow{2}{*}{I    }  & Classic  &  \multirow{2}{*}{ 103616} &  \multirow{2}{*}{  27026} &   161600 &  $-28.88\%$ \\
+                            & nCyclic  &                           &                           &    60160 &  $-67.13\%$ \\
+    \multirow{2}{*}{III  }  & Classic  &  \multirow{2}{*}{ 626016} &  \multirow{2}{*}{ 107652} &   882080 &  $-34.37\%$ \\
+                            & nCyclic  &                           &                           &   264576 &  $-75.32\%$ \\
+    \multirow{2}{*}{V    }  & Classic  &  \multirow{2}{*}{1408704} &  \multirow{2}{*}{ 204384} &  1930600 &  $-36.07\%$ \\
+                            & nCyclic  &                           &                           &   536104 &  $-77.83\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
