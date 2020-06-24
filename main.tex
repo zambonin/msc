@@ -1271,7 +1271,9 @@ In this section, we show how to mount a key recovery attack against a scheme tha
 
 \subsection{Original method}\label{subsec:ks}
 
-The Kipnis--Shamir attack, or UOV attack, was first given in~\cite{Kipnis:199808} as a proof of insecurity of the balanced Oil--Vinegar signature scheme. The fact that $v = o$ allows for the leakage of information in the public key that can be used to reconstruct an equivalent private key. This method led to the creation of UOV as a countermeasure~\cite{Kipnis:199904} with $v = 2o$, which makes the attack computationally hard to perform. The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature schemes, as seen in Section~\ref{sec:related}. Thus, we give a description of the
+The Kipnis--Shamir attack, or UOV attack, was first given in~\cite{Kipnis:199808} as a proof of insecurity of the balanced Oil--Vinegar signature scheme. The fact that $v = o$ allows for the leakage of information in the public key that can be used to reconstruct an equivalent private key. This method led to the creation of UOV as a countermeasure~\cite{Kipnis:199904} with $v = 2o$. The attack was generalized on the same work, but it is computationally hard to perform if the difference $v - o$ is not small enough. The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature schemes, as seen in Section~\ref{sec:related}. 
+
+We give a description of the Kipnis--Shamir attack for finite fields of odd characteristic for readability, and refer the reader to~\cite{Cao:201105} for the case of even characteristic.
 
 \subsection{Our attack}\label{subsec:etaks}
 
