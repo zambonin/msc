@@ -1261,15 +1261,15 @@ We also briefly discuss the effect of these changes on the signature generation 
 \chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
 % TODO expand
 
-As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. Thus, we intentionally avoid this strategy with our proposal. Nevertheless, we present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
+As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. The main argument lies in the fact that the inner workings of the scheme are not modified and a sideline modification is done instead. Nonetheless, as summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. While we intentionally avoid this strategy with our proposal, we still present evidence that our scheme is not secure due to leakage of information from the private key through signatures.
 
 \section{Attack description}
 
-\subsection{Kipnis--Shamir method}
+\subsection{Original method}
 
 \subsection{Our proposal}
 
-\section{Countermeasures}
+\section{Aftermath and countermeasures}
 
 The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:mod}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
 
