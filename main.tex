@@ -1263,13 +1263,15 @@ We also briefly discuss the effect of these changes on the signature generation 
 
 As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves randomness of signatures. This is based on the fact that, as summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. 
 
-We intentionally avoid this strategy with our proposal. Nonetheless, we present partial evidence that our proposal is not secure due to leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir, or UOV attack, and present a variation of this attack that produces an equivalent key for a scheme that makes use of our proposal. In Section~\ref{sec:counter}, we show the practical consequences of this attack and possible countermeasures that still allow for a trade-off between security and private key size.
+We intentionally avoid this strategy with our proposal. Nonetheless, we present partial evidence that our proposal is not secure due to leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of our proposal. In Section~\ref{sec:counter}, we show the practical consequences of this attack and possible countermeasures that still allow for a trade-off between security and private key size.
 
 \section{Attack description}\label{sec:atdesc}
 
-In this section, we show how to mount a key recovery attack in a scheme that makes use of our proposal of Chapter~\ref{ch:eta}. In Subsection~\ref{subsec:ks}, we recall the Kipnis--Shamir attack, the first cryptanalytic method that specifically targeted Oil--Vinegar signature schemes. In Subsection~\ref{subsec:etaks}, we present our version of the attack that works against 
+In this section, we show how to mount a key recovery attack against a scheme that makes use of the Rainbow-$\eta$ strategy. In Subsection~\ref{subsec:ks}, we recall the Kipnis--Shamir attack, the first cryptanalytic method that specifically targeted Oil--Vinegar signature schemes. In Subsection~\ref{subsec:etaks}, we present our version of the attack that works against the proposal of Chapter~\ref{ch:eta}.
 
 \subsection{Original method}\label{subsec:ks}
+
+The Kipnis--Shamir attack, or UOV attack, was first given in~\cite{Kipnis:199808} as a proof of insecurity of the balanced Oil--Vinegar signature scheme. The balanced structure allows for the leakage of information in the public key that can be used to reconstruct an equivalent private key.
 
 \subsection{Our attack}\label{subsec:etaks}
 
