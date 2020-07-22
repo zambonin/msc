@@ -1316,10 +1316,11 @@ If an attacker has no access to the signing device, it is thus not possible to d
 By precisely choosing a target, an attacker may increase the odds of obtaining useful signatures for the attack. However, for all intents and purposes, we will observe the probability of carrying on with the attack for various values of $\alpha$. This behaviour is modelled as follows. Given the aforementioned $N, K$, we wish to obtain $k \leq K$ signatures that were produced with Rainbow-$\eta$. Samples are to be composed of distinct signatures, or in other words, sampling is \emph{without replacement}. There exists a discrete probability distribution that precisely describes this situation.
 
 \begin{definition}
-  Given $N, K, n, k \in \mathbb{N}$ and $K, n, k \leq N$, a random variable $\mathbf{X}$ where
+  Given $N, K, n, k \in \mathbb{N}$ with $K, n \leq N$ and $0 \leq k \leq K$, if the probability distribution, or probability mass function of a discrete random variable $\mathbf{X}$ is
   \begin{align}
-    \Pr[X = k] 
+    \Pr[\mathbf{X} = k] = \frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}},
   \end{align}
+  then $\mathbf{X}$ follows the \emph{hypergeometric distribution}.
 \end{definition}
 
 \subsection{Reparation of the method}\label{subsec:repair}
