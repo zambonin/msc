@@ -1320,10 +1320,15 @@ By precisely choosing a target, an attacker may increase the odds of obtaining u
   \begin{align}
     \Pr[\mathbf{X} = k] = \frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}},
   \end{align}
-  then $\mathbf{X}$ follows the \emph{hypergeometric distribution}.
+  then $\mathbf{X}$ follows the \emph{hypergeometric distribution}. The peak of the probability mass function, or its \emph{mode}, is
+  \begin{align}
+    \hat{\mathbf{X}} = \left\lfloor \frac{(n + 1)(K + 1)}{N + 2} \right\rfloor.
+  \end{align}
 \end{definition}
 
-The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary cumulative distribution function. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{} should be used in these cases. Further, the 
+The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary cumulative distribution function. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{} should be used in these cases.
+
+We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
