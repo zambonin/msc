@@ -1313,7 +1313,7 @@ As discussed in Section~\ref{subsec:etaks}, the collection of signatures produce
 
 If an attacker has no access to the signing device, it is thus not possible to discern whether our optimization is used or not. Otherwise, several other side-channel attacks may be carried out, possibly foiling Rainbow implementations even if our method is never applied. Let us then consider that a signer produces a number $N \in \mathbb{N}$ of signatures such that $K \leq N$ of those are created with the same vinegar variables. Without loss of generality, let $K = \ceil{\alpha N}$ with $0 \leq \alpha \leq 1$.
 
-By precisely choosing a target, an attacker may increase the odds of obtaining useful signatures for the attack. However, for all intents and purposes, we will observe the probability of carrying on with the attack for various values of $\alpha$. 
+By precisely choosing a target, an attacker may increase the odds of obtaining useful signatures for the attack. However, for all intents and purposes, we will observe the probability of carrying on with the attack for various values of $\alpha$. This behaviour is modelled as follows. Given the aforementioned $N, K$, we wish to pick $n \ll N$ signatures that were produced with Rainbow-$\eta$. To carry on the attack, t
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
