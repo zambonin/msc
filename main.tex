@@ -1309,9 +1309,11 @@ In this section, we show the efforts associated with performing our attack, and 
 
 \subsection{Mounting the attack in practice}\label{subsec:mount}
 
-As discussed in Section~\ref{subsec:etaks}, the collection of signatures produced with Rainbow-$\eta$ is pivotal to carry on with the attack. Thus, we show the probabilities associated with amassing a large number of signatures and picking a valid subset of items to, in turn, obtain an equivalent key. We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$ except by observation of the public implementations. 
+As discussed in Section~\ref{subsec:etaks}, the collection of signatures produced with Rainbow-$\eta$ is pivotal to carry on with the attack. Thus, we show the probabilities associated with amassing a large number of signatures and picking a valid subset of items to, in turn, obtain an equivalent key. We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$ except by observation of the public implementations. However, it is simple enough to modify the key and signature generation algorithms to generate either conventional or reduced private keys at the will of the signer. 
 
-However, it is simple enough to modify the key and signature generation algorithms to generate either conventional or reduced private keys at the will of the signer. If an attacker has no access to the signing device, it is thus not possible to discern whether our optimization is used. Otherwise, several other side-channel attacks may be carried out, possibly foiling Rainbow implementations even if our method is never used. Let us then consider that a signer produces a number $N$ of signatures such that a percentage $0 \leq \alpha \leq 1$ of those are created with the same vinegar variables.
+If an attacker has no access to the signing device, it is thus not possible to discern whether our optimization is used or not. Otherwise, several other side-channel attacks may be carried out, possibly foiling Rainbow implementations even if our method is never applied. Let us then consider that a signer produces a number $N \in \mathbb{N}$ of signatures such that $n \leq N$ of those are created with the same vinegar variables. In other words, let $n = \ceil{\alpha N}$ with $0 \leq \alpha \leq 1$.
+
+
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
