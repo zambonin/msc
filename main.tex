@@ -1323,7 +1323,7 @@ By precisely choosing a target, an attacker may increase the odds of obtaining u
   then $\mathbf{X}$ follows the \emph{hypergeometric distribution}.
 \end{definition}
 
-The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the cumulative distribution function. We remark that for large populations, the naive computation $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ involves the calculation of large binomial coefficients, which may be computationally expensive and prone to overflow. We refer to 
+The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary cumulative distribution function. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{} should be used in these cases.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
