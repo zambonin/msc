@@ -1305,6 +1305,12 @@ Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathca
 
 \section{Aftermath and countermeasures}\label{sec:counter}
 
+In this section, we show the consequences of performing an attack and possible strategies to repair our proposal such that there is a clear trade-off between private key sizes and security levels. In Subsection~\ref{subsec:mount}, we discuss the probabilities associated with applying the attack to vulnerable Rainbow-like schemes in practical settings. In Subsection~\ref{subsec:repair}, we examine the effects of fixing a fraction of all vinegar variables in order to preserve negligible attack probabilities.
+
+\subsection{Mounting the attack in practice}\label{subsec:mount}
+
+\subsection{Reparation of the method}\label{subsec:repair}
+
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$. However, we do not endorse ``security through obscurity'' and suggest that our proposed strategy is not applied to Rainbow-like signature schemes. Moreover, our attack is not expensive to perform, as we observe in the following, and thus should be added to the standard toolbox of cryptanalytic methods for Rainbow. Further, it is yet unclear if fixing a subset of the vinegar variables leads to a clearer tradeoff between private key size and security.
 
 It appears that partially fixing vinegar variables leads to a reasonable tradeoff, since for a large enough finite field and amount of random vinegar variables, the probability of obtaining vectors in the oil subspace is negligible. Furthermore, the effort of collecting signatures from multiple sources is non-trivial, and several combinations of signatures must be tried to obtain $\rho$ for a single private key. However, in the case of TLS, a number of signatures can be collected from a single source, that is, a server in the ephemeral Diffie--Hellman handshake step. 
