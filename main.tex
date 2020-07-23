@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, tikz}
+\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, siunitx, tikz}
 % \usepackage[backref]{hyperref}
 
 \usetikzlibrary{positioning, patterns}
@@ -1199,23 +1199,23 @@ Our method does not depend on special structures inserted on the private key. Co
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
     Instance & Parameters & $n$ & $m$ & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & Difference \\ \midrule
-    I-a    & $(\mathbb{F}_{ 16}, 32, 32, 32)$  &   96 &   64 &    92928 &   26896 &  $-71.06\%$ \\
-    I-b    & $(\mathbb{F}_{ 31}, 36, 28, 28)$  &   92 &   56 &   105916 &   24628 &  $-76.75\%$ \\
-    I-c    & $(\mathbb{F}_{256}, 40, 24, 24)$  &   88 &   48 &   132576 &   24136 &  $-81.79\%$ \\
-    III-b  & $(\mathbb{F}_{ 31}, 64, 32, 48)$  &  144 &   80 &   389975 &   71552 &  $-81.65\%$ \\
-    III-c  & $(\mathbb{F}_{256}, 68, 36, 36)$  &  140 &   72 &   511416 &   78188 &  $-84.71\%$ \\
-    IV-a   & $(\mathbb{F}_{ 16}, 56, 48, 48)$  &  152 &   96 &   358656 &   88540 &  $-75.31\%$ \\
-    V-c    & $(\mathbb{F}_{256}, 92, 48, 48)$  &  188 &   96 &  1227072 &  180572 &  $-85.28\%$ \\
-    VI-a   & $(\mathbb{F}_{ 16}, 76, 64, 64)$  &  204 &  128 &   860800 &  206630 &  $-76.00\%$ \\
-    VI-b   & $(\mathbb{F}_{ 31}, 84, 56, 56)$  &  196 &  112 &   980524 &  187172 &  $-80.91\%$ \\
-    P-080  & $(\mathbb{F}_{256}, 17, 13, 13)$  &   43 &   26 &    16757 &    4177 &  $-75.07\%$ \\
-    P-100  & $(\mathbb{F}_{256}, 26, 16, 17)$  &   59 &   33 &    41163 &    8364 &  $-79.68\%$ \\
-    P-128  & $(\mathbb{F}_{256}, 36, 21, 22)$  &   79 &   43 &    96288 &   17754 &  $-81.56\%$ \\
-    P-192  & $(\mathbb{F}_{256}, 63, 46, 22)$  &  131 &   68 &   416998 &   52417 &  $-87.43\%$ \\
-    P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &  178 &   93 &  1043295 &  128950 &  $-87.64\%$ \\
-    I      & $(\mathbb{F}_{ 16}, 36, 32, 32)$  &  100 &   64 &   103616 &   27026 &  $-73.92\%$ \\
-    III    & $(\mathbb{F}_{256}, 68, 32, 48)$  &  148 &   80 &   626016 &  107652 &  $-82.80\%$ \\
-    V      & $(\mathbb{F}_{256}, 96, 36, 64)$  &  196 &  100 &  1408704 &  204384 &  $-85.49\%$ \\
+    I-a   & $(\mathbb{F}_{ 16}, 32, 32, 32)$ &  96 &  64 & \num{   92928} & \num{  26896} & $-71.06\%$ \\
+    I-b   & $(\mathbb{F}_{ 31}, 36, 28, 28)$ &  92 &  56 & \num{  105916} & \num{  24628} & $-76.75\%$ \\
+    I-c   & $(\mathbb{F}_{256}, 40, 24, 24)$ &  88 &  48 & \num{  132576} & \num{  24136} & $-81.79\%$ \\
+    III-b & $(\mathbb{F}_{ 31}, 64, 32, 48)$ & 144 &  80 & \num{  389975} & \num{  71552} & $-81.65\%$ \\
+    III-c & $(\mathbb{F}_{256}, 68, 36, 36)$ & 140 &  72 & \num{  511416} & \num{  78188} & $-84.71\%$ \\
+    IV-a  & $(\mathbb{F}_{ 16}, 56, 48, 48)$ & 152 &  96 & \num{  358656} & \num{  88540} & $-75.31\%$ \\
+    V-c   & $(\mathbb{F}_{256}, 92, 48, 48)$ & 188 &  96 & \num{ 1227072} & \num{ 180572} & $-85.28\%$ \\
+    VI-a  & $(\mathbb{F}_{ 16}, 76, 64, 64)$ & 204 & 128 & \num{  860800} & \num{ 206630} & $-76.00\%$ \\
+    VI-b  & $(\mathbb{F}_{ 31}, 84, 56, 56)$ & 196 & 112 & \num{  980524} & \num{ 187172} & $-80.91\%$ \\
+    P-080 & $(\mathbb{F}_{256}, 17, 13, 13)$ &  43 &  26 & \num{   16757} & \num{   4177} & $-75.07\%$ \\
+    P-100 & $(\mathbb{F}_{256}, 26, 16, 17)$ &  59 &  33 & \num{   41163} & \num{   8364} & $-79.68\%$ \\
+    P-128 & $(\mathbb{F}_{256}, 36, 21, 22)$ &  79 &  43 & \num{   96288} & \num{  17754} & $-81.56\%$ \\
+    P-192 & $(\mathbb{F}_{256}, 63, 46, 22)$ & 131 &  68 & \num{  416998} & \num{  52417} & $-87.43\%$ \\
+    P-256 & $(\mathbb{F}_{256}, 85, 63, 30)$ & 178 &  93 & \num{ 1043295} & \num{ 128950} & $-87.64\%$ \\
+    I     & $(\mathbb{F}_{ 16}, 36, 32, 32)$ & 100 &  64 & \num{  103616} & \num{  27026} & $-73.92\%$ \\
+    III   & $(\mathbb{F}_{256}, 68, 32, 48)$ & 148 &  80 & \num{  626016} & \num{ 107652} & $-82.80\%$ \\
+    V     & $(\mathbb{F}_{256}, 96, 36, 64)$ & 196 & 100 & \num{ 1408704} & \num{ 204384} & $-85.49\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -1233,21 +1233,21 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \begin{tabular}{*{2}{l}*{4}{r}}
     \toprule
     Instance & Variant & $\#\mathsf{sk}$ & $\#\mathsf{sk}^{\eta}$ & $\#\mathsf{pk}$ & Difference \\ \midrule
-    \multirow{3}{*}{P-080}  & Classic  &  \multirow{3}{*}{  16757} &  \multirow{3}{*}{   4177} &    24596 &  $-30.42\%$ \\
-                            & Cyclic   &                           &                           &     9474 &  $-66.99\%$ \\
-                            & LRS2     &                           &                           &     8645 &  $-68.99\%$ \\
-    \multirow{3}{*}{P-100}  & Classic  &  \multirow{3}{*}{  41163} &  \multirow{3}{*}{   8364} &    58410 &  $-32.94\%$ \\
-                            & Cyclic   &                           &                           &    20266 &  $-71.25\%$ \\
-                            & LRS2     &                           &                           &    18682 &  $-72.84\%$ \\
-    \multirow{3}{*}{P-128}  & Classic  &  \multirow{3}{*}{  96288} &  \multirow{3}{*}{  17754} &   135880 &  $-33.83\%$ \\
-                            & Cyclic   &                           &                           &    44971 &  $-72.98\%$ \\
-                            & LRS2     &                           &                           &    42107 &  $-74.22\%$ \\
-    \multirow{2}{*}{I    }  & Classic  &  \multirow{2}{*}{ 103616} &  \multirow{2}{*}{  27026} &   161600 &  $-28.88\%$ \\
-                            & nCyclic  &                           &                           &    60160 &  $-67.13\%$ \\
-    \multirow{2}{*}{III  }  & Classic  &  \multirow{2}{*}{ 626016} &  \multirow{2}{*}{ 107652} &   882080 &  $-34.37\%$ \\
-                            & nCyclic  &                           &                           &   264576 &  $-75.32\%$ \\
-    \multirow{2}{*}{V    }  & Classic  &  \multirow{2}{*}{1408704} &  \multirow{2}{*}{ 204384} &  1930600 &  $-36.07\%$ \\
-                            & nCyclic  &                           &                           &   536104 &  $-77.83\%$ \\
+    \multirow{3}{*}{P-080} & Classic & \multirow{3}{*}{\num{  16757}} & \multirow{3}{*}{\num{   4177}} & \num{   24596} & $-30.42\%$ \\
+                           & Cyclic  &                                &                                & \num{    9474} & $-66.99\%$ \\
+                           & LRS2    &                                &                                & \num{    8645} & $-68.99\%$ \\
+    \multirow{3}{*}{P-100} & Classic & \multirow{3}{*}{\num{  41163}} & \multirow{3}{*}{\num{   8364}} & \num{   58410} & $-32.94\%$ \\
+                           & Cyclic  &                                &                                & \num{   20266} & $-71.25\%$ \\
+                           & LRS2    &                                &                                & \num{   18682} & $-72.84\%$ \\
+    \multirow{3}{*}{P-128} & Classic & \multirow{3}{*}{\num{  96288}} & \multirow{3}{*}{\num{  17754}} & \num{  135880} & $-33.83\%$ \\
+                           & Cyclic  &                                &                                & \num{   44971} & $-72.98\%$ \\
+                           & LRS2    &                                &                                & \num{   42107} & $-74.22\%$ \\
+    \multirow{2}{*}{I    } & Classic & \multirow{2}{*}{\num{ 103616}} & \multirow{2}{*}{\num{  27026}} & \num{  161600} & $-28.88\%$ \\
+                           & nCyclic &                                &                                & \num{   60160} & $-67.13\%$ \\
+    \multirow{2}{*}{III  } & Classic & \multirow{2}{*}{\num{ 626016}} & \multirow{2}{*}{\num{ 107652}} & \num{  882080} & $-34.37\%$ \\
+                           & nCyclic &                                &                                & \num{  264576} & $-75.32\%$ \\
+    \multirow{2}{*}{V    } & Classic & \multirow{2}{*}{\num{1408704}} & \multirow{2}{*}{\num{ 204384}} & \num{ 1930600} & $-36.07\%$ \\
+                           & nCyclic &                                &                                & \num{  536104} & $-77.83\%$ \\
     \bottomrule
   \end{tabular}
 \end{table}
