@@ -1326,9 +1326,9 @@ By precisely choosing a target, an attacker may increase the odds of obtaining u
   \end{align}
 \end{definition}
 
-The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary CDF. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{} should be used in these cases.
+The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary CDF. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{} should be used in these cases. 
 
-We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes. Figure~\ref{fig:hyper} shows the PMF to the left, and the CDF to the right, of a sample hypergeometric distribution.
+We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes. Figure~\ref{fig:hyper} shows the PMF to the left, and the CDF to the right, of a sample hypergeometric distribution. For instance, we note that for a factor $\alpha = 0.2$, if an attacker performs sampling without replacement of $\frac{1}{4}$ of the population, there exists only a $$
 
 \begin{figure}[htbp]
   \subfloat[
