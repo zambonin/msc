@@ -1349,7 +1349,7 @@ However, the sample size is easily controlled by the attacker. It is more advant
 
 It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = 0.25$, and $n = 2^{8}$, then $\hat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
 
-A similar problem remains if $n$ is much larger than $k$, since the attacker still does not know which 
+The identification problem remains if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
