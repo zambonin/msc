@@ -1351,9 +1351,9 @@ It is thus expected that a large enough number of signatures is collected for a 
 
 The identification problem remains if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$. The PMF would then be equal to
 \begin{align}
-  \frac{\binom{K}{k}}{\binom{N}{k}} = \frac{N! (K - k)!}{K! (N - k)!},
+  \frac{\binom{K}{k}}{\binom{N}{k}} = \frac{K! (N - k)!}{N! (K - k)!},
 \end{align}
-which gives negligible probabilities even for relatively small parameters. For example, if $N = 256$ K = 128$ and
+which gives negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
