@@ -1345,7 +1345,7 @@ The probability of sampling a valid subset of signatures is then equivalent to c
 
 We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes. Figure~\ref{fig:hyper} shows the PMF to the left, and the CDF to the right, of a sample hypergeometric distribution. For instance, we note that for a factor $\alpha = 0.2$, if an attacker performs sampling without replacement of $\frac{1}{4}$ of the population, that is $n = 32$, there exists a chance of $\approx 1\%$ that $k = 10$ or more signatures with the desired feature are obtained. On the other hand, if $\frac{1}{2}$ of the population is sampled, or $n = 64$, the probability is $\approx 75\%$.
 
-A remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. This may be verified by expanding the PMF definition into binomials.
+A remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. This may be verified by expanding the PMF definition into binomials for both cases and checking for the desired equality. Thus, Figure~\ref{fig:hyper} also represents the behaviour of various different $\alpha$ factors when $K \in \{32, 48, \dots, 96\}$ and $n = 32$.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
