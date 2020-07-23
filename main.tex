@@ -1361,8 +1361,9 @@ If the attacker collects signatures from multiple signers but cannot classify th
 
 It is clear from Subsection~\ref{subsec:mount} that some effort is needed to perform the attack of Subsection~\ref{subsec:etaks} in practice. However, the existence of such a mathematical method presents a concrete advantage for an attacker to obtain an equivalent key from a well-targeted entity. We attempt to subside this behaviour by extending our original proposal in the form of a configuration parameter to control which vinegar variables are fixed. In the following, we discuss the probabilities associated with performing our attack if some level of randomness is maintained in the central map preimage. Therefore, the private key size still benefits from several fixed elements and security is not thwarted.
 
-Recall that $\widetilde{V_{1}}$ is the sequence of vinegar variables used on the signature generation algorithm of Rai
-Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, that is, a bit string that denotes which elements from $\widetilde{V_{1}}$ are to be fixed.
+We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on the signature generation algorithm of Rainbow. In the original scheme, it is chosen randomly for every signing process, yielding roughly $q^{v_{1}}$ possible preimages for a message digest. For Rainbow-$\eta$, there is exactly one preimage for every message digest if substitution gives an exactly determined polynomial system. We propose to interpret this quantity as a private parameter of the signature scheme. Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, that is, a sequence of bits that denotes which elements from $\widetilde{V}_{1}$ are to be fixed.
+
+Evidently, if $\mathbf{v} = (0, \dots, 0)$
 
 % Further, it is yet unclear if fixing a subset of the vinegar variables leads to a clearer tradeoff between private key size and security. It appears that partially fixing vinegar variables leads to a reasonable tradeoff, since for a large enough finite field and amount of random vinegar variables, the probability of obtaining vectors in the oil subspace is negligible. 
 
