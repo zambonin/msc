@@ -1347,7 +1347,7 @@ We now explore the probability that, given $n$ draws from a population of size $
 
 However, the sample size is easily controlled by the attacker. It is more advantageous to reason about the $\alpha$ factor, which may be unknown. To this end, a remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. This may be verified by expanding the PMF definition into binomials for both cases and checking for the desired equality. Thus, Figure~\ref{fig:hyper} also represents the behaviour of various $\alpha$ factors in the form of different quantities of signatures eligible for the attack, that is, $K \in \{32, 48, \dots, 96\}$ and a fixed number of samples $n = 24$.
 
-It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample.
+It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{16}$ and $K = 2^{14}$, or $\alpha = 0.25$, and a target of $m = 64 + 1$ signatures, the mode of the associated PMF would give 
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
