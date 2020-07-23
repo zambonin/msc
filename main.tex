@@ -1349,11 +1349,13 @@ However, the sample size is easily controlled by the attacker. It is more advant
 
 It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = 0.25$, and $n = 2^{8}$, then $\hat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
 
-The identification problem remains if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$. The PMF would then be equal to
+The identification problem remains difficult if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$. The PMF would then be equal to
 \begin{align}
   \frac{\binom{K}{k}}{\binom{N}{k}} = \frac{K! (N - k)!}{N! (K - k)!},
 \end{align}
 which gives negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$.
+
+If the attacker collects signatures from multiple signers but cannot relate the signatures to each public key, the problem can still be modelled through a \emph{multivariate hypergeometric distribution}.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
