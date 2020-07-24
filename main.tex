@@ -1364,7 +1364,11 @@ It is clear from Subsection~\ref{subsec:mount} that some effort is needed to per
 We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on the signature generation algorithm of Rainbow-$\eta$. In the original scheme, it is chosen randomly for every signing process and thus it is not part of the private key, yielding roughly $q^{v_{1}}$ possible preimages for a message digest. In the case of Rainbow-$\eta$, there is only one preimage if the partial evaluation of the central map gives an exactly determined polynomial system. To accurately describe the number of preimages of our new proposal, we recall a well-known concept.
 
 \begin{definition}
-  Given $k \in \mathbb{N}$ and a binary vector $\mathbf{v} \in \mathbb{F}_{2}^{k}$, the number of non-zero elements of $\mathbf{v}$
+  Given $k \in \mathbb{N}$ and a binary vector $\mathbf{v} \in \mathbb{F}_{2}^{k}$, the number of non-zero elements of $\mathbf{v}$, or
+  \begin{align}
+    \text{wt}(\mathbf{v}) = |\{ i \mid x_{i} \neq 0, 1 \leq i \leq k \}|,
+  \end{align}
+  is the \emph{Hamming weight of $\mathbf{v}$}.
 \end{definition}
 
 
