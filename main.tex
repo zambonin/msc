@@ -1405,10 +1405,10 @@ The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\re
 \end{definition}
 
 To appropriately interpret sampling of $\mathbf{v}$, we set $n = v_{1}$ and $p = 0.5$.
-For this case, the standard deviation is simply $0.5 \sqrt{n}$. Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximized, such that few elements of $\widetilde{V}_{1}$ are random and thus easily guess
+For this case, the standard deviation is simply $0.5 \sqrt{n}$. Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximized, such that few elements of $\widetilde{V}_{1}$ are random and thus quickly guessed. 
 
 
-It is desirable that $\text{wt}(\mathbf{v})$ is not maximized, as seen in Table~\ref{tab:bin-prob}, which shows the probability of obtaining a signature with the same vinegar variables given several Hamming weights.
+% Thus, we observe the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu = 0.5 v_{1}$ the standard deviations of binomial distributions for usual parameters of Rainbow schemes.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
