@@ -1394,7 +1394,7 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, with a small increase due to storage of $\mathbf{v}$, but also reduced due to the size of $\widetilde{V}_{1}$, which is now $v_{1} - \text{wt}(\mathbf{v})$. We now expand on the security of our new proposal.
 
-The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $\mathbf{v}$ will follow the binomial distribution with $n = v_{1}$ and $p = 0.5$. Therefore, 
+The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $\mathbf{v}$ will follow the binomial distribution with $n = v_{1}$ and $p = 0.5$. A simple experiment shows that $\text{wt}(\mathbf{v})$ will be within three standard deviations in more than $99\%$ of the cases, for $16 \leq v_{1} \leq 128$.
 
 
 % TODO
