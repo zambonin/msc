@@ -1361,9 +1361,21 @@ If the attacker collects signatures from multiple signers but cannot classify th
 
 It is clear from Subsection~\ref{subsec:mount} that some effort is needed to perform the attack of Subsection~\ref{subsec:etaks} in practice. However, the existence of such a mathematical method presents a concrete advantage for an attacker to obtain an equivalent key from a well-targeted entity. We attempt to subside this behaviour by extending our original proposal in the form of a configuration parameter which controls how vinegar variables are fixed. In the following, we discuss the probabilities associated with performing our attack if some level of randomness is maintained in the central map preimage. Therefore, the private key size still benefits from several fixed elements and security is not thwarted.
 
-We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on the signature generation algorithm of Rainbow-$\eta$. In the original scheme, it is chosen randomly for every signing process and thus it is not part of the private key, yielding roughly $q^{v_{1}}$ possible preimages for a message digest. In the case of Rainbow-$\eta$, there is only one preimage if the partial evaluation of the central map gives an exactly determined polynomial system. The aforementioned private parameter directly influences these quantities.
+We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on the signature generation algorithm of Rainbow-$\eta$. In the original scheme, it is chosen randomly for every signing process and thus it is not part of the private key, yielding roughly $q^{v_{1}}$ possible preimages for a message digest. In the case of Rainbow-$\eta$, there is only one preimage if the partial evaluation of the central map gives an exactly determined polynomial system. To accurately describe the number of preimages of our new proposal, we recall a well-known concept.
 
-Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. The fact that every vinegar variable is fixed leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress.
+\begin{definition}
+  Given $k \in \mathbb{N}$ and a binary vector $\mathbf{v} \in \mathbb{F}_{2}^{k}$, the number of non-zero elements of $\mathbf{v}$
+\end{definition}
+
+
+Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. Let us describe the resulting scheme if $\mathbf{v}$ is not one of such trivial vectors.
+
+\subsubsection{Key generation.}
+
+Consider the aforementioned $\mathbf{v}$. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Generate the sequence $\widetilde{V}_{1}$ according to the limitations encoded in $\mathbf{v}$.
+
+
+The fact that every vinegar variable is fixed leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. 
 
 
 
