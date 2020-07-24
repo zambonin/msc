@@ -1404,18 +1404,16 @@ The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\re
   then $\mathbf{X}$ follows the \emph{binomial distribution}. It has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-To appropriately interpret sampling of $\mathbf{v}$, we set $n = v_{1}$ and $p = 0.5$. It is desirable that $\text{wt}(\mathbf{v})$ is not maximized, as seen in Table~\ref{bin-prob}, which shows the probability of obtaining a signature with the same vinegar variables given several Hamming weights.
+To appropriately interpret sampling of $\mathbf{v}$, we set $n = v_{1}$ and $p = 0.5$. It is desirable that $\text{wt}(\mathbf{v})$ is not maximized, as seen in Table~\ref{tab:bin-prob}, which shows the probability of obtaining a signature with the same vinegar variables given several Hamming weights.
 
 \begin{table}[htbp]
-%   \renewcommand{\arraystretch}{1.2}
-%   \setlength{\tabcolsep}{6.5pt}
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{6.5pt}
   \centering
-  \caption{Probability of obtaining a signature with the same arrangement of $\mathbf{v}$ as previously used.}\label{tab:bin-prob}
+  \caption{Probability of obtaining a signature with a previously used $\mathbf{v}$.}\label{tab:bin-prob}
   \begin{tabular}{*{2}{l}*{5}{r}}
     \toprule
-I      & $(\mathbb{F}_{ 16}, 36, 32, 32)$ & \num{ 4.48416E-44} & \num{ 3.08149E-33} & \num{ 2.11758E-22} & \num{ 1.45519E-11} & \num{ 6.25000E-02} \\
-III    & $(\mathbb{F}_{256}, 68, 32, 48)$ & \num{1.73653E-164} & \num{1.51273E-123} & \num{ 1.31777E-82} & \num{ 1.14794E-41} & \num{ 3.90625E-03} \\
-V      & $(\mathbb{F}_{256}, 96, 36, 64)$ & \num{6.44115E-232} & \num{4.04317E-174} & \num{2.53794E-116} & \num{ 1.59309E-58} & \num{ 3.90625E-03} \\
+    \midrule
     \bottomrule
     \end{tabular}
 \end{table}
