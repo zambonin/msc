@@ -1410,24 +1410,23 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Probability of guessing a signature with a previously used $\mathbf{v}$ depending on its Hamming weight.}\label{tab:bin-prob}
+  \caption{Probability of guessing a signature depending on the Hamming weight of 
+  the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
-    $q$ & $v_{1}$ & $\mu + 0\sigma$ & $\mu + \frac{1}{2}\sigma$ & $\mu + \sigma$ & $\mu + \frac{3}{2}\sigma$ & $\mu + 2\sigma$ \\
+    $q$ & $v_{1}$ & $\mu + 0\sigma$ & $\mu + 1\sigma$ & $\mu + 2\sigma$ & $\mu + 3\sigma$ & $\mu + 4\sigma$ \\
     \midrule
-    256 &  17 & \num{ 5E-20} & \num{ 1E-17} & \num{ 4E-15} & \num{ 9E-13} & \num{ 2E-10} \\
-    256 &  26 & \num{ 5E-32} & \num{ 3E-27} & \num{ 8E-25} & \num{ 2E-22} & \num{ 1E-17} \\
-    256 &  36 & \num{ 4E-44} & \num{ 3E-39} & \num{ 8E-37} & \num{ 5E-32} & \num{ 1E-29} \\
-     16 &  36 & \num{ 2E-22} & \num{ 5E-20} & \num{ 9E-19} & \num{ 2E-16} & \num{ 4E-15} \\
-    256 &  68 & \num{ 1E-82} & \num{ 2E-75} & \num{ 1E-70} & \num{ 9E-66} & \num{ 6E-61} \\
-    256 &  96 & \num{3E-116} & \num{4E-109} & \num{3E-104} & \num{ 5E-97} & \num{ 3E-92} \\
+    256 &  17 & \num{ 5E-20} & \num{ 4E-15} & \num{ 2E-10} & \num{ 2E-05} & \num{ 1E+00} \\
+    256 &  26 & \num{ 5E-32} & \num{ 8E-25} & \num{ 1E-17} & \num{ 9E-13} & \num{ 2E-05} \\
+    256 &  36 & \num{ 4E-44} & \num{ 8E-37} & \num{ 1E-29} & \num{ 2E-22} & \num{ 4E-15} \\
+     16 &  36 & \num{ 2E-22} & \num{ 9E-19} & \num{ 4E-15} & \num{ 1E-11} & \num{ 6E-08} \\
+    256 &  68 & \num{ 1E-82} & \num{ 1E-70} & \num{ 6E-61} & \num{ 3E-51} & \num{ 1E-41} \\
+    256 &  96 & \num{3E-116} & \num{3E-104} & \num{ 3E-92} & \num{ 3E-80} & \num{ 4E-68} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-We choose to show the probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for several values of $\beta$, since it is expected that most experiments are closer to the center of the PMF, i.e. the mean. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
-
-% Table~\ref{tab:bin-prob} shows the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu$ plus a number of standard deviations, for usual parameters of Rainbow schemes.
+Table~\ref{tab:bin-prob} shows the approximate probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for several values of $\beta$ and usual parameters of Rainbow schemes. It is expected that most experiments are closer to the center of the PMF, i.e. the mean, and we choose this value to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
