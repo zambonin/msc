@@ -1321,7 +1321,7 @@ By precisely choosing a target, an attacker may increase the odds of obtaining u
   \begin{align}
     \Pr[\mathbf{X} = k] = \frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}},
   \end{align}
-  then $\mathbf{X}$ follows the \emph{hypergeometric distribution}. The peak of the PMF, or its \emph{mode}, is
+  then $\mathbf{X}$ follows the \emph{hypergeometric distribution}. The peak of this PMF, or its \emph{mode}, is
   \begin{align}
     \hat{\mathbf{X}} = \left\lfloor \frac{(n + 1)(K + 1)}{N + 2} \right\rfloor.
   \end{align}
@@ -1394,7 +1394,20 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, with a small increase due to storage of $\mathbf{v}$, but also reduced due to the size of $\widetilde{V}_{1}$, which is now $v_{1} - \text{wt}(\mathbf{v})$. We now expand on the security of our new proposal.
 
-The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $\mathbf{v}$ will follow the binomial distribution with $n = v_{1}$ and $p = 0.5$. A simple experiment shows that $\text{wt}(\mathbf{v})$ will be within three standard deviations in more than $99\%$ of the cases, for $16 \leq v_{1} \leq 128$.
+The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be chosen independently. The distribution which gives this behaviour is presented below.
+
+\begin{definition}
+  Given $n \in \mathbb{N}$ and $0 \leq p \leq 1$, if the PMF of a discrete random variable $\mathbf{X}$ is
+  \begin{align}
+    \Pr[\mathbf{X} = k] = \binom{n}{k} p^{k} (1 - p)^{n - k},
+  \end{align}
+  then $\mathbf{X}$ follows the \emph{binomial distribution}. This distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
+\end{definition}
+
+% $\mathbf{v}$ will follow  binomial distribution with $n = v_{1}$ and $p = 0.5$. 
+
+
+% A simple experiment shows that $\text{wt}(\mathbf{v})$ will be within three standard deviations in more than $99\%$ of the cases, for $16 \leq v_{1} \leq 128$.
 
 
 % TODO
