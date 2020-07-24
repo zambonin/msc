@@ -1428,12 +1428,16 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
 
 Table~\ref{tab:bin-prob} shows the approximate probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for several values of $\beta$ and usual parameters of Rainbow schemes. It is expected that most experiments are closer to the center of the PMF, i.e. the mean, and we choose this value to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\mathbf{v}$ is sampled with a large Hamming weight, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 26$, we have that
+It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\mathbf{v}$ is sampled with a large Hamming weight, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
-  \Pr[\mathbf{X} = \mu + 4\sigma] &= \Pr[\mathbf{X} = 0.5 v_{1} + 2 \sqrt{v_{1}}] \\
-    &\approx \Pr[\mathbf{X} = 16] \\
-    &\approx \num{2.593994140625E-4},
+  \begin{split}
+    \Pr[\mathbf{X} = \mu + 4\sigma] 
+      &= \Pr[\mathbf{X} = 0.5 v_{1} + 2 \sqrt{v_{1}}] \\
+      &\approx \Pr[\mathbf{X} = 16] \\
+      &\approx \num{2.5939E-4},
+  \end{split}
 \end{align}
+or roughly a three in ten thousand private keys which are effective targets for an attack.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
