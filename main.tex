@@ -906,7 +906,7 @@ The usual key generation algorithm for the target scheme is employed, yielding $
 
 \subsubsection{Signature generation.}
 
-This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. By the relations above, one is able to reconstruct $\mathcal{C}$ with no additional mechanisms if any transitory systems are not solvable, choose other vinegar variables and create another $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
+This step does not change significantly from the original scheme. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\overline{\mathcal{C}}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. By the relations above, one is able to reconstruct $\mathcal{C}$ with no additional mechanisms if any transitory systems are not solvable, choose other vinegar variables and create another $\overline{\mathcal{C}}$. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
@@ -947,6 +947,7 @@ Consider $w \in \mathbb{N}$ as the length of the aforementioned salt. Generate t
 \subsubsection{Signature generation.}
 
 Let $r \random {\{0, 1\}}^{w}$. Consider a message $M$ and obtain its digest by calculating $\mathbf{h} = \mathcal{H}(\mathcal{H}(M) \mid\mid r)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and attempt to generate the preimage $\mathcal{C}(\mathbf{x}) = \mathbf{y}$. In the rare case that this does not succeed, other variables in $\widetilde{V}_{1}$ would be chosen and a new $\overline{\mathcal{C}}$ created. However, the concatenation of a salt to the original message digest alters $\mathbf{h}$ completely, due to the application of $\mathcal{H}$. Thus, it is only necessary to generate a new $r$ and restart the signature generation process, such that $\widetilde{V}_{1}$, and consequently $\overline{\mathcal{C}}$, need not be modified. Alternatively, if the preimage is generated successfully, we finish by computing $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. The signature is the pair $\mathbf{z'} = (\mathbf{z}, r)$.
+
 \subsubsection{Signature verification.}
 
 We recall that $r$ is used to obtain $\mathbf{h}$ again. Then, if $\mathbf{h} = \mathcal{P}(\mathbf{z})$, the signature is valid, and otherwise invalid.
@@ -965,7 +966,7 @@ We are now able to discuss private key sizes. We note that all coefficients rela
   field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, $\#\mathsf{sk}^{\eta}$ decreases by $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - v_{1} + 1)$ elements.
 \end{proposition}
 \begin{proof}
-  We simply subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation (\ref{eq:sk-size-rainbow}), and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
+  We subtract $v_{1}$ terms from every collection of $v_{k}$ monomials in Equation (\ref{eq:sk-size-rainbow}), and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
 \end{proof}
 
 The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ plus the size of the seed $\mathbf{S}$, which is usually a standard integral data type, and thus composed of a small number of bytes, e.g. eight. In the case of Rainbow-$\eta_{2}$, the polynomials in the central map must be homogeneous quadratic. For Rainbow-$\eta_{3}$, the length of the salt is taken to be $w = 128$ bits~\cite[p.~11]{Ding:201901}, and thus only $7$ bits, or the equivalent representation in a non-binary field, are added to $\#\mathsf{sk}^{\eta}$. We note that the public key size of Rainbow-$\eta_{3}$ also increases by this amount.
@@ -1384,6 +1385,8 @@ Consider the aforementioned $\mathbf{v}$. Generate the maps $(\mathcal{L}_{1}, \
 \end{align}
 
 \subsubsection{Signature generation.}
+
+This step does not change significantly from Rainbow-$\eta$. Consider a message $M$ and obtain its digest $\mathbf{h} = \mathcal{H}(M)$. Compute $\mathbf{y} = \mathcal{L}_{1}^{-1}(\mathbf{h})$, and randomly choose the vinegar variables as encoded in $\mathbf{v}$. Attempt to generate the preimage $\overline{mathcal{C}}(\mathbf{x}) = \mathbf{y}$ by inverting every layer recursively. If this is not possible, vinegar variables have to be chosen again. Finally, compute $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$.
 
 \subsubsection{Signature verification.}
 
