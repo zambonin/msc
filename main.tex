@@ -1371,14 +1371,23 @@ We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on 
   is the \emph{Hamming weight of $\mathbf{x}$}.
 \end{definition}
 
-Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. Therefore, the number of possible signatures for a given message digest is $\approx q^{v_{1} - \text{wt}(\mathbf{v})}$. Let us describe the resulting scheme if $\mathbf{v}$ takes a non-trivial value.
+Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. Therefore, the number of possible signatures for a given message digest is $\approx q^{v_{1} - \text{wt}(\mathbf{v})}$. Let us denote this method as Rainbow-$\eta_{4}$. We remark that it is compatible with any of the schemes of Section~\ref{sec:mod}.
 
 \subsubsection{Key generation.}
 
-Consider the aforementioned $\mathbf{v}$. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Generate the sequence $\widetilde{V}_{1}$ according to the limitations encoded in $\mathbf{v}$.
+Consider the aforementioned $\mathbf{v}$. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Generate the sequence $\widetilde{V}_{1}$ according to the limitations encoded in $\mathbf{v}$, and substitute terms into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then,
+\begin{align}
+  \begin{split}
+    \mathsf{sk}^{\eta_{4}} &= (\widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, \mathbf{v}), \\
+    \mathsf{pk}^{\eta_{4}} &= \mathcal{P}.
+  \end{split}
+\end{align}
 
+\subsubsection{Signature generation.}
 
-The fact that every vinegar variable is fixed leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. 
+\subsubsection{Signature verification.}
+
+% The fact that every vinegar variable is fixed leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. 
 
 
 
