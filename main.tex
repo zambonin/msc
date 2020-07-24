@@ -1392,7 +1392,7 @@ This step does not change significantly from Rainbow-$\eta$. Consider a message 
 
 This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
-We note that there is no need to provide a reconstruction procedure of $\overbar{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, with a seed, and Rainbow-$\eta_{2}$, with mathematical relations. Further, the private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, with the added size of $\mathbf$ but the size of $\widetilde{V}_{1}$ is now $v_{1} - \text{wt}()$
+We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, increasing due to storage of $\mathbf{v}$, but reducing due to the size of $\widetilde{V}_{1}$, which is now $v_{1} - \text{wt}(\mathbf{v})$.
 
 % The fact that every vinegar variable is fixed leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. 
 
