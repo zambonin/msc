@@ -1410,10 +1410,10 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Probability of obtaining a signature with a previously used $\mathbf{v}$.}\label{tab:bin-prob}
+  \caption{Probability of guessing a signature with a previously used $\mathbf{v}$ depending on its Hamming weight.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
-    $q$ & $v_{1}$ & $q^{-(v_{1} - \mu + 0\sigma)}$ & $\mu + \frac{1}{2}\sigma$ & $\mu + \sigma$ & $\mu + \frac{3}{2}\sigma$ & $\mu + 2\sigma$ \\
+    $q$ & $v_{1}$ & $\mu + 0\sigma$ & $\mu + \frac{1}{2}\sigma$ & $\mu + \sigma$ & $\mu + \frac{3}{2}\sigma$ & $\mu + 2\sigma$ \\
     \midrule
     256 &  17 & \num{ 5E-20} & \num{ 1E-17} & \num{ 4E-15} & \num{ 9E-13} & \num{ 2E-10} \\
     256 &  26 & \num{ 5E-32} & \num{ 3E-27} & \num{ 8E-25} & \num{ 2E-22} & \num{ 1E-17} \\
@@ -1425,9 +1425,9 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \end{tabular}
 \end{table}
 
-We choose to show the probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for several values of $\beta$, since it is expected that most experiments are closer to the center of the PMF, i.e. the mean, with higher Hamming weights represented by high
+We choose to show the probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for several values of $\beta$, since it is expected that most experiments are closer to the center of the PMF, i.e. the mean. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
-Table~\ref{tab:bin-prob} shows the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu$ plus a number of standard deviations, for usual parameters of Rainbow schemes.
+% Table~\ref{tab:bin-prob} shows the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu$ plus a number of standard deviations, for usual parameters of Rainbow schemes.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
