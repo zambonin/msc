@@ -1404,12 +1404,7 @@ The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\re
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximized, such that few elements of $\widetilde{V}_{1}$ are random and thus quickly guessed. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed.
-
-To appropriately interpret sampling of $\mathbf{v}$, we set $n = v_{1}$ and $p = 0.5$.
-For this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1}}$.
-
-% Thus, we observe the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu = 0.5 v_{1}$ the standard deviations of binomial distributions for usual parameters of Rainbow schemes.
+Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximized, such that few elements of $\widetilde{V}_{1}$ are random and thus quickly guessed. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1}}$.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1430,8 +1425,7 @@ For this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1
   \end{tabular}
 \end{table}
 
-% A simple experiment shows that $\text{wt}(\mathbf{v})$ will be within three standard deviations in more than $99\%$ of the cases, for $16 \leq v_{1} \leq 128$.
-
+Table~\ref{tab:bin-prob} shows the probability of sampling $\mathbf{v}$ such that $\text{wt}(\mathbf{v})$ is at least $\mu$ plus a number of standard deviations, for usual parameters of Rainbow schemes.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
