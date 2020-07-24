@@ -1413,7 +1413,7 @@ To appropriately interpret sampling of $\mathbf{v}$, we set $n = v_{1}$ and $p =
   \caption{Probability of obtaining a signature with a previously used $\mathbf{v}$.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
-    $q$ & $v_{1}$ & $\mu + 0\sigma$ & $\mu + \frac{1}{2}\sigma$ & $\mu + \sigma$ & $\mu + \frac{3}{2}\sigma$ & $\mu + 2\sigma$ \\
+    $q$ & $v_{1}$ & $q^{-(v_{1} - \mu + 0\sigma)}$ & $\mu + \frac{1}{2}\sigma$ & $\mu + \sigma$ & $\mu + \frac{3}{2}\sigma$ & $\mu + 2\sigma$ \\
     \midrule
     256 &  17 & \num{ 5E-20} & \num{ 1E-17} & \num{ 4E-15} & \num{ 9E-13} & \num{ 2E-10} \\
     256 &  26 & \num{ 5E-32} & \num{ 3E-27} & \num{ 8E-25} & \num{ 2E-22} & \num{ 1E-17} \\
