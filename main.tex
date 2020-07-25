@@ -1426,7 +1426,7 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \end{tabular}
 \end{table}
 
-Table~\ref{tab:bin-prob} shows the approximate probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for $0 \leq \beta \leq 4$ and usual parameters of Rainbow schemes. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
+Table~\ref{tab:bin-prob} shows the approximate probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for $0 \leq \beta \leq 4$ and usual parameters of Rainbow schemes from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
