@@ -1392,7 +1392,7 @@ This step does not change significantly from Rainbow-$\eta$. Consider a message 
 
 This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
-We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, but every $v_{1}$ quantity is now $\text{wt}(\mathbf{v})$, such that the private key size depends on the Hamming weight of the vinegar threshold, which also needs to be stored. We now expand on the security of our new proposal.
+We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is similar to Proposition~\ref{prop:eta-key-size}, but every $v_{1}$ quantity is now $\text{wt}(\mathbf{v})$, such that the private key size depends on the Hamming weight of the vinegar threshold, which also needs to be stored. Let us denote this new key size as $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$. We now expand on the security of our new proposal.
 
 The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be chosen independently. The distribution which gives this behaviour is presented below.
 
@@ -1440,12 +1440,11 @@ or roughly three in ten thousand private keys which are effective targets for at
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{6pt}
   \centering
   \caption{Effect of the Hamming weight of the vinegar threshold on Rainbow private key sizes.}\label{tab:key-size-std}
   \begin{tabular}{l*{5}{r}}
     \toprule
-    Parameters & $\textsf{sk}^{\eta_{4}}_{\mu + 0\sigma}$ & & & & \\
+    Parameters & $\textsf{sk}^{\eta_{4}}_{\mu + 0\sigma}$ & $\textsf{sk}^{\eta_{4}}_{\mu + 1\sigma}$ & $\textsf{sk}^{\eta_{4}}_{\mu + 2\sigma}$ & $\textsf{sk}^{\eta_{4}}_{\mu + 3\sigma}$ & $\textsf{sk}^{\eta_{4}}_{\mu + 4\sigma}$ \\
     \midrule
     $(\mathbb{F}_{256}, 17, 13, 13)$ & $-45.33\%$ & $-53.70\%$ & $-61.44\%$ & $-68.57\%$ & $-75.07\%$ \\
     $(\mathbb{F}_{256}, 26, 16, 17)$ & $-46.61\%$ & $-55.45\%$ & $-63.56\%$ & $-68.57\%$ & $-75.48\%$ \\
