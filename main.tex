@@ -1462,10 +1462,7 @@ Through the knowledge of such probabilities, it is a choice of the user to gener
   \end{tabular}
 \end{table}
 
-Once again, we do not discard the possibility that an extension of our attack exists, that makes use of any possible leaked information in signatures independent of the number of fixed vinegar variables.
-
-% we do not discard the possibility that an attack still exists but it looks like that we can afford to just fix some variables for directly proportional gains in key sizes
-% with overwhelming probability, a good value for V will be generated, or the user can just choose one anyway
+Once again, we do not discard the possibility that a method to make use of any possible leaked information in signatures exists, independent of the number of fixed vinegar variables. However, we argue that it is useful to fix a subset of the vinegar variables in order to compress the private key through our original proposal and its generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and randomness still exists in the signing procedure.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
