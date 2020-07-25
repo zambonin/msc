@@ -1410,8 +1410,7 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Probabilities of guessing a signature depending on the Hamming weight of 
-  the vinegar threshold.}\label{tab:bin-prob}
+  \caption{Probabilities of guessing a signature depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
     $q$ & $v_{1}$ & $\mu + 0\sigma$ & $\mu + 1\sigma$ & $\mu + 2\sigma$ & $\mu + 3\sigma$ & $\mu + 4\sigma$ \\
@@ -1441,12 +1440,20 @@ or roughly three in ten thousand private keys which are effective targets for at
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{7pt}
+  \setlength{\tabcolsep}{6pt}
   \centering
-  \caption{Probabilities of guessing a signature depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
+  \caption{Effect of the Hamming weight of the vinegar threshold on Rainbow private key sizes.}\label{tab:key-size-std}
   \begin{tabular}{l*{5}{r}}
-         &  \\
-         & 
+    \toprule
+    Parameters & $\textsf{sk}^{\eta_{4}}_{\mu + 0\sigma}$ & & & & \\
+    \midrule
+    $(\mathbb{F}_{256}, 17, 13, 13)$ & $-45.33\%$ & $-53.70\%$ & $-61.44\%$ & $-68.57\%$ & $-75.07\%$ \\
+    $(\mathbb{F}_{256}, 26, 16, 17)$ & $-46.61\%$ & $-55.45\%$ & $-63.56\%$ & $-68.57\%$ & $-75.48\%$ \\
+    $(\mathbb{F}_{256}, 36, 21, 22)$ & $-48.02\%$ & $-54.61\%$ & $-60.81\%$ & $-66.60\%$ & $-71.99\%$ \\
+    $(\mathbb{F}_{ 16}, 36, 32, 32)$ & $-41.96\%$ & $-47.98\%$ & $-53.73\%$ & $-59.19\%$ & $-64.38\%$ \\
+    $(\mathbb{F}_{256}, 68, 32, 48)$ & $-48.79\%$ & $-54.72\%$ & $-59.23\%$ & $-63.54\%$ & $-67.64\%$ \\
+    $(\mathbb{F}_{256}, 96, 36, 64)$ & $-50.92\%$ & $-55.29\%$ & $-59.47\%$ & $-63.48\%$ & $-67.31\%$ \\
+    \bottomrule
   \end{tabular}
 \end{table}
 
