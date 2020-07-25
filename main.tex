@@ -1439,6 +1439,17 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
 \end{align}
 or roughly three in ten thousand private keys which are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
+\begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{7pt}
+  \centering
+  \caption{Probabilities of guessing a signature depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
+  \begin{tabular}{l*{5}{r}}
+         &  \\
+         & 
+  \end{tabular}
+\end{table}
+
 % we do not discard the possibility that an attack still exists but it looks like that we can afford to just fix some variables for directly proportional gains in key sizes
 % with overwhelming probability, a good value for V will be generated, or the user can just choose one anyway
 
