@@ -1404,13 +1404,13 @@ The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\re
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximized, such that few elements of $\widetilde{V}_{1}$ are random and thus quickly guessed. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1}}$.
+Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximal, such that few elements of $\widetilde{V}_{1}$ are random and thus quickly guessed. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1}}$.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Probability of guessing a signature depending on the Hamming weight of 
+  \caption{Probabilities of guessing a signature depending on the Hamming weight of 
   the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
@@ -1428,7 +1428,7 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
 
 Table~\ref{tab:bin-prob} shows the approximate probabilities of guessing signatures with $\text{wt}(\mathbf{v}) = \mu + \beta \sigma$ for $0 \leq \beta \leq 4$ and usual parameters of Rainbow schemes. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\mathbf{v}$ is sampled with a large Hamming weight, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
+It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
     \Pr[\mathbf{X} = \mu + 4\sigma] 
@@ -1438,6 +1438,9 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
   \end{split}
 \end{align}
 or roughly three in ten thousand private keys which are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
+
+% we do not discard the possibility that an attack still exists but it looks like that we can afford to just fix some variables for directly proportional gains in key sizes
+% with overwhelming probability, a good value for V will be generated, or the user can just choose one anyway
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
