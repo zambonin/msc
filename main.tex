@@ -158,7 +158,7 @@ We are particularly interested in specific types of groups and transformations b
 
 If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. By restricting the binary operation to specific elements of the underlying set, we obtain the intuitive structure defined below.
 
-\begin{definition}
+\begin{definition}\label{def:subgroup}
   Given a group $\textsf{G} = (G, \star)$ and $H \subseteq G$, if $\mathsf{H} = (H, \star)$ forms a group, then $\mathsf{H}$ is a \emph{subgroup} of $\mathsf{G}$.
 \end{definition}
 
@@ -325,6 +325,8 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
 \end{proposition}
 
 We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\psi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v} \in \mathbf{V}$, then $\phi(\mathbf{v}) = M\mathbf{v}$.
+
+Finally, we obtain a \emph{vector subspace of $\mathbf{V}$} by applying the rationale of Definition~\ref{def:subgroup}. 
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
@@ -1291,8 +1293,6 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
 \begin{definition}
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$.
 \end{definition}
-
-
 
 \subsection{Our attack}\label{subsec:etaks}
 
