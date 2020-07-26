@@ -17,7 +17,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem*{remark}{Remark}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
@@ -1300,8 +1300,8 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
 
 The main observation of the attack is that combinations of matrices, each of which is associated with the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix}, are specifically structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and forge signatures. A more precise characterization of this fact is given below.
 
-\begin{lemma}[{~\cite[Lemma~4]{Kipnis:199808}}]
-  Given a polynomial $f^{(i)} \in \textsf{OVH}(v, o)$, let $\phi : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformation associated to the matrix $\widetilde{M}(f^{(i)})$.
+\begin{lemma}[{\cite[Lemma~4]{Kipnis:199808}}]
+  Given a polynomial $f^{(i)} \in \textsf{OVH}(v, o)$, let $\phi^{(i)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformation associated to the matrix $\widetilde{M}(f^{(i)})$, and respectively
 \end{lemma}
 
 \subsection{Our attack}\label{subsec:etaks}
