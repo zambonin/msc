@@ -534,8 +534,8 @@ The idea of the original Oil and Vinegar signature scheme is to build the centra
 
 The integers $v$ and $o$ represent the quantity of vinegar and oil variables, respectively. After the substitution of vinegar variables, the resulting system is exactly determined, with $o$ equations and $o$ variables. We remark that the first summation of Definition~\ref{def:oil-vinegar-poly} is explicitly split into cross-vinegar terms, and product of vinegar and oil terms, to emphasize that there do not exist cross-oil terms. An intuitive visualization of this structure is given below.
 
-\begin{definition}
-  Given a homogeneous quadratic Oil--Vinegar polynomial $f^{(i)} \in \mathsf{OVH}(v, o)$, its matrix representation is
+\begin{definition}\label{def:ovh-matrix}
+  Given a homogeneous quadratic Oil--Vinegar polynomial $f^{(i)} \in \mathsf{OVH}(v, o)$, its unique symmetric matrix representation is
   \begin{align}
     \widetilde{M}(f^{(i)}) =
     \begin{bmatrix}
@@ -1298,7 +1298,7 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$.
 \end{definition}
 
-
+The main observation of the attack is given in~\cite[Lemma~4]{Kipnis:199808}. It states that the matrices given by Definition~\ref{def:ovh-matrix} 
 
 \subsection{Our attack}\label{subsec:etaks}
 
