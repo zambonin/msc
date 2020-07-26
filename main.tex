@@ -1282,7 +1282,7 @@ The Kipnis--Shamir attack, or UOV attack, was first given in~\cite{Kipnis:199808
 
 The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature schemes, as seen in Section~\ref{sec:related}. We give a description of the attack for $v = o$ and finite fields of odd characteristic, following the rationale of~\cite[Section 3.2]{Ding:2006}. We refer the reader to~\cite{Cao:201105} for the case of even characteristic and~\cite{Kipnis:199904} for the case of $v > o$. Without loss of generality, we consider the polynomials of $\mathcal{C}$ and $\mathcal{P}$ to be homogeneous quadratic.
 
-Consider the vector space $\mathbb{F}^{n}$ that denotes all possible signatures from a balanced Oil--Vinegar signature scheme, that is, $n = v + o$. We give below a characterization of two vector spaces that are essential to discuss the attack.
+Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, and the vector space $\mathbb{F}^{n}$ that denotes all possible signatures from a balanced Oil--Vinegar signature scheme, with $n = v + o$. We give below a characterization of further vector spaces that are essential to discuss the attack.
 
 \begin{definition}
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the first $v$ coordinates equal to zero, that is, $\{ (0, \dots, 0, x_{v + 1}, \dots, x_{n}) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{oil subspace}, and denoted by $\mathcal{O}$.
