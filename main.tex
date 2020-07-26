@@ -153,14 +153,16 @@ We are particularly interested in specific types of groups and transformations b
 \end{definition}
 
 \begin{definition}
-  Given a group $(G, \star)$ and $H \subseteq G$, if $(H, \star)$ forms a group, then it is a \emph{subgroup}.
-\end{definition}
-
-\begin{definition}
   Given a group $(G, \star)$, if the binary operation $\star$ on $G$ is commutative, then the group is commutative, or \emph{abelian}.
 \end{definition}
 
-If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. Furthermore, often it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below.
+If clear from the context, we hereafter refer to group-like structures simply by the name of its base set with a sans-serif font and omit the associated binary operations. Intuitively, by restri
+
+\begin{definition}
+  Given a group $\textsf{G} = (G, \star)$ and $H \subseteq G$, if $\mathsf{H} = (H, \star)$ forms a group, then $\mathsf{H}$ is a \emph{subgroup} of $\mathsf{G}$.
+\end{definition}
+
+Furthermore, often it is convenient to interpret elements as those of a different group. However, the binary operation has to be ``preserved'' throughout this mapping. We precisely define this below.
 
 \begin{definition}\label{def:group-hom}
   Given two groups $\mathsf{G} = (G, \star), \mathsf{H} = (H, \diamond)$ and any $g_{1}, g_{2} \in G$, a function $\varphi : \mathsf{G} \to \mathsf{H}$ is a \emph{homomorphism} if $\varphi(g_{1} \star g_{2}) = \varphi(g_{1}) \diamond \varphi(g_{2})$.
