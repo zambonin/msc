@@ -1298,6 +1298,8 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$.
 \end{definition}
 
+
+
 \subsection{Our attack}\label{subsec:etaks}
 
 The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:mod}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
