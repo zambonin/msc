@@ -1285,7 +1285,11 @@ The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature sc
 Consider the vector space $\mathbb{F}^{n}$ that denotes all possible signatures from a balanced Oil--Vinegar signature scheme, that is, $n = v + o$. We give below a characterization of two vector spaces that are essential to discuss the attack.
 
 \begin{definition}
-  The vector subspace of $\mathbb{F}^{n}$ that contains all vectors with the first $v$ coordinates equal to zero, that is, $\mathcal{O} = \{ (0, \dots 0, x_{v + 1}, \dots, x_{n}) \in \mathbb{F}^{n} \}$, is the \emph{oil subspace}.
+  Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the first $v$ coordinates equal to zero, that is, $\{ (0, \dots, 0, x_{v + 1}, \dots, x_{n}) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{oil subspace}, and denoted by $\mathcal{O}$.
+\end{definition}
+
+\begin{definition}
+  Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$.
 \end{definition}
 
 \subsection{Our attack}\label{subsec:etaks}
