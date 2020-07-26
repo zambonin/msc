@@ -1304,6 +1304,8 @@ The main observation of the attack is that combinations of matrices, each of whi
   Given any polynomials $f^{(i)}, f^{(j)} \in \textsf{OVH}(v, o)$, let $\phi^{(i)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformation associated to the matrix $\widetilde{M}(f^{(i)})$, and respectively for $\phi^{(j)}$. If $\widetilde{M}(f^{(j)})$ is invertible, then $\mathcal{O}$ is an invariant subspace of $\phi^{(i)} \circ (\phi^{(j)})^{-1}$.
 \end{lemma}
 
+In other words, the leading zeros in any vector of $\mathcal{O}$ are preserved by the mapping of a linear combination of polynomials in $\mathcal{C}$. This is carried on by any $\widetilde{M}(f^{(i)})$ with $f^{(i)}$ a polynomial of $\mathcal{P}$.
+
 \subsection{Our attack}\label{subsec:etaks}
 
 The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:mod}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
