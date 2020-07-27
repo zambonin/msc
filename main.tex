@@ -588,7 +588,7 @@ field elements. We note that if the Oil--Vinegar polynomials are homogeneous qua
 
 We recall that there exists a specific form of sustainers of Definition~\ref{def:sustainer} for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
-\begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]
+\begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]\label{thm:eq-keys-uov}
   Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\omega) =
@@ -1308,7 +1308,7 @@ We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. 
 
 Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is unchanged for any combination of matrices associated with polynomials of $\mathcal{P}$. Hence, any such symmetric matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and so forth. With several distinct combinations of matrices, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
 
-If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is also possible to obtain its basis $B$ of dimension $o$. Consider $\phi(\widetilde{\mathcal{L}}_{2})$ as the $n \times n$ invertible matrix with the elements of $B$ in its last $o$ rows.
+If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is also possible to obtain its basis $B$ of dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2})$ to be the $n \times n$ invertible matrix with the elements of $B$ as its last $o$ rows. The associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key by Theorem~\ref{thm:eq-keys-uov}.
  
 \subsection{Our attack}\label{subsec:etaks}
 
