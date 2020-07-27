@@ -1313,16 +1313,19 @@ If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward
 \end{align}
 This can be verified by inspection of the associated symmetric matrix representations, as given in~\cite[p.~71]{Ding:2006}.
 
+The UOV attack 
+
 \subsection{Our attack}\label{subsec:etaks}
 % TODO expand
 
 We recall that our proposal Rainbow-$\eta$, as described in Section~\ref{sec:mod}, is a modification based on fixing vinegar variables early in the key generation step. By pre-substituting such variables in the central map, it can be stored more efficiently. Further, we ensure that any message can be signed through methods to reconstruct the central map if its associated preimage calculation does not succeed. Moreover, we impose no limitation on parameters such that their secure selection is always encouraged.
 
-Nonetheless, we identify that a sequence of signatures created with the same vinegar variables can be used to mount a key recovery attack. A malicious entity is thus able to create signature forgeries in polynomial time, similar to the UOV attack. The key observation is that signatures produced with Rainbow-$\eta$ can be used directly in the construction of a basis for $\widetilde{\mathcal{O}}$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be recovered and composed with the $\mathcal{P}$ to yield an equivalent private key.
+Nonetheless, we identify that a sequence of signatures created with the same vinegar variables can be used to mount a key recovery attack. A malicious entity is thus able to create signature forgeries in polynomial time, similar to the UOV attack. The key observation is that signatures produced with Rainbow-$\eta$ are vectors of $\widetilde{\mathcal{O}}$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be recovered and composed with the $\mathcal{P}$ to yield an equivalent private key.
+
+We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. We note that this linear transformation is irrelevant to UOV and the attack itself.  
 
 
-
-We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. We note that this linear transformation is irrelevant to UOV and the attack itself. Consider an UOV scheme with $v, o \in \mathbb{N}$ and $\mathsf{sk} = (\mathcal{C}, \mathcal{L}_{2}), \mathsf{pk} = \mathcal{C} \circ \mathcal{L}_{2}$ as per Section~\ref{sec:ov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{C}$ and $\mathsf{pk}$. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
+Consider an UOV scheme $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{C}$ and $\mathcal{P}$. An attacker must collect at least $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. 
 
 The first $v$ variables of any $\sigma_{i}$ under the transformation $\mathcal{L}_{2}^{-1}$ are equal to the chosen sequence of vinegar variables $V_{1} = (x_{1}, \dots, x_{v})$, i.e. the preimage $\mathcal{L}_{2}^{-1}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Since this is the case for any $\sigma_{i}$, we have that $\mathcal{L}_{2}^{-1}(\sigma_{i} - \sigma_{i + 1}) = (0, \dots, 0, \ast, \dots, \ast)$. In fact, any subtraction between two signatures in $\rho$ yields vectors starting with $v$ zeroes. Let us call such a vector $\chi_{i}$, and evidently $\chi_{i} \in \mathcal{L}_{2}^{-1}(\mathcal{O})$. Since the attacker's goal is to build a basis of this set, then $m$ linearly independent $\chi_{i}$ must be collected such that the basis can be constructed. Let us call this set $\widetilde{\rho}$. We note that at least $m + 1$ signatures need to be collected to perform $m$ subtractions.
 
