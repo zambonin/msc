@@ -1298,15 +1298,17 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$. The preimage of $\mathcal{V}$ under $\mathcal{L}_{2}$ is given by $\widetilde{\mathcal{V}}$.
 \end{definition}
 
-The main observation of the attack is that combinations of matrices, each of which is associated with the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix}, are specifically structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and forge signatures. A more precise characterization of this fact is given below.
+The main observation of the attack is that combinations of matrices associated to the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix} are specifically structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and forge signatures. A more precise characterization of this fact is given below.
 
 \begin{lemma}[{\cite[Lemma~1]{Kipnis:199904}}]
   Given any polynomials $f^{(i)}, f^{(j)} \in \textsf{OVH}(v, o)$, let $\phi^{(i)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformation associated to the matrix $\widetilde{M}(f^{(i)})$, and respectively for $\phi^{(j)}$. If $\widetilde{M}(f^{(j)})$ is invertible, then so is $\phi^{(j)}$ and thus $\mathcal{O}$ is an invariant subspace of $\phi^{(i)} \circ (\phi^{(j)})^{-1}$.
 \end{lemma}
 
-We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. Informally, any polynomial of $\mathcal{C}$ maps $\mathcal{O}$ to $\mathcal{V}$ due to its Oil--Vinegar structure. The inverse of this operation gives a mapping from $\mathcal{V}$ to $\mathcal{O}$. By composing such two mappings, the oil space becomes an invariant subspace with regards to this new linear transformation. 
+We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. Informally, any symmetric matrix representation of a polynomial of $\mathcal{C}$ maps $\mathcal{O}$ to $\mathcal{V}$ due to its Oil--Vinegar structure. The inverse of this operation gives a mapping from $\mathcal{V}$ to $\mathcal{O}$. By composing the linear transformations obtained from such matrices, the oil space becomes an invariant subspace with regards to this new linear transformation. 
 
-However, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is unchanged for any combination of polynomials of $\mathcal{P}$. Hence, a polynomial of the public key maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and so forth. With several distinct combinations of such polynomials, it is possible to characterize the common invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
+Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is unchanged for any combination of matrices associated with polynomials of $\mathcal{P}$. Hence, any such symmetric matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and so forth. With several distinct combinations of matrices, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
+
+
 
 \subsection{Our attack}\label{subsec:etaks}
 
