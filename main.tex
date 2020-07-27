@@ -1272,7 +1272,6 @@ The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. 
 We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary greatly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
 \chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
-% TODO expand
 
 As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support to the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves randomness of signatures. This is based on the fact that, as summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. 
 
@@ -1306,7 +1305,7 @@ The main observation of the attack is that combinations of matrices associated t
 
 We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. Informally, any symmetric matrix representation of a polynomial of $\mathcal{C}$ maps $\mathcal{O}$ to $\mathcal{V}$ due to its Oil--Vinegar structure. The inverse of this operation gives a mapping from $\mathcal{V}$ to $\mathcal{O}$. By composing the linear transformations obtained from matrices of two distinct polynomials as described above, the oil space becomes an invariant subspace with regards to this new linear transformation.
 
-Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and so forth. With several distinct combinations, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
+Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and its inverse maps $\widetilde{\mathcal{V}}$ to $\widetilde{\mathcal{O}}$. With several distinct combinations of the aforementioned form, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
 
 If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward to obtain its basis $B$ with dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2}) \in \textsf{GL}_{n}(\mathbb{F})$ with the elements of $B$ as its last $o$ columns. This matrix has the shape of $\omega$ in Theorem~\ref{thm:eq-keys-uov}. Consequently, the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key of the form
 \begin{align}
@@ -1315,7 +1314,7 @@ If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward
 by inspection of the associated matrix representations, as given in~\cite[p.~71]{Ding:2006}.
 
 \subsection{Our attack}\label{subsec:etaks}
-% TODO
+% TODO expand
 
 The modification of Rainbow-$\eta$ fixes vinegar variables in the signature generation step of the scheme. By pre-substituting these in the central map, it can be stored more efficiently. This is allowed, since the map can be reconstructed if signature generation fails, allowing the signing of any messages. We propose three methods to achieve this, through either a seed, mathematical relations between the public key and the central map, as explained in Subsection~\ref{sec:mod}, or simply by changing the message with a nonce due to the EU-CMA trait. The difference between signatures made with the same vinegar variables and usual signatures is not statistically significant, as argued in Subsection~\ref{subsec:similar}. Moreover, there is no limitation on parameters such that their secure selection is always encouraged.
 
