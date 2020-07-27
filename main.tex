@@ -1313,7 +1313,7 @@ If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward
 \end{align}
 This can be verified by inspection of the associated symmetric matrix representations, as given in~\cite[p.~71]{Ding:2006}.
 
-The UOV attack is also applicable to instances of Rainbow. Consider a Rainbow private key as shown in Equation~\ref{eq:sk-rainbow}. It is evident that the function composition $\mathcal{D} = \mathcal{L}_{1} \circ \mathcal{C}$ preserves the Oil--Vinegar trapdoor, since $\mathcal{L}_{1}$ only permutes the coefficients of the polynomials in the central map. The resulting map $\mathcal{D}$ is an Oil--Vinegar central map with $v_{u} = v_{1} + o_{1} + \cdots + o_{u - 1}$ vinegar variables and $o_{u}$ oil variables, and extra equations. Then, $(\mathcal{D}, \mathcal{L}_{2})$ is a valid UOV private key.
+The UOV attack is also applicable to instances of Rainbow. Consider a Rainbow private key as shown in Equation~\ref{eq:sk-rainbow}. It is evident that the function composition $\mathcal{D} = \mathcal{L}_{1} \circ \mathcal{C}$ preserves the Oil--Vinegar trapdoor, since $\mathcal{L}_{1}$ only permutes the coefficients of the polynomials in the central map. The resulting map $\mathcal{D}$ is an Oil--Vinegar central map with $v_{u} = v_{1} + o_{1} + \cdots + o_{u - 1}$ vinegar variables and $o_{u}$ oil variables. A side effect of this interpretation is that the first $o_{1} + \cdots + o_{u - 1}$ polynomials of the central map are always simplified to constants. Then, $(\mathcal{D}, \mathcal{L}_{2})$ is a valid UOV private key.
 
 \subsection{Our attack}\label{subsec:etaks}
 % TODO expand
