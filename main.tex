@@ -1325,7 +1325,6 @@ This can be verified by inspection of the associated symmetric matrix representa
 The UOV attack is also applicable to instances of Rainbow. Consider a Rainbow private key as shown in Equation~\ref{eq:sk-rainbow}. It is evident that the function composition $\mathcal{D} = \mathcal{L}_{1} \circ \mathcal{C}$ preserves the Oil--Vinegar trapdoor, since $\mathcal{L}_{1}$ only permutes the coefficients of the polynomials in the central map. The resulting map $\mathcal{D}$ is an Oil--Vinegar map with $v_{u} = v_{1} + o_{1} + \cdots + o_{u - 1}$ vinegar variables and $o_{u}$ oil variables. A side effect of this interpretation is that the first extra $o_{1} + \cdots + o_{u - 1}$ polynomials of the central map are always simplified to constants. Then, $(\mathcal{D}, \mathcal{L}_{2})$ is a valid UOV private key.
 
 \subsection{Our attack}\label{subsec:etaks}
-% TODO expand
 
 We recall that our proposal Rainbow-$\eta$, as described in Section~\ref{sec:mod}, is a modification based on fixing vinegar variables early in the key generation step. By pre-substituting such variables in the central map, it can be stored more efficiently. Further, we ensure that any message can be signed through methods to reconstruct the central map if its associated preimage calculation does not succeed. Moreover, we impose no limitation on parameters such that their secure selection is always encouraged.
 
