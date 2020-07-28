@@ -1330,9 +1330,9 @@ Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. Any pre
 \end{align}
 Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. 
 
-Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave it as an open question to calculate a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$. We give
+Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave it as an open question to calculate a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$. We give a rough estimate of $m + 1$ signatures based on the naive strategy $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$. Further, as seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
 
-As seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are linearly independent.
+
 
 The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. We operate on the matrix representation of $B$, denoted $M(B)$. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\widetilde{\rho}$, and the matrix is then transposed. More concisely, a simple basis extension is performed. Equivalently,
 \begin{align}
