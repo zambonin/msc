@@ -1328,7 +1328,9 @@ Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. Any pre
 \begin{align}
   \mathcal{L}_{2}(\sigma_{i} - \sigma_{j}) = (0, \dots, 0, \ast, \dots, \ast).
 \end{align}
-Let us define $\chi_{i} = \sigma_{i} - \sigma_{j}$, and by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, for which $m$ linearly independent $\chi_{i}$ must be collected. Let us call this set $\widetilde{\rho}$. We note that at least $m + 1$ signatures need to be collected to perform $m$ subtractions, in the case that all $\chi_{i}$ are immediately linearly independent.
+
+Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, for which $m$ linearly independent $\chi_{i}$ must be collected. Let us call this set $\widetilde{\rho}$. We note that at least $m + 1$ signatures need to be collected to perform $m$ subtractions, in the case that all $\chi_{i}$ are immediately linearly independent. As seen in Subsection~\ref{subsec:invert}, it is expected that with high probability 
+
 
 The construction of the basis $B$ for $\mathcal{L}_{2}^{-1}(\mathcal{O})$ is given below. We operate on the matrix representation of $B$, denoted $M(B)$. A standard basis is taken as a blueprint, its last $m$ rows are substituted with the vectors in $\widetilde{\rho}$, and the matrix is then transposed. More concisely, a simple basis extension is performed. Equivalently,
 \begin{align}
