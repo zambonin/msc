@@ -1307,7 +1307,7 @@ We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. 
 
 Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and its inverse maps $\widetilde{\mathcal{V}}$ to $\widetilde{\mathcal{O}}$. With several distinct combinations of the aforementioned form, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
 
-If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward to obtain its basis $B$ with dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2}) \in \textsf{GL}_{n}(\mathbb{F})$ with the elements of $B$ as its last $o$ columns. This matrix has the shape of $\omega$ in Theorem~\ref{thm:eq-keys-uov}. Consequently, the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key of the form
+If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward to obtain its basis $B$ with dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2}) \in \textsf{GL}_{n}(\mathbb{F})$ as $\mathbf{I}_{n}$ with the elements of $B$ as its last $o$ columns. This matrix has the shape of $\omega$ in Theorem~\ref{thm:eq-keys-uov}. Consequently, the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key of the form
 \begin{align}
   \textsf{sk} = (\mathcal{P} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1}).
 \end{align}
@@ -1330,7 +1330,7 @@ Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. Any pre
 \end{align}
 Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. 
 
-Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave it as an open question to calculate a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$. We give a rough estimate of $m + 1$ signatures based on the naive strategy $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$. Further, as seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
+Thus, the only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave open the question of calculating a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$, due to the huge number of possible linear combinations between all $\chi_{i}$. We give a rough estimate of $m + 1$ signatures based on the naive strategy $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$. Further, as seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
 
 
 
