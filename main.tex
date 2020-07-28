@@ -1341,7 +1341,11 @@ Given such a basis $B$, we proceed with the last part of the UOV attack as descr
     0 & 0 & 0 & \cdots & \chi_{1}^{(n)} & \cdots & \chi_{m}^{(n)} \\
   \end{bmatrix}.
 \end{align}
-The associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation~\ref{eq:uov-attack-eq}. Finally, an attacker can use $\mathsf{sk'}$ and forge signature for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information. 
+We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation~\ref{eq:uov-attack-eq}. By using this method, an attacker can create $\mathsf{sk'}$ and forge signatures for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information. 
+
+Interestingly, this attack can be used to recover a private key of a legitimate signer. It must compute in advance several linear independent preimages of $\mathcal{C}$ with the same vinegar variables. In the event that the private key is lost, the signer would only need to compute an equivalent private key by fetching i
+
+a legitimate signer can compute several linear independent preimages of random messages with the same vinegar variables, and in the event that 
 
 \section{Aftermath and countermeasures}\label{sec:counter}
 
