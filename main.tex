@@ -1341,6 +1341,7 @@ Given such a basis $B$, we proceed with the last part of the UOV attack as descr
     0 & 0 & 0 & \cdots & \chi_{1}^{(n)} & \cdots & \chi_{m}^{(n)} \\
   \end{bmatrix}.
 \end{align}
+We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key 
 Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
 
 \section{Aftermath and countermeasures}\label{sec:counter}
