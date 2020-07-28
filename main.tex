@@ -24,7 +24,7 @@
 
 \chapterstyle{article}
 
-\title{On the randomness of signatures and the Rainbow signature scheme}
+\title{Effects of faulty randomness on the Rainbow signature scheme}
 \author{Gustavo Zambonin}
 \date{2020-07-30}
 
@@ -1511,12 +1511,12 @@ Through the knowledge of such probabilities, it is a choice of the user to gener
   \end{tabular}
 \end{table}
 
-Once again, we do not discard the possibility that a method to make use of any possible leaked information in signatures exists, independent of the number of fixed vinegar variables. However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and randomness still exists in the signing procedure.
+Once again, we do not discard the possibility that a method to make use of any possible leaked information in signatures exists, independent of the number of fixed vinegar variables. However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
 
 % TODO
 \chapter{Conclusion}\label{ch:conc}
 
-
+In this thesis, we analyzed the consequences of limiting the number of possible, distinct signatures obtained from a single message. 
 
 \subsubsection{Future work.}
 
