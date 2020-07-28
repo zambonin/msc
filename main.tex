@@ -1516,7 +1516,7 @@ Once again, we do not discard the possibility that a method to make use of any p
 % TODO
 \chapter{Conclusion}\label{ch:conc}
 
-In this thesis, we analyzed the consequences of limiting the number of possible, distinct signatures obtained from a single message. We introduced a variant of the Rainbow signature scheme that does not limit the private key space, but manages to shorten the private key by substituting values into linear systems early in the key generation algorithm. Consequently, signatures 
+In this thesis, we analyzed the consequences of limiting the number of possible, distinct signatures obtained from a single message. We introduced a variant of the Rainbow signature scheme that does not limit the private key space, but private keys are shortened by substituting values into linear systems early in the key generation algorithm. Consequently, signatures are produced with a lesser degree of randomness, at the expense of a rare key reconstruction event if the resulting linear systems are not solvable. We argue that this change is not statistically recognizable and private keys need reconstruction with negligible probability.
 
 \subsubsection{Future work.}
 
