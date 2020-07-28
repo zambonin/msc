@@ -1308,7 +1308,7 @@ We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. 
 Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and its inverse maps $\widetilde{\mathcal{V}}$ to $\widetilde{\mathcal{O}}$. With several distinct combinations of the aforementioned form, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem~1]{Kipnis:199904}.
 
 If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward to obtain its basis $B$ with dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2}) \in \textsf{GL}_{n}(\mathbb{F})$ as $\mathbf{I}_{n}$ with the elements of $B$ as its last $o$ columns. This matrix has the shape of $\omega$ in Theorem~\ref{thm:eq-keys-uov}. Consequently, the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key of the form
-\begin{align}
+\begin{align}\label{eq:uov-attack-eq}
   \textsf{sk} = (\mathcal{P} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1}).
 \end{align}
 This can be verified by inspection of the associated symmetric matrix representations, as given in~\cite[p.~71]{Ding:2006}.
@@ -1341,8 +1341,7 @@ Given such a basis $B$, we proceed with the last part of the UOV attack as descr
     0 & 0 & 0 & \cdots & \chi_{1}^{(n)} & \cdots & \chi_{m}^{(n)} \\
   \end{bmatrix}.
 \end{align}
-We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key 
-Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
+The associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation~\ref{eq:uov-attack-eq}. Finally, an attacker can use $\mathsf{sk'}$ and forge signature for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information. 
 
 \section{Aftermath and countermeasures}\label{sec:counter}
 
