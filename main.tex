@@ -1335,15 +1335,10 @@ The only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, wh
 Given such a basis $B$, we proceed with the last part of the UOV attack as described previously. Let $\chi_{i}^{(j)}$ be the $j$-th element of the $i$-th vector in $\widetilde{\rho}$, with $1 \leq i \leq m$ and $1 \leq j \leq n$. Then, we have that
 \begin{align}
   \psi(\widetilde{\mathcal{L}}_{2}) = \begin{bmatrix}
-    % 1 & 0 & 0 & \cdots & 0 \\
-    % 0 & 1 & 0 & \cdots & 0 \\
-    % 0 & 0 & 1 & \cdots & 0 \\
-    % \vdots & \vdots & \vdots & \ddots & \vdots \\
-    % \chi_{11} & \chi_{12} & \chi_{13} & \cdots & \chi_{1n} \\
-    %     \vdots & \vdots & \vdots & \ddots & \vdots \\
-    % \chi_{m1} & \chi_{m2} & \chi_{m3} & \cdots & \chi_{mn} \\
     1 & 0 & 0 & \cdots & \chi_{1}^{(1)} & \cdots & \chi_{m}^{(1)} \\
     0 & 1 & 0 & \cdots & \chi_{1}^{(2)} & \cdots & \chi_{m}^{(2)} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & \chi_{1}^{(n)} & \cdots & \chi_{m}^{(n)} \\
   \end{bmatrix}.
 \end{align}
 Then, if $B \in \mathsf{GL}(\mathbb{F}^{n})$, the inverse of $\widetilde{\mathcal{L}}_{2}$ can be constructed. If this is not the case, then other vectors in $\rho$ need to be picked to form $\widetilde{\rho}$. This is due to the fact that the desired equivalent private key is of the form $\mathbf{sk'} = (\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}, \widetilde{\mathcal{L}}_{2}^{-1})$. By representing $B$ as a linear transformation and performing the aforementioned composition, we obtain an equivalent key. Evidently, $\mathsf{pk} \circ \widetilde{\mathcal{L}}_{2}$ must be a system of Oil--Vinegar polynomials~\cite[Theorem 1]{Beullens:201706}. Finally, an attacker can use $\mathbf{sk'}$ and produce signature forgeries of any desired message, not necessarily needing to fix any vinegar variables and thus producing ``secure forgeries''.
