@@ -24,8 +24,17 @@
 
 \chapterstyle{article}
 
+\title{}
+\author{Gustavo Zambonin}
+\date{2020-07-30}
+
 \begin{document}
 
+\maketitle
+
+\subsubsection{Abstract.}
+
+\newpage
 \tableofcontents*
 
 \chapter{Introduction}\label{ch:intro}
@@ -999,7 +1008,7 @@ Since only the message digest is signed in the case of multivariate signature sc
 
 \subsubsection{UOV attack.} 
 
-The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. This attack was originally created by Kipnis and Shamir~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key by means of finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $q^{n - 1 - 2 \cdot o_{u}} \cdot o_{u}^{4}$ field multiplications. We discuss the UOV attack in more detail on Chapter~\ref{ch:attack}.
+The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. This attack was originally created by Kipnis and Shamir~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key by means of finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $q^{n - 1 - 2 \cdot o_{u}} \cdot o_{u}^{4}$ field multiplications. We discuss the UOV attack in more detail on Subsection~\ref{subsec:ks}.
 
 \subsubsection{MinRank attack (MR).} 
 
