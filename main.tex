@@ -1522,7 +1522,7 @@ To this effect, we introduced a variant of the Rainbow signature scheme that doe
 
 We argued that signatures produced with our scheme are statistically unrecognizable from conventional Rainbow signatures, and private keys need reconstruction with negligible probability. Further, our method does not impose restrictions on parameters, and can be composed with other Rainbow variants to achieve both private and public key size improvements. We obtained reductions of up to $87\%$ in the private key size, and up to $77\%$ in the key pair size when our method is combined with a state-of-the-art strategy that reduces public keys.
 
-The security analysis performed to assert the safety of using our proposal was carried out considering that there were no changes in parameters, thus maintaining the high complexity of known attacks. Yet, we identified a flaw in our proposal that allowed an attacker to efficiently recover an equivalent key, by collecting a small number of signatures. 
+The security analysis performed to assert the safety of using our proposal was carried out considering that there were no changes in parameters, thus maintaining the high complexity of known attacks. However, we identified a flaw in our proposal that allowed an attacker to efficiently recover an equivalent key, by collecting a small number of signatures. We showed how to perform the attack, which is a key recovery attack akin to the method of Kipnis--Shamir.
 
 \subsubsection{Future work.}
 
