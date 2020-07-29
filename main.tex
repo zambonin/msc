@@ -1403,11 +1403,11 @@ The identification problem remains difficult if $n$ is much larger than $k$, sin
 \begin{align}
   \frac{\binom{K}{k}}{\binom{N}{k}} = \frac{K! (N - k)!}{N! (K - k)!},
 \end{align}
-which yields negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$. Hence, on average, it is not trivial to collect signatures and attack a Rainbow instance with sufficient security level. 
+which yields negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$. Hence, on average, it is not trivial to collect signatures and attack a Rainbow instance with sufficient security level if $\alpha$ is sufficiently large.
 
 If the attacker collects signatures from multiple signers but cannot classify them according to each public key, the problem can still be modelled by making use of a \emph{multivariate hypergeometric distribution}. The \texttt{CertificateVerify} message of a TLS handshake~\cite[Subsection~4.4.3]{Rescorla:201808} may be leveraged in order to implement a practical proof-of-concept for the attack, which is outside the scope of this work.
 
-We infer that the success of an attacker is directly proportional to the maximization of the number of draws or the $\alpha$ factor. The chances of efficiently obtaining a collection of signatures useful to perform the attack is not negligible, but the effort associated with guessing such a subset is meaningful. Still, by bounding the security level of the resulting scheme to the chances associated with a best case scenario of the probabilities previously discussed, we clearly obtain an efficient, polynomial time procedure.
+We infer that the success of an attacker is directly proportional to the maximization of the number of draws or the $\alpha$ factor. Obtaining a collection of signatures of which a subset is useful to perform the attack is trivial, but the effort associated with locating such subset is meaningful. Still, by bounding the security level of the resulting scheme to the chances associated with a best case scenario of the probabilities previously discussed, we clearly obtain an efficient, polynomial time procedure.
 
 \subsection{Reparation of the method}\label{subsec:repair}
 
@@ -1526,7 +1526,7 @@ We argued that signatures produced with our scheme are statistically unrecogniza
 
 The security analysis performed to assert the safety of using our proposal was carried out considering that there were no changes in parameters, thus maintaining the high complexity of known attacks. However, we identified a flaw in our proposal that allows an attacker to efficiently recover an equivalent key, by collecting a small number of signatures. We showed how to perform the attack, which is a key recovery attack akin to the method of Kipnis--Shamir to find equivalent keys.
 
-We analyzed the effort needed to collect signatures from an active target that randomly produces signatures with a conventional private key, or the same key minified with the aid of our proposal.
+We analyzed the effort needed to collect signatures from an active target that randomly produces signatures with a conventional private key, or the same key minified with the aid of our proposal. We found t
 
 \subsubsection{Future work.}
 
