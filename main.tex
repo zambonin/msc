@@ -1539,9 +1539,9 @@ We also argue that there is room for a stronger characterization of the security
 
 By reducing the scope to our scheme, there are still useful propositions to be answered, even if the security of our proposal is unsatisfactory. Subjecting the scheme to a side-channel attack may help in understanding how a constant-time signature generation algorithm can be achieved, since the key reconstruction event is evidently discernible. Furthermore, we did not concretely pursue how the performance of the key reconstruction methods is distributed over several signing procedures, which may impact the practicality of our proposal.
 
-We assume that the number of signatures needed to attack our proposal can be improved. Our attack is based on combining pairs of signatures in order to obtain linearly independent vectors. We implemented a naive strategy that always yields symbolically linearly independent vectors. However, it may be the case that carefully picked combinations of a smaller collection of signatures can result in the desired number of vectors used to proceed with our attack.
+We assume that the number of signatures needed to attack our proposal can be improved. Our attack is based on combining pairs of signatures in order to obtain linearly independent vectors. Our strategy to pick such combinations is naive at the moment. However, it may be the case that carefully picked combinations of a smaller collection of signatures can result in the desired number of vectors used to proceed with our attack.
 
-Finally, further work is needed on the security of Rainbow signature schemes with partially fixed vinegar variables. 
+Finally, further work is needed on the security of Rainbow signature schemes with partially fixed vinegar variables. It is unknown if fixing a single vinegar variable immediately leads to a polynomial time attack which can foil the target scheme. If that is not the case, we argue that there is a case to search for the maximal number of fixed variables that respects a security threshold, since private key size reductions are linear in the number of fixed vinegar variables.
 
 \bibliographystyle{alpha}
 {\scriptsize \bibliography{ref}}
