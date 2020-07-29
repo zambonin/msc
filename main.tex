@@ -1526,7 +1526,9 @@ We argued that signatures produced with our scheme are statistically unrecogniza
 
 The security analysis performed to assert the safety of using our proposal was carried out considering that there were no changes in parameters, thus maintaining the high complexity of known attacks. However, we identified a flaw in our proposal that allows an attacker to efficiently recover an equivalent key, by collecting a small number of signatures. We showed how to perform the attack, which is a key recovery attack akin to the method of Kipnis--Shamir to find equivalent keys.
 
-We analyzed the effort needed to collect signatures from an active target that randomly produces signatures with a conventional private key, or the same key minified with the aid of our proposal. We found t
+We analyzed the effort needed to collect signatures from an active target that randomly produces signatures with a conventional private key, or the same key minified with the aid of our proposal. We found out that this strategy thwarts the attacker, but not sufficiently to prevent its eventual progress. Finally, we generalized our proposal to introduce a control parameter that rules the level of randomness in the signature generation algorithm. 
+
+This represents a direct trade-off between private key sizes and security levels. However, 
 
 \subsubsection{Future work.}
 
