@@ -1533,7 +1533,9 @@ Despite its simple construction that allows for several modifications, the Rainb
 
 \subsubsection{Future work.}
 
-We observe that there are very few signature schemes based on Rainbow that attempt to reduce both private and public keys at the same time. The conventional procedure of generating the public key from the corresponding private key is prevalent. Additionally, the method of Petzoldt that is based on generating a public key first and obtaining the central map later, is the basis of all public key reduction methods in the literature.
+We observe that there are very few signature schemes based on Rainbow that attempt to reduce both private and public keys at the same time. The conventional procedure of obtaining the public key from the corresponding private key is prevalent. Additionally, the method of Petzoldt, which is based on generating a structured part of the public key first and obtaining the central map later, is the basis of all public key reduction methods in the literature. Proposals that can be combined with this strategy can help in reducing the total key pair size, such that storage-constrained devices can operate a Rainbow private key.
+
+There is stiA strong characterization of the security problems in which Rainbow is based on
 
 \bibliographystyle{alpha}
 {\scriptsize \bibliography{ref}}
