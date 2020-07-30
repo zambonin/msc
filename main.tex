@@ -3,8 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, siunitx, tikz}
-% \usepackage[backref]{hyperref}
+\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, subfig, siunitx, tikz}
+\usepackage[backref]{hyperref}
 
 \usetikzlibrary{positioning, patterns}
 
@@ -1554,12 +1554,6 @@ We assume that the number of signatures needed to attack our proposal can be imp
 Finally, further work is needed on the security of Rainbow signature schemes with partially previously chosen vinegar variables. It is unknown if fixing a single variable immediately leads to a polynomial time attack which can foil the target scheme. If that is not the case, we argue that there is a case to search for the maximal number of such variables that simultaneously respects a security threshold, since private key size reductions are linear in the number of fixed vinegar variables.
 
 \bibliographystyle{alpha}
-{\scriptsize \bibliography{ref}}
+\bibliography{ref}
 
 \end{document}
-
-
-
-
-
-
