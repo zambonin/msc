@@ -69,7 +69,7 @@ It is known that the difficulty of solving polynomial systems over multiple vari
 
 Multivariate cryptosystems are extremely time- and space-efficient when operating over messages. However, public and private keys are defined by large polynomial systems with little opportunity for compression or sparseness. Large key sizes frequently impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than the ones used in conventional signature schemes.
 
-In this thesis, we solely discuss multivariate signature schemes based on the Oil--Vinegar principle. More precisely, UOV~\cite{Kipnis:199904} and its generalization Rainbow~\cite{Ding:200506} receive primary attention. Such schemes perform computations over a single field and present a balanced nature with simple, elegant definitions. Signature schemes of a different structure such as HFE~\cite{Patarin:199605}, or multivariate public-key encryption schemes such as SRP~\cite{Duong:201607}, are not addressed. Furthermore, we specifically discuss strategies for reducing key sizes of Rainbow-like signature schemes and the security implications of such methods.
+In this thesis, we solely discuss multivariate signature schemes based on the Oil--Vinegar principle. More precisely, Unbalanced Oil and Vinegar (UOV)~\cite{Kipnis:199904} and its generalization Rainbow~\cite{Ding:200506} receive primary attention. Such schemes perform computations over a single field and present a balanced nature with simple, elegant definitions. Signature schemes of a different structure such as HFE~\cite{Patarin:199605}, or multivariate public-key encryption schemes such as SRP~\cite{Duong:201607}, are not addressed. Furthermore, we specifically discuss strategies for reducing key sizes of Rainbow-like signature schemes and the security implications of such methods.
 
 \section{Contributions and outline of this thesis}
 
@@ -89,7 +89,7 @@ We conduct our literature review by making use of the Google Scholar meta-indexe
 
 We note that Rainbow is in the third round of the NIST standardization process as a finalist~\cite[Sec.~3.20]{Alagic:202007}. Throughout this work, we discuss the algorithm as submitted to the second round~\cite{Ding:201901}. Currently, there is no available third round submission for inspection. However, NIST strongly suggests that no large changes are made to the algorithm, and thus we expect that our conclusions also hold for the newest submission.
 
-Algebraic cryptanalysis techniques that have thwarted schemes are discussed in Section~\ref{subsec:analysis}. A summary of the theory of equivalent keys is given in Section~
+In this section, we mention by name several methods that have thwarted schemes. Such techniques of algebraic cryptanalysis are discussed in Section~\ref{subsec:analysis}. In special, equivalent keys can also be used to reduce private key sizes. A summary of the theory is given in Section~\ref{sec:mult} as a general concept, and in Section~\ref{sec:ov} within the context of UOV and Rainbow.
 
 \subsection{Improvements to private key size}\label{subsec:priv}
 
