@@ -87,7 +87,7 @@ In this section, we make use of the previously well-defined boundaries with rega
 
 We conduct our literature review by making use of the Google Scholar meta-indexer tool, which covers most scientific literature providers, and allows the user to efficiently delimit the desired scope. We identify three critical works in the history of signatures based on Oil--Vinegar polynomials~\cite{Patarin:199709,Kipnis:199904,Ding:200506} and search for works that directly cited at least one of those. We consider only publications written in English that additionally are not patents. From this set, we select relevant papers and present a summary below.
 
-We note that Rainbow is in the third round of the NIST standardization process as a finalist~\cite[Section 3.20]{Alagic:202007}. Throughout this work, we discuss the algorithm as submitted to the second round~\cite{Ding:201901}. Currently, there is no available third round submission for inspection. However, NIST strongly suggests that no large changes are made to the algorithm, and thus we expect that our conclusions also hold for the newest submission.
+We note that Rainbow is in the third round of the NIST standardization process as a finalist~\cite[Sec.~3.20]{Alagic:202007}. Throughout this work, we discuss the algorithm as submitted to the second round~\cite{Ding:201901}. Currently, there is no available third round submission for inspection. However, NIST strongly suggests that no large changes are made to the algorithm, and thus we expect that our conclusions also hold for the newest submission.
 
 \subsection{Improvements to private key size}\label{subsec:priv}
 
@@ -115,7 +115,7 @@ The precomputation of UOV signatures such that the private key is not required i
 
 \subsection{Improvements to public key size}\label{subsec:pub}
 
-In the case of modifications to the public key, there are not as many approaches as for private keys. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{Beullens:201712} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{Alagic:201901}, and it was subsequently attacked with a new strategy based on differentials between the base and extension fields~\cite{Ding:201912}. Due to this fact, it was not considered to the third round of the process~\cite[Section 3.24]{Alagic:202007}. An extension of the LUOV proposal to Rainbow~\cite{Duong:202003} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
+In the case of modifications to the public key, there are not as many approaches as for private keys. The first strategy is based on the method of field lifting, where the resulting LUOV scheme~\cite{Beullens:201712} has the central map and public key lifted to an extension field, such that coefficients of those polynomial systems are now smaller. This is a trade-off between public key size and signature size, but it is general enough to be compatible with other public key reduction strategies. LUOV has been submitted to the standardization process by NIST~\cite{Alagic:201901}, and it was subsequently attacked with a new strategy based on differentials between the base and extension fields~\cite{Ding:201912}. Due to this fact, it was not considered to the third round of the process~\cite[Sec.~3.24]{Alagic:202007}. An extension of the LUOV proposal to Rainbow~\cite{Duong:202003} was submitted before any attacks were known, but it is unclear if it is affected by the differential method.
 
 A development by the name of BACUOV~\cite{Szepieniec:201908} forces matrices representing the central map and public key to be block-anti-circulant. This allows for a compression of both keys in the key pair, although only public key size improvements are featured on the aforementioned work. Still, the authors of~\cite{Furue:202004} show that the security levels of BACUOV are smaller than originally claimed through manipulation of the public key and the application of the UOV attack.
 
@@ -129,7 +129,7 @@ The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic
 
 \subsection{Improvements to total key pair size}\label{subsec:both}
 
-Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Subsection 3.2.1]{Wolf:200511} is applied to the public key, of which a number of equations are removed in order to reduce storage requirements.
+Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Sec.~3.2.1]{Wolf:200511} is applied to the public key, of which a number of equations are removed in order to reduce storage requirements.
 
 A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the HUFU-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions, which for instance enable the compression of the public key by up to a factor of $4.5$.
 
@@ -236,7 +236,7 @@ The ring of integers equipped with usual addition and multiplication $(\mathbb{Z
 
 Particularly, Galois fields or \emph{finite fields} are at the heart of various branches of mathematics and computer science, and especially cryptography. They are denoted as $\mathbb{F}_{q},\; q = p^{n}$ where the prime number $p$ is the \emph{characteristic} of the field, and $q$ is omitted for brevity if appropriate.
 
-\begin{proposition}[{\cite[Corollary 2.18]{Mullen:2013}}]
+\begin{proposition}[{\cite[Cor.~2.18]{Mullen:2013}}]
   The order of a finite field is always of the form $p^{n}$ with $p$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is a \emph{prime field}.
 \end{proposition}
 
@@ -269,7 +269,7 @@ where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i
   Given $f_{1}, f_{2}, f_{3} \in \mathsf{R}[\mathbf{x}]$ with $\deg(f_{1}) > 0$, if $f_{1} = f_{2} \ast f_{3}$ implies that either $\deg(f_{2}) = 0$ or $\deg(f_{3}) = 0$, then $f_{1}$ is an \emph{irreducible polynomial over $\mathsf{R}[\mathbf{x}]$}.
 \end{definition}
 
-We note that an irreducible polynomial over a ring always exists~\cite[Remark 2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
+We note that an irreducible polynomial over a ring always exists~\cite[Remark~2.1.25]{Mullen:2013}. Evidently, an irreducible polynomial cannot be reduced, or divided into simpler polynomials. In the context of multivariate polynomial rings, division is ambiguous if further structure is not attached to the ring. This is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
   Given $f \in \mathbb{F}_{p}[x]$ irreducible with $\deg(f) = n$, then the finite field $\mathbb{F}_{p^{n}}$ is the set of polynomials with coefficients in $\mathbb{F}_{p}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $f$.
@@ -293,7 +293,7 @@ Several polynomials may be used to model a complex structure in which they behav
   If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
 \end{definition}
 
-A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively and there exist several different methods to calculate one or all roots~\cite[Chapter 9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Section 2.2]{Press:2007}.
+A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively and there exist several different methods to calculate one or all roots~\cite[Chap.~9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Sec.~2.2]{Press:2007}.
 
 To generalize the notion of grouping polynomials into a system, it is useful to define an algebraic structure which falls outside of the class of pure ring-like structures.
 
@@ -352,11 +352,11 @@ Such functions between coordinate spaces can be represented by polynomial maps. 
   Consider a vector space $\mathbf{V}$ over $\mathbb{F}$ with $\dim(\mathbf{V}) = n$. Let the \emph{general linear group of degree $n$, $\mathsf{GL}_{n}(\mathbb{F})$}, be the set of all invertible matrices of order $n \times n$ over $\mathbb{F}$ carrying the usual matrix multiplication binary operation. Then, there exists an isomorphism $\psi : \mathsf{GL}(\mathbf{V}) \to \mathsf{GL}_{n}(\mathbb{F})$.
 \end{proposition}
 
-We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Section 11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\psi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v} \in \mathbf{V}$, then $\phi(\mathbf{v}) = M\mathbf{v}$.
+We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a vector space. This is due to the remarkable fact that linear transformations may be interpreted as matrices over the base field of the vector space~\cite[Sec.~11.2]{Dummit:2003}. Thus, map compositions and applications can be interpreted as matrix-matrix and matrix-vector multiplications throughout our work. For example, the matrix associated with \textsf{id} is exactly $\mathbf{I}_{\dim \mathbf{V}}$. More generally, given $\phi \in \mathsf{GL}(\mathbf{V})$, its associated matrix $\psi(\phi) = M \in \mathsf{GL}_{n}(\mathbb{F})$ and a vector $\mathbf{v} \in \mathbf{V}$, then $\phi(\mathbf{v}) = M\mathbf{v}$.
 
 \section{Multivariate signature schemes}\label{sec:mult}
 
-With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential components of cryptography, with definitions taken from~\cite[Section 7.1]{Gathen:2015} and~\cite[Section 6.1]{Goldreich:2004}.
+With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, with particular focus on digital signature schemes. We firstly recall two essential components of cryptography, with definitions taken from~\cite[Sec.~7.1]{Gathen:2015} and~\cite[Sec.~6.1]{Goldreich:2004}.
 
 \begin{definition}
   Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is a \emph{cryptographic hash function} if it satisfies the following conditions:
@@ -390,7 +390,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
   Given a polynomial system of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is the \emph{polynomial system solving problem}, or \textsf{PoSSo}.
 \end{definition}
 
-\begin{theorem}[{\cite[Appendix A]{Patarin:199711}}]
+\begin{theorem}[{\cite[App.~A]{Patarin:199711}}]
   Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
@@ -426,7 +426,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   \end{itemize}
 \end{definition}
 
-In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Section 21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
+In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Sec.~21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
@@ -499,7 +499,7 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
     \mathsf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
   \end{split}
 \end{align}
-The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Section 2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
+The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Sec.~2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
 
 While very elegant, the bipolar construction yields a situation in which derived schemes are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on \textsf{PoSSo} such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
@@ -527,13 +527,13 @@ Unfortunately, the amount of information regarding the difficulty of EIP is spar
 
 This concept is further explored in the context of the schemes of Section~\ref{sec:ov}. Finally, we remark that our description of the bipolar construction is slightly different from the literature. The usual, broader description has $\mathcal{L}_{1} \in \mathsf{AGL}(\mathbb{F}^{m})$ and $\mathcal{L}_{2} \in \mathsf{AGL}(\mathbb{F}^{n})$. We recall that this is the \emph{affine group}, which is composed of matrix-vector pairs $(M, \mathbf{b})$ that encode the affine transformation $\mathbf{a} \mapsto M\mathbf{a} \bm{+} \mathbf{b}$. By setting the translation vector $\mathbf{b} = (0, \dots, 0)$, we get a linear transformation. 
 
-However, it is argued in~\cite[Remark 3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. 
+However, it is argued in~\cite[Remark~3.1]{Wolf:201104} that due to the theory of equivalent keys, it is not relevant to the security of most schemes based on the bipolar construction if $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ are linear instead of affine transformations. Hence, our description of the bipolar construction is based on this technical result. Furthermore, there is independent evidence of this fact for the schemes presented in Section~\ref{sec:ov}. 
 
-It is argued in~\cite[Lemmas 3.2, 3.10, 3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve using linear transformations in place of affine ones. As a consequence, the polynomials in the central map must be homogeneous quadratic. Moreover, there exist works that confirm homogeneous quadratic maps and linear transformations are safe both in UOV~\cite[Section 5]{Kipnis:199808}~\cite[Section 3.1]{Braeken:200502} and Rainbow~\cite[Section 3.1]{Ding:201901}.
+It is argued in~\cite[Lemmas~3.2,~3.10,~3.19]{Thomae:201306} that some IP problems modelled to represent Oil--Vinegar schemes are no harder to solve using linear transformations in place of affine ones. As a consequence, the polynomials in the central map must be homogeneous quadratic. Moreover, there exist works that confirm homogeneous quadratic maps and linear transformations are safe both in UOV~\cite[Sec.~5]{Kipnis:199808}~\cite[Sec.~3.1]{Braeken:200502} and Rainbow~\cite[Sec.~3.1]{Ding:201901}.
 
 \section{The Oil--Vinegar trapdoor}\label{sec:ov}
 
-In this section, we describe the classic schemes based on the Oil--Vinegar trapdoor, introduced in~\cite{Patarin:199709}. We define the Unbalanced Oil and Vinegar (UOV) signature scheme in Subsection~\ref{subsec:uov}, alongside with its multi-layer generalization Rainbow, in Subsection~\ref{subsec:rainbow}. We discuss the theory of equivalent keys for each scheme alongside their descriptions. Our definitions are based on~\cite[Chapter 3]{Ding:2006} and~\cite[Chapter 3]{Petzoldt:201307}.
+In this section, we describe the classic schemes based on the Oil--Vinegar trapdoor, introduced in~\cite{Patarin:199709}. We define the Unbalanced Oil and Vinegar (UOV) signature scheme in Subsection~\ref{subsec:uov}, alongside with its multi-layer generalization Rainbow, in Subsection~\ref{subsec:rainbow}. We discuss the theory of equivalent keys for each scheme alongside their descriptions. Our definitions are based on~\cite[Chap.~3]{Ding:2006} and~\cite[Chap.~3]{Petzoldt:201307}.
 
 \subsection{Unbalanced Oil and Vinegar signature scheme}\label{subsec:uov}
 
@@ -576,7 +576,7 @@ Since Oil--Vinegar schemes are based on the bipolar construction, the private ke
     \random \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
-In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Section 3.1]{Braeken:200502}. The same fact holds for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
+In the case of $\mathcal{C}$, the random choice amounts to picking all coefficients of the polynomials at random. For $\mathcal{L}_{2}$, a new matrix with random coefficients is generated until it is invertible. As discussed in Section~\ref{sec:mult}, we choose the lateral maps to be linear transformations, since it is proven that this also does not affect the security of Oil--Vinegar schemes~\cite[Sec.~3.1]{Braeken:200502}. The same fact holds for homogeneous quadratic Oil--Vinegar polynomials. Let $\mathcal{P} = \mathcal{C} \circ \mathcal{L}_{2}$ and
 \begin{align}\label{eq:pk-uov}
   \mathsf{pk} = \mathcal{P} \in \mathsf{MQ}(n, o).
 \end{align}
@@ -608,9 +608,9 @@ field elements. We note that if the Oil--Vinegar polynomials are homogeneous qua
 
 \subsubsection{Equivalent keys.}
 
-We recall that there exists a specific form of sustainers of Definition~\ref{def:sustainer} for each scheme. In the case of UOV, these mappings are given in~\cite[Section 4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
+We recall that there exists a specific form of sustainers of Definition~\ref{def:sustainer} for each scheme. In the case of UOV, these mappings are given in~\cite[Sec.~4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
-\begin{theorem}[{\cite[Theorem 4.15]{Wolf:201104}}]\label{thm:eq-keys-uov}
+\begin{theorem}[{\cite[Thm.~4.15]{Wolf:201104}}]\label{thm:eq-keys-uov}
   Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\omega) =
@@ -632,7 +632,7 @@ We remark that $\psi(\omega^{-1})$ has the same form as $\omega$ due to the rest
 \end{align}
 where we remove the sub-indices that indicate the dimension of the block matrices to improve readability. It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
-\begin{theorem}[{\cite[Theorem 2]{Beullens:201706}}]
+\begin{theorem}[{\cite[Thm.~2]{Beullens:201706}}]
   Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\mathcal{L}_{2}) =
@@ -667,7 +667,7 @@ and obtain a reduction in the private key size of a factor $\frac{n^{2}}{v o}$.
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
-The Rainbow signature scheme, originally defined in~\cite{Ding:200506} and a finalist of the NIST standardization process~\cite[Section 3.20]{Alagic:202007}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
+The Rainbow signature scheme, originally defined in~\cite{Ding:200506} and a finalist of the NIST standardization process~\cite[Sec.~3.20]{Alagic:202007}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
 
 Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{\ell} = \{1, \dots, v_{\ell}\}$ and oil variables as $O_{\ell} = \{v_{\ell} + 1, \dots, v_{\ell + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{\ell} = V_{\ell + 1} \setminus V_{\ell}$. Let $o_{\ell} = |O_{\ell}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{\ell}, o_{\ell})$, that is,
 \begin{align}\label{eq:oil-vinegar-space}
@@ -730,9 +730,9 @@ field elements. If polynomials are homogeneous quadratic, then the private key s
 
 \subsubsection{Equivalent keys.}
 
-As a generalization of UOV, there exist equivalent keys in Rainbow using a similar rationale. The theory is developed in~\cite[Section 4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
+As a generalization of UOV, there exist equivalent keys in Rainbow using a similar rationale. The theory is developed in~\cite[Sec.~4.4]{Wolf:201104} for STS, which as previously mentioned is a special sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
-\begin{theorem}[{\cite[Theorem 4.17]{Wolf:201104}}]
+\begin{theorem}[{\cite[Thm.~4.17]{Wolf:201104}}]
   Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n})$ with $u = 2$. Given $\tau \in \mathsf{GL}(\mathbb{F}^{m})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\tau) =
@@ -769,7 +769,7 @@ The linear transformations $\tau^{-1}$ and $\omega^{-1}$ maintain their forms by
 \end{align}
 The redundancy is removed by the same rationale of UOV, observing the shape of the lateral maps in the equivalent key.
 
-\begin{theorem}[{\cite[Theorem 3.6]{Petzoldt:201307}}]\label{thm:eq-keys-rainbow}
+\begin{theorem}[{\cite[Thm.~3.6]{Petzoldt:201307}}]\label{thm:eq-keys-rainbow}
   Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n})$ with $u = 2$, such that
   \begin{align}
     \psi(\mathcal{L}_{1}) =
@@ -846,7 +846,7 @@ The private key size is consequently reduced by a factor of $\frac{m^{2}}{o_{1} 
 
 There exists a generalization of the theory of equivalent keys, developed in~\cite{Thomae:201306}, called \emph{good keys}. It is the result of cryptanalytic developments that targeted a specific variant of Rainbow, which claimed to reduce private keys, with the intent of proving it insecure~\cite{Thomae:201207}. A particular consequence of the theory underlying this attack is that good keys may be used to further reduce private keys, through distinct linear transformations $\tau$ and $\omega$. 
 
-More precisely, there exist several quadratic terms in the central map $\mathcal{C}$ that do not contribute to the security of the scheme, as seen in Section~\ref{subsec:linear}. The structure of the lateral maps in the context of good keys is depicted in~\cite[Figure 3]{Shim:202001}. Specifically, for $u = 2$, $\psi(\widetilde{\mathcal{L}}_{1})$ is $\mathbf{I}_{m}$, except for the last $o_{2}$ values of the $o_{1}$-th row, which are arbitrary. Analogously, $\psi(\widetilde{\mathcal{L}}_{2})$ is $\mathbf{I}_{n}$, except for the arbitrary first $v_{2}$ values of its last column. We hereafter follow the more common usage of equivalent keys in the literature, but we encourage further research on the reduction of private keys using good keys.
+More precisely, there exist several quadratic terms in the central map $\mathcal{C}$ that do not contribute to the security of the scheme, as seen in Section~\ref{subsec:linear}. The structure of the lateral maps in the context of good keys is depicted in~\cite[Fig.~3]{Shim:202001}. Specifically, for $u = 2$, $\psi(\widetilde{\mathcal{L}}_{1})$ is $\mathbf{I}_{m}$, except for the last $o_{2}$ values of the $o_{1}$-th row, which are arbitrary. Analogously, $\psi(\widetilde{\mathcal{L}}_{2})$ is $\mathbf{I}_{n}$, except for the arbitrary first $v_{2}$ values of its last column. We hereafter follow the more common usage of equivalent keys in the literature, but we encourage further research on the reduction of private keys using good keys.
 
 \chapter{New approach to reduce private keys}\label{ch:eta}
 
@@ -886,7 +886,7 @@ This step does not change. To verify a signature, compute $\mathbf{h'} = \mathca
 
 \subsection{Linear relations of Petzoldt}\label{subsec:linear}
 
-This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chapter 7]{Petzoldt:201307}. 
+This approach is based on the fact that a private key owner is able to recover the original central map through the possession of the lateral maps and the public key. We make use of the linear relations first introduced in~\cite{Petzoldt:201006} and applied in the definition of the well-known CyclicRainbow scheme. We denote this variant as Rainbow-$\eta_{2}$. A brief explanation of the relations is given below, with the full rationale available in~\cite[Chap.~7]{Petzoldt:201307}. 
 
 Consider the key pair of a UOV signature scheme as described in Equations (\ref{eq:sk-uov}) and (\ref{eq:pk-uov}). It is known that quadratic terms do not mix with linear and constant terms in the case of Oil--Vinegar signature schemes, and thus we refer only to the quadratic part of any polynomial systems in our description. Let the quadratic part of the $k$-th polynomial $c^{(k)} \in \mathcal{C},\; 1 \leq k \leq m$, represented by Definition~\ref{def:oil-vinegar-poly}, be denoted as
 \begin{align}
@@ -1009,11 +1009,11 @@ The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ pl
 
 A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such strategies. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. 
 
-We follow the analysis of~\cite[Section 8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting. Direct and collision attacks aim for signature forgery, since there exist many possible $\mathbf{x}$ for any digest $\mathbf{h}$. Side-channel attacks are a general definition that may encompass either signature forgery or key recovery attacks. All other attacks are considered key recovery attacks.
+We follow the analysis of~\cite[Sec.~8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting. Direct and collision attacks aim for signature forgery, since there exist many possible $\mathbf{x}$ for any digest $\mathbf{h}$. Side-channel attacks are a general definition that may encompass either signature forgery or key recovery attacks. All other attacks are considered key recovery attacks.
 
 \subsubsection{Direct attack.} 
 
-An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Theorem 3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Thm.~3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
 
 \subsubsection{Collision attack.}
 
@@ -1025,7 +1025,7 @@ The multi-layer approach of Rainbow does not hinder attacks that also work on th
 
 \subsubsection{MinRank attack (MR).} 
 
-We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609,Faugere:200808}, its complexity was considered to be $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications. However, recent developments, for example~\cite[Table 3]{Bardet:202006} and~\cite{Nakamura:202007} have greatly improved the complexity of the attack. This fact is discussed briefly further into the text.
+We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists in finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. This allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609,Faugere:200808}, its complexity was considered to be $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications. However, recent developments, for example~\cite[Tab.~3]{Bardet:202006} and~\cite{Nakamura:202007} have greatly improved the complexity of the attack. This fact is discussed briefly further into the text.
 
 \subsubsection{HighRank attack (HR).} 
 
@@ -1033,7 +1033,7 @@ In a similar way to MinRank, linear combinations of public key matrices are used
 
 \subsubsection{Rainbow-Band-Separation attack (RBS).}
 
-An extension of the UOV-Reconciliation attack in the context of Rainbow~\cite{Ding:200806}, with the intent of producing an equivalent private key. It explores the fact that the central map matrix representation is composed of zeroes on its lower right corner. These yield quadratic equations which, if solved, lead to an equivalent private key. The complexity of this attack is given by the hardness of solving a polynomial system with $n$ variables and $m + n - 1$ equations~\cite[Theorem 3.30]{Thomae:201306}, which as seen above, is hard to estimate. It has been proposed by~\cite{Petzoldt:201005} that, in order to resist this attack, $n \geq \ceil{\frac{5 (m - 1)}{3}}$. Furthermore, recent works~\cite{Perlner:202006,Nakamura:202006} have shown improvements with regards to the complexity of this attack, inducing a slight increase in parameter values submitted to the NIST standardization process. This is also discussed in the following.
+An extension of the UOV-Reconciliation attack in the context of Rainbow~\cite{Ding:200806}, with the intent of producing an equivalent private key. It explores the fact that the central map matrix representation is composed of zeroes on its lower right corner. These yield quadratic equations which, if solved, lead to an equivalent private key. The complexity of this attack is given by the hardness of solving a polynomial system with $n$ variables and $m + n - 1$ equations~\cite[Thm.~3.30]{Thomae:201306}, which as seen above, is hard to estimate. It has been proposed by~\cite{Petzoldt:201005} that, in order to resist this attack, $n \geq \ceil{\frac{5 (m - 1)}{3}}$. Furthermore, recent works~\cite{Perlner:202006,Nakamura:202006} have shown improvements with regards to the complexity of this attack, inducing a slight increase in parameter values submitted to the NIST standardization process. This is also discussed in the following.
 
 \subsubsection{Side-channel attacks.} 
 
@@ -1043,7 +1043,7 @@ We remark that none of our proposed Rainbow variants, as well as the original sc
 
 In Table~\ref{tab:sec}, we show the security level for several parameter sets in the literature and the attacks described above, with the evident exception of side-channel attacks. We only show results for known secure parameter sets to prevent accidental endorsement of untested, and possibly insecure, instances. Further, we remark that our calculations are presented as approximate measures and reflect only an estimate of the complexities.
 
-Conservative choices were made by the Rainbow submission authors in the first~\cite{Ding:201712} and second~\cite{Ding:201901} rounds to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tables 6.12, 9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
+Conservative choices were made by the Rainbow submission authors in the first~\cite{Ding:201712} and second~\cite{Ding:201901} rounds to fit security categories as requested by NIST\@. We apply our method to these recent proposals, and additionally choose parameters from~\cite[Tabs.~6.12,~9.8]{Petzoldt:201307} for further comparison. The latter are named P-$\ell$, where $\ell$ is the classical security level in bits given by the author.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1074,12 +1074,12 @@ Conservative choices were made by the Rainbow submission authors in the first~\c
 
 The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$. 
 
-Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved the complexity of Rainbow-Band-Separation and MinRank attacks. We present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}. Further information on closed formulas can be found on~\cite[Equation 19]{Nakamura:202006} and~\cite[Section 5]{Nakamura:202007}.
+Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved the complexity of Rainbow-Band-Separation and MinRank attacks. We present the results in Table~\ref{tab:newsec} as given by the authors of the aforementioned works. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}. Further information on closed formulas can be found on~\cite[Eq.~19]{Nakamura:202006} and~\cite[Sec.~5]{Nakamura:202007}.
 
 \begin{table}[htbp]
   \centering
   \renewcommand{\arraystretch}{1.2}
-  \caption{New parameters of Rainbow according to~\cite[Section 4]{Ding:202006} and related classical security levels, in bits.}\label{tab:newsec}
+  \caption{New parameters of Rainbow according to~\cite[Sec.~4]{Ding:202006} and related classical security levels, in bits.}\label{tab:newsec}
   \begin{tabular}{*{2}{l}*{6}{r}}
     \toprule
     Instance & Parameters & Direct & Collision & RBS & UOV & MR & HR \\
@@ -1101,7 +1101,7 @@ In this section, we argue that signatures generated by our proposal are comparab
 
 Recall that, to create a Rainbow signature, a preimage of central map $\mathcal{C}$ needs to be calculated. Random guessing of vinegar variables is performed in order to create a solvable linear system. It is also known that the central map is expressed as multivariate quadratic polynomial systems, which can be themselves interpreted as multidimensional matrices of coefficients. With this in mind, we first derive the probability that a random matrix with elements in $\mathbb{F}$ is invertible.
 
-\begin{proposition}[{\cite[Remark 13.2.14]{Mullen:2013}}]
+\begin{proposition}[{\cite[Remark~13.2.14]{Mullen:2013}}]
   Given a square matrix $M$ of order $n \times n$ such that $m_{ij} \in \mathbb{F}_{q}, 1 \leq i, j \leq n$, the probability that $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$ is $\prod_{k = 1}^{n} 1 - q^{-k}$.
 \end{proposition}
 \begin{proof}
@@ -1139,7 +1139,7 @@ Parameters for Rainbow are selected according to a number of restrictions, impos
 
 It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known series representation.
 
-\begin{theorem}[{\cite[Theorem 14.3]{Apostol:2010}}]
+\begin{theorem}[{\cite[Thm.~14.3]{Apostol:2010}}]
   Euler's pentagonal number theorem states that
   \begin{align}
     \prod_{k = 1}^{\infty} 1 - q^{k} = \sum_{k = -\infty}^{\infty}
@@ -1259,7 +1259,7 @@ We show results for the application of our method in Table~\ref{tab:eta-diff}, c
 
 The case of Rainbow variants is slightly more convoluted. Schemes claim optimizations of the private key often through the inclusion of inner structuring. To measure the impact of our method within the context of these schemes, it is imperative to understand such structures. For instance, it may be the case that a method introduces sparseness related to specific vinegar variables. Thus, the reduction would not be equally distributed over the private key elements and, as such, our method would have its efficiency reduced.
 
-To the best of our knowledge, it is not trivial to combine our strategy with the schemes presented in Subsection~\ref{subsec:priv}, and resulting gains would be evidently reduced. Furthermore, several of those schemes were subsequently broken or new parameters were proposed, suggesting that such a combination would not be productive. We thus consider only schemes that reduce the public key size, that is, CyclicRainbow~\cite{Petzoldt:201012} and RainbowLRS2~\cite[Section 9.2]{Petzoldt:201307}.
+To the best of our knowledge, it is not trivial to combine our strategy with the schemes presented in Subsection~\ref{subsec:priv}, and resulting gains would be evidently reduced. Furthermore, several of those schemes were subsequently broken or new parameters were proposed, suggesting that such a combination would not be productive. We thus consider only schemes that reduce the public key size, that is, CyclicRainbow~\cite{Petzoldt:201012} and RainbowLRS2~\cite[Sec.~9.2]{Petzoldt:201307}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1287,7 +1287,7 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
   \end{tabular}
 \end{table}
 
-We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Equations 9.2, 9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark 9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to a factor of 3.
+We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Equations 9.2, 9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark~9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to a factor of 3.
 
 The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:mod}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, for example a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
@@ -1307,7 +1307,7 @@ In this section, we show how to mount a key recovery attack against a scheme tha
 
 The Kipnis--Shamir attack, or UOV attack, was first given in~\cite{Kipnis:199808} as a proof of insecurity of the balanced Oil--Vinegar signature scheme. The fact that $v = o$ allows for the leakage of information in the public key that can be used to reconstruct an equivalent private key. This method led to the creation of UOV as a countermeasure~\cite{Kipnis:199904} with $v = 2o$. The attack was generalized on the same work, but it is computationally hard to perform if the difference $v - o$ is not small enough. 
 
-The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature schemes, as seen in Section~\ref{sec:related}. We give a description of the attack for $v = o$ and finite fields of odd characteristic, following the rationale of~\cite[Section 3.2]{Ding:2006}. We refer the reader to~\cite{Cao:201105} for the case of even characteristic and~\cite{Kipnis:199904} for the case of $v > o$. Without loss of generality, we restrict the polynomials of $\mathcal{C}$ and $\mathcal{P}$ to be homogeneous quadratic.
+The UOV attack stands relevant in the cryptanalysis of Oil--Vinegar signature schemes, as seen in Section~\ref{sec:related}. We give a description of the attack for $v = o$ and finite fields of odd characteristic, following the rationale of~\cite[Sec.~3.2]{Ding:2006}. We refer the reader to~\cite{Cao:201105} for the case of even characteristic and~\cite{Kipnis:199904} for the case of $v > o$. Without loss of generality, we restrict the polynomials of $\mathcal{C}$ and $\mathcal{P}$ to be homogeneous quadratic.
 
 Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, and the vector space $\mathbb{F}^{n}$ that denotes all possible signatures from a balanced Oil--Vinegar signature scheme, with $n = v + o$. Its private and public keys are given in Equations~\ref{eq:sk-uov} and~\ref{eq:pk-uov}, respectively. We introduce below further vector spaces that are essential to discuss the attack.
 
@@ -1321,13 +1321,13 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
 
 The main observation of the attack is that combinations of matrices associated to the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix} are specifically structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and forge signatures. A more precise characterization of this fact is given below.
 
-\begin{lemma}[{\cite[Lemma 1]{Kipnis:199904}}]
+\begin{lemma}[{\cite[Lemma~1]{Kipnis:199904}}]
   Given any polynomials $f^{(i)}, f^{(j)} \in \textsf{OVH}(v, o)$, let $\phi^{(i)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformation associated to the matrix $\widetilde{M}(f^{(i)})$ of Definition~\ref{def:ovh-matrix}, and respectively for $\phi^{(j)}$. If $\widetilde{M}(f^{(j)})$ is invertible, then so is $\phi^{(j)}$ and thus $\mathcal{O}$ is an invariant subspace of $\phi^{(i)} \circ (\phi^{(j)})^{-1}$.
 \end{lemma}
 
 We recall that $f^{(i)}$ and $f^{(j)}$ are part of an Oil--Vinegar central map. Informally, any symmetric matrix representation of a polynomial of $\mathcal{C}$ maps $\mathcal{O}$ to $\mathcal{V}$ due to its Oil--Vinegar structure. The inverse of this operation gives a mapping from $\mathcal{V}$ to $\mathcal{O}$. By composing the linear transformations obtained from matrices of two distinct polynomials as described above, the oil space becomes an invariant subspace with regards to this new linear transformation.
 
-Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and its inverse maps $\widetilde{\mathcal{V}}$ to $\widetilde{\mathcal{O}}$. With several distinct combinations of the aforementioned form, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Theorem 1]{Kipnis:199904}.
+Further, we have to account for $\mathcal{L}_{2}$, since it is composed with $\mathcal{C}$ to form the public key. As argued in~\cite[p.~261]{Kipnis:199808}, the aforementioned behaviour is analogous for any combination of matrices associated with polynomials of $\mathcal{P}$. Such a matrix maps $\widetilde{\mathcal{O}}$ to $\widetilde{\mathcal{V}}$, and its inverse maps $\widetilde{\mathcal{V}}$ to $\widetilde{\mathcal{O}}$. With several distinct combinations of the aforementioned form, it is possible to obtain the \emph{common} invariant subspace $\widetilde{\mathcal{O}}$~\cite[Thm.~1]{Kipnis:199904}.
 
 If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward to obtain its basis $B$ with dimension $o$. Consider $\psi(\widetilde{\mathcal{L}}_{2}) \in \textsf{GL}_{n}(\mathbb{F})$ as $\mathbf{I}_{n}$ with the elements of $B$ as its last $o$ columns. This matrix has the shape of $\omega$ in Theorem~\ref{thm:eq-keys-uov}. Consequently, the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ allows for the construction of an equivalent key of the form
 \begin{align}\label{eq:uov-attack-eq}
@@ -1418,7 +1418,7 @@ The identification problem remains difficult if $n$ is much larger than $k$, sin
 \end{align}
 which yields negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$. Hence, on average, it is not trivial to collect signatures and attack a Rainbow instance with sufficient security level if $\alpha$ is sufficiently large.
 
-If the attacker collects signatures from multiple signers but cannot classify them according to each public key, the problem can still be modelled by making use of a \emph{multivariate hypergeometric distribution}. The \texttt{CertificateVerify} message of a TLS handshake~\cite[Subsection 4.4.3]{Rescorla:201808} may be leveraged in order to implement a practical proof-of-concept for the attack, which is outside the scope of this work.
+If the attacker collects signatures from multiple signers but cannot classify them according to each public key, the problem can still be modelled by making use of a \emph{multivariate hypergeometric distribution}. The \texttt{CertificateVerify} message of a TLS handshake~\cite[Sec.~4.4.3]{Rescorla:201808} may be leveraged in order to implement a practical proof-of-concept for the attack, which is outside the scope of this work.
 
 We infer that the success of an attacker is directly proportional to the maximization of the number of draws or the $\alpha$ factor. Obtaining a collection of signatures of which a subset is useful to perform the attack is trivial, but the effort associated with locating such subset is meaningful. Still, by bounding the security level of the resulting scheme to the chances associated with a best case scenario of the probabilities previously discussed, we clearly obtain an efficient, polynomial-time procedure.
 
