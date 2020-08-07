@@ -1487,9 +1487,9 @@ We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\r
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
+Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
 
-Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
+Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1515,13 +1515,13 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
   \begin{split}
     \Pr[\mathbf{X} = \mu + 4\sigma] 
       &= \Pr[\mathbf{X} = 0.5 v_{1} + 2 \sqrt{v_{1}}] \\
-      &\approx \Pr[\mathbf{X} = 16] \\
+      &\approx \Pr[\mathbf{X} = 17] \\
       &\approx \num{2.5939E-4},
   \end{split}
 \end{align}
 or roughly three in ten thousand private keys are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
-Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows the private key sizes associated with the weights given in Table~\ref{tab:bin-prob}. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
+Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
