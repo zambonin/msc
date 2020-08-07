@@ -1521,7 +1521,7 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
 \end{align}
 or roughly three in twenty thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
-Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
+Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1530,10 +1530,10 @@ Through the knowledge of such probabilities, it is a choice of the user to gener
   \begin{tabular}{l*{5}{r}}
     \toprule
     Parameters & $\Delta_{\ceil{\mu + 0\sigma}}$ 
-      & $\textsf{sk}^{\eta_{4}}_{\ceil{\mu + 1\sigma}}$ 
-      & $\textsf{sk}^{\eta_{4}}_{\ceil{\mu + 2\sigma}}$ 
-      & $\textsf{sk}^{\eta_{4}}_{\ceil{\mu + 3\sigma}}$ 
-      & $\textsf{sk}^{\eta_{4}}_{\ceil{\mu + 4\sigma}}$ \\
+      & $\Delta_{\ceil{\mu + 1\sigma}}$ 
+      & $\Delta_{\ceil{\mu + 2\sigma}}$ 
+      & $\Delta_{\ceil{\mu + 3\sigma}}$ 
+      & $\Delta_{\ceil{\mu + 4\sigma}}$ \\
     \midrule
     $(\mathbb{F}_{256}, 17, 13, 13)$ & $-45.33\%$ & $-53.70\%$ & $-61.44\%$ & $-68.57\%$ & $-75.07\%$ \\
     $(\mathbb{F}_{256}, 26, 16, 17)$ & $-46.61\%$ & $-55.45\%$ & $-63.56\%$ & $-68.57\%$ & $-75.48\%$ \\
