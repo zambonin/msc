@@ -1395,7 +1395,7 @@ By precisely choosing a target, an attacker may increase the odds of obtaining u
 
 The probability of sampling a valid subset of signatures is then equivalent to calculating $1 - \Pr[\mathbf{X} \leq k]$, which is the description of the \emph{complementary} CDF. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{Berkopec:200607} should be used in these cases.
 
-We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes. Figure~\ref{fig:hyper} shows the PMF to the left, and the CDF to the right, of a sample hypergeometric distribution. For instance, we note that for a factor $\alpha = 0.2$, if an attacker performs sampling without replacement of $\frac{1}{4}$ of the population, that is $n = 32$, there exists a chance of $\approx 1\%$ that $k = 10$ or more signatures with the desired feature are obtained. On the other hand, if $\frac{1}{2}$ of the population is sampled, or $n = 64$, the probability is $\approx 75\%$. Indeed, the probability of obtaining a higher number of successes grows with the number of draws, as expected.
+We now explore the probability that, given $n$ draws from a population of size $N$ with $K$ signatures produced with Rainbow-$\eta$, there exist at least $k$ successes. Figure~\ref{fig:hyper} shows the PMF to the left, and the CDF to the right, of a sample hypergeometric distribution. For instance, we note that for a factor $\alpha = \frac{1}{5}$, if an attacker performs sampling without replacement of $\frac{1}{4}$ of the population, that is $n = 32$, there exists a chance of $\approx 1\%$ that $k = 10$ or more signatures with the desired feature are obtained. On the other hand, if $\frac{1}{2}$ of the population is sampled, or $n = 64$, the probability is $\approx 75\%$. Indeed, the probability of obtaining a higher number of successes grows with the number of draws, as expected.
 
 \begin{figure}[htbp]
   \subfloat[
@@ -1414,13 +1414,13 @@ We now explore the probability that, given $n$ draws from a population of size $
 
 However, the sample size is easily controlled by the attacker. It is more advantageous to reason about the $\alpha$ factor, which may be unknown. To this end, a remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. This may be verified by expanding the PMF definition into binomials for both cases and checking for the desired equality. Thus, Figure~\ref{fig:hyper} also represents the behaviour of various $\alpha$ factors in the form of different quantities of signatures eligible for the attack, that is, $K \in \{32, 48, \dots, 96\}$ and a fixed number of samples $n = 24$.
 
-It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = 0.25$, and $n = 2^{8}$, then $\widehat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
+It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = \frac{1}{4}$, and $n = 2^{8}$, then $\widehat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
 
 The identification problem remains difficult if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$. In this case, the PMF is given by
 \begin{align}
   \frac{\binom{K}{k}}{\binom{N}{k}} = \frac{K! (N - k)!}{N! (K - k)!},
 \end{align}
-which yields negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = 0.5$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$. Hence, on average, it is not trivial to collect signatures and attack a Rainbow instance with sufficient security level if $\alpha$ is sufficiently large.
+which yields negligible probabilities even for relatively small parameters. For example, given $N = 2^{8}$ and $K = 2^{7}$, or $\alpha = \frac{1}{2}$, and $n = k = 2^{6}$, $\Pr[\mathbf{X} = k] \approx 1.2576 \times 10^{-24}$. Hence, on average, it is not trivial to collect signatures and attack a Rainbow instance with sufficient security level if $\alpha$ is sufficiently large.
 
 If the attacker collects signatures from multiple signers but cannot classify them according to each public key, the problem can still be modelled by making use of a \emph{multivariate hypergeometric distribution}. The \texttt{CertificateVerify} message of a TLS handshake~\cite[Sec.~4.4.3]{Rescorla:201808} may be leveraged in order to implement a practical proof-of-concept for the attack, which is outside the scope of this work.
 
@@ -1487,7 +1487,7 @@ We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\r
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
+Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = \frac{1}{2}$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
 
 Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
@@ -1510,11 +1510,11 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \end{tabular}
 \end{table}
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
+It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to pinpoint which keys produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
     \Pr[\mathbf{X} \geq \mu + 4\sigma] 
-      &= \Pr[\mathbf{X} = 0.5 v_{1} + 2 \sqrt{v_{1}}] \\
+      &= \Pr[\mathbf{X} = \tfrac{v_{1}}{2} + 2 \sqrt{v_{1}}] \\
       &\approx \Pr[\mathbf{X} = 16] + \Pr[\mathbf{X} = 17] \\
       &\approx \num{1.3732E-4},
   \end{split}
