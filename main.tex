@@ -1463,7 +1463,15 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is calculated in a similar way to Proposition~\ref{prop:eta-key-size}, but every $v_{1}$ quantity is now $\text{wt}(\mathbf{v})$, such that the private key size depends on the Hamming weight of the vinegar threshold. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. Let us denote this new key size as $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$. We now expand on the security of our new proposal.
 
 \begin{proposition}
-  The size of a Rainbow-$\eta_{4}$ private key, denoted by $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$, is
+  The size of a Rainbow-$\eta_{4}$ private key, denoted $\textsf{sk}^{\eta_{4}}_{\text{\emph{wt}}(\mathbf{v})}$, is
+  \begin{multline}
+    \#\textsf{sk}^{\eta_{4}}_{\text{\emph{wt}}(\mathbf{v})} = \underbrace{\text{\emph{wt}}(\mathbf{v})}_{\widetilde{V}_{1}}
+      + \underbrace{m^{2}}_{\mathcal{L}_{1}}
+      + \underbrace{n^{2}}_{\mathcal{L}_{2}} \\
+      + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - \text{\emph{wt}})(v_{k} - \text{\emph{wt}} + 1)}{2}
+        + (v_{k} - \text{\emph{wt}}) \cdot o_{k} + (v_{k + 1} - \text{\emph{wt}}) + 1 \right)}_{\overline{\mathcal{C}}}.
+  \end{multline}
+  field elements.
 \end{proposition}
 
 We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many vinegar variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be picked independently. The distribution which gives this behaviour is presented below.
