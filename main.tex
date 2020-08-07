@@ -1460,8 +1460,7 @@ This step does not change significantly from Rainbow-$\eta$. Consider a message 
 
 This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the signature is valid, and otherwise invalid.
 
-We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is calculated in a similar way to Proposition~\ref{prop:eta-key-size}, but every $v_{1}$ quantity is now $\text{wt}(\mathbf{v})$, such that the private key size depends on the Hamming weight of the vinegar threshold. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. Let us denote this new key size as $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$. We now expand on the security of our new proposal.
-
+We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. As seen below, the private key size depends on the Hamming weight of the vinegar threshold.
 \begin{proposition}
   Consider $\gamma = \text{\emph{wt}}(\mathbf{v})$. The size of a Rainbow-$\eta_{4}$ private key, denoted by $\textsf{sk}^{\eta_{4}}_{\gamma}$, is
   \begin{multline}
@@ -1471,8 +1470,12 @@ We note that there is no need to provide a reconstruction procedure of $\overlin
       + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{(v_{k} - \gamma)(v_{k} - \gamma + 1)}{2}
         + (v_{k} - \gamma) \cdot o_{k} + (v_{k + 1} - \gamma) + 1 \right)}_{\overline{\mathcal{C}}}.
   \end{multline}
-  field elements.
+  field elements. If the polynomials of $\overline{\mathcal{C}}$ are homogeneous quadratic, the size decreases by $\sum_{k = 1}^{u} o_{k} \cdot (v_{k + 1} - \gamma + 1)$ elements.
 \end{proposition}
+\begin{proof}
+  We subtract $\gamma$ terms from every collection of $v_{k}$ monomials in Equation (\ref{eq:sk-size-rainbow}), and add $\widetilde{V}_{1}$ such that whole preimages can be computed.
+\end{proof}
+We note that $\#\textsf{sk}^{\eta_{4}}_{v_{1}} = \#\textsf{sk}^{\eta}$. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. We now expand on the security of our new proposal.
 
 We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many vinegar variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be picked independently. The distribution which gives this behaviour is presented below.
 
