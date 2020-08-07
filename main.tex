@@ -1489,7 +1489,7 @@ We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\r
 
 Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = \frac{1}{2}$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
 
-Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
+Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. We set $\mathsf{q} = q^{-v_{1}}$ for readability. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1498,7 +1498,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \caption{Probabilities of repeating vinegar variables depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
-    $q$ & $v_{1}$ & $q^{-v_{1} + \mu + 0\sigma}$ & $q^{-v_{1} + \mu + 1\sigma}$ & $q^{-v_{1} + \mu + 2\sigma}$ & $q^{-v_{1} + \mu + 3\sigma}$ & $q^{-v_{1} + \mu + 4\sigma}$ \\
+    $q$ & $v_{1}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 0\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 1\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 2\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 3\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 4\sigma}}$ \\
     \midrule
     256 &  17 & \num{ 5E-20} & \num{ 4E-15} & \num{ 2E-10} & \num{ 2E-05} & \num{ 1E+00} \\
     256 &  26 & \num{ 5E-32} & \num{ 8E-25} & \num{ 1E-17} & \num{ 9E-13} & \num{ 2E-05} \\
