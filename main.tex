@@ -1510,7 +1510,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \end{tabular}
 \end{table}
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to pinpoint which keys produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
+It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
     \Pr[\mathbf{X} \geq \mu + 4\sigma] 
@@ -1519,7 +1519,7 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
       &\approx \num{1.3732E-4},
   \end{split}
 \end{align}
-or roughly three in twenty thousand private keys are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
+or roughly three in twenty thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
 Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
 
