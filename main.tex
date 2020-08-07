@@ -1498,7 +1498,12 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \caption{Probabilities of repeating vinegar variables depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
-    $q$ & $v_{1}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 0\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 1\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 2\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 3\sigma}}$ & $\mathsf{q} \cdot q^{\ceil{\mu + 4\sigma}}$ \\
+    $q$ & $v_{1}$
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 0\sigma}}$ 
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 1\sigma}}$ 
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 2\sigma}}$ 
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 3\sigma}}$ 
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 4\sigma}}$ \\
     \midrule
     256 &  17 & \num{ 5E-20} & \num{ 4E-15} & \num{ 2E-10} & \num{ 2E-05} & \num{ 1E+00} \\
     256 &  26 & \num{ 5E-32} & \num{ 8E-25} & \num{ 1E-17} & \num{ 9E-13} & \num{ 2E-05} \\
@@ -1521,7 +1526,7 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
 \end{align}
 or roughly three in twenty thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
-Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits. When comparing key sizes from Tables~\ref{tab:eta-diff} and~\ref{tab:key-size-std}, we observe an increase in size of roughly $35\%$ across all parameters for $\text{wt}(\mathbf{v}) = \ceil{\mu + 0\sigma}$.
+Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$, as observed when comparing key sizes from Tables~\ref{tab:eta-diff} and~\ref{tab:key-size-std}. For instance, an increase in size of roughly $35\%$ occurs across all parameters if $\text{wt}(\mathbf{v}) = \ceil{\mu + 0\sigma}$, in contrast to our original proposal where $\text{wt}(\mathbf{v}) = v_{1}$.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
