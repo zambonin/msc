@@ -1462,7 +1462,11 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. The private key size of Rainbow-$\eta_{4}$ is calculated in a similar way to Proposition~\ref{prop:eta-key-size}, but every $v_{1}$ quantity is now $\text{wt}(\mathbf{v})$, such that the private key size depends on the Hamming weight of the vinegar threshold. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. Let us denote this new key size as $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$. We now expand on the security of our new proposal.
 
-The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many vinegar variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be picked independently. The distribution which gives this behaviour is presented below.
+\begin{proposition}
+  The size of a Rainbow-$\eta_{4}$ private key, denoted by $\textsf{sk}^{\eta_{4}}_{\text{wt}(\mathbf{v})}$, is
+\end{proposition}
+
+We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, if there is no information on which, and how many vinegar variables are fixed, the attacker is forced to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be picked independently. The distribution which gives this behaviour is presented below.
 
 \begin{definition}
   Given $n \in \mathbb{N}$, $0 \leq p \leq 1$ and $0 \leq k \leq n$, if the PMF of a discrete random variable $\mathbf{X}$ is
@@ -1472,7 +1476,9 @@ The fact that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\re
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The distribution has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
 
-Any sampling may yield an undesirable vinegar threshold, that is, one which Hamming weight is maximal, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $0.5 v_{1}$ and standard deviation is $0.5 \sqrt{v_{1}}$.
+Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = 0.5$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
+
+Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1493,8 +1499,6 @@ Any sampling may yield an undesirable vinegar threshold, that is, one which Hamm
   \end{tabular}
 \end{table}
 
-Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
-
 It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
@@ -1504,7 +1508,7 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
       &\approx \num{2.5939E-4},
   \end{split}
 \end{align}
-or roughly three in ten thousand private keys which are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
+or roughly three in ten thousand private keys are effective targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
 Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows the private key sizes associated with the weights given in Table~\ref{tab:bin-prob}. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$. For instance, in the case of $\mu + 0\sigma$, this is analogous to fixing half of the $v_{1}$ bits and results in an increase of roughly $35\%$ compared to $\textsf{sk}^{\eta_{4}}_{v_{1}}$ for the same parameters in Table~\ref{tab:eta-diff}.
 
