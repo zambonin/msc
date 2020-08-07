@@ -9,6 +9,7 @@
 \usetikzlibrary{positioning, patterns}
 
 \DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\wt}{wt}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \newcommand{\random}{\overset{\mathsf{r}}{\gets}}
@@ -1435,16 +1436,16 @@ We recall that $\widetilde{V}_{1}$ is the sequence of vinegar variables used on 
 \begin{definition}
   Given $k \in \mathbb{N}$ and a binary vector $\mathbf{x} \in \mathbb{F}_{2}^{k}$, the number of non-zero elements of $\mathbf{x}$, or
   \begin{align}
-    \text{wt}(\mathbf{x}) = |\{ i \mid x_{i} \neq 0, 1 \leq i \leq k \}|,
+    \wt(\mathbf{x}) = |\{ i \mid x_{i} \neq 0, 1 \leq i \leq k \}|,
   \end{align}
   is the \emph{Hamming weight of $\mathbf{x}$}.
 \end{definition}
 
-Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. Therefore, the number of possible signatures for a given message digest is $\approx q^{v_{1} - \text{wt}(\mathbf{v})}$. Let us denote this method as Rainbow-$\eta_{4}$. We remark that it is compatible with any of the schemes of Section~\ref{sec:mod}.
+Let $\mathbf{v} \in \mathbb{F}_{2}^{v_{1}}$ be the \emph{vinegar threshold}, a sequence of bits that encodes which elements from $\widetilde{V}_{1}$ are to be fixed. More precisely, for $1 \leq i \leq v_{1}$, if $\mathbf{v}_{i} = 0$ then the i-th element of $\widetilde{V}_{1}$ is swapped with a randomly chosen element from $\mathbb{F}_{q}$, and if $\mathbf{v}_{i} = 1$, it remains unchanged. Evidently, if $\mathbf{v} = (0, \dots, 0)$, we turn back to the original Rainbow scheme, and for $\mathbf{v} = (1, \dots, 1)$, we get the schemes of Section~\ref{sec:mod}. Therefore, the number of possible signatures for a given message digest is $\approx q^{v_{1} - \wt(\mathbf{v})}$. Let us denote this method as Rainbow-$\eta_{4}$. We remark that it is compatible with any of the schemes of Section~\ref{sec:mod}.
 
 \subsubsection{Key generation.}
 
-Generate a $\mathbf{v} \random{} \mathbb{F}_{2}^{v_{1}}$ such that $\text{wt}(\mathbf{v}) \neq v_{1}$. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Generate the sequence $\widetilde{V}_{1}$ according to the limitations encoded in $\mathbf{v}$, and substitute terms into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then,
+Generate a $\mathbf{v} \random{} \mathbb{F}_{2}^{v_{1}}$ such that $\wt(\mathbf{v}) \neq v_{1}$. Generate the maps $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$ through the usual key generation algorithm. Generate the sequence $\widetilde{V}_{1}$ according to the limitations encoded in $\mathbf{v}$, and substitute terms into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then,
 \begin{align}
   \begin{split}
     \mathsf{sk}^{\eta_{4}} &= (\widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}, \mathbf{v}), \\
@@ -1462,7 +1463,7 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 We note that there is no need to provide a reconstruction procedure of $\overline{\mathcal{C}}$ as in the case of Rainbow-$\eta_{1}$, which needs a seed, and Rainbow-$\eta_{2}$, that features non-trivial mathematical relations. As seen below, the private key size depends on the Hamming weight of the vinegar threshold.
 \begin{proposition}
-  Consider $\gamma = \text{\emph{wt}}(\mathbf{v})$. The size of a Rainbow-$\eta_{4}$ private key, denoted by $\textsf{sk}^{\eta_{4}}_{\gamma}$, is
+  Consider $\gamma = \wt(\mathbf{v})$. The size of a Rainbow-$\eta_{4}$ private key, denoted by $\textsf{sk}^{\eta_{4}}_{\gamma}$, is
   \begin{multline}
     \#\textsf{sk}^{\eta_{4}}_{\gamma} = \underbrace{\gamma}_{\widetilde{V}_{1}}
       + \underbrace{m^{2}}_{\mathcal{L}_{1}}
@@ -1489,7 +1490,7 @@ We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\r
 
 Any sampling may yield an undesirable vinegar threshold, that is, one which maximizes the Hamming weight, such that few elements of $\widetilde{V}_{1}$ are random and signatures are frequently generated with a repeated sequence of vinegar variables. By modelling the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = \frac{1}{2}$, we argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
 
-Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \text{wt}(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\text{wt}(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. We set $\mathsf{q} = q^{-v_{1}}$ for readability. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
+Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \wt(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\wt(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. We set $\mathsf{q} = q^{-v_{1}}$ for readability. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1515,7 +1516,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \end{tabular}
 \end{table}
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\text{wt}(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
+It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\wt(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
     \Pr[\mathbf{X} \geq \mu + 4\sigma] 
@@ -1526,7 +1527,7 @@ It is immediately evident that for lower values of either $q$ or $v_{1}$, in the
 \end{align}
 or roughly three in twenty thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
 
-Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\text{wt}(\mathbf{v})$, as observed when comparing key sizes from Tables~\ref{tab:eta-diff} and~\ref{tab:key-size-std}. For instance, an increase in size of roughly $35\%$ occurs across all parameters if $\text{wt}(\mathbf{v}) = \ceil{\mu + 0\sigma}$, in contrast to our original proposal where $\text{wt}(\mathbf{v}) = v_{1}$.
+Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\wt(\mathbf{v})$, as observed when comparing key sizes from Tables~\ref{tab:eta-diff} and~\ref{tab:key-size-std}. For instance, an increase in size of roughly $35\%$ occurs across all parameters if $\wt(\mathbf{v}) = \ceil{\mu + 0\sigma}$, in contrast to our original proposal where $\wt(\mathbf{v}) = v_{1}$.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
