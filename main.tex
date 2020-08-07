@@ -1339,21 +1339,21 @@ If the vector subspace $\widetilde{\mathcal{O}}$ is known, it is straightforward
 \end{align}
 This can be verified by inspection of the associated symmetric matrix representations, as given in~\cite[p.~71]{Ding:2006}.
 
-The UOV attack is also applicable to instances of Rainbow. Consider a Rainbow private key as shown in Equation~\ref{eq:sk-rainbow}. It is evident that the function composition $\mathcal{D} = \mathcal{L}_{1} \circ \mathcal{C}$ preserves the Oil--Vinegar trapdoor, since $\mathcal{L}_{1}$ only permutes the coefficients of the polynomials in the central map. The resulting map $\mathcal{D}$ is an Oil--Vinegar map with $v_{u} = v_{1} + o_{1} + \cdots + o_{u - 1}$ vinegar variables and $o_{u}$ oil variables. A side effect of this interpretation is that the first extra $o_{1} + \cdots + o_{u - 1}$ polynomials of the central map are always simplified to constants. Then, $(\mathcal{D}, \mathcal{L}_{2})$ is a valid UOV private key.
+The UOV attack is also applicable to instances of Rainbow. Consider a Rainbow private key as shown in Equation (\ref{eq:sk-rainbow}). It is evident that the function composition $\mathcal{D} = \mathcal{L}_{1} \circ \mathcal{C}$ preserves the Oil--Vinegar trapdoor, since $\mathcal{L}_{1}$ only permutes the coefficients of the polynomials in the central map. The resulting map $\mathcal{D}$ is an Oil--Vinegar map with $v_{u} = v_{1} + o_{1} + \cdots + o_{u - 1}$ vinegar variables and $o_{u}$ oil variables. A side effect of this interpretation is that the first extra $o_{1} + \cdots + o_{u - 1}$ polynomials of the central map are always simplified to constants. Then, $(\mathcal{D}, \mathcal{L}_{2})$ is a valid UOV private key.
 
 \subsection{Our attack}\label{subsec:etaks}
 
-We recall that our proposal Rainbow-$\eta$, as described in Section~\ref{sec:mod}, is a modification based on fixing vinegar variables early in the key generation step. By pre-substituting such variables in the central map, it can be stored more efficiently. Further, we ensure that any message can be signed through methods to reconstruct the central map if its associated preimage calculation does not succeed. Moreover, we impose no limitation on parameters such that their secure selection is always encouraged.
+We recall that our proposal Rainbow-$\eta$, as described in Section~\ref{sec:mod}, is a modification based on fixing vinegar variables early in the key generation step. By pre-substituting such variables in the central map, it can be stored more efficiently. Further, we ensure that any message can be signed through a reconstruction of the central map if its associated preimage calculation does not succeed. Moreover, we impose no limitation on parameters such that their secure selection is always encouraged.
 
 Nonetheless, we identify that a sequence of signatures created with the same vinegar variables can be used to mount a key recovery attack. A malicious entity is thus able to create signature forgeries in polynomial time, similar to the UOV attack. The key observation is that signatures produced with Rainbow-$\eta$ are used to obtain vectors of $\widetilde{\mathcal{O}}$. Consequently, an equivalent linear transformation $\widetilde{\mathcal{L}}_{2}$ can be recovered and composed with $\mathcal{P}$ to yield an equivalent private key.
 
-We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, since it can be interpreted as an UOV scheme as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ the number of equations in $\mathcal{C}$ and $\mathcal{P}$. An attacker must collect roughly $m + 1$ signatures known to be produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. 
+We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, since it can be interpreted as an UOV scheme as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ is the number of equations in $\mathcal{C}$ and $\mathcal{P}$. An attacker must collect roughly $m + 1$ signatures known to have been produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. 
 
 Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. Any preimage of $\mathcal{C}$ always starts with $\widetilde{V}_{1} = (x_{1}, \dots, x_{v})$ in the case of Rainbow-$\eta$. Thus, by inverting the linear transformation used to scramble the preimage, we obtain $\mathcal{L}_{2}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Then, for any $1 \leq i, j \leq m + 1$ with $i \neq j$, we note that
 \begin{align}
   \mathcal{L}_{2}(\sigma_{i} - \sigma_{j}) = (0, \dots, 0, \ast, \dots, \ast).
 \end{align}
-Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. 
+Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and hence, by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. 
 
 The only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave open the question of calculating a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$, due to the huge number of possible linear combinations between all $\chi_{i}$. We give a rough estimate of $m + 1$ signatures based on the naive strategy $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$. Further, as seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
 
@@ -1366,7 +1366,7 @@ Given such a basis $B$, we proceed with the last part of the UOV attack as descr
     0 & 0 & 0 & \cdots & \chi_{1}^{(n)} & \cdots & \chi_{m}^{(n)} \\
   \end{bmatrix}.
 \end{align}
-We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation~\ref{eq:uov-attack-eq}. By using this method, an attacker can create $\mathsf{sk'}$ and forge signatures for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information. 
+We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation (\ref{eq:uov-attack-eq}). By using this method, an attacker can create $\mathsf{sk'}$ and forge signatures for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information. 
 
 Interestingly, this attack can be used to ``recover'' a lost private key of a legitimate signer. It must compute in advance $m$ linear independent preimages of $\mathcal{C}$ with the same vinegar variables, and store these securely. In the event that the private key is lost, the signer would only need to fetch its public key and compute an equivalent private key by the method given above.
 
@@ -1383,17 +1383,17 @@ If an attacker has no access to the signing device, it is not possible to discer
 By precisely choosing a target, an attacker may increase the odds of obtaining useful signatures for the attack. Nonetheless, we observe such probabilities for various values of $\alpha$, and model this behaviour as follows. Given the aforementioned $N$ and $K$, we wish to obtain $k \leq K$ signatures that were produced with Rainbow-$\eta$ from a sample size $n \leq N$. By the description of our attack in Subsection~\ref{subsec:etaks}, the attacker needs $k$ distinct signatures, or in other words, sampling is \emph{without replacement}. The probability distribution that describes this situation is given below.
 
 \begin{definition}
-  Given $N, K, n, k \in \mathbb{N}$ with $K, n \leq N$ and $0 \leq k \leq K$, if the probability mass function (PMF) of a discrete random variable $\mathbf{X}$ is
+  Given $N, K, n, k \in \mathbb{N}$ with $n \leq N$, $K \leq N$ and $0 \leq k \leq K$, if the probability mass function (PMF) of a discrete random variable $\mathbf{X}$ is
   \begin{align}
     \Pr[\mathbf{X} = k] = \frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}},
   \end{align}
   then $\mathbf{X}$ follows the \emph{hypergeometric distribution}. The peak of this PMF, or its \emph{mode}, is
   \begin{align}
-    \hat{\mathbf{X}} = \left\lfloor \frac{(n + 1)(K + 1)}{N + 2} \right\rfloor.
+    \widehat{\mathbf{X}} = \left\lfloor \frac{(n + 1)(K + 1)}{N + 2} \right\rfloor.
   \end{align}
 \end{definition}
 
-The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the complementary CDF. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{Berkopec:200607} should be used in these cases.
+The probability of sampling a valid subset of signatures is then equivalent to calculating $\Pr[\mathbf{X} > k]$, which is the description of the \emph{complementary} CDF. We remark that for large populations, the evaluation of the naive formula $\sum_{i = k + 1}^{K} \Pr[\mathbf{X} = i]$ may be computationally expensive and prone to overflow. Thus, an algorithm such as~\cite{Berkopec:200607} should be used in these cases.
 
 \begin{figure}[htbp]
   \subfloat[
@@ -1414,7 +1414,7 @@ We now explore the probability that, given $n$ draws from a population of size $
 
 However, the sample size is easily controlled by the attacker. It is more advantageous to reason about the $\alpha$ factor, which may be unknown. To this end, a remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. This may be verified by expanding the PMF definition into binomials for both cases and checking for the desired equality. Thus, Figure~\ref{fig:hyper} also represents the behaviour of various $\alpha$ factors in the form of different quantities of signatures eligible for the attack, that is, $K \in \{32, 48, \dots, 96\}$ and a fixed number of samples $n = 24$.
 
-It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = 0.25$, and $n = 2^{8}$, then $\hat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
+It is thus expected that a large enough number of signatures is collected for a reasonable chance of obtaining a valid sample. For example, given $N = 2^{12}$ and $K = 2^{10}$, or $\alpha = 0.25$, and $n = 2^{8}$, then $\widehat{\mathbf{X}} = 64$, which is equal to the number of equations $m$ of a Rainbow instance with minimal security level, according to Table~\ref{tab:newsec}. The attack description in Subsection~\ref{subsec:etaks} requires $m + 1$ ``weak'' signatures as a parameter. Thus, the associated probability of obtaining at least $65$ successes is $\Pr[\mathbf{X} > 64] \approx 46.6\%$.
 
 The identification problem remains difficult if $n$ is much larger than $k$, since the attacker still does not know which signatures are useful to perform the attack. Ideally, a sample should return exactly the desired number of ``weak'' signatures, that is, $n = k$. In this case, the PMF is given by
 \begin{align}
