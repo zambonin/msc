@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, oneside]{memoir}
+\documentclass[12pt, a4paper, oneside, draft]{memoir}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -616,7 +616,7 @@ field elements. We note that if the Oil--Vinegar polynomials are homogeneous qua
 We recall that there exists a specific form of sustainers of Definition~\ref{def:sustainer} for each scheme. In the case of UOV, these mappings are given in~\cite[Sec.~4.3]{Wolf:201104}. We follow the notation of~\cite{Petzoldt:201307}.
 
 \begin{theorem}[{\cite[Thm.~4.15]{Wolf:201104}}]\label{thm:eq-keys-uov}
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
+  Given a UOV private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\omega) =
     \begin{bmatrix}
@@ -638,7 +638,7 @@ We remark that $\psi(\omega^{-1})$ has the same form as $\omega$ due to the rest
 where we remove the sub-indices that indicate the dimension of the block matrices to improve readability. It is a direct consequence of this theorem that there exist at least as many equivalent keys as possible choices for $\omega$. This redundancy may be cast away by observing the shape of $\omega^{-1} \circ \mathcal{L}_{2}$ and only selecting lateral maps with this structure.
 
 \begin{theorem}[{\cite[Thm.~2]{Beullens:201706}}]
-  Given a private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
+  Given a UOV private key $(\mathcal{C}, \mathcal{L}_{2}) \in \mathsf{OV}(n, o) \times \mathsf{GL}(\mathbb{F}^{n})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
   \begin{align}
     \psi(\mathcal{L}_{2}) =
     \begin{bmatrix}
@@ -1180,7 +1180,7 @@ Let $\mathcal{U}(1, q)$ be the discrete uniform distribution that represents the
 \end{align}
 suggesting that greater values of $n$ and $t$ approximate faster to the theoretical standard deviation.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
   \subfloat[
     $d_{\sigma}(t)$ for $n = 42, v_{1} = 17$.\label{fig:std-diff-n42}
   ]{
