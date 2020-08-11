@@ -1553,7 +1553,7 @@ Through the knowledge of such probabilities, it is a choice of the user to gener
 
 We now turn to a brief security analysis of our proposal, taking into account the attacks of Subsection~\ref{subsec:analysis} and~\ref{subsec:etaks}. Once again, we do not discard the possibility that a method to make use of any possible leaked information in signatures exists, independent of the number of fixed vinegar variables. However, in the context of known attacks and for several parameter sets, we show that fixing a subset of $\widetilde{V}_{1}$ does not introduce any vulnerabilities to the resulting scheme, to the best of our knowledge.
 
-
+The key strategy to apply our proposed attack is the collection of signatures with the same vinegar variables. Thus, we opt to measure its complexity with regards to the chance of obtaining said signatures.
 
 % However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
 
