@@ -1565,6 +1565,8 @@ Particularly, the probability of obtaining a single collision of $\widetilde{V}_
 
 Dotted lines start at the lowest security level of Tables~\ref{tab:sec} and~\ref{tab:newsec} for the respective parameters. As denoted by such lines, at least half of all possible vinegar thresholds, when applied to a scheme, yield signatures that are unlikely to be produced with the same vinegar variables. In other words, a low $\wt(\mathbf{v})$ does not facilitate known cryptanalysis of the resulting scheme, and indeed, typical algebraic attacks are computationally easier to perform than obtaining ``weak'' signatures.
 
+As mentioned before, inspection of Figure~\ref{fig:prob-sec} shows that $\wt(\mathbf{v}) = \frac{v_{1}}{2}$ is a safe choice with regards to security levels of the resulting scheme. Hence, we suggest that, for parameter sets similar to those of Table~\ref{tab:newsec}, half of the elements of $\widetilde{V}_{1}$ are fixed in order to reduce the private key size. We further note that parameters of Table~\ref{tab:bin-prob} that were not considered in Figure~\ref{fig:prob-sec} 
+
 % However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
 
 \chapter{Conclusion}\label{ch:conc}
