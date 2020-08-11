@@ -1555,7 +1555,7 @@ We now turn to a brief security analysis of our proposal, taking into account th
 
 The key strategy to apply our proposed attack is the collection of signatures with the same vinegar variables. Thus, we opt to represent its complexity as the chance of obtaining said ``weak'' signatures, as seen in Table~\ref{tab:bin-prob}. In the best case scenario, our attack consists of simply collecting enough signatures and performing trivial mathematical operations. However, by limiting the vinegar threshold, we have a probability of roughly $(m + 1) q^{-v_{1} + \wt(\mathbf{v})}$ of successfully obtaining an equivalent private key.
 
-Without loss of generality, our strategy is to select parameters such that the probability
+Particularly, the probability of obtaining a single collision of $\widetilde{V}_{1}$ between signatures from the same private key is negligible for sufficiently large $q$ and $v_{1}$. In fact, the computational cost of getting such signatures is 
 
 % However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
 
