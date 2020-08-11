@@ -1560,8 +1560,12 @@ Particularly, the probability of obtaining a single collision of $\widetilde{V}_
 \begin{figure}[htbp]
   \centering
 %   \includegraphics{charts/sec-levels/sec-levels}
-  \caption{Probability of a single collision of $\widetilde{V}_{1}$ for several values of the vinegar threshold and parameter sets.}\label{fig:prob-sec}
+  \caption{Probability of a single collision of $\widetilde{V}_{1}$ for several parameter sets and all possible vinegar thresholds.}\label{fig:prob-sec}
 \end{figure}
+
+Dotted lines start at the lowest security level of Tables~\ref{tab:sec} and~\ref{tab:newsec} for the respective parameters. We observe that at least half of all possible vinegar thresholds yield signatures that are unlikely to be produced with the same vinegar variables. In other words, 
+
+We observe that at least half of the possible vinegar thresholds generate signatures that are as computationally hard to collide, with regards to the vinegar variables, as the most efficient attack for that parameter.
 
 % However, we argue that it is useful to fix a subset of $\widetilde{V}_{1}$ in order to compress the private key through our original proposal, and its subsequent generalization presented in this section. With overwhelming probability, a moderate value of $\mathbf{v}$ is generated, such that the number of collected signatures needed to mount an attack analogous to Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
 
