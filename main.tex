@@ -132,7 +132,7 @@ The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic
 
 \subsection{Improvements to total key pair size}\label{subsec:both}
 
-Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Sec.~3.2.1]{Wolf:200511} is applied to the public key, which consists of removing a number of equations in order to reduce storage requirements.
+Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Sec.~3.2.1]{Wolf:200511}, which consists of removing a number of equations in order to reduce storage requirements, is applied to the public key.
 
 A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the HUFU-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions that, for instance, enable compression of the public key by up to a factor of $4.5$.
 
@@ -300,7 +300,7 @@ Several polynomials may be used to model a complex structure in which they behav
 
 A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively, and there exist several different methods to calculate one or all roots~\cite[Chap.~9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Sec.~2.2]{Press:2007}.
 
-To generalize the notion of grouping polynomials into a system, it is useful to define an algebraic structure that falls outside of the class of ring-like structures.
+It is useful to define an algebraic structure that falls outside of the class of ring-like structures to generalize the notion of grouping polynomials into a system.
 
 \begin{definition}
   Given a finite field $\mathbb{F}$ equipped with binary operations $+$ and $\ast$, a set $V$, any elements $s_{1}, s_{2} \in \mathbb{F},\; \mathbf{v_{1}}, \mathbf{v_{2}} \in V$, a binary operation $\bm{+}$ on $V$ and a binary operation $\bm{\times} : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-tuple $(V, \bm{+}, \bm{\times})$ satisfying the following axioms:
