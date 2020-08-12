@@ -134,9 +134,9 @@ The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic
 
 Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Sec.~3.2.1]{Wolf:200511} is applied to the public key, of which a number of equations are removed in order to reduce storage requirements.
 
-A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the HUFU-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions, which for instance enable the compression of the public key by up to a factor of $4.5$.
+A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors are able to reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the HUFU-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions that, for instance, enable compression of the public key by up to a factor of $4.5$.
 
-The variant known as cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. 
+The variant cubic UOV~\cite{Nie:201511} introduces a number of cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller when comparing to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys. 
 
 Repaired versions named CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
@@ -150,7 +150,7 @@ We use the following symbols throughout this work. The symbol $\random$ is read 
 
 \section{Algebraic structures}\label{sec:algebra}
 
-We define below the elementary algebraic structures known as groups, rings, fields, and vector spaces. We make this clear distinction since there are several underlying structures used in multivariate cryptography which, for instance, operate in the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{Dummit:2003} and~\cite{Mullen:2013}, and we refer the reader to these references for proofs of the facts given below.
+We define below the elementary algebraic structures known as groups, rings, fields, and vector spaces. We make this clear distinction since there are several underlying structures used in multivariate cryptography that, for instance, operate in the context of a finite field but actually form only a group or ring. Most definitions are taken from~\cite{Dummit:2003} and~\cite{Mullen:2013}, and we refer the reader to these references for proofs of the facts given below.
 
 \begin{definition}
   Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions, for all $g_{1}, g_{2}, g_{3} \in G$:
@@ -233,7 +233,7 @@ We hereafter refer to $0$ as the \emph{additive identity} and to $1$ as the \emp
   Given a ring $\mathsf{R}$ with unity, if $(R \setminus \{0\}, \ast)$ forms a group, then $\mathsf{R}$ is a \emph{division ring}.
 \end{definition}
 
-The ring of integers equipped with usual addition and multiplication $(\mathbb{Z}, +, \ast)$ is a commutative ring with unity. The quaternions, a number system employed, for example, in three-dimensional computer graphics, form a non-commutative division ring with its usual binary operations.
+The ring of integers equipped with the usual addition and multiplication operations $(\mathbb{Z}, +, \ast)$ is a commutative ring with unity. The quaternions, a number system employed, for example, in three-dimensional computer graphics, form a non-commutative division ring with its usual binary operations.
 
 \begin{definition}
   A commutative division ring is a \emph{field}.
@@ -245,7 +245,7 @@ Particularly, Galois fields or \emph{finite fields} are at the heart of various 
   The order of a finite field is always of the form $p^{n}$ with $p$ prime and $n \in \mathbb{N}$. If $n = 1$, then it is a \emph{prime field}.
 \end{proposition}
 
-For instance, the prime field $\mathbb{F}_{p}$ is composed of the set $\{0, \dots, p - 1\}$ equipped with usual addition and multiplication modulo $p$. The respective inverse operations are subtraction modulo $p$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Apart from the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Specifically, we aim to define non-prime fields with the following framework.
+For instance, the prime field $\mathbb{F}_{p}$ is composed of the set $\{0, \dots, p - 1\}$ equipped with the usual addition and multiplication operations modulo $p$. The respective inverse operations are subtraction modulo $p$ and the modular multiplicative inverse, which is calculated by solving Bézout's identity with the extended Euclidean algorithm. Apart from the aforementioned examples, we are also able to construct more elaborate structures over mathematical objects that live outside the usual sets of numbers. Specifically, we aim to define non-prime fields with the following framework.
 
 \begin{definition}
   Given $k \in \mathbb{N}_{0}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
@@ -387,7 +387,7 @@ Multivariate cryptography is based on public-key cryptography. Let us denote pri
   The integer $n$ is the \emph{security parameter}.
 \end{definition}
 
-This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs a key pair as two bit strings. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
+This mathematical framework ensures authenticity and non-repudiation of the sender, and integrity of the message for a secure choice of the $3$-tuple. The algorithm $\textsc{Gen}$ is the \emph{key generation step}, which outputs a key pair as a pair of bit strings. The algorithm $\textsc{Sig}$ is the \emph{signature generation step} and outputs a signature uniquely determined by the combination of the private key and the message. The algorithm $\textsc{Ver}$ is the \emph{signature verification step} and checks if the message was signed correctly with the corresponding key, outputting a truth value.
 
 We note that public keys in multivariate cryptography are polynomial systems with no apparent structure. However, if a malicious party can efficiently solve such systems, it is able to perform signature forgery, defeating the security of the underlying scheme. It is then crucial that solving random instances of polynomial systems is computationally hard, such that a cryptosystem can be based upon this problem. Fortunately, this is the case for several classes of polynomial systems.
 
@@ -431,7 +431,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
   \end{itemize}
 \end{definition}
 
-In the context of multivariate cryptography, monomial ordering is used for instance to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Sec.~21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices is pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
+In the context of multivariate cryptography, monomial ordering is used, for instance, to define matrix representations of multivariate polynomial systems, and to solve those using Gröbner bases~\cite[Sec.~21.4]{Gathen:2013}. Additionally, as seen in Section~\ref{sec:related}, the visualization and manipulation of multivariate polynomials as matrices are pivotal in understanding and even attacking some cryptosystems. Thus, we also show how to represent multivariate quadratic polynomials with or without constant or linear terms.
 
 \begin{definition}\label{def:poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
@@ -1587,7 +1587,7 @@ Despite its simple construction that allows for several modifications, the Rainb
 
 We observe that there are very few signature schemes based on Rainbow that attempt to reduce both private and public keys at the same time. The method of Petzoldt, which is based on generating a structured part of the public key first and obtaining the central map later, is the basis of all public-key reduction methods in the literature. Proposals that can be combined with this strategy can help in reducing the total key pair size, helping storage-constrained devices to fully operate Rainbow.
 
-We also argue that there is room for a stronger characterization of the security problems in which Rainbow is based on. The difficulty of the extended isomorphism of polynomials problem (EIP) is not precisely understood. Moreover, the theory of good keys can provide further private key reductions, but there is limited application of this research to Rainbow, since it arises from slightly different security problems than EIP. 
+We also argue that there is room for a stronger characterization of the security problems in which Rainbow is based on. The difficulty of the extended isomorphism of polynomials problem (EIP) is not precisely understood. Moreover, the theory of good keys can provide further private-key reductions, but there is limited application of this research to Rainbow, since it arises from slightly different security problems than EIP. 
 
 By reducing the scope to our scheme, there are still useful propositions to be answered, even if the security of our proposal is unsatisfactory. Subjecting the scheme to a side-channel attack may help in understanding how a constant-time signature generation algorithm can be achieved, since the key reconstruction event is evidently discernible. Furthermore, we did not concretely pursue how the performance of the key reconstruction methods is distributed over several signing procedures, which may impact the practicality of our proposal.
 
