@@ -506,7 +506,7 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
 \end{align}
 The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Sec.~2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
 
-While very elegant, the bipolar construction yields a situation in which derived schemes are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on \textsf{PoSSo} such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
+While very elegant, the bipolar construction yields a situation in which derived schemes are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation which only depend on \textsf{PoSSo}, such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is also based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}\label{def:eip}
   Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}(\mathbb{F}^{m}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}(\mathbb{F}^{n})$ be a set of private keys. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \widetilde{\mathcal{L}}_{1} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}}_{2}$ such that $(\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
@@ -598,7 +598,7 @@ If the linear system is inconsistent due to a bad choice of vinegar variables, n
 
 To verify a signature, compute $\mathbf{h'} = \mathcal{P}(\mathbf{z})$. If $\mathbf{h} = \mathbf{h'}$, then the signature is valid, and otherwise invalid.
 
-The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{ch:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known to the date of writing, if the correct choice of parameters is performed. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
+The balanced Oil--Vinegar scheme occurs when $v = o$. However, it was found to be insecure shortly after its proposal~\cite{Kipnis:199808}. We discuss this attack in Chapter~\ref{ch:attack}. In the following year, the UOV variant with $v = 2o$ was proposed as a secure variant~\cite{Kipnis:199904}, and no security weaknesses are known to the date of writing if the correct choice of parameters is performed. An instance of UOV is denoted by $\mathsf{UOV}(\mathbb{F}, v, o)$. 
 
 The size of a private key is the number of elements in $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations in $\mathcal{C}$. In other words,
 \begin{align}
@@ -672,7 +672,7 @@ and obtain a reduction in the private key size of a factor $\frac{n^{2}}{v o}$.
 
 \subsection{Rainbow signature scheme}\label{subsec:rainbow}
 
-The Rainbow signature scheme, originally defined in~\cite{Ding:200506} and a finalist of the NIST standardization process~\cite[Sec.~3.20]{Alagic:202007}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers, that are combined to create a ``rainbow''.
+The Rainbow signature scheme, originally defined in~\cite{Ding:200506} and a finalist of the NIST standardization process~\cite[Sec.~3.20]{Alagic:202007}, is a generalized version of UOV that reduces the length of keys and signatures. This is achieved due to the combination of several smaller ``oil and vinegar'' layers that are combined to create a ``rainbow''.
 
 Consider a finite field $\mathbb{F}$ and $u, n \in \mathbb{N}$ where $u \leq n$. Choose a sequence of integers $v_{1}, \dots, v_{u}$ such that $0 = v_{0} < v_{1} < \cdots < v_{u} < v_{u + 1} = n$. Take the usual set $V = \{1, \dots, n\}$ and, for the range $1 \leq l \leq u$, define vinegar variables as $V_{\ell} = \{1, \dots, v_{\ell}\}$ and oil variables as $O_{\ell} = \{v_{\ell} + 1, \dots, v_{\ell + 1}\}$. We note that $V_{1} \subset \dots \subset V_{u + 1} = V$ and $O_{\ell} = V_{\ell + 1} \setminus V_{\ell}$. Let $o_{\ell} = |O_{\ell}|$ and $m = n - v_{1}$. Now, we define $u$ vector spaces spanned by quadratic Oil--Vinegar polynomials of the form $\mathsf{OV}(v_{\ell}, o_{\ell})$, that is,
 \begin{align}\label{eq:oil-vinegar-space}
@@ -735,7 +735,7 @@ field elements. If polynomials are homogeneous quadratic, then the private key s
 
 \subsubsection{Equivalent keys.}
 
-As a generalization of UOV, there exist equivalent keys in Rainbow using a similar rationale. The theory is developed in~\cite[Sec.~4.4]{Wolf:201104} for STS, which as previously mentioned is a particular sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
+As a generalization of UOV, there exist equivalent keys in Rainbow using a similar rationale. The theory is developed in~\cite[Sec.~4.4]{Wolf:201104} for STS, a particular sparse case of Rainbow. It is argued in~\cite{Petzoldt:201307} that the strategy is also suitable for Rainbow.
 
 \begin{theorem}[{\cite[Thm.~4.17]{Wolf:201104}}]
   Without loss of generality, consider a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n})$ with $u = 2$. Given $\tau \in \mathsf{GL}(\mathbb{F}^{m})$ and $\omega \in \mathsf{GL}(\mathbb{F}^{n})$ such that
