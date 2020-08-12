@@ -1096,7 +1096,7 @@ Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved th
   \end{tabular}
 \end{table}
 
-We note that most attacks look for special structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is the principal information available to malicious entities that can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. 
+We note that most attacks look for unique structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is readily available to malicious entities and can be possibly used to forge signatures. We thus suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. Furthermore, we do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables. 
 
 \section{Statistical argument}\label{sec:stats}
 
@@ -1154,7 +1154,7 @@ It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to obser
 
 By simply swapping signs in the exponents, we can use this identity and obtain a fast approximation of the probability when $n$ tends to infinity. We use the SageMath language, which offers arbitrary precision real numbers, to obtain these values and find out that, when $n \geq 56$, $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and $\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$. Thus, Figure~\ref{fig:prob-inv} also accurately reflects the behaviour of $\Pi(q)$, that is, current values of $n$ already reach effective upper bounds for this probability.
 
-Hence, we note that the inversion event happens almost surely. Moreover, this evidence shows that computing a preimage in order to sign a message happens at the first try with high probability in a wide range of Rainbow configurations. Therefore, the cost of a central map reconfiguration, in the case that chosen vinegar variables do not lead to an invertible central map, is amortized by the overwhelming probability that a signature is successfully generated.
+Hence, we note that the inversion event happens almost certainly. Moreover, this evidence shows that computing a preimage in order to sign a message happens at the first try with high probability in a wide range of Rainbow configurations. Therefore, the cost of a central map reconfiguration, in the case that chosen vinegar variables do not lead to an invertible central map, is amortized by the overwhelming probability that a signature is successfully generated.
 
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
@@ -1229,7 +1229,7 @@ Our argument indicates that, even if part of the preimage created by the central
 
 \section{Enhancement of existing schemes}\label{sec:exp}
 
-Our method does not depend on special structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a large range of parameters. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials, and simplified linear transformations due to Theorem~\ref{thm:eq-keys-rainbow}.
+Our method does not depend on structures inserted on the private key. Consequently, it can be applied to all known Rainbow-like schemes. We experiment with several sets of parameters and observe the reduction of private key sizes. It is known that there are various limitations for the choice of parameters that lead to secure instances of Rainbow~\cite{Petzoldt:201005}. We implement several known guidelines and confirm that our proposal does indeed work for a broad range of parameters. Furthermore, we remark that comparisons are made considering the usage of homogeneous quadratic polynomials, and simplified linear transformations due to Theorem~\ref{thm:eq-keys-rainbow}.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1296,7 +1296,7 @@ We compare key pair sizes when our method is used alongside Rainbow variants tha
 
 The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. These variants are based on the linear relations described in Subsection~\ref{sec:mod}, and resulting implementations may be effortlessly modified to use our proposal. Moreover, in the case that higher parameters are needed, for example a security level of $256$ bits, we note that the key pair is reduced more aggressively. Thus, our results reflect changes over a wide variety of platforms and possible Rainbow deployments that benefit from lower storage requirements.
 
-We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary greatly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
+We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary significantly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, for instance as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
 \chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
 
@@ -1324,7 +1324,7 @@ Consider the vector space $\mathbb{F}^{o}$ that denotes all possible messages, a
   Consider the subset of $\mathbb{F}^{n}$ composed of all vectors with the last $o$ coordinates equal to zero, that is, $\{ (x_{1}, \dots, x_{v}, 0, \dots, 0) \in \mathbb{F}^{n} \}$. The vector subspace of $\mathbb{F}^{n}$ formed by this set with the usual binary operations is the \emph{vinegar subspace}, and denoted by $\mathcal{V}$. The preimage of $\mathcal{V}$ under $\mathcal{L}_{2}$ is given by $\widetilde{\mathcal{V}}$.
 \end{definition}
 
-The main observation of the attack is that combinations of matrices associated to the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix} are specifically structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and to forge signatures. A more precise characterization of this fact is given below.
+The main observation of the attack is that combinations of matrices associated to the polynomial systems of $\mathcal{C}$ by Definition~\ref{def:ovh-matrix} are precisely structured. This carries over to the public key, and thus can be used by the attacker to produce an equivalent key and to forge signatures. A more precise characterization of this fact is given below.
 
 \begin{lemma}[{\cite[Lemma~1]{Kipnis:199904}}]
   Given any polynomials $f^{(i)}, f^{(j)} \in \textsf{OVH}(v, o)$, let $\phi^{(i)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ and $\phi^{(j)} : \mathbb{F}^{n} \to \mathbb{F}^{n}$ be the linear transformations associated to the matrices $\widetilde{M}(f^{(i)})$ and $\widetilde{M}(f^{(j)})$ of Definition~\ref{def:ovh-matrix}, respectively. If $\widetilde{M}(f^{(j)})$ is invertible, then so is $\phi^{(j)}$ and thus $\mathcal{O}$ is an invariant subspace of $\phi^{(i)} \circ (\phi^{(j)})^{-1}$.
