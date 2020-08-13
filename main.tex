@@ -855,7 +855,7 @@ More precisely, there exist several quadratic terms in the central map $\mathcal
 
 \chapter{New approach to reduce private keys}\label{ch:eta}
 
-We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and consequently of the entire private key. We analyze the security implications of this strategy and present modifications to the Rainbow scheme, enabling a reduction in private key sizes of up to $85\%$ with secure parameters. Furthermore, this framework can be applied on top of existing schemes that shorten private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
+We observe that the reuse of vinegar variables in the signature generation step of the Rainbow scheme leads to a shorter representation of its central map, and consequently, of the entire private key. We analyze the security implications of this strategy and present modifications to the Rainbow scheme, enabling a reduction in private key sizes of up to $85\%$ with secure parameters. Furthermore, this framework can be applied on top of existing schemes that shorten private or public keys, spawning derivatives that reduce the total key pair size by a factor of 3.5.
 
 \emph{The contents of this chapter are an extended version of~\cite{Zambonin:201907}.} In Section~\ref{sec:mod}, we give a formal description of our modifications, alongside with a security analysis taking into account current cryptanalytic methods for Rainbow. In Section~\ref{sec:stats}, we argue that no change of parameters is needed to maintain performance and randomness when creating signatures. In Section~\ref{sec:exp}, we measure how our modifications behave when applied to current sets of parameters for Rainbow-like schemes.
 
@@ -969,9 +969,9 @@ The Rainbow submission to the second round of the NIST standardization process~\
   A signature scheme $\textsc{Dss}(1^{n})$ is \emph{existentially unforgeable under adaptive chosen message attacks (\textsf{EU-CMA})} if $\mathcal{A}$ has negligible success probability in $\mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\textsc{eu-cma}}(\mathcal{A})$.
 \end{definition}
 
-Given a public key, the adversary can obtain signatures from at most $Q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature that were not in a previous query. The \textsf{EU-CMA} model is considered the most strict notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
+Given a public key, the adversary can obtain signatures from at most $Q$ messages. These messages may be chosen adaptively, that is, a new query may depend on replies to previous ones. The adversary succeeds if it produces a valid pair of a message and a signature not in a previous query. The \textsf{EU-CMA} model is considered the most strict notion of security for signatures. In the case of Rainbow, it is possible to provide security against this model through small modifications to the scheme.
 
-These changes are built upon the introduction of a ``salt'', such that two signatures of the same message are not correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:exp}.
+More precisely, the introduction of a ``salt'' prevents that two signatures of the same message are correlated. We briefly describe this approach, with the intent of preventing the recalculation of $\overline{\mathcal{C}}$ in the case that $\widetilde{V}_{1}$ is not suitable. Let us denote this method as Rainbow-$\eta_{3}$. Concrete implementations of this method are tested on Section~\ref{sec:exp}.
 
 \subsubsection{Key generation.}
 
@@ -991,7 +991,7 @@ Let $r \random {\{0, 1\}}^{w}$. Consider a message $M$ and obtain its digest by 
 
 We recall that $r$ is used to obtain $\mathbf{h}$ again. Then, if $\mathbf{h} = \mathcal{P}(\mathbf{z})$, the signature is valid, and otherwise invalid.
 
-We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the aforementioned methods only slightly modify the total size. Thus, we first give a general proposition.
+We are now able to discuss private key sizes. We note that all coefficients related to monomials with variables in $\widetilde{V}_{1}$ are now removed from the central map. The public key size does not generally change, and it is evident that the methods mentioned above only slightly modify the total size. Thus, we first give a general proposition.
 
 \begin{proposition}\label{prop:eta-key-size}
   The size of a Rainbow-$\eta$ private key, denoted by $\mathsf{sk}^{\eta}$, is
@@ -1012,7 +1012,7 @@ The private key size for Rainbow-$\eta_{1}$ is exactly $\#\mathsf{sk}^{\eta}$ pl
 
 \subsection{Security analysis}\label{subsec:analysis}
 
-A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each of those, along with their estimated complexities, and argue that our methods do not facilitate such strategies. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. 
+A variety of attacks currently thwart the security of Rainbow-like signature schemes if parameters are not chosen carefully. We briefly state each attack, its estimated complexity, and argue that our methods do not facilitate such a strategy. Moreover, we also mention attacks which do not target the structure of Rainbow, but a concrete implementation of the scheme or one of its building blocks. 
 
 We follow the analysis of~\cite[Sec.~8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting. Direct and collision attacks aim for signature forgery, since there exist many possible $\mathbf{x}$ for any digest $\mathbf{h}$. Side-channel attacks are a general definition that may encompass either signature forgery or key recovery attacks. All other attacks are considered key recovery attacks.
 
