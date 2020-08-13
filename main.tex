@@ -1077,7 +1077,7 @@ The Rainbow submission authors made conservative choices in the first~\cite{Ding
   \end{tabular}
 \end{table}
 
-The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. In the context of Rainbow, This is equivalent to fixing $n - m$ variables and attempting to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$. 
+The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving a determined polynomial system with $m$ equations and variables. In the context of Rainbow, $n - m$ variables are fixed to attempt solving the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$. 
 
 Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved the complexity of Rainbow-Band-Separation and MinRank attacks. We present the results in Table~\ref{tab:newsec} as given by the authors of the works mentioned earlier. We refer to the revised parameter sets simply by their targeted NIST security levels and convert the security level from logic gate counts to field multiplications, as per~\cite[p.~35]{Ding:201901}. Further information on closed formulas can be found on~\cite[Eq.~19]{Nakamura:202006} and~\cite[Sec.~5]{Nakamura:202007}.
 
@@ -1165,7 +1165,7 @@ We recall that a message digest $\mathbf{h}$ is signed instead of the entire doc
 
 We observe the distribution of field elements in vectors after the final function application, that is, $\mathbf{z} = \mathcal{L}_{2}^{-1}(\mathbf{x})$. Consider a $t$-tuple of signatures from an unmodified instance of Rainbow acting as a control group, that is, $Z_{t}' = (\mathbf{z}_{1}, \dots, \mathbf{z}_{t}),\; t \in \mathbb{N}$. Let its ``unpacked notation'' be the $(n \times t)$-tuple $Z_{t} = (z_{1}^{1}, z_{1}^{2}, \dots, z_{1}^{n}, z_{2}^{1}, \dots, z_{t}^{n - 1}, z_{t}^{n})$ of elements of $\mathbb{F}_{q}$. When the first $v_{1}$ elements of the vector $\mathbf{x}$ are fixed due to the usage of Rainbow-$\eta$, we instead denote these by $\widetilde{Z}'_{t}$ and $\widetilde{Z}_{t}$. 
 
-Our hypothesis is that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution. This is due to the random process used in choosing the parts of a private key. We recall that any element of $\mathbb{F}_{q}$ is equally likely to appear in the matrix representation of a linear transformation or as a coefficient in an Oil--Vinegar polynomial.
+We hypothesize that $Z_{t}$ and $\widetilde{Z}_{t}$ behave similarly to observations sampled from a discrete uniform distribution, the random process used in choosing parts of a private key. We recall that any element of $\mathbb{F}_{q}$ is equally likely to appear in the matrix representation of a linear transformation or as a coefficient in an Oil--Vinegar polynomial.
 
 \begin{definition}
   Let $\mathcal{U}(a, b)$ be a discrete uniform distribution with $a, b \in \mathbb{Z},\; a \leq b$. The \emph{standard deviation of $\mathcal{U}(a, b)$} is
@@ -1201,7 +1201,7 @@ The comparison of expected with obtained standard deviations and means in our ex
 
 Figure~\ref{fig:dist-plot} shows the cumulative distribution function (CDF) plot and the Q-Q (quantile-quantile) plot for such samples. The expected CDF, and examples for $Z_{t}$ and $\widetilde{Z}_{t}$, show that all values are fairly distributed, with small variations due to the random generation of field elements. However, we note that this is due to the low number of classes, that is, the order of the finite field, and experimentally confirm that such discrepancies are largely reduced with $q = 2^{10}$.  
 
-This is further confirmed by the Q-Q plot, which is also referred to as a normal probability plot. It is built by pairing the normalized counts $Z_{t, k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$. Generating precise values for $K$ is non-trivial, and we use the method below to yield approximate values.
+The Q-Q plot, also referred to as a normal probability plot, further confirms this behaviour. It is built by pairing the normalized counts $Z_{t, k}$ with quantiles from the standard normal distribution. Such quantiles are the normal order statistics, or rankits~\cite[p.~349]{Ipsen:194405}, which are hereafter referred to as $K \in \mathbb{R}^{q}$. Generating precise values for $K$ is non-trivial, and we use the method below to yield approximate values.
 
 \begin{figure}[htbp]
   \subfloat[
@@ -1300,7 +1300,7 @@ We also briefly discuss the effect of these changes on the signature generation 
 
 \chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
 
-As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support for the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves the randomness of signatures. This is based on the fact that, as summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. 
+As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support for the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves the randomness of signatures. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes. 
 
 We intentionally avoid this strategy with our proposal. We show that our proposal is not secure due to the leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of Rainbow-$\eta$. In Section~\ref{sec:counter}, we show the practical consequences of this attack, and we provide possible countermeasures that still allow for a trade-off between security and private key size.
 
