@@ -3,10 +3,13 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage{amsfonts, amssymb, amsthm, bm, mathtools, multirow, siunitx, subfig, tikz}
+\usepackage{
+  amsfonts, amssymb, amsthm, bm, mathtools, multirow, siunitx, subfig, tikz
+}
 
 \usetikzlibrary{positioning, patterns}
 
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\wt}{wt}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -518,7 +521,7 @@ The amount of information regarding the difficulty of EIP is sparse~\cite[p.~69]
 \end{definition}
 
 \begin{definition}\label{def:sustainer}
-  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, the linear transformations $\tau \in \mathsf{GL}(\mathbb{F}^{m}),\: \omega \in \mathsf{GL}(\mathbb{F}^{n})$ are \emph{sustaining transformations} if they preserve the structure of the central map, that is,
+  Given a private key $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$, linear transformations $\tau \in \mathsf{GL}(\mathbb{F}^{m}),\: \omega \in \mathsf{GL}(\mathbb{F}^{n})$ are \emph{sustaining transformations} if they preserve the structure of the central map, that is,
   \begin{align}
     \mathcal{P} = (\mathcal{L}_{1} \circ \tau^{-1}) \circ (\tau \circ \mathcal{C} \circ \omega) \circ (\omega^{-1} \circ \mathcal{L}_{2})
   \end{align}
@@ -540,7 +543,7 @@ In this section, we describe the classic schemes based on the Oil--Vinegar trapd
 The idea of the original Oil and Vinegar signature scheme is to build the central map with two sets of variables, \emph{vinegar and oil variables}, such that the multivariate quadratic polynomials do not feature any quadratic oil terms. Thus, by choosing the values of vinegar variables, the systems become linear in the oil variables and consequently easy to solve.
 
 \begin{definition}\label{def:oil-vinegar-poly}
-  Given $v, o \in \mathbb{N}$, let $V = \{1, \dots, v\}$, $O = \{v + 1, \dots, v + o\}$ and $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o})$. Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
+  Given $v, o \in \mathbb{N}$, let $V = \{1, \dots, v\}$, $O = \{v + 1, \dots, v + o\}$ and a vector $\mathbf{x} = (x_{1}, \dots, x_{v}, x_{v + 1}, \dots, x_{v + o})$. Given a polynomial ring $\mathbb{F}[\mathbf{x}]$, an \emph{Oil--Vinegar polynomial} is a multivariate quadratic polynomial of the form
   \begin{align}
     \sum_{i \in V} \sum_{j \in V} \alpha_{ij} x_{i} x_{j}
       + \sum_{i \in V} \sum_{j \in O} \beta_{ij} x_{i} x_{j}
@@ -930,7 +933,7 @@ We note that the performance of this method is lower than that of Rainbow-$\eta_
 
 \subsubsection{Key generation.}
 
-The usual key generation algorithm for the target scheme is employed, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
+The usual key generation algorithm for the target scheme is used, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
 \begin{align}
   \begin{split}
     \mathsf{sk}^{\eta_{2}} &= (\widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
@@ -948,7 +951,7 @@ This step does not change. If $\mathbf{h} = \mathcal{P}(\mathbf{z})$, then the s
 
 \subsection{Application to the EU-CMA variant}
 
-The Rainbow submission to the second round of the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the target security model.
+The second-round Rainbow submission to the NIST standardization process~\cite{Ding:201901} gives a scheme description that diverges from the original works. The authors introduce modifications that provide security against the \textsf{EU-CMA} model, whereas the original scheme only prevents a weaker notion of universal forgery. We first recall the target security model.
 
 \begin{definition}[{\cite[Def.~1.2]{Chen:201612}}]
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted by $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ which can perform $Q \in \mathbb{N}$ queries, usually called the \emph{adversary}, let the following experiment be defined:
@@ -1013,7 +1016,7 @@ We follow the analysis of~\cite[Sec.~8]{Ding:201901} and~\cite{Petzoldt:201005} 
 
 \subsubsection{Direct attack.} 
 
-An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors give an estimation of its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Thm.~3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
+An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors estimate its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Thm.~3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
 
 \subsubsection{Collision attack.}
 
@@ -1130,7 +1133,7 @@ Parameters for Rainbow are selected according to a number of restrictions, impos
   \subfloat[
     Figure~\ref{fig:prob-inv-normal-size}, with $q \geq 16$.\label{fig:prob-inv-zoomed}
   ]{
-    % \includegraphics[width=.458\columnwidth]{charts/inv-prob/inv-prob-zoom}
+    % \includegraphics[width=.467\columnwidth]{charts/inv-prob/inv-prob-zoom}
   }
   \caption{Probability of obtaining $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$
     with $2 \leq q \leq 256$ and $q$ a prime power, given the
@@ -1184,7 +1187,7 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
   \subfloat[
     $d_{\sigma}(t)$ for $n = 90, v_{1} = 35$.\label{fig:std-diff-n90}
   ]{
-    % \includegraphics[width=.425\columnwidth]{charts/measure-diff/std-diff-n90}
+    % \includegraphics[width=.406\columnwidth]{charts/measure-diff/std-diff-n90}
   }
   \caption{Difference of standard deviations when $1 \leq t \leq 512$,
     and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:std-diff}
@@ -1202,12 +1205,12 @@ The Q-Q plot, or normal probability plot, further confirms this behaviour. It is
   \subfloat[
     CDF plot.\label{fig:cdf-plot}
   ]{
-    % \includegraphics[width=.49\columnwidth]{charts/diffusion/cdf-plot}
+    % \includegraphics[width=.485\columnwidth]{charts/diffusion/cdf-plot}
   }
   \subfloat[
     Q-Q plot.\label{fig:qq-plot}
   ]{
-    % \includegraphics[width=.47\columnwidth]{charts/diffusion/qq-plot}
+    % \includegraphics[width=.485\columnwidth]{charts/diffusion/qq-plot}
   }
   \caption{Distribution of counts of elements in $Z_{t}$ and
     $\widetilde{Z}_{t}$ such that $t = 2^{16}$ for
@@ -1397,7 +1400,7 @@ We now explore the probability that, given $n$ draws from a population of size $
   \subfloat[
     PMF plot.\label{fig:hyper-pmf-plot}
   ]{
-    % \includegraphics[width=.48\columnwidth]{charts/hyper/hyper-pmf}
+    % \includegraphics[width=.4785\columnwidth]{charts/hyper/hyper-pmf}
   }
   \subfloat[
     CDF plot.\label{fig:hyper-cdf-plot}
@@ -1491,7 +1494,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{7pt}
   \centering
-  \caption{Probabilities of repeating vinegar variables depending on the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
+  \caption{Probabilities of repeating vinegar variables according to the Hamming weight of the vinegar threshold.}\label{tab:bin-prob}
   \begin{tabular}{*{7}{r}}
     \toprule
     $q$ & $v_{1}$
