@@ -53,7 +53,7 @@ Key pairs are mathematically bound to a computationally hard problem to solve, w
 
 Signatures in the form of seals, stamps, or ink drawings present various logistical and security shortcomings. For instance, individuals are advised to be physically present to sign any documents, for they cannot be truthfully identified otherwise. Additionally, this kind of personal calligraphy or symbolism can be forged with little effort. A modern solution is found within mathematical frameworks known as \emph{signature schemes}, that enable explicit assertions on the security of signatures.
 
-A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is again expected to be secure. The initial public discovery of digital signature schemes is given in~\cite{Rivest:197802} and still widely used at the time of the writing. The RSA signature scheme is based on the difficulty of integer factorization. Other popular schemes, such as Ed25519~\cite{Bernstein:201208}, are based on the difficulty of calculating a discrete logarithm. There is no known polynomial-time algorithm to solve such problems on a classical computer.
+A vibrant discipline of public-key cryptography, signature schemes are often associated with digital systems, in which transit of sensitive messages is again expected to be secure. The initial public discovery of digital signature schemes is given in~\cite{Rivest:197802} and still widely used at the time of the writing. The RSA signature scheme is based on the difficulty of integer factorization. Other schemes, such as Ed25519~\cite{Bernstein:201208}, are based on the difficulty of calculating a discrete logarithm. There is no known polynomial-time algorithm to solve such problems on a classical computer.
 
 Classical computers are electronic, using circuits to perform computations. However, quantum computers have emerged as a new paradigm, in which computations are performed outside the scope of classical mechanics. Although these computers are physically hard to implement, algorithms that use quantum phenomena have already been proposed and present a provable speed-up compared to classical computers. One of these algorithms~\cite{Shor:199710} simplifies the complexity of factoring integers and calculating discrete logarithms. Consequently, it can be theoretically used to break widely used signature schemes.
 
@@ -129,7 +129,7 @@ The CyclicRainbow variant~\cite{Petzoldt:201012} is a direct extension of cyclic
 
 Additionally, there are works in the literature that manage to reduce both private and public key sizes through novel strategies. The authors of LWRS~\cite{Zhang:201208} create a scheme with low-resource devices in mind. The left affine transformation of the usual bipolar construction is dropped, and thus the private key is reduced accordingly. The ``minus'' method~\cite[Sec.~3.2.1]{Wolf:200511}, which consists of removing several equations in order to reduce storage requirements, is applied to the public key.
 
-A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the HUFU-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions that, for instance, enable compression of the public key by up to a factor of $4.5$.
+A modification that consists of adding cross-terms of oil variables in the last layer to the last two layers of Rainbow is proposed in~\cite{Tan:201603}. With this method, which is also applicable to UOV, the authors reduce Rainbow private and public keys by up to $46.2\%$ and $36.8\%$, respectively. The matrices associated with the public and private keys of the Hufu-UOV scheme~\cite{Tao:201905} have special Toeplitz and circulant constructions that, for instance, enable compression of the public key by up to a factor of $4.5$.
 
 The variant cubic UOV~\cite{Nie:201511} introduces several cubic polynomials in the central map of the private key. A consequence is that both keys of this variant are smaller compared to the original UOV scheme, although the focus of the original work is on reducing public keys. However, it was found to be insecure~\cite{Hashimoto:201712} through the recovery of equivalent keys.
 
@@ -201,7 +201,7 @@ Furthermore, often it is convenient to interpret elements as those of a differen
 Groups carrying usual addition or multiplication operations are \emph{additive} and \emph{multiplicative} groups, respectively. Common examples are the additive group under $\mathbb{R}$, that is, $(\mathbb{R}, +)$, and the multiplicative group of integers modulo $n$, $(\mathbb{Z}/n\mathbb{Z})^{\times}$. Adding further operations to groups leads to more usual arithmetic structures.
 
 \begin{definition}
-  Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered 3-tuple $(R, +, \ast)$ satisfying the following axioms:
+  Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered $3$-tuple $(R, +, \ast)$ satisfying the following axioms:
   
   \begin{enumerate}
     \item The ordered pair $(R, +)$ forms an \emph{abelian group}.
@@ -374,7 +374,7 @@ The cryptographic hash function is the usual method of transforming a variable-l
 Multivariate cryptography is based on public-key cryptography. Let us denote private and public keys as $\mathsf{sk}$ and $\mathsf{pk}$, respectively. We give the formal definition of a signature scheme below.
 
 \begin{definition}
-  Given $n \in \mathbb{N}$ and any message $w \in \{0, 1\}^{*}$, a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$ is a \emph{digital signature scheme} if every signature generated by $\textsc{Sig}$ verifies under $\textsc{Ver}$ for every possible key pair generated by $\textsc{Gen}$. Equivalently,
+  Given $n \in \mathbb{N}$ and a message $w \in \{0, 1\}^{*}$, a $3$-tuple of probabilistic polynomial-time algorithms $(\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$ is a \emph{digital signature scheme} if every signature generated by $\textsc{Sig}$ verifies under $\textsc{Ver}$ for every possible key pair generated by $\textsc{Gen}$. Equivalently,
   \begin{align}
      \forall (\mathsf{sk}, \mathsf{pk}) \leftarrow \textsc{Gen}(1^{n}),
        \quad \Pr[\textsc{Ver}(\mathsf{pk}, w, \textsc{Sig}(\mathsf{sk}, w)) = 1] = 1.
@@ -391,7 +391,7 @@ We note that public keys in multivariate cryptography are polynomial systems wit
 \end{definition}
 
 \begin{theorem}[{\cite[App.~A]{Patarin:199711}}]
-  Given a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:poly-sys}, finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
+  Consider a polynomial system of \emph{quadratic equations over $\mathbb{F}_{2}$} of the form presented in Definition~\ref{def:poly-sys}, then finding a solution vector $x_{1}, \dots, x_{n}$ is NP-complete. This is the \emph{multivariate quadratic (MQ) problem}.
 \end{theorem}
 
 Hence, multivariate quadratic equations are good candidates for building cryptosystems based on Definition~\ref{def:posso}. Indeed, while the choice of $\mathbb{F}_{q}$ is more varied, most modern multivariate cryptography schemes are based on quadratic equations for efficiency reasons. We expand Definition~\ref{def:poly-map} to its explicit form, taking into account the proposed degree restriction of the polynomials, to better visualize such systems.
@@ -501,16 +501,16 @@ The private and public keys are respectively a $3$-tuple and its aforementioned 
 \end{align}
 The bipolar construction can be extended to work differently from the main idea given, for instance in the case of schemes that perform calculations over multiple finite fields. We invite the reader to consult~\cite[Sec.~2.2]{Petzoldt:201307} for a discussion of such schemes, and even ones that do not use the construction at all.
 
-While very elegant, the bipolar construction yields a situation in which derived schemes are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation that only depend on \textsf{PoSSo}, such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
+While very elegant, schemes derived from the bipolar construction are not exclusively based on Definition~\ref{def:posso}. There exist signature schemes constructed via the Fiat--Shamir transformation that only depend on \textsf{PoSSo}, such as MQDSS~\cite{Chen:201612}, but their efficiency is lacking compared to schemes based on the bipolar construction. Consequently, a scheme using the bipolar construction is based on some variant of the \emph{isomorphism of polynomials (IP) problem}. There are several versions of the IP problem, and we give a short definition for the variant that Oil--Vinegar schemes are based on, as introduced in~\cite{Ding:200806}.
 
 \begin{definition}\label{def:eip}
   Let $\overline{\mathsf{MQ}}(n, m)$ be a class of structured quadratic polynomial maps and $\mathbb{U} = \mathsf{GL}(\mathbb{F}^{m}) \times \overline{\mathsf{MQ}}(n, m) \times \mathsf{GL}(\mathbb{F}^{n})$ be a set of private keys. Given a $3$-tuple $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) \in \mathbb{U}$ with $\mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}$, finding a decomposition $\mathcal{P} = \widetilde{\mathcal{L}}_{1} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}}_{2}$ such that $(\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$ is the \emph{extended isomorphism of polynomials (EIP) problem}.
 \end{definition}
 
-Unfortunately, the amount of information regarding the difficulty of EIP is sparse~\cite[p.~69]{Thomae:201306}, preventing complete security proofs for Oil--Vinegar schemes. This is also the case for other IP problems, and thus most multivariate cryptosystems simply have \emph{ad hoc} security. A consequence of EIP is that there exist many private keys that compose a single public key~\cite{Wolf:201104}, and this has been used to attack several schemes, as seen in Section~\ref{sec:related}.
+The amount of information regarding the difficulty of EIP is sparse~\cite[p.~69]{Thomae:201306}, preventing complete security proofs for Oil--Vinegar schemes. This is also the case for other IP problems, and thus most multivariate cryptosystems simply have \emph{ad hoc} security. A consequence of EIP is that there exist many private keys that compose a single public key~\cite{Wolf:201104}, and this has been used to attack several schemes, as seen in Section~\ref{sec:related}.
 
 \begin{definition}
-  Let $\mathbb{U}$ as per Definition~\ref{def:eip}. Given two private keys $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}), (\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$, they are \emph{equivalent keys} if
+  Given $\mathbb{U}$ as per Definition~\ref{def:eip}, and private keys $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}), (\widetilde{\mathcal{L}}_{1}, \widetilde{\mathcal{C}}, \widetilde{\mathcal{L}}_{2}) \in \mathbb{U}$, they are \emph{equivalent keys} if
   \begin{align}
     \mathcal{P} = \mathcal{L}_{1} \circ \mathcal{C} \circ \mathcal{L}_{2}
       = \widetilde{\mathcal{L}}_{1} \circ \widetilde{\mathcal{C}} \circ \widetilde{\mathcal{L}}_{2}.
