@@ -152,7 +152,7 @@ We define below the elementary algebraic structures known as groups, rings, fiel
 
 \begin{definition}
   Given a set $G$ and any $g_{1}, g_{2}, g_{3} \in G$, a \emph{binary operation $\star$ on a set $G$} is a function $\star : G \times G \to G$, where we denote $\star(g_{1}, g_{2})$ as $g_{1} \star g_{2}$. A binary operation $\star$ on a set $G$ may also satisfy the following conditions, for all $g_{1}, g_{2}, g_{3} \in G$:
-  
+
   \begin{itemize}
     \item It is \emph{associative} if $g_{1} \star (g_{2} \star g_{3}) = (g_{1} \star g_{2}) \star g_{3}$.
     \item It is \emph{commutative} if $g_{1} \star g_{2} = g_{2} \star g_{1}$.
@@ -162,7 +162,7 @@ We define below the elementary algebraic structures known as groups, rings, fiel
 
 \begin{definition}
   Given a set $G$, any $g \in G$ and a binary operation $\star$ on $G$, a \emph{group} is an ordered pair $(G, \star)$ that satisfies the following axioms:
-  
+
   \begin{enumerate}
     \item The binary operation $\star$ is \emph{closed under $G$}.
     \item The binary operation $\star$ on $G$ is \emph{associative}.
@@ -205,7 +205,7 @@ Groups carrying usual addition or multiplication operations are \emph{additive} 
 
 \begin{definition}
   Given a set $R$, any $r_{1}, r_{2}, r_{3} \in R$, and two binary operations $+$ and $\ast$ on $R$, a \emph{ring} is an ordered $3$-tuple $(R, +, \ast)$ satisfying the following axioms:
-  
+
   \begin{enumerate}
     \item The ordered pair $(R, +)$ forms an \emph{abelian group}.
     \item The binary operation $\ast$ on $R$ is \emph{associative}.
@@ -248,7 +248,7 @@ For instance, the prime field $\mathbb{F}_{p}$ is composed of the set $\{0, \dot
 \begin{definition}
   Given $k \in \mathbb{N}_{0}$, a set of \emph{coefficients} $A$ with $a_{0}, \dots, a_{k} \in A$, and an \emph{indeterminate} $x$, a \emph{univariate polynomial} is an expression of the form
   \begin{align}
-    \sum_{i = 0}^{k} a_{i} x^{i} 
+    \sum_{i = 0}^{k} a_{i} x^{i}
       = a_{k} \cdot x^{k} + \dots + a_{2} \cdot x^{2} + a_{1} \cdot x + a_{0}.
   \end{align}
   Each of the terms in the summation is a \emph{monomial}.
@@ -302,7 +302,7 @@ It is useful to define an algebraic structure that falls outside of the class of
 
 \begin{definition}
   Given a finite field $\mathbb{F}$ equipped with binary operations $+$ and $\ast$, a set $V$, any elements $s_{1}, s_{2} \in \mathbb{F},\; \mathbf{v_{1}}, \mathbf{v_{2}} \in V$, a binary operation $\bm{+}$ on $V$ and a binary operation $\bm{\times} : \mathbb{F} \to V$, a \emph{vector space over $\mathbb{F}$} is an ordered $3$-tuple $(V, \bm{+}, \bm{\times})$ satisfying the following axioms:
-  
+
   \begin{enumerate}
     \item The ordered pair $(V, \bm{+})$ forms an \emph{abelian group}.
     \item The binary operation $\bm{\times}$ is \emph{associative}, that is, $s_{1} \bm{\times} (s_{2} \bm{\times} \mathbf{v_{1}}) = (s_{1} \ast s_{2}) \bm{\times} \mathbf{v_{1}}$.
@@ -336,11 +336,11 @@ Analogously to group- and ring-like structures, there are mappings between vecto
 
 \begin{definition}
   Given two vector spaces $\mathbf{V} = (V, \bm{+}, \bm{\times})$ and $\mathbf{V'} = (V', \bm{+'}, \bm{\times'})$ over the same field $\mathbb{F}$, any vectors $\mathbf{v_{1}}, \mathbf{v_{2}} \in V$ and any scalar $s \in \mathbb{F}$, a function $\phi : \mathbf{V} \to \mathbf{V'}$ is a \emph{linear transformation} if it satisfies the following conditions:
-  
+
   \begin{enumerate}
     \item The \emph{addition operation is preserved}, that is, $\phi(\mathbf{v_{1}} \bm{+} \mathbf{v_{2}}) = \phi(\mathbf{v_{1}}) \bm{+'} \phi(\mathbf{v_{2}})$.
     \item The \emph{scalar multiplication operation is preserved}, that is, $\phi(s \bm{\times} \mathbf{v_{1}}) = s \bm{\times'} \phi(\mathbf{v_{1}})$.
-  \end{enumerate} 
+  \end{enumerate}
 \end{definition}
 
 We obtain a \emph{vector subspace of $\mathbf{V}$} by applying the rationale of Definition~\ref{def:subgroup}. Observing how a linear transformation acts on a subspace leads to the following definition.
@@ -363,7 +363,7 @@ With most mathematical machinery defined, we now introduce the building blocks t
 
 \begin{definition}
   Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is a \emph{cryptographic hash function} if it satisfies the following conditions:
-  
+
   \begin{enumerate}
     \item It is \emph{deterministic} and \emph{easy to compute}.
     \item It is \emph{preimage resistant} if it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$, that is, it is hard to invert.
@@ -404,11 +404,11 @@ Hence, multivariate quadratic equations are good candidates for building cryptos
   \begin{align}
     \begin{split}
       \begin{dcases}
-        f^{(1)}(x_{1}, \dots, x_{n}) &= 
+        f^{(1)}(x_{1}, \dots, x_{n}) &=
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(1)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(1)} x_{i} + \delta^{(1)}, \\
         \quad \vdots \\
-        f^{(m)}(x_{1}, \dots, x_{n}) &= 
+        f^{(m)}(x_{1}, \dots, x_{n}) &=
           \sum_{i = 1}^{n} \sum_{j = i}^{n} \alpha_{ij}^{(m)} x_{i} x_{j}
             + \sum_{i = 1}^{n} \beta_{i}^{(m)} x_{i} + \delta^{(m)},
       \end{dcases}
@@ -421,7 +421,7 @@ We recall that division of polynomials in a multivariate polynomial ring is ambi
 
 \begin{definition}
   Let $\mathbb{Z}^{n}$ be the set of $n$-tuples of integers and any $\alpha, \beta, \delta \in \mathbb{Z}^{n}$. Given a well-order $\prec$ in $\mathbb{Z}^{n}$ such that $\alpha + \delta \prec \beta + \delta$ if $\alpha \prec \beta$, a \emph{monomial ordering} is defined by using $\alpha$ as $\mathbf{x}^{\alpha} = x_{1}^{\alpha_{1}} x_{2}^{\alpha_{2}} \cdots x_{n}^{\alpha_{n}} \in \mathsf{R}[\mathbf{x}]$. Examples of monomial orderings are given below.
-  
+
   \begin{itemize}
     \item The ordering given by $\mathbf{x}^{\alpha} \prec_{\mathsf{lex}} \mathbf{x}^{\beta}$ if $\alpha_{i} \prec \beta_{i}$ with minimal $1 \leq i \leq n$ such that $\alpha_{i} \neq \beta_{i}$ is the \emph{lexicographic ordering}, or ``dictionary ordering''.
     \item The ordering given by $\mathbf{x}^{\alpha} \prec_{\mathsf{grlex}} \mathbf{x}^{\beta}$ if $\deg \mathbf{x}^{\alpha} \prec \deg \mathbf{x}^{\beta}$ or, as a tie-breaker, $\mathbf{x}^{\alpha} \prec_{\mathsf{lex}} \mathbf{x}^{\beta}$ is the \emph{graded lexicographic ordering}.
@@ -434,7 +434,7 @@ In the context of multivariate cryptography, monomial ordering is used, for inst
 \begin{definition}\label{def:poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MQ}(n, m)$, the \emph{matrix representation of a polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    \overline{M}(f^{(i)}) = 
+    \overline{M}(f^{(i)}) =
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \alpha^{(i)}_{12} & \cdots & \alpha^{(i)}_{1n} & \beta^{(i)}_{1}  \\
                       0 & \alpha^{(i)}_{22} & \cdots & \alpha^{(i)}_{2n} & \beta^{(i)}_{2}  \\
@@ -449,7 +449,7 @@ In the context of multivariate cryptography, monomial ordering is used, for inst
 \begin{definition}\label{def:quad-poly-mat-repr}
   Given a polynomial system $\mathcal{P} \in \textsf{MHQ}(n, m)$, the \emph{matrix representation of a homogeneous quadratic polynomial $f^{(i)} \in \mathcal{P}, 1 \leq i \leq m$} is given by
   \begin{align}
-    M(f^{(i)}) = 
+    M(f^{(i)}) =
     \begin{bmatrix}
       \alpha^{(i)}_{11} & \cdots & \alpha^{(i)}_{1n}    \\
                  \vdots & \ddots &            \vdots    \\
@@ -474,15 +474,15 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
     \node (y) at (0, 0) {$\mathbf{y} \in \mathbb{F}^{m}$};
     \node (x) at (2.5, 0) {$\mathbf{x} \in \mathbb{F}^{n}$};
     \node (z) at (5, 0) {$\mathbf{z} \in \mathbb{F}^{n}$};
-    \draw[-latex] (h) -- (y) 
+    \draw[-latex] (h) -- (y)
       node[midway,above] {$\mathcal{L}_{1}^{-1}$};
-    \draw[-latex] (y) -- (x) 
+    \draw[-latex] (y) -- (x)
       node[midway,above] {$\mathcal{C}'$}
       node[midway,yshift=1.2cm] {decryption / signature generation};
-    \draw[-latex] (x) -- (z) 
+    \draw[-latex] (x) -- (z)
       node[midway,above] {$\mathcal{L}_{2}^{-1}$};
-    \draw[-latex] (z) -- (5, -1.5) -- (-2.5, -1.5) 
-      node[midway,below] {$\mathcal{P}$} 
+    \draw[-latex] (z) -- (5, -1.5) -- (-2.5, -1.5)
+      node[midway,below] {$\mathcal{P}$}
       node[midway,yshift=-1cm] {encryption / signature verification} -- (h);
     \draw[dotted] (-3.5, -0.75) -- (8, -0.75);
     \node at (7, -0.4) {private};
@@ -497,7 +497,7 @@ We now observe the relationship between $m$ and $n$ to understand how the bipola
 The private and public keys are respectively a $3$-tuple and its aforementioned composition, that is,
 \begin{align}
   \begin{split}
-    \mathsf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+    \mathsf{sk} &= (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
       \in \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{MQ}(n, m) \times \mathsf{GL}(\mathbb{F}^{n}), \\
     \mathsf{pk} &= \mathcal{P} \in \mathsf{MQ}(n, m).
   \end{split}
@@ -684,7 +684,7 @@ where $\alpha_{ij}, \beta_{ij}, \gamma_{i}, \delta \in \mathbb{F}$. We define $\
 
 In the case of Rainbow, all three maps are needed to securely hide the structure of the central map. Therefore,
 \begin{align}\label{eq:sk-rainbow}
-  \mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2}) 
+  \mathsf{sk} = (\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})
     \random \mathsf{GL}(\mathbb{F}^{m}) \times \mathsf{RB}(v_{1}, o_{1}, \dots, o_{u}) \times \mathsf{GL}(\mathbb{F}^{n}).
 \end{align}
 
@@ -721,7 +721,7 @@ The remarks about UOV regarding the size of parameters, chances of failure in th
 
 Measured in field elements, the size of a private key is the number of elements in $\psi(\mathcal{L}_{1})$ and $\psi(\mathcal{L}_{2})$, added to the count of all valid monomial combinations from each layer of Oil--Vinegar polynomials as per Equation (\ref{eq:oil-vinegar-space}). In other words,
 \begin{align}\label{eq:sk-size-rainbow}
-  \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}} 
+  \#\mathsf{sk} = \underbrace{m^{2}}_{\mathcal{L}_{1}}
     + \underbrace{\sum_{k = 1}^{u} o_{k} \cdot \left( \frac{v_{k} \cdot (v_{k} + 1)}{2} + v_{k} \cdot o_{k} + v_{k} + o_{k} + 1 \right)}_{\mathcal{C}}
     + \underbrace{n^{2}}_{\mathcal{L}_{2}}.
 \end{align}
@@ -933,7 +933,7 @@ We note that the performance of this method is lower than that of Rainbow-$\eta_
 
 \subsubsection{Key generation.}
 
-The usual key generation algorithm for the target scheme is used, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then, 
+The usual key generation algorithm for the target scheme is used, yielding $(\mathcal{L}_{1}, \mathcal{C}, \mathcal{L}_{2})$ and $\mathcal{P}$. Substitute the sequence $\widetilde{V}_{1} \random \mathbb{F}^{v_{1}}$ into $\mathcal{C}$, giving $\overline{\mathcal{C}}$. Then,
 \begin{align}
   \begin{split}
     \mathsf{sk}^{\eta_{2}} &= (\widetilde{V}_{1}, \mathcal{L}_{1}, \overline{\mathcal{C}}, \mathcal{L}_{2}), \\
@@ -957,7 +957,7 @@ The second-round Rainbow submission to the NIST standardization process~\cite{Di
   Let a digital signature scheme parametrized by $n \in \mathbb{N}$ be denoted by $\textsc{Dss}(1^{n}) = (\textsc{Gen}, \textsc{Sig}, \textsc{Ver})$. Given a probabilistic polynomial-time algorithm $\mathcal{A}$ which can perform $Q \in \mathbb{N}$ queries, usually called the \emph{adversary}, let the following experiment be defined:
   \begin{align}
     \begin{split}
-      &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\textsc{eu-cma}}(\mathcal{A}) \\ 
+      &\textbf{Experiment } \mathsf{Exp}_{\textsc{Dss}(1^{n})}^{\textsc{eu-cma}}(\mathcal{A}) \\
       &\quad (\mathsf{sk}, \mathsf{pk}) \gets \textsc{Gen}(1^{n}) \\
       &\quad (M', \mathbf{z'}) \gets \mathcal{A}^{\textsc{Sig}(\mathsf{sk}, \cdot)}(\mathsf{pk}) \\
       &\quad \rho \gets \{ M_{i} : 1 \leq i \leq Q \} \text{ are the queries to } \textsc{Sig}(\mathsf{sk}, \cdot) \\
@@ -1014,7 +1014,7 @@ A variety of attacks currently thwart the security of Rainbow-like signature sch
 
 We follow the analysis of~\cite[Sec.~8]{Ding:201901} and~\cite{Petzoldt:201005} for attacks in the classical setting. Direct and collision attacks aim for signature forgery, since there exist many possible $\mathbf{x}$ for any digest $\mathbf{h}$. Side-channel attacks are a general definition that may encompass either signature forgery or key recovery attacks. All other attacks are considered key recovery attacks.
 
-\subsubsection{Direct attack.} 
+\subsubsection{Direct attack.}
 
 An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathcal{P}$ tries to solve $\mathcal{P}(\mathbf{x}) = \mathbf{h}$. This is done by fixing some of the variables until the system is determined and applying an algorithm built upon the theory of Gröbner bases, such as the Hybrid approach~\cite{Bettale:201207}. While it is hard to pinpoint the exact running time of such methods, the authors estimate its asymptotic complexity as $2^{n \cdot \bm{\omega} (1.38 - 0.44 \bm{\omega} \log_{2} (q)^{-1})}$~\cite[Thm.~3]{Bettale:201207}, when $n = m$, for the linear algebra constant $2 \leq \bm{\omega} \leq 3$.
 
@@ -1022,15 +1022,15 @@ An attacker with possession of a digest $\mathbf{h}$ and the public key $\mathca
 
 Since only the message digest is signed in the case of multivariate signature schemes, the cryptographic hash function $\mathcal{H}$ used to calculate such digest must be secure against collision attacks. It is not within the scope of this work to consider attacks against specific functions, but we remark that these must also be taken into account. The message digest is an $m$-tuple of elements in $\mathbb{F}$, which has order $q$. We assume that elements of $\mathbb{F}$ are trivially represented as a collection of bits of length $\log_{2} q$. Thus, one must require at least $\sqrt{2^{m \cdot \log_{2} q}}$ evaluations of $\mathcal{H}$ to compute a collision, due to the birthday attack.
 
-\subsubsection{UOV attack.} 
+\subsubsection{UOV attack.}
 
 The multi-layer approach of Rainbow does not hinder attacks that also work on the UOV signature scheme. Kipnis and Shamir created this attack~\cite{Kipnis:199808} to break the balanced Oil--Vinegar scheme. The objective of this attack is to obtain an equivalent private key through finding the preimage of a specific oil subspace under the map $\mathcal{L}_{2}$. The complexity of the generalized attack for unbalanced schemes~\cite{Kipnis:199904} is $q^{n - 1 - 2 \cdot o_{u}} \cdot o_{u}^{4}$ field multiplications. We discuss the UOV attack in more detail on Subsection~\ref{subsec:ks}.
 
-\subsubsection{MinRank attack (MR).} 
+\subsubsection{MinRank attack (MR).}
 
 We recall that systems of polynomials in the public key $\mathcal{P}$ may be individually represented as matrices. This attack consists of finding $o_{1}$ linear combinations of these, such that they have rank $v_{2}$, in the case of Rainbow. Such rank allows an attacker to isolate the central map polynomials from the first layer of Rainbow, and analogously recover the remaining layers with much lower efforts. In the context of Rainbow~\cite{Billet:200609,Faugere:200808}, its complexity was considered to be $q^{v_{1} + 1} \cdot m \cdot (\frac{n^{2}}{2} - \frac{m^{2}}{6})$ field multiplications. However, recent developments, for example~\cite[Tab.~3]{Bardet:202006} and~\cite{Nakamura:202007} have greatly improved the complexity of the attack. This fact is discussed briefly further into the text.
 
-\subsubsection{HighRank attack (HR).} 
+\subsubsection{HighRank attack (HR).}
 
 Like MinRank, linear combinations of public key matrices are used to find the variables that are less likely to appear in the central map. Such a strategy is used to identify the last Rainbow layer and obtain the previous layers similarly. The complexity of the improved attack~\cite{Ding:200806} is $q^{o_{u}} \cdot \frac{n^{3}}{6}$ field multiplications.
 
@@ -1038,7 +1038,7 @@ Like MinRank, linear combinations of public key matrices are used to find the va
 
 An extension of the UOV reconciliation attack in the context of Rainbow~\cite{Ding:200806}. It explores the fact that the central map matrix representation is composed of zeroes on its lower right corner. These yield quadratic equations that lead to an equivalent private key if solved. The complexity of this attack is given by the hardness of solving a polynomial system with $n$ variables and $m + n - 1$ equations~\cite[Thm.~3.30]{Thomae:201306}, which as seen above, is hard to estimate. It has been proposed by~\cite{Petzoldt:201005} that, in order to resist this attack, $n \geq \ceil{\frac{5 (m - 1)}{3}}$. Furthermore, recent works~\cite{Perlner:202006,Nakamura:202006} have shown improvements in the complexity of this attack, inducing a slight increase in parameter values submitted to the NIST standardization process. This fact is also discussed in the following.
 
-\subsubsection{Side-channel attacks.} 
+\subsubsection{Side-channel attacks.}
 
 We remark that none of our proposed Rainbow variants present constant time signature generation algorithms. It has been demonstrated that private keys can be recovered through correlation power analysis~\cite{Park:201808}. A secure implementation is only given in the NIST standardization second-round submission of Rainbow~\cite{Ding:201901}. Moreover, in Rainbow-$\eta_2$, a considerable amount of computation is added to the signature algorithm when one of the systems is not solvable. In a chosen message attack, one may observe the time spent on multiple signature generation steps and quickly check if the linear systems are solvable, thus obtaining information about the central map. Although there are no known attacks that make use of this technique, there may exist information leaks of this kind when applying our methods to Rainbow-like schemes.
 
@@ -1498,10 +1498,10 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \begin{tabular}{*{7}{r}}
     \toprule
     $q$ & $v_{1}$
-      & $\mathsf{q} \cdot q^{\ceil{\mu + 0\sigma}}$ 
-      & $\mathsf{q} \cdot q^{\ceil{\mu + 1\sigma}}$ 
-      & $\mathsf{q} \cdot q^{\ceil{\mu + 2\sigma}}$ 
-      & $\mathsf{q} \cdot q^{\ceil{\mu + 3\sigma}}$ 
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 0\sigma}}$
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 1\sigma}}$
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 2\sigma}}$
+      & $\mathsf{q} \cdot q^{\ceil{\mu + 3\sigma}}$
       & $\mathsf{q} \cdot q^{\ceil{\mu + 4\sigma}}$ \\
     \midrule
     256 &  17 & \num{ 5E-20} & \num{ 4E-15} & \num{ 2E-10} & \num{ 2E-05} & \num{ 1E+00} \\
@@ -1517,7 +1517,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
 It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\wt(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align}
   \begin{split}
-    \Pr[\mathbf{X} \geq \mu + 4\sigma] 
+    \Pr[\mathbf{X} \geq \mu + 4\sigma]
       &= \Pr[\mathbf{X} \geq \tfrac{v_{1}}{2} + 2 \sqrt{v_{1}}] \\
       &\approx \Pr[\mathbf{X} = 16] + \Pr[\mathbf{X} = 17] \\
       &\approx \num{1.3732E-4},
@@ -1533,10 +1533,10 @@ Through the knowledge of such probabilities, it is a choice of the user to gener
   \caption{Effect of the Hamming weight of the vinegar threshold on Rainbow private key sizes.}\label{tab:key-size-std}
   \begin{tabular}{l*{5}{r}}
     \toprule
-    Parameters & $\Delta_{\ceil{\mu + 0\sigma}}$ 
-      & $\Delta_{\ceil{\mu + 1\sigma}}$ 
-      & $\Delta_{\ceil{\mu + 2\sigma}}$ 
-      & $\Delta_{\ceil{\mu + 3\sigma}}$ 
+    Parameters & $\Delta_{\ceil{\mu + 0\sigma}}$
+      & $\Delta_{\ceil{\mu + 1\sigma}}$
+      & $\Delta_{\ceil{\mu + 2\sigma}}$
+      & $\Delta_{\ceil{\mu + 3\sigma}}$
       & $\Delta_{\ceil{\mu + 4\sigma}}$ \\
     \midrule
     $(\mathbb{F}_{256}, 17, 13, 13)$ & $-45.33\%$ & $-53.70\%$ & $-61.44\%$ & $-68.57\%$ & $-75.07\%$ \\
