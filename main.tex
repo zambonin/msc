@@ -1153,7 +1153,7 @@ It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to obser
 
 By simply swapping signs in the exponents, we can use this identity and obtain a fast approximation of the probability when $n$ tends to infinity. We use the SageMath language, which offers arbitrary precision real numbers, to obtain these values and find out that, when $n \geq 56$, $\Pi(q) \approx_{10^{-18}} \Pi(q, n)$ and $\widetilde{\Pi}(q) \approx_{10^{-8}} \widetilde{\Pi}(q, n)$. Thus, Figure~\ref{fig:prob-inv} also accurately reflects the behaviour of $\Pi(q)$, that is, current values of $n$ already reach effective upper bounds for this probability.
 
-Hence, we note that the inversion event happens almost certainly. Moreover, this evidence shows that computing a preimage to sign a message happens at the first try with high probability in a wide range of Rainbow configurations. Therefore, the cost of a central map reconfiguration is amortized by the overwhelming probability that a signature is successfully generated.
+Hence, we note that the inversion event happens almost certainly. Moreover, this evidence shows that computing a preimage to sign a message happens at the first try with high probability in a wide range of Rainbow configurations. Hence, the cost of generating a signature with Rainbow-$\eta$ does not significantly increase due to an occasional central map reconfiguration is amortized by the overwhelming probability that a signature is successfully generated.
 
 \subsection{Similarity of multiple signatures}\label{subsec:similar}
 
