@@ -276,7 +276,7 @@ where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i
 We note that an irreducible polynomial over a ring always exists~\cite[Remark~2.1.25]{Mullen:2013}. An irreducible polynomial cannot be reduced or divided into simpler polynomials. In the context of multivariate polynomial rings, the division operation is ambiguous if no additional structure is attached. This distinction is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. We are now ready to define non-prime fields.
 
 \begin{definition}
-  Given $f \in \mathbb{F}_{p}[x]$ irreducible with $\deg(f) = n$, then the finite field $\mathbb{F}_{p^{n}}$ is the set of polynomials with coefficients in $\mathbb{F}_{p}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $f$.
+  Given $p$ prime, $n \in \mathbb{N}$ and $f \in \mathbb{F}_{p}[x]$ irreducible with $\deg(f) = n$, then the finite field $\mathbb{F}_{p^{n}}$ is the set of polynomials with coefficients in $\mathbb{F}_{p}$ and $\deg(\cdot) < n$ carrying the usual polynomial arithmetic operations modulo $f$.
 \end{definition}
 
 Finite fields of the form $\mathbb{F}_{2^{n}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
