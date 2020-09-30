@@ -1297,7 +1297,7 @@ The use of CyclicRainbow or RainbowLRS2 with Rainbow-$\eta_{2}$ is recommended. 
 
 We also briefly discuss the effect of these changes on the signature generation step overall performance. In the case of Rainbow-$\eta_{1}$, it does not vary significantly due to the fast regeneration of the central map elements from a given PRNG and $\mathbf{S}$. On the other hand, Rainbow-$\eta_{2}$ uses elaborate techniques to reconstruct the central map if vinegar variables are not suitable. This process is not without cost, and it may negatively affect the average signature generation time, as seen in~\cite{Petzoldt:202004}. Still, by making use of Rainbow-$\eta_{3}$, these computations are entirely avoided by choosing a new salt instead of new vinegar variables, reducing the inherent overhead.
 
-We conclude that Rainbow-$\eta$ 
+We conclude that signatures produced with Rainbow-$\eta$ are statistically indistinguishable from conventional Rainbow signatures, preventing related attacks. The method allows for a reasonable reduction in private key sizes and 
 
 \chapter{Variant of Kipnis--Shamir attack}\label{ch:attack}
 
