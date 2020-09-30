@@ -1224,7 +1224,7 @@ Let $r \in \mathbb{N}$ be a precision parameter, and $\min(S, i)$ represent the 
 \end{align}
 We have found experimentally that the lowest precision parameter $r = 1$ is still useful to interpret the graph. The resulting plot shows that points are sufficiently close to the $y = x$ expected line.
 
-Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through statistical methods, than an attacker with no such knowledge.
+Our argument indicates that, even if part of the preimage created by the central map is fixed, the remaining linear transformation disrupts this pattern with high efficacy. Hence, an attacker with possession of multiple signatures created by our method would not be more capable of forging a new signature or deducing private information through strict statistical methods, than an attacker with no such knowledge.
 
 \section{Enhancement of existing schemes}\label{sec:exp}
 
@@ -1301,7 +1301,7 @@ We also briefly discuss the effect of these changes on the signature generation 
 
 As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support for the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves the randomness of signatures. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes.
 
-We intentionally avoid this strategy with our proposal. We show that our proposal is not secure due to the leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of Rainbow-$\eta$. In Section~\ref{sec:counter}, we show the practical consequences of this attack, and we provide possible countermeasures that still allow for a trade-off between security and private key size.
+We intentionally avoid this strategy with our proposal of Chapter~\ref{ch:eta}. However, we show that it is not secure due to a leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of Rainbow-$\eta$. In Section~\ref{sec:counter}, we show the practical consequences of this attack, and we provide possible countermeasures that still allow for a trade-off between security and private key size.
 
 \section{Attack description}\label{sec:atdesc}
 
