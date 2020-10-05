@@ -1521,19 +1521,21 @@ We note that there is no need to provide a reconstruction procedure of $\overlin
 \end{proof}
 We note that $\#\textsf{sk}^{\eta_{4}}_{v_{1}} = \#\textsf{sk}^{\eta}$. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. We now expand on the security of our new proposal.
 
-We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. However, the absence of information on which vinegar variables are fixed forces the attacker is to guess such combinations, hampering its progress. Thus, it is useful to discuss the choice of $\mathbf{v}$ in the key generation algorithm. By simply leaving the choice as uniformly random, $v_{1}$ bits need to be picked independently. The distribution which gives this behaviour is presented below.
+We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. If only a fraction of the vinegar variables are fixed, the remaining polynomial system may be solved in a lower number of operations than the claimed security levels of some parameter sets~\cite{Shim:202002}. 
 
+The authors assume that faults occur when vinegar variables are chosen to sign a message in Rainbow, creating a behaviour analogous to Rainbow-$\eta$. However, the intricacy of inducing such faults repeatedly may render the attack impractical~\cite{Mus:202011}. According to the model of~\cite{Shim:202002}, the attacker cannot control the bits flipped through faults. Thus, the absence of information on which vinegar variables are fixed forces the attacker to exhaustively search for such combinations if not enough ``weak'' signatures are collected.
+
+Therefore, we look at the probabilities associated with obtaining signatures created with repeated vinegar values if only a fraction of those are fixed. The generalized Rainbow-$\eta$ allows exactly for this choice in the form of the vinegar threshold. We assume that the bits of $\mathbf{v}$ are picked independently, that is, the attacker does not know which and how many vinegar variables are fixed. The distribution which gives this behaviour is presented below.
 \begin{definition}
   Given $n \in \mathbb{N}$, $0 \leq p \leq 1$ and $0 \leq k \leq n$, if the probability mass function of a discrete random variable $\mathbf{X}$ is
-  \begin{align}
+  \begin{align*}
     \Pr[\mathbf{X} = k] = \binom{n}{k} p^{k} (1 - p)^{n - k},
-  \end{align}
+  \end{align*}
   then $\mathbf{X}$ follows the \emph{binomial distribution}. The random variable has mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1 - p)}$.
 \end{definition}
+We model the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = \frac{1}{2}$. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
 
-Any sampling may yield an undesirable vinegar threshold, one that maximizes the Hamming weight, such that signatures are frequently generated with a repeated sequence of vinegar variables. We argue in the following that a secure threshold is obtained, with regards to how many vinegar variables are fixed, after a small number of trials. We model the sampling of $\mathbf{v}$ as a binomial distribution with $n = v_{1}$ and $p = \frac{1}{2}$. In this case, the mean is $\frac{v_{1}}{2}$ and the standard deviation is $\frac{\sqrt{v_{1}}}{2}$.
-
-Table~\ref{tab:bin-prob} shows the approximate probabilities $q^{-v_{1} + \wt(\mathbf{v})}$ of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\wt(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from Table~\ref{tab:pair-diff}. We set $\mathsf{q} = q^{-v_{1}}$ for readability. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a relatively safe and common scenario. Larger Hamming weights, which are undesirable, are represented by a number of standard deviations away from the mean.
+Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + \wt(\mathbf{v})}$, of obtaining signatures with the same $\widetilde{V}_{1}$ such that $\wt(\mathbf{v}) = \ceil{\mu + \beta \sigma}$ for $0 \leq \beta \leq 4$, with parameters from~\cite[Tab.~9.8]{Petzoldt:201307} and~\cite[Sec.~4]{Ding:202006}, including a unique instance from the latter in which $q = 16$. We set $\mathsf{q} = q^{-v_{1}}$ for readability. It is expected that most experiments yield values closer to the center of the PMF, i.e. the mean, and we choose such a quantity to represent a common scenario. Larger Hamming weights, which are desirable for an attacker, are represented by a number of standard deviations away from the mean.
 
 \begin{table}[htbp]
   \renewcommand{\arraystretch}{1.2}
@@ -1559,56 +1561,22 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities $q^{-v_{1} + \wt(\m
   \end{tabular}
 \end{table}
 
-It is immediately evident that for lower values of either $q$ or $v_{1}$, in the rare case that $\wt(\mathbf{v})$ is high, an attacker is able to mount the attack of Section~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there are several signatures with the same sequence of vinegar variables. Given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
-\begin{align}
+For example, when $q = 256$ and $v_{1} = 17$, if half of the bits of $\widetilde{V}_{1}$ are fixed, there exists a $1$ in $\num{5E+20}$ chance that the same vinegar variables are picked for two signatures. It is immediately evident that for lower values of either $q$ or $v_{1}$, an attacker is able to mount the attack of Subsection~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there is a large number of signatures with the same sequence of vinegar variables. 
+
+Moreover, if several vinegar variables are fixed, the complexity of collecting signatures for a successful attack is generally lower than claimed security levels of a parameter set. For example, when $q = 256$ and $v_{1} = 68$, the resulting Rainbow scheme has a security level of roughly $2^{192}$ classical bits~\cite[p.~36]{Ding:201901}. An attacker can theoretically forge an equivalent key if $\mathbf{v}$ is less than three standard deviations to the right of the mean. Furthermore, given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
+\begin{align*}
   \begin{split}
     \Pr[\mathbf{X} \geq \mu + 4\sigma]
       &= \Pr[\mathbf{X} \geq \tfrac{v_{1}}{2} + 2 \sqrt{v_{1}}] \\
-      &\approx \Pr[\mathbf{X} = 16] + \Pr[\mathbf{X} = 17] \\
-      &\approx \num{1.3732E-4},
+      &\approx \Pr[\mathbf{X} = 17] \\
+      &\approx \num[round-mode=places,round-precision=4]{7.62939453125E-6},
   \end{split}
-\end{align}
-or roughly three in twenty thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight. On the other hand, for parameters with higher security targets, such as $q = 256$ and $v_{1} = 68$, larger distances from the mean still yield a negligible probability that signatures are constructed with the same vinegar variables.
+\end{align*}
+or roughly three in four hundred thousand private keys are reliable targets for attacking, due to a $\mathbf{v}$ with high Hamming weight.
 
-Through the knowledge of such probabilities, it is a choice of the user to generate a private key with a conservative Hamming weight of $\mathbf{v}$ and obtain lesser gains in private key size. Table~\ref{tab:key-size-std} shows reductions in private key sizes associated with the weights given in Table~\ref{tab:bin-prob}, where $\Delta_{\gamma} = 1 - \frac{\#\mathsf{sk}^{\eta_{4}}_{\gamma}}{\#\mathsf{sk}}$. Evidently, the gains are directly proportional to $\wt(\mathbf{v})$, as observed when comparing key sizes from Tables~\ref{tab:eta-diff} and~\ref{tab:key-size-std}. For instance, an increase in size of roughly $35\%$ occurs across all parameters if $\wt(\mathbf{v}) = \ceil{\mu + 0\sigma}$, in contrast to our original proposal where $\wt(\mathbf{v}) = v_{1}$.
+If $u = 1$, i.e. the scheme is a UOV instance, fixed vinegar variables have a slightly reduced effect on the complexity of related attacks. This is due to the nature of the scheme, which needs an increased number of equations and variables to achieve the same level of security when compared to Rainbow. However, the UOV scheme is even less practical than Rainbow due to its larger key and signature sizes. Instead of fixing a small number of vinegar variables to slightly reduce the private key, a user can opt for a different parameter set, or simply use Rainbow without such modifications.
 
-\begin{table}[htbp]
-  \renewcommand{\arraystretch}{1.2}
-  \centering
-  \caption{Effect of the Hamming weight of the vinegar threshold on Rainbow private key sizes.}\label{tab:key-size-std}
-  \begin{tabular}{l*{5}{r}}
-    \toprule
-    Parameters & $\Delta_{\ceil{\mu + 0\sigma}}$
-      & $\Delta_{\ceil{\mu + 1\sigma}}$
-      & $\Delta_{\ceil{\mu + 2\sigma}}$
-      & $\Delta_{\ceil{\mu + 3\sigma}}$
-      & $\Delta_{\ceil{\mu + 4\sigma}}$ \\
-    \midrule
-    $(\mathbb{F}_{256}, 17, 13, 13)$ & $-45.33\%$ & $-53.70\%$ & $-61.44\%$ & $-68.57\%$ & $-75.07\%$ \\
-    $(\mathbb{F}_{256}, 26, 16, 17)$ & $-46.61\%$ & $-55.45\%$ & $-63.56\%$ & $-68.57\%$ & $-75.48\%$ \\
-    $(\mathbb{F}_{256}, 36, 21, 22)$ & $-48.02\%$ & $-54.61\%$ & $-60.81\%$ & $-66.60\%$ & $-71.99\%$ \\
-    $(\mathbb{F}_{ 16}, 36, 32, 32)$ & $-41.96\%$ & $-47.98\%$ & $-53.73\%$ & $-59.19\%$ & $-64.38\%$ \\
-    $(\mathbb{F}_{256}, 68, 32, 48)$ & $-48.79\%$ & $-54.72\%$ & $-59.23\%$ & $-63.54\%$ & $-67.64\%$ \\
-    $(\mathbb{F}_{256}, 96, 36, 64)$ & $-50.92\%$ & $-55.29\%$ & $-59.47\%$ & $-63.48\%$ & $-67.31\%$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-We now give a brief security analysis of our proposal, taking into account the attacks of Subsection~\ref{subsec:analysis} and~\ref{subsec:etaks}. Once again, we do not discard the possibility that a method to make use of any leaked information in signatures exists, independent of the number of fixed vinegar variables. However, in the context of known attacks and for several parameter sets, we show that fixing a subset of $\widetilde{V}_{1}$ does not introduce any vulnerabilities to the resulting scheme, to the best of our knowledge.
-
-The key strategy to apply our proposed attack is the collection of signatures with the same vinegar variables. Thus, we opt to represent its complexity as the chance of obtaining said ``weak'' signatures, as seen in Table~\ref{tab:bin-prob}. In the best-case scenario, our attack consists of simply collecting enough signatures and performing trivial mathematical operations. However, by limiting the vinegar threshold, we have a probability of roughly $(m + 1) q^{-v_{1} + \wt(\mathbf{v})}$ of successfully obtaining an equivalent private key.
-
-The probability of obtaining a single collision of $\widetilde{V}_{1}$ between signatures from the same private key is negligible for sufficiently large $q$ and $v_{1}$. The computational cost of such a search is larger than the cost of applying any algebraic attack of Subsection~\ref{subsec:analysis} in some cases. In Figure~\ref{fig:prob-sec}, we plot the probability of obtaining two signatures with the same vinegar variables, depending on the vinegar threshold, for several parameters of Table~\ref{tab:bin-prob}.
-
-\begin{figure}[htbp]
-  \centering
-  % \includegraphics[width=\columnwidth]{charts/sec-levels/sec-levels}
-  \caption{Probability of a single collision of $\widetilde{V}_{1}$ for several parameter sets and all possible vinegar thresholds.}\label{fig:prob-sec}
-\end{figure}
-
-Dotted lines start at the lowest security level of Tables~\ref{tab:sec} and~\ref{tab:newsec} for the respective parameters. As denoted by such lines, at least half of all possible vinegar thresholds, when applied to a scheme, yield signatures that are unlikely to be produced with the same vinegar variables. In other words, we argue that a small enough $\wt(\mathbf{v})$ does not facilitate cryptanalysis of the resulting scheme. Inspection of Figure~\ref{fig:prob-sec} shows that $\wt(\mathbf{v}) = \frac{v_{1}}{2}$ is a safe choice with regards to security levels of the resulting scheme.
-
-We suggest that for parameter sets of Table~\ref{tab:newsec} or similar, half of the elements of $\widetilde{V}_{1}$ are fixed to reduce the private key size. We further note that parameters of Table~\ref{tab:bin-prob} that were not considered in Figure~\ref{fig:prob-sec} still benefit from a very small $\wt(\mathbf{v})$, even if this is unlikely to occur if $\mathbf{v}$ is chosen randomly. Thus, the chance of collecting signatures needed to mount an attack analogous to  Subsection~\ref{subsec:etaks} is still prohibitive, and unpredictability still exists in the signing procedure.
+With this analysis, we argue that there are no practical benefits in fixing vinegar variables deliberately.
 
 \chapter{Conclusion}\label{ch:conc}
 
