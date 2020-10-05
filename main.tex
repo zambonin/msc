@@ -1602,7 +1602,11 @@ In the context of our scheme, there are still useful propositions to be answered
 
 We assume that the argument bounding the number of signatures needed to attack our proposal can be refined. Our idea is based on choosing a specific tree to model connections between linearly independent vector subtractions. However, we expect that the argument follows for all types of trees.
 
-Finally, further work is needed on the security of Rainbow signature schemes with partially previously chosen vinegar variables. It is unknown if fixing a single variable leads immediately to a polynomial-time attack that can foil the target scheme. If that is not the case, we argue that there is a case to search for the maximal number of such variables that simultaneously respect a security threshold since private key size reductions are linear in the number of fixed vinegar variables.
+For smaller parameter sets, the chance of accidental reuse of vinegar variables is increased, even if it is only partial. To identify and prevent such collisions, previously used variables can be stored. However, the resulting private key becomes stateful, since it needs to be updated for every signature generated, and its size increases rapidly. Therefore, careful consideration is needed to deal with these shortcomings.
+
+To the best of our knowledge, the manipulation of vinegar variables in Rainbow throughout means other than fault attacks is nonexistent in the literature. The random generation of vinegar variables by a poor algorithm may be exploited in a similar way to our work. Further, to protect the scheme against such attacks, we suggest the research of methods to prevent tampering of intermediate signing steps, e.g. a checksum, or obtaining vinegar values deterministically from the private key and message.
+
+Finally, further work is needed on the complexity estimation of attacks against Rainbow signature schemes with fixed vinegar variables. A pivotal component of such attacks is based on solving random polynomial systems. Algorithms used to this end have unclear asymptotic complexity bounds, which directly influence the security levels of Rainbow instances.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
