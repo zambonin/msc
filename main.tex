@@ -1371,7 +1371,7 @@ Nonetheless, we identify that a sequence of signatures created with the same vin
 
 The authors of~\cite{Shim:202002} present a similar attack, in which the threat model assumes that vinegar values are fixed by inducing faults through physical sources or software. They show that, in fact, any fixed vinegar variables are enough to theoretically break Rainbow~\cite[Thm.~4]{Shim:202002}, i.e. a generalized Rainbow-$\eta$ is also insecure. We further explore this in Subsection~\ref{subsec:threshold}. We note that it is difficult to induce faults in vinegar variables for even a single signature generation procedure~\cite{Mus:202011}. Therefore, we emphasize the importance of randomized vinegar variables in the Rainbow signature scheme by using our independently discovered attack to break our proposal of Chapter~\ref{ch:eta}.
 
-Without loss of generality, we describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, given that it can be interpreted as a UOV scheme, as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ is the number of equations in $\mathcal{C}$ and $\mathcal{P}$. 
+Without loss of generality, we describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, given that it can be interpreted as a UOV scheme, as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ is the number of equations in $\mathcal{C}$ and $\mathcal{P}$.
 
 An attacker must collect $m + 1$ signatures known to have been produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let the set of collected signatures be denoted as $\rho = \{\sigma_{1}, \dots, \sigma_{m + 1}\}$. Any preimage of $\mathcal{C}$ always starts with $\widetilde{V}_{1} = (x_{1}, \dots, x_{v})$ in the case of Rainbow-$\eta$. Thus, by inverting the linear transformation used to scramble the preimage, we obtain $\mathcal{L}_{2}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Then, for any $1 \leq i, j \leq m + 1$ with $i \neq j$, we note that
 \begin{align*}
@@ -1383,15 +1383,15 @@ By Definition~\ref{def:oil-subspace}, any subtraction among signatures of the ab
   Consider a set $R$ of $m + 1$ linearly independent vectors in $\mathbb{F}^{n}$. The maximum cardinality of a set $\widetilde{R}$ composed of linearly independent subtractions between any pair of vectors in $R$, such that all vectors are used, is $m$.
 \end{proposition}
 \begin{proof}
-  We model the problem as a graph instance. Let $G = (V, E)$ be an undirected connected graph such that $V = R$ and $E = \widetilde{R}$ using the mapping $f : V \times V \to \widetilde{R}$, such that for any $\mathbf{v_{i}}, \mathbf{v_{j}} \in V$, then $f((\mathbf{v_{i}}, \mathbf{v_{j}})) = \mathbf{v_{i}} - \mathbf{v_{j}}$. 
-  
+  We model the problem as a graph instance. Let $G = (V, E)$ be an undirected connected graph such that $V = R$ and $E = \widetilde{R}$ using the mapping $f : V \times V \to \widetilde{R}$, such that for any $\mathbf{v_{i}}, \mathbf{v_{j}} \in V$, then $f((\mathbf{v_{i}}, \mathbf{v_{j}})) = \mathbf{v_{i}} - \mathbf{v_{j}}$.
+
   We first show that one can obtain $m$ linearly independent subtractions from vectors in $R$. For instance, consider the star graph. Without loss of generality, we choose $\mathbf{v_{1}}$ as the vertex with maximal degree. The resulting graph is composed of edges $f((\mathbf{v_{1}}, \mathbf{v_{i}}))$ for $2 \leq i \leq m + 1$. Any linear combination of such subtractions is linearly independent, since
   \begin{align*}
     c_{2} (\mathbf{v_{1}} - \mathbf{v_{2}}) + c_{3} (\mathbf{v_{1}} - \mathbf{v_{3}}) + \cdots + c_{m + 1} (\mathbf{v_{1}} - \mathbf{v_{m + 1}}) &= \\
     (c_{2} + \cdots + c_{m + 1}) \mathbf{v_{1}} - c_{2} \mathbf{v_{2}} - \cdots - c_{m + 1} \mathbf{v_{m + 1}} &= 0
   \end{align*}
   implies that $c_{2} = \cdots = c_{m + 1} = 0$, using the fact that all vectors in $V$ are linearly independent. In other words, the resulting graph is a tree, since it is connected and has exactly $|V| - 1$ edges.
-  
+
   Now, we argue that a set of linearly dependent subtractions of vectors in $V$ is obtained if one extra edge is added to the graph. Since $G$ is a tree, we obtain a cycle by further adjoining any two vertices. For instance, in the case of a star graph, the coefficients of $\mathbf{v_{1}} - \mathbf{v_{i}}$ for all $i$ not in the cycle are zero. For the remaining three coefficients, a combination of $\{1, -1\}$ is needed.
 \end{proof}
 
@@ -1426,7 +1426,7 @@ As discussed in Subsection~\ref{subsec:etaks}, the collection of signatures prod
 
 We remark that there is no way to identify if a signature is produced with Rainbow-$\eta$ except by observation of the public implementation. However, it is simple to modify the key and signature generation algorithms to yield either conventional or reduced private keys by choice of the signer. If an attacker has no access to the signing device, it is impossible to discern whether the Rainbow-$\eta$ optimization is used. Otherwise, side-channel attacks like~\cite{Kramer:201903} and~\cite{Shim:201512} may be used to increase chances that ``weak'' signatures are produced.
 
-Let us consider that a signer produces a number $N \in \mathbb{N}$ of signatures such that $K \leq N$ of those are created with the same vinegar variables. Without loss of generality, let $K = \ceil{\alpha N}$ with $0 \leq \alpha \leq 1$. An attacker increases the odds of obtaining useful signatures for the attack if a target is singled out. Nonetheless, we observe such probabilities for various values of $\alpha$ and model this behaviour as follows. Given $N$ and $K$ as mentioned above, we wish to obtain $k \leq K$ signatures that were produced with Rainbow-$\eta$ from a sample size $n \leq N$. 
+Let us consider that a signer produces a number $N \in \mathbb{N}$ of signatures such that $K \leq N$ of those are created with the same vinegar variables. Without loss of generality, let $K = \ceil{\alpha N}$ with $0 \leq \alpha \leq 1$. An attacker increases the odds of obtaining useful signatures for the attack if a target is singled out. Nonetheless, we observe such probabilities for various values of $\alpha$ and model this behaviour as follows. Given $N$ and $K$ as mentioned above, we wish to obtain $k \leq K$ signatures that were produced with Rainbow-$\eta$ from a sample size $n \leq N$.
 
 By the description of our attack in Subsection~\ref{subsec:etaks}, the attacker needs $k$ distinct signatures, or in other words, sampling is \emph{without replacement}. The probability distribution that describes this situation is given below.
 \begin{definition}
@@ -1521,7 +1521,7 @@ We note that there is no need to provide a reconstruction procedure of $\overlin
 \end{proof}
 We note that $\#\textsf{sk}^{\eta_{4}}_{v_{1}} = \#\textsf{sk}^{\eta}$. The representation of $\mathbf{v}$ in the underlying field also needs to be stored. We now expand on the security of our new proposal.
 
-We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. If only a fraction of the vinegar variables are fixed, the remaining polynomial system may be solved in a lower number of operations than the claimed security levels of some parameter sets~\cite{Shim:202002}. 
+We recall that $\mathbf{v} = (1, \dots, 1)$ leads to the attack of Subsection~\ref{subsec:etaks}. If only a fraction of the vinegar variables are fixed, the remaining polynomial system may be solved in a lower number of operations than the claimed security levels of some parameter sets~\cite{Shim:202002}.
 
 The authors assume that faults occur when vinegar variables are chosen to sign a message in Rainbow, creating a behaviour analogous to Rainbow-$\eta$. However, the intricacy of inducing such faults repeatedly may render the attack impractical~\cite{Mus:202011}. According to the model of~\cite{Shim:202002}, the attacker cannot control the bits flipped through faults. Thus, the absence of information on which vinegar variables are fixed forces the attacker to exhaustively search for such combinations if not enough ``weak'' signatures are collected.
 
@@ -1561,7 +1561,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
   \end{tabular}
 \end{table}
 
-For example, when $q = 256$ and $v_{1} = 17$, if half of the bits of $\widetilde{V}_{1}$ are fixed, there exists a $1$ in $\num{5E+20}$ chance that the same vinegar variables are picked for two signatures. It is immediately evident that for lower values of either $q$ or $v_{1}$, an attacker is able to mount the attack of Subsection~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there is a large number of signatures with the same sequence of vinegar variables. 
+For example, when $q = 256$ and $v_{1} = 17$, if half of the bits of $\widetilde{V}_{1}$ are fixed, there exists a $1$ in $\num{5E+20}$ chance that the same vinegar variables are picked for two signatures. It is immediately evident that for lower values of either $q$ or $v_{1}$, an attacker is able to mount the attack of Subsection~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there is a large number of signatures with the same sequence of vinegar variables.
 
 Moreover, if several vinegar variables are fixed, the complexity of collecting signatures for a successful attack is generally lower than claimed security levels of a parameter set. For example, when $q = 256$ and $v_{1} = 68$, the resulting Rainbow scheme has a security level of roughly $2^{192}$ classical bits~\cite[p.~36]{Ding:201901}. An attacker can theoretically forge an equivalent key if $\mathbf{v}$ is less than three standard deviations to the right of the mean. Furthermore, given a sequence of private keys with randomly chosen $\mathbf{v}$, we are able to quantify keys that produce ``weak'' signatures with high probability. For $q = 256$ and $v_{1} = 17$, we have that
 \begin{align*}
@@ -1598,15 +1598,15 @@ We observe that there are very few signature schemes based on Rainbow attempting
 
 We also argue that there is room for a more robust characterization of the security problems related to Rainbow. The difficulty of the extended isomorphism of polynomials problem (EIP) is not precisely understood. Moreover, the theory of good keys can provide further private-key reductions. However, since it arises from slightly different security problems than EIP, there is limited application of this research to Rainbow.
 
-In the context of our scheme, there are still useful propositions to be answered, even if the security of our proposal is unsatisfactory. Subjecting the scheme to a side-channel attack may help in understanding how a constant-time signature generation algorithm can be achieved, given that the key reconstruction event is discernible. 
+In the context of our scheme, there are still useful propositions to be answered, even if the security of our proposal is unsatisfactory. Subjecting the scheme to a side-channel attack may help in understanding how a constant-time signature generation algorithm can be achieved, given that the key reconstruction event is discernible.
 
-We assume that the argument bounding the number of signatures needed to attack our proposal can be refined. Our idea is based on choosing a specific tree to model connections between linearly independent vector subtractions. However, we expect that the argument follows for all types of trees.
+We assume that the argument bounding the number of signatures needed to attack our proposal can be refined. Our idea is based on choosing a specific tree to easily model connections between linearly independent vector subtractions. However, we expect that the argument follows for all types of trees.
+
+Further work is needed on the complexity estimation of attacks against Rainbow signature schemes with fixed vinegar variables. A pivotal component of such attacks is based on solving random polynomial systems. Algorithms used to this end have unclear asymptotic complexity bounds, which directly influence the security levels of Rainbow instances.
 
 For smaller parameter sets, the chance of accidental reuse of vinegar variables is increased, even if it is only partial. To identify and prevent such collisions, previously used variables can be stored. However, the resulting private key becomes stateful, since it needs to be updated for every signature generated, and its size increases rapidly. Therefore, careful consideration is needed to deal with these shortcomings.
 
-To the best of our knowledge, the manipulation of vinegar variables in Rainbow throughout means other than fault attacks is nonexistent in the literature. The random generation of vinegar variables by a poor algorithm may be exploited in a similar way to our work. Further, to protect the scheme against such attacks, we suggest the research of methods to prevent tampering of intermediate signing steps, e.g. a checksum, or obtaining vinegar values deterministically from the private key and message.
-
-Finally, further work is needed on the complexity estimation of attacks against Rainbow signature schemes with fixed vinegar variables. A pivotal component of such attacks is based on solving random polynomial systems. Algorithms used to this end have unclear asymptotic complexity bounds, which directly influence the security levels of Rainbow instances.
+Finally, to the best of our knowledge, the manipulation of vinegar variables in Rainbow throughout means other than fault attacks is nonexistent in the literature. The random generation of vinegar variables by a poor algorithm may be exploited in a similar way to our work. Further, to protect the scheme against such attacks, we suggest the research of methods to prevent tampering of intermediate signing steps, e.g. a checksum, or obtaining vinegar values deterministically from the private key and message.
 
 \bibliographystyle{alpha}
 \bibliography{ref}
