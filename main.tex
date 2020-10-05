@@ -1371,15 +1371,35 @@ Nonetheless, we identify that a sequence of signatures created with the same vin
 
 The authors of~\cite{Shim:202002} present a similar attack, in which the threat model assumes that vinegar values are fixed by inducing faults through physical sources or software. They show that, in fact, any fixed vinegar variables are enough to theoretically break Rainbow~\cite[Thm.~4]{Shim:202002}, i.e. a generalized Rainbow-$\eta$ is also insecure. We note that it is difficult to induce faults in vinegar variables for even a single signature generation procedure~\cite{Mus:202011}. Therefore, we emphasize the importance of randomized vinegar variables in the Rainbow signature scheme by using our independently discovered attack to break our proposal of Chapter~\ref{ch:eta}.
 
-We briefly describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, given that it can be interpreted as a UOV scheme, as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ is the number of equations in $\mathcal{C}$ and $\mathcal{P}$. An attacker must collect roughly $m + 1$ signatures known to have been produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work.
+Without loss of generality, we describe the attack for UOV, that is, a Rainbow scheme with a single layer and $\mathcal{L}_{1} = \textsf{id}$. However, we note that this strategy can also be applied to a Rainbow scheme, given that it can be interpreted as a UOV scheme, as previously discussed. Consider any instance $\textsf{UOV}(\mathbb{F}, v, o)$ as per Subsection~\ref{subsec:uov}. We recall that $n = v + o$ is the number of variables, and $m = o$ is the number of equations in $\mathcal{C}$ and $\mathcal{P}$. 
 
-Let this set be denoted as $\rho = (\sigma_{1}, \dots, \sigma_{m + 1})$. Any preimage of $\mathcal{C}$ always starts with $\widetilde{V}_{1} = (x_{1}, \dots, x_{v})$ in the case of Rainbow-$\eta$. Thus, by inverting the linear transformation used to scramble the preimage, we obtain $\mathcal{L}_{2}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Then, for any $1 \leq i, j \leq m + 1$ with $i \neq j$, we note that
-\begin{align}
+An attacker must collect $m + 1$ signatures known to have been produced with the same vinegar variables through Rainbow-$\eta$ for the attack to work. Let the set of collected signatures be denoted as $\rho = \{\sigma_{1}, \dots, \sigma_{m + 1}\}$. Any preimage of $\mathcal{C}$ always starts with $\widetilde{V}_{1} = (x_{1}, \dots, x_{v})$ in the case of Rainbow-$\eta$. Thus, by inverting the linear transformation used to scramble the preimage, we obtain $\mathcal{L}_{2}(\sigma_{i}) = (x_{1}, \dots, x_{v}, \ast, \dots, \ast)$. Then, for any $1 \leq i, j \leq m + 1$ with $i \neq j$, we note that
+\begin{align*}
   \mathcal{L}_{2}(\sigma_{i} - \sigma_{j}) = (0, \dots, 0, \ast, \dots, \ast).
-\end{align}
-Consider $\chi_{i} = \sigma_{i} - \sigma_{j}$, and hence, by Definition~\ref{def:oil-subspace}, $\chi_{i} \in \widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack.
+\end{align*}
+By Definition~\ref{def:oil-subspace}, any subtraction among signatures of the above form is in $\widetilde{\mathcal{O}}$. This is an effective characterization of the target subspace in the UOV attack. The only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We first show that $m + 1$ is the minimal amount of vectors needed to build $B$.
 
-The only remaining task is to build a basis $B$ of $\widetilde{\mathcal{O}}$, which has dimension $m$. We leave open the question of calculating a lower bound for the size of $\rho$ in order to obtain $\widetilde{\rho} = \{ \chi_{1}, \dots, \chi_{m} \}$, due to the huge number of possible linear combinations between all $\chi_{i}$. We give a rough estimate of $m + 1$ signatures based on the naive strategy $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$. Further, as seen in Section~\ref{sec:stats}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
+\begin{proposition}\label{prop:graph}
+  Consider a set $R$ of $m + 1$ linearly independent vectors in $\mathbb{F}^{n}$. The maximum cardinality of a set $\widetilde{R}$ composed of linearly independent subtractions between any pair of vectors in $R$, such that all vectors are used, is $m$.
+\end{proposition}
+\begin{proof}
+  We model the problem as a graph instance. Let $G = (V, E)$ be an undirected connected graph such that $V = R$ and $E = \widetilde{R}$ using the mapping $f : V \times V \to \widetilde{R}$, such that for any $\mathbf{v_{i}}, \mathbf{v_{j}} \in V$, then $f((\mathbf{v_{i}}, \mathbf{v_{j}})) = \mathbf{v_{i}} - \mathbf{v_{j}}$. 
+  
+  We first show that one can obtain $m$ linearly independent subtractions from vectors in $R$. For instance, consider the star graph. Without loss of generality, we choose $\mathbf{v_{1}}$ as the vertex with maximal degree. The resulting graph is composed of edges $f((\mathbf{v_{1}}, \mathbf{v_{i}}))$ for $2 \leq i \leq m + 1$. Any linear combination of such subtractions is linearly independent, since
+  \begin{align*}
+    c_{2} (\mathbf{v_{1}} - \mathbf{v_{2}}) + c_{3} (\mathbf{v_{1}} - \mathbf{v_{3}}) + \cdots + c_{m + 1} (\mathbf{v_{1}} - \mathbf{v_{m + 1}}) &= \\
+    (c_{2} + \cdots + c_{m + 1}) \mathbf{v_{1}} - c_{2} \mathbf{v_{2}} - \cdots - c_{m + 1} \mathbf{v_{m + 1}} &= 0
+  \end{align*}
+  implies that $c_{2} = \cdots = c_{m + 1} = 0$, using the fact that all vectors in $V$ are linearly independent. In other words, the resulting graph is a tree, since it is connected and has exactly $|V| - 1$ edges.
+  
+  Now, we argue that a set of linearly dependent subtractions of vectors in $V$ is obtained if one extra edge is added to the graph. Since $G$ is a tree, we obtain a cycle by further adjoining any two vertices. For instance, in the case of a star graph, the coefficients of $\mathbf{v_{1}} - \mathbf{v_{i}}$ for all $i$ not in the cycle are zero. For the remaining three coefficients, a combination of $\{1, -1\}$ is needed.
+\end{proof}
+
+We note that if an attacker has possession of a larger number of signatures produced with the same vinegar variables, the resulting graph is not necessarily connected. However, a spanning tree of the first $m + 1$ signatures can always be constructed and the remaining ones discarded. Moreover, if we consider signatures to be labelled vertices, there are at most $(m + 1)^{(m + 1) - 2}$ spanning trees that respect the graph model of Proposition~\ref{prop:graph}, by Cayley's formula. This is an upper bound on the number of possible choices for $\widetilde{R}$ with maximal cardinality, since not necessarily all edges are themselves linearly independent.
+
+Let $\widetilde{\rho} = \{ \chi_{i} : 1 \leq i \leq m \}$ be a set of vectors built from subtractions among signatures of $\rho$. A naive strategy is
+$\widetilde{\rho} = \{ \sigma_{1} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$,
+which forms a star graph, considering the approach of Proposition~\ref{prop:graph}. On the other hand, $\widetilde{\rho} = \{ \sigma_{i} - \sigma_{i + 1} \mid 1 \leq i \leq m \}$ forms a tree with no branches, but with no functional difference. Furthermore, as seen in Subsection~\ref{subsec:similar}, signatures are statistically similar to random elements of the underlying vector space. Thus, it is expected with high probability that all $\chi_{i}$ are immediately linearly independent.
 
 Given such a basis $B$, we proceed with the last part of the UOV attack as described previously. Let $\chi_{i}^{(j)}$ be the $j$-th element of the $i$-th vector in $\widetilde{\rho}$, with $1 \leq i \leq m$ and $1 \leq j \leq n$. Then, we have that
 \begin{align}
@@ -1391,6 +1411,8 @@ Given such a basis $B$, we proceed with the last part of the UOV attack as descr
   \end{bmatrix}.
 \end{align}
 We obtain the associated linear transformation $\widetilde{\mathcal{L}}_{2}$ and proceed to recover an equivalent key as per Equation (\ref{eq:uov-attack-eq}). By using this method, an attacker can create $\mathsf{sk'}$ and forge signatures for any message. In fact, if the method of Rainbow-$\eta$ is not applied to the equivalent key, the forged signatures do not leak any information.
+
+In the case of $u > 1$, the rationale above is maintained since we are able to interpret an instance of Rainbow as a larger UOV scheme. However, we are able to fix only the first $v_{1}$ variables in preimages of $\mathcal{C}$. Then, a vector $\chi_{i}$ is not in $\widetilde{\mathcal{O}}$ with overwhelming probability, and thus $\psi(\widetilde{\mathcal{L}}_{2})$ is incomplete. Hence, we need to obtain the value of the remaining $x_{v_{1} + 1}, \dots, x_{v_{u}}$ variables for a number $m$ of signatures. This is equivalent to solving a polynomial system in $\textsf{MQ}(m - o_{u}, m)$. The Hybrid approach~\cite{Bettale:201207} is an algorithm used to solve such instances of overdetermined polynomial systems, with an estimate asymptotic complexity of $2^{n \cdot (3.31 - 3.62 \log_{2} (q)^{-1})}$ field operations. Thus, the attack is not carried in polynomial time, but the effort needed to forge a signature is greatly reduced if Rainbow-$\eta$ is used with $u = 2$ or greater.
 
 Interestingly, this attack can be used to ``recover'' a lost private key of a legitimate signer. It must previously compute $m$ linear independent preimages of $\mathcal{C}$ with the same vinegar variables and store these securely. If the private key is lost, the signer would only need to fetch its public key and compute an equivalent private key by the method given above.
 
