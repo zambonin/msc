@@ -1576,7 +1576,7 @@ or roughly three in four hundred thousand private keys are reliable targets for 
 
 If $u = 1$, i.e. the scheme is a UOV instance, fixed vinegar variables have a slightly reduced effect on the complexity of related attacks. This is due to the nature of the scheme, which needs an increased number of equations and variables to achieve the same level of security when compared to Rainbow. However, the UOV scheme is even less practical than Rainbow due to its larger key and signature sizes. Instead of fixing a small number of vinegar variables to slightly reduce the private key, a user can opt for a different parameter set, or simply use Rainbow without such modifications.
 
-With this analysis, we argue that there are no practical benefits in fixing vinegar variables deliberately.
+With this analysis, we argue that there are no practical benefits in fixing vinegar variables deliberately. A polynomial-time procedure exists to recover equivalent private keys if Rainbow-$\eta$ has a single layer and $\mathbf{v} = (1, \dots, 1)$. Moreover, any vinegar threshold with a non-zero Hamming weight significantly reduces the effort of attackers to break Rainbow instances with commonly used parameters. Therefore, we recommend that manipulating the randomness of Rainbow signatures in order to reduce private keys is yet another avenue that should not be pursued.
 
 \chapter{Conclusion}\label{ch:conc}
 
