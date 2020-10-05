@@ -159,7 +159,7 @@ The variant cubic UOV~\cite{Nie:201511} introduces several cubic polynomials in 
 
 Repaired versions named CSSv and SVSv were proposed~\cite{Duong:201611}. The former removes most cubic polynomials and further unnecessary structure from the key pair, while the latter does not feature cubic polynomials at all and uses a sparse central map. These proposals achieve further decrease in key sizes, being comparable to Rainbow in some instances. However, independent researchers found both strategies to be flawed~\cite{Shim:201711,Hashimoto:201712} to HighRank and key recovery attacks using equivalent keys.
 
-There have been commendable efforts in the creation, validation, and correction of signature schemes based on Oil--Vinegar polynomials. However, most works that introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. We perform this review to present evidence that such approaches should be applied with caution and to suggest a distinct approach, as presented in Chapter~\ref{ch:eta}.
+There have been commendable efforts in the creation, validation, and correction of signature schemes based on Oil--Vinegar polynomials. However, most works that introduce any kind of structure into the key pair eventually succumb to algebraic cryptanalysis. We perform this review to present evidence that such approaches should be applied with caution and to suggest a distinct approach, as presented in Chapters~\ref{ch:eta} and~\ref{ch:attack}.
 
 \chapter{Mathematical background}\label{ch:math}
 
@@ -1323,7 +1323,7 @@ We conclude that Rainbow-$\eta$ offers several competitive features and may act 
 
 As seen in Chapter~\ref{ch:eta}, several arguments were made in order to present support for the security of our Rainbow-$\eta$ proposal. We recall that the inner workings of the scheme are not modified, and a sideline modification is done instead, which preserves the randomness of signatures. As summarized in Section~\ref{sec:related}, there is encouraging evidence that adding further structure to the central map is dangerous to the security of Oil--Vinegar schemes.
 
-We intentionally avoid this strategy with our proposal of Chapter~\ref{ch:eta}. However, we show that it is not secure due to a leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of Rainbow-$\eta$. In Section~\ref{sec:counter}, we show the practical consequences of this attack, and we provide possible countermeasures that still allow for a trade-off between security and private key size.
+We intentionally avoid this strategy with our proposal of Chapter~\ref{ch:eta}. However, we show that it is not secure due to a leakage of information from the private key through signatures. In Section~\ref{sec:atdesc}, we briefly describe the Kipnis--Shamir attack and present a variation of this attack that produces an equivalent key for a scheme that makes use of Rainbow-$\eta$. In Section~\ref{sec:counter}, we show the practical consequences of this attack, and we argue that fixing less vinegar variables still leads to an efficient attack.
 
 \section{Attack description}\label{sec:atdesc}
 
