@@ -85,7 +85,9 @@ Classical computers are electronic, using circuits to perform computations. Howe
 
 \section{Scope of our research}
 
-The difficulty of solving polynomial systems over multiple variables does not change in the quantum setting, as discussed in Section~\ref{sec:mult}. The discipline of cryptographic primitives based on this problem is known as \textit{multivariate public-key cryptography} or solely multivariate cryptography. Families of multivariate cryptosystems are defined according to how finite fields are employed in the computations, for instance, using a base field and an extension field. Specific improvements are then obtained, such as trade-offs between key and signature sizes, or larger security parameters.
+Solving polynomial systems over many variables in the quantum
+setting is a computationally hard problem, as we discuss in
+Section~\ref{sec:mult}. The discipline of cryptographic primitives based on this problem is known as \textit{multivariate public-key cryptography} or solely multivariate cryptography. Families of multivariate cryptosystems are defined according to how finite fields are employed in the computations, for instance, using a base field and an extension field. Specific improvements are then obtained, such as trade-offs between key and signature sizes, or larger security parameters.
 
 Multivariate cryptosystems are extremely time- and space-efficient when operating over messages. However, public and private keys are defined by large polynomial systems with little opportunity for compression or sparseness. Large key sizes frequently impose constraints on the use of signature schemes in devices of limited storage and processing power. In multivariate cryptography, keys are often orders of magnitude larger than those used in conventional signature schemes.
 
