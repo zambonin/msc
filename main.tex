@@ -385,10 +385,10 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, focusing on digital signature schemes. We first recall two essential components of cryptography, with definitions taken from~\cite[Sec.~7.1]{Gathen:2015} and~\cite[Sec.~6.1]{Goldreich:2004}.
 
 \begin{definition}
-  Given a function $\mathcal{H} : X \to Y$ and any $x \in X$, $\mathcal{H}$ is a \emph{hash function} if calculating $\mathcal{H}(x)$ is deterministic and computationally easy.
+  Given a function $\mathcal{H} : X \to Y$ and any $x \in X$, $\mathcal{H}$ is a \emph{hash function} if calculating $\mathcal{H}(x)$ is deterministic and computationally easy. Usually, a hash function is also compressing, that is, $|x| > |\mathcal{H}(x)|$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:hash}
   Given a hash function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ may respect the following properties.
 
   \begin{enumerate}
@@ -398,7 +398,7 @@ With most mathematical machinery defined, we now introduce the building blocks t
   \end{enumerate}
 \end{definition}
 
-The cryptographic hash function is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ is composed of all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs a random string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a handy tool for integrity checking.
+A \emph{cryptographic hash function} is a hash function which respects all three properties of Definition~\ref{def:hash}. It is the usual method of transforming a variable-length message into a fixed-length \emph{digest}. Usually, the set $X$ is composed of all binary words $\{0, 1\}^{*}$, while $Y$ is $\mathbb{F}_{2}^{k}$ for some small $k \in \mathbb{N}$. A well-designed function outputs a random string with no apparent connection to the input, which changes completely even with the smallest correction applied to the original message. It is a handy tool for integrity checking.
 
 Multivariate cryptography is based on public-key cryptography. Let us denote private and public keys as $\mathsf{sk}$ and $\mathsf{pk}$, respectively. We give the formal definition of a signature scheme below.
 
