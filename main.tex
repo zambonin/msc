@@ -301,7 +301,7 @@ We note that an irreducible polynomial over a ring always exists~\cite[Remark~2.
   Let $p$ be a prime number and $n \in \mathbb{N}$. Then, there exists a finite field with $p^{n}$ elements. Such a finite field $\mathbb{F}_{p^{n}}$ is isomorphic to $\mathbb{F}_{p}[x] / (f)$ with $f \in \mathbb{F}_{p}[x]$ irreducible and $\deg(f) = n$.
 \end{definition}
 
-Finite fields of the form $\mathbb{F}_{2^{n}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
+The finite field $\mathbb{F}_{p^{n}}$ can be represented as the set of polynomials with coefficients in $\mathbb{F}_{p}$ and degree smaller than $n$ carrying the usual polynomial arithmetic operations modulo $f$. Finite fields of the form $\mathbb{F}_{2^{n}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
 We remark that a polynomial by itself is simply a mathematical expression, but it is commonly used to define a \emph{polynomial function}. In this case, the indeterminates are the \emph{variables} of the function $f(\mathbf{x})$ associated with the polynomial. The domain and codomain of such a function must be thus well-defined, for instance, by picking a field. Further, the solutions to the associated equation $f(\mathbf{x}) = 0$, if they exist, are the zeros of the function or the \emph{roots} of a polynomial.
 
