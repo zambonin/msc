@@ -385,7 +385,7 @@ We observe that the $\mathsf{GL}_{n}(\mathbb{F})$ notation does not refer to a v
 With most mathematical machinery defined, we now introduce the building blocks to create a generic public-key cryptosystem based on multivariate polynomial equations, focusing on digital signature schemes. We first recall two essential components of cryptography, with definitions taken from~\cite[Sec.~7.1]{Gathen:2015} and~\cite[Sec.~6.1]{Goldreich:2004}.
 
 \begin{definition}
-  A function $\mathcal{H} : X \to Y$ is a \emph{hash function} if it is \emph{deterministic} and \emph{easy to compute}.
+  Given a function $\mathcal{H} : X \to Y$ and any $x \in X$, $\mathcal{H}$ is a \emph{hash function} if calculating $\mathcal{H}(x)$ is deterministic and computationally easy.
 \end{definition}
 
 \begin{definition}
