@@ -316,10 +316,11 @@ Several polynomials may be used to model a complex structure in which they behav
       f^{(m)}(x_{1}, \dots, x_{n}) &= 0.
     \end{dcases}
   \end{align}
-  If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}.
 \end{definition}
 
-A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively, and there exist several different methods to calculate one or all roots~\cite[Chap.~9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, which can be done by the Gaussian elimination algorithm~\cite[Sec.~2.2]{Press:2007}.
+A polynomial system is classified with regards to its number of solutions, and the relation between $m$ and $n$.
+
+For $1 \leq i \leq m$, if $f^{(i)}$ is not a linear combination of any other equations, a polynomial system may be classified as follows. If $m > n$, the system is \emph{overdetermined}. If $m < n$, the system is \emph{underdetermined}. If $m = n$, the system is \emph{exactly determined}. A polynomial system is \emph{consistent} if there exists at least one solution $x_{1}, \dots, x_{n}$ and \emph{inconsistent} otherwise. Root-finding techniques have been studied extensively, and there exist several different methods to calculate one or all roots~\cite[Chap.~9]{Press:2007}. We are mostly focused on solving systems of linear equations, in which all polynomials have $\deg(\cdot) \leq 1$, that can be solved through Gaussian elimination~\cite[Sec.~2.2]{Press:2007}.
 
 It is useful to define an algebraic structure that falls outside of the class of ring-like structures to generalize the notion of grouping polynomials into a system.
 
