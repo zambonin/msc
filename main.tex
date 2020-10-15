@@ -389,13 +389,12 @@ With most mathematical machinery defined, we now introduce the building blocks t
 \end{definition}
 
 \begin{definition}
-  Given a function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ is a \emph{cryptographic hash function} if it satisfies the following conditions:
+  Given a hash function $\mathcal{H} : X \to Y$ and any $m_{1}, m_{2} \in X$, $\mathcal{H}$ may respect the following properties.
 
   \begin{enumerate}
-    \item It is \emph{deterministic} and \emph{easy to compute}.
-    \item It is \emph{preimage resistant}, i.e. it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$.
-    \item It is \emph{second preimage resistant}, i.e. it is computationally unfeasible to find $m_{2}$ given $m_{1}$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
-    \item It is \emph{collision resistant}, i.e. it is computationally unfeasible to find a pair $(m_{1}, m_{2})$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
+    \item \emph{Preimage resistance}: it is computationally unfeasible to find $m_{1}$ given $\mathcal{H}(m_{1})$.
+    \item \emph{Second preimage resistance}: it is computationally unfeasible to find $m_{2}$ given $m_{1}$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
+    \item \emph{Collision resistance}: it is computationally unfeasible to find a pair $(m_{1}, m_{2})$ such that $m_{1} \neq m_{2}$ and $\mathcal{H}(m_{1}) = \mathcal{H}(m_{2})$.
   \end{enumerate}
 \end{definition}
 
