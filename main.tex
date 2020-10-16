@@ -1,5 +1,4 @@
-\documentclass[12pt, a4paper, oneside]{memoir}
-\usepackage[english]{babel}
+\documentclass[english]{ufsc-thesis-rn46-2019/ufsc-thesis-rn46-2019}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -22,22 +21,89 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 
-\title{On the randomness of Rainbow signatures}
-\author{Gustavo Zambonin}
-\date{}
+\titulo{On the randomness of Rainbow signatures}
+\autor{Gustavo Zambonin}
+\data{2020}
+\instituicao{Universidade Federal de Santa Catarina}
+\centro{Centro Tecnológico}
+\local{Florianópolis}
+\programa{Programa de Pós-Graduação em Ciência da Computação}
+\dissertacao
+\titulode{mestre em Ciência da Computação}
+
+\afiliacaocoorientador{Carleton University}
+\orientador{Prof. Ricardo Felipe Custódio, Dr.}
+\coorientador{Prof. Daniel Panario, Dr.}
+\membrobanca{Prof. Jintai Ding, Dr.}{University of Cincinnati}
+\membrabanca{Prof\textsuperscript{a}. Lucia Moura, Dra.}{University of Ottawa}
+\membrobanca{Prof. Ricardo Dahab, Dr.}{Universidade Estadual de Campinas}
+\membrobanca{Prof. Jean Everson Martina, Dr.}{Universidade Federal de Santa Catarina}
+\coordenadora{Prof\textsuperscript{a}. Vania Bogorny, Dra.}
 
 \begin{document}
 
-\maketitle
+\pretextual
+\imprimircapa
+\imprimirfolhaderosto*
+\protect\incluirfichacatalografica{charts/index-card}
+\imprimirfolhadecertificacao
 
-\begin{abstract}
+\begin{agradecimentos}
+  O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento
+    de Pessoal de Nível Superior- Brasil (CAPES) - Código de Financiamento 001,
+    e com apoio do programa Mitacs-CALAREO Globalink Research Award (Canadá).
+
+  Agradeço aos meus pais, Roberto e Luciana, pelo suporte e confiança
+    depositados em mim ao longo do desenvolvimento deste trabalho. Agradeço às
+    amigas e amigos, Ana Letícia, Douglas Martins, Douglas Silva, Larissa
+    e Matheus, pela companhia na forma de inúmeras conversas após (ou durante)
+    um dia de trabalho, e pela paciência quando estas tornavam-se
+    desabafos.
+
+  Agradeço aos Professores Ricardo Custódio, Daniel Panario, Jean Martina,
+    Ricardo Dahab e Jintai Ding, e Professora Lucia Moura, que auxiliaram de
+    várias maneiras no progresso desta pesquisa, através de sua hospitalidade
+    em algumas latitudes (inclusive as virtuais), orientação, disponibilidade
+    e olhar crítico.
+
+  Por fim, agradeço à Poliana, pela presença em todo e qualquer um dos dias que
+    compuseram esta jornada, pela sua brandura, vivacidade e inabalável amor.
+
+  \vspace{1cm}
+
+  This study was financed in part by the Coordenação de Aperfeiçoamento de
+    Pessoal de Nível Superior -- Brasil (CAPES) -- Finance Code 001, and
+    a Mitacs-CALAREO Globalink Research Award (Canada).
+
+  I thank my parents, Roberto and Luciana, for their support and trust placed
+    in me throughout the development of this work. I thank my friends, Ana
+    Letícia, Douglas Martins, Douglas Silva, Larissa and Matheus, for their
+    camaraderie presented in the form of countless conversations after (or in
+    the middle of) a day of work, and for their patience when they became heart
+    to hearts.
+
+  I thank the Professors Ricardo Custódio, Daniel Panario, Lucia Moura, Jean
+    Martina, Ricardo Dahab and Jintai Ding, who helped improve this research in
+    several ways, mainly through their hospitality in some latitudes (including
+    virtual ones), supervision, availability and critical assessments.
+
+  Finally, I thank Poliana, for being part of each and every day that made up
+    this journey, for her tenderness, wit and unfaltering love.
+\end{agradecimentos}
+
+\begin{epigrafe}
+  ``Anyone, from the most clueless amateur to the best cryptographer, can
+    create an algorithm that he himself can’t break.''~\cite{Schneier:199810}
+\end{epigrafe}
+
+\begin{resumo}[Resumo]
 O esforço computacional necessário para enfraquecer algoritmos de criptografia assimétrica atualmente usados é proveniente de problemas da teoria de números e álgebra. Com o advento de computadores quânticos, tais problemas tornam-se passíveis de resolução em tempo polinomial. A área de pesquisa formada por criptossistemas assimétricos independentes de tais problemas é chamada de criptografia pós-quântica. Um exemplo de problema onde é desconhecido se sua resolução é acelerada por computadores quânticos é o problema de resolução de sistemas de equações, alicerce para a criptografia baseada em polinômios multivariados. Chaves públicas e privadas desses algoritmos são representadas por sistemas de equações proibitivamente extensos, mas operações com mensagens são demasiado eficientes. Este comportamento é facilmente identificável no esquema de assinatura digital Rainbow, atualmente finalista no processo de padronização de criptografia pós-quântica liderado pelo Instituto Nacional de Padrões e Tecnologia dos Estados Unidos. O esquema Rainbow é baseado em polinômios de ``óleo e vinagre'', que têm resistido a métodos criptanalíticos até o presente momento. Neste trabalho, um método para reduzir as chaves privadas do esquema Rainbow é proposto, baseado na substituição antecipada de valores em polinômios de chaves privadas, permitindo representações mais compactas. Uma consequência imediata deste fato é que assinaturas são geradas com um nível reduzido de aleatoriedade, mas são apresentados argumentos que mostram a insignificância estatística deste fato em comparações com assinaturas convencionais. O método proposto leva a redução de chaves privadas em até 6.5 vezes, e pode ser combinado com estratégias que reduzem chaves públicas. Entretanto, é exposto que tal método leva a um ataque de recuperação de chaves eficiente, que invalida totalmente a segurança do esquema de assinatura digital derivado. Este trabalho analisa como o ataque é implementado na prática, e demonstra que uma generalização do método proposto é ainda insegura para vários parâmetros do esquema.
 
 \vspace{\baselineskip}
 \textbf{Palavras-chave:} Assinatura digital. Criptografia pós-quântica. Criptografia baseada em polinômios multivariados. Rainbow.
-\end{abstract}
+\end{resumo}
 
-\begin{abstract}
+\begin{resumo}[Resumo expandido]
 \section*{Introdução}
 Segurança nas comunicações entre dispositivos eletrônicos é um requisito frequentemente desejado, em vista do acréscimo exponencial de troca digital de informações a cada dia. Neste contexto, a criptografia de chaves públicas fornece arcabouços matemáticos para diferentes casos de uso. Particularmente, esquemas de assinatura digital são utilizados para prover autenticidade, integridade e não-repúdio de mensagens e seus remetentes. A segurança de assinaturas digitais utilizadas atualmente é baseada em problemas matemáticos cuja resolução é computacionalmente impraticável até o momento, como a fatoração de inteiros e o logaritmo discreto. Entretanto, em modelos computacionais recentes, como na computação quântica, são propostos algoritmos que podem resolver tais problemas matemáticos mais rapidamente. Desse modo, observa-se a necessidade de analisar algoritmos criptográficos baseados em problemas matemáticos que não são afetados por computadores quânticos. Esta disciplina chama-se criptografia pós-quântica, e existe um esforço considerável de pesquisa na criação de tais métodos, que adicionalmente podem ser executados em computadores convencionais, com o intuito de substituir algoritmos utilizados atualmente. Em especial, os criptossistemas baseados em polinômios de várias variáveis são extremamente eficientes na criação e verificação de assinaturas, porém suas chaves têm tamanho proibitivo em comparação com métodos utilizados atualmente. Assim, demonstra-se uma necessidade da pesquisa em estratégias para redução de chaves em esquemas de assinatura digital baseados em polinômios multivariados.
 
@@ -55,7 +121,7 @@ Modificações feitas ao esquema Rainbow com o intuito de reduzir chaves privada
 
 \vspace{\baselineskip}
 \textbf{Palavras-chave:} Assinatura digital. Criptografia pós-quântica. Criptografia baseada em polinômios multivariados. Rainbow.
-\end{abstract}
+\end{resumo}
 
 \begin{abstract}
 The computational difficulty of breaking public-key cryptographic algorithms in current use is based on problems from number theory and algebra. With the advent of quantum computers, it becomes feasible to solve such problems in polynomial time. The discipline formed by public-key cryptosystems independent of such problems is called post-quantum cryptography. One example of a problem that is not known to be solved more efficiently by quantum algorithms is the polynomial system solving problem, which is the basis for multivariate cryptography. Prohibitively large polynomial systems represent private and public keys of these algorithms, but operations on messages are very efficient. The Rainbow multivariate signature scheme, currently a finalist of the NIST Post-Quantum Cryptography Standardization Process, is no exception to this norm. Rainbow is based on Oil--Vinegar polynomials, which have resisted known cryptanalysis to this day. We propose a method to reduce Rainbow private keys based on the early substitution of values on the polynomials of private keys, allowing for their compact representation. A direct consequence of this fact is that signatures are generated with a smaller level of randomness, but we argue that this is not statistically discernible from conventional Rainbow signatures. Our method reduces private keys by up to a factor of 6.5 and can be combined with strategies that reduce public keys. However, we find out that our strategy leads to an efficient key recovery attack, which completely undermines the security of the scheme. By analyzing how the attack proceeds in practice, we further argue that a generalization of our previous method is still insecure for several parameter sets.
@@ -64,8 +130,11 @@ The computational difficulty of breaking public-key cryptographic algorithms in 
 \textbf{Keywords:} Digital signatures. Post-quantum cryptography. Multivariate cryptography. Rainbow.
 \end{abstract}
 
-\newpage
+\listoffigures*
+\listoftables*
 \tableofcontents*
+
+\textual
 
 \chapter{Introduction}\label{ch:intro}
 
@@ -295,7 +364,7 @@ where $\mathbf{x}^{i} = x_{1}^{i_{1}} \cdots x_{n}^{i_{n}}$ and $i_{1}, \dots, i
   A polynomial $f_{1} \in \mathsf{R}[\mathbf{x}]$ is \emph{irreducible over $\mathsf{R}$} if $f_{1} = f_{2} f_{3}$, with $f_{2}, f_{3} \in \mathsf{R}[\mathbf{x}]$ implies that $f_{2}$ or $f_{3}$ is in $\mathsf{R}$. Otherwise, $f_{1}$ is reducible over $\mathsf{R}$.
 \end{definition}
 
-We note that an irreducible polynomial over a ring always exists~\cite[Remark~2.1.25]{Mullen:2013}. An irreducible polynomial cannot be reduced or divided into simpler polynomials. In the context of multivariate polynomial rings, the division operation is ambiguous if no additional structure is attached. This distinction is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography. 
+We note that an irreducible polynomial over a ring always exists~\cite[Remark~2.1.25]{Mullen:2013}. An irreducible polynomial cannot be reduced or divided into simpler polynomials. In the context of multivariate polynomial rings, the division operation is ambiguous if no additional structure is attached. This distinction is discussed in detail in Section~\ref{sec:mult}, tailored to the context of multivariate cryptography.
 
 We are now ready to discuss non-prime fields. Let $p$ be a prime number and $n \in \mathbb{N}$. It is well-known that there exists a finite field with $p^{n}$ elements~\cite[Thm.~2.1.32]{Mullen:2013}. Indeed, the finite field $\mathbb{F}_{p^{n}}$ can be represented as the set of polynomials with coefficients in $\mathbb{F}_{p}$ and degree smaller than $n$ carrying the usual polynomial arithmetic operations modulo $f$. Finite fields of the form $\mathbb{F}_{2^{n}}$ are especially useful in computer science, given that coefficients are restricted to $\{0, 1\}$ and may be represented by bit arrays, with arithmetic done through logic operations.
 
@@ -513,6 +582,7 @@ The sequence of operations in the bipolar construction is summarized in Figure~\
   \end{tikzpicture}
   \caption{Standard flow of operations in the bipolar
     construction.}\label{fig:bipolar}
+  \fonte{the author.}
 \end{figure}
 
 We now observe the relationship between $m$ and $n$ to understand how the bipolar construction works. The lateral maps need not be considered in this discussion due to their lack of structure. For $m \geq n$, the map $\mathcal{C}$ should be injective, to ensure that there exists a unique plaintext $\mathbf{z}$ related to each ciphertext $\mathbf{h}$, by the preimage step. In the case of $m \leq n$, one expects that $\mathcal{C}$ is surjective, such that every message $\mathbf{h}$ has a signature $\mathbf{z}$, once again by the central map preimage.
@@ -1096,6 +1166,7 @@ The Rainbow submission authors made conservative choices in the first~\cite{Ding
     P-256  & $(\mathbb{F}_{256}, 85, 63, 30)$  &              266 &              372 &              956 &              709 &  $\mathbf{ 260}$ \\
     \bottomrule
   \end{tabular}
+  \fonte{the author.}
 \end{table}
 
 The minimum security level among different attacks for a parameter set is emphasized. In the case of direct attacks, we set $\bm{\omega} = 2.4$ as the linear algebra constant, and simulate the complexity of solving an exactly determined polynomial system with $m$ equations and variables. In the context of Rainbow, $n - m$ variables are fixed to attempt to solve the system. Since the complexity of this attack depends on the method used to find Gröbner bases, it is acceptable that there exists a small difference in the reported bit level, as in the case of P-$\ell$. Moreover, the constraint of RBS is respected for all parameters sets with $q > 16$.
@@ -1115,6 +1186,7 @@ Recent developments of Rainbow cryptanalysis~\cite{Ding:202006} have improved th
     V    & $(\mathbb{F}_{256}, 96, 36, 64)$  &              278 &  $\mathbf{ 265}$ &              274 &              560 &              289 &              532 \\
     \bottomrule
   \end{tabular}
+  \fonte{the author.}
 \end{table}
 
 We note that most attacks look for unique structures within the private key. While our methods indeed modify the private key representation, it is still present in its entirety on the public key composition, which is readily available to malicious entities and can be possibly used to forge signatures. Thus, we suggest that the right choice of parameters is made whenever our methods are applied, according to~\cite{Petzoldt:201005}, to protect the scheme instance against these attacks. We do not discard the possibility that specialized attacks exist, particularly ones that take into account multiple signatures, due to our fixing of vinegar variables.
@@ -1151,16 +1223,17 @@ Parameters for Rainbow are selected according to a number of restrictions, impos
     $\argmin_{56 \leq n \leq 90}$ of $\Pi(q, n)$
     and $\widetilde{\Pi}(q, n)$.\label{fig:prob-inv-normal-size}
   ]{
-    % \includegraphics[width=.49\columnwidth]{charts/inv-prob/inv-prob}
+    \includegraphics[width=.49\columnwidth]{charts/inv-prob/inv-prob}
   }
   \subfloat[
     Figure~\ref{fig:prob-inv-normal-size}, with $q \geq 16$.\label{fig:prob-inv-zoomed}
   ]{
-    % \includegraphics[width=.467\columnwidth]{charts/inv-prob/inv-prob-zoom}
+    \includegraphics[width=.467\columnwidth]{charts/inv-prob/inv-prob-zoom}
   }
   \caption{Probability of obtaining $M \in \mathsf{GL}_{n}(\mathbb{F}_{q})$
     with $2 \leq q \leq 256$ and $q$ a prime power, given the
     quantity of layers of Rainbow.}\label{fig:prob-inv}
+  \fonte{the author.}
 \end{figure}
 
 It is also useful to calculate $\Pi(q) = \lim_{n \to \infty} \Pi(q, n)$ to observe changes in the probability with the growth of the number of equations. We note that this limit has a well-known series representation.
@@ -1205,15 +1278,16 @@ suggesting that greater values of $n$ and $t$ approximate faster to the theoreti
   \subfloat[
     $d_{\sigma}(t)$ for $n = 42, v_{1} = 17$.\label{fig:std-diff-n42}
   ]{
-    % \includegraphics[width=.49\columnwidth]{charts/measure-diff/std-diff-n42}
+    \includegraphics[width=.49\columnwidth]{charts/measure-diff/std-diff-n42}
   }
   \subfloat[
     $d_{\sigma}(t)$ for $n = 90, v_{1} = 35$.\label{fig:std-diff-n90}
   ]{
-    % \includegraphics[width=.406\columnwidth]{charts/measure-diff/std-diff-n90}
+    \includegraphics[width=.406\columnwidth]{charts/measure-diff/std-diff-n90}
   }
   \caption{Difference of standard deviations when $1 \leq t \leq 512$,
     and $2 \leq q \leq 256$ with $q$ as a prime power.}\label{fig:std-diff}
+  \fonte{the author.}
 \end{figure}
 
 Let us denote the absolute difference between standard deviations for $t$ as $d_{\sigma}(t) = \abs{\sigma(Z_{t}) - \sigma(\widetilde{Z}_{t})}$. Figure~\ref{fig:std-diff} shows the amplitude of such values for various values of $q$ and $t$. We note that the largest values of $d_{\sigma}(t)$ occur for finite fields of higher orders and lower $t$. For instance, given the vector space $\mathbb{F}_{223}^{42}$, we have $d_{\sigma}(1) \approx 8.25$, and for a slightly higher $t$, we obtain a much lower value $d_{\sigma}(11) \approx 0.24$. This behaviour is also observed within absolute differences of means, defined analogously as $d_{\mu}(t)$. The vector space $\mathbb{F}_{191}^{42}$ gives the values $d_{\mu}(1) \approx 5.31$ and, comparatively, $d_{\mu}(1) \approx 1.14$.
@@ -1228,16 +1302,17 @@ The Q-Q plot, or normal probability plot, further confirms this behaviour. It is
   \subfloat[
     CDF plot.\label{fig:cdf-plot}
   ]{
-    % \includegraphics[width=.485\columnwidth]{charts/diffusion/cdf-plot}
+    \includegraphics[width=.485\columnwidth]{charts/diffusion/cdf-plot}
   }
   \subfloat[
     Q-Q plot.\label{fig:qq-plot}
   ]{
-    % \includegraphics[width=.485\columnwidth]{charts/diffusion/qq-plot}
+    \includegraphics[width=.485\columnwidth]{charts/diffusion/qq-plot}
   }
   \caption{Distribution of counts of elements in $Z_{t}$ and
     $\widetilde{Z}_{t}$ such that $t = 2^{16}$ for
     $\mathbb{F}_{256}^{90}$.}\label{fig:dist-plot}
+  \fonte{the author.}
 \end{figure}
 
 Let $r \in \mathbb{N}$ be a precision parameter, and $\min(S, i)$ represent the $i$-th smallest value in a non-empty set $S$ with a partial order. A number $r \times q$ of samples are taken from a standard normal distribution $\mathcal{N}(0, 1)$ and organized into $q$-tuples $K_{1}, \dots, K_{r}$. Then, $K$ is composed of the means of the $i$-th smallest values in all $K_{j}$, that is,
@@ -1279,6 +1354,7 @@ Our method does not depend on structures inserted on the private key. Consequent
     V     & $(\mathbb{F}_{256}, 96, 36, 64)$ & 196 & 100 & \num{ 1408704} & \num{ 204384} & $-85.49\%$ \\
     \bottomrule
   \end{tabular}
+  \fonte{the author.}
 \end{table}
 
 We show results for the application of our method in Table~\ref{tab:eta-diff}, considering parameter sets of Tables~\ref{tab:sec} and~\ref{tab:newsec}. Indeed, the choice of $v_{1}$ remarkably affects the results. Moreover, a minimal value of $o_{u}$ is also known to reduce the private key size further. We suggest that $v_{1} \geq o_{u}$ as much as possible to maximize the results of our method. However, we remark that one must set sufficient parameters for $o_{i}$ such that the scheme still resists direct and UOV attacks.
@@ -1311,6 +1387,7 @@ To the best of our knowledge, it is not trivial to combine our strategy with the
                            & nCyclic &                                &                                & \num{  536104} & $-77.83\%$ \\
     \bottomrule
   \end{tabular}
+  \fonte{the author.}
 \end{table}
 
 We compare key pair sizes when our method is used alongside Rainbow variants that reduce the public key size. Table~\ref{tab:pair-diff} presents results for some sets of parameters from Table~\ref{tab:eta-diff}. We calculate $\#\mathsf{pk}$ for the variants according to~\cite[Eqs.~9.2,~9.4]{Petzoldt:201307} and~\cite{Petzoldt:202004}. As per~\cite[Remark~9.1]{Petzoldt:201307}, we note that $q = 16$ and $q = 31$ are not considered due to a security restriction of RainbowLRS2. The ``nCyclic'' method is a small improvement over CyclicRainbow featured on the second-round submission of Rainbow to the NIST standardization process~\cite{Ding:201901}. We obtain positive results, with key pair size reductions of up to a factor of 3.
@@ -1449,15 +1526,16 @@ We now explore the probability that, given $n$ draws from a population of size $
   \subfloat[
     PMF plot.\label{fig:hyper-pmf-plot}
   ]{
-    % \includegraphics[width=.4785\columnwidth]{charts/hyper/hyper-pmf}
+    \includegraphics[width=.4785\columnwidth]{charts/hyper/hyper-pmf}
   }
   \subfloat[
     CDF plot.\label{fig:hyper-cdf-plot}
   ]{
-    % \includegraphics[width=.48\columnwidth]{charts/hyper/hyper-cdf}
+    \includegraphics[width=.48\columnwidth]{charts/hyper/hyper-cdf}
   }
   \caption{Hypergeometric distribution with
     $N = 128$, $K = 24$ and $n \in \{32, 48, 64, 80, 96\}$.}\label{fig:hyper}
+  \fonte{the author.}
 \end{figure}
 
 However, the sample size is easily controlled by the attacker, while the $\alpha$ factor may be unknown. To this end, a remarkable fact about the hypergeometric distribution is that it is \emph{symmetric} on the $K$ and $n$ parameters. Such symmetry is verified by expanding the PMF definition into binomials for both cases and checking for the desired equality. Thus, Figure~\ref{fig:hyper} also represents the behaviour of various $\alpha$ factors in the form of different quantities of signatures eligible for the attack, that is, $K \in \{32, 48, 64, 80, 96\}$ and a fixed number of samples $n = 24$.
@@ -1561,6 +1639,7 @@ Table~\ref{tab:bin-prob} shows the approximate probabilities, i.e. $q^{-v_{1} + 
     256 &  96 & \num{3E-116} & \num{3E-104} & \num{ 3E-92} & \num{ 3E-80} & \num{ 4E-68} \\
     \bottomrule
   \end{tabular}
+  \fonte{the author.}
 \end{table}
 
 For example, when $q = 256$ and $v_{1} = 17$, if half of the bits of $\widetilde{V}_{1}$ are fixed, there exists a $1$ in $\num{5E+20}$ chance that the same vinegar variables are picked for two signatures. It is immediately evident that for lower values of either $q$ or $v_{1}$, an attacker is able to mount the attack of Subsection~\ref{subsec:etaks} by simply collecting more signatures. Since there are few possibilities for $\widetilde{V}_{1}$, it is expected that there is a large number of signatures with the same sequence of vinegar variables.
@@ -1594,7 +1673,7 @@ We analyzed the effort needed to collect signatures from an active target that r
 
 Despite its simple construction that allows for several modifications, the Rainbow signature scheme is also very prone to introducing subtle weaknesses. Our efforts showed that deviating from customary structural changes to the private key still leads to an insecure scheme. Thus, we restate the importance of rigorously scrutinizing a cryptographic system. Nonetheless, we attempted to provide a comprehensive explanation of our work, hoping that it is beneficial for the community. Further, we have identified several topics to extend our research.
 
-\subsubsection{Future work.}
+\section{Future work}\label{sec:future}
 
 We observe that there are very few signature schemes based on Rainbow attempting to reduce private and public keys simultaneously. The method of Petzoldt, which is based on generating a structured part of the public key and obtaining the central map later, is the basis of all public-key reduction methods in the literature. Proposals that can be combined with this strategy can reduce the total key pair size, helping storage-constrained devices operate Rainbow in its entirety.
 
@@ -1610,7 +1689,7 @@ For smaller parameter sets, the chance of accidental reuse of vinegar variables 
 
 Finally, to the best of our knowledge, the manipulation of vinegar variables in Rainbow throughout means other than fault attacks is nonexistent in the literature. The random generation of vinegar variables by a poor algorithm may be exploited in a similar way to our work. Further, to protect the scheme against such attacks, we suggest the research of methods to prevent tampering of intermediate signing steps, e.g. a checksum, or obtaining vinegar values deterministically from the private key and message.
 
-\bibliographystyle{alpha}
+\postextual
 \bibliography{ref}
 
 \end{document}
