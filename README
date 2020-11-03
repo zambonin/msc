@@ -1,1 +1,4 @@
 Revision control for my master's thesis and associated files.
+
+All LaTeX files are compiled by simply typing `make -j`. Files inside
+`support/` are used for reproducibility.

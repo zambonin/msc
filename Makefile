@@ -28,7 +28,7 @@ charts/measure-diff/q256-t512-n90.txt: /usr/bin/sage
 	sage charts/measure-diff/3d-view-std-comp.sage 256 512 90 >| $@
 
 ufsc-thesis-rn46-2019/ufsc-thesis-rn46-2019.cls:
-	git submodule add --force git@github.com:alexishuf/ufsc-thesis-rn46-2019
+	git submodule update --init $(dir $@)
 
 %.pdf: %.tex
 	latexmk -f -interaction=nonstopmode -shell-escape -pdf -use-make -cd $<
