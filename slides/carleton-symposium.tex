@@ -1,0 +1,92 @@
+\documentclass[12pt]{beamer}
+
+\usetheme{Copenhagen}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+
+\setitemize{
+  itemsep=1em,
+  label=\usebeamerfont*{itemize item}
+    \usebeamercolor[fg]{itemize item}
+    \usebeamertemplate{itemize item}
+}
+
+\definecolor{uottawa-garnet}{RGB}{143, 0, 26}
+\usecolortheme[named=uottawa-garnet]{structure}
+
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}
+
+\title{
+  Security Analysis of the\\
+  Rainbow-$\eta$ Signature Scheme
+}
+
+\author[G. Zambonin (\texttt{gustavo.zambonin@uottawa.ca})]
+{\includegraphics[scale=0.15]{avatar} \\ \vspace{2mm}
+  Gustavo Zambonin}
+\institute{School of Electrical Engineering and Computer Science \\
+  University of Ottawa
+}
+\date{March 4th, 2021 \\
+  {\scriptsize International Research Mobility Symposium @ Carleton University}
+}
+
+\begin{document}
+
+\begin{frame}[plain,noframenumbering]
+  \titlepage{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Context}
+  \begin{itemize}
+    \item Digital signatures are widely used to provide authenticity, integrity
+        and non-repudiation to communications
+    \item Their security is usually based on problems from number theory,
+        solved efficiently by Shor's quantum algorithm
+    \item \textbf{Quantum-safe cryptography} aims to create public-key
+        cryptosystems secure against quantum computers
+    \item We focus on the Rainbow signature scheme, based on systems of
+        multivariate equations over finite fields
+    \item Signature generation and verification are efficient but key
+        sizes are large systems of equations (up to 100KB)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Strategy}
+  \begin{itemize}
+    \item Large keys are a problem for embedded devices and efficient secure
+        communications over a network (HTTPS)
+    \item How can we \textbf{securely reduce} the key sizes of Rainbow without
+        limiting parameter configuration?
+    \item To generate a signature, random values are substituted into the
+        private key, creating solvable systems of equations
+    \item What if such values are pre-substituted into the private key? It may
+        then be stored in a smaller fashion
+    \item The result is Rainbow-$\eta$, which reduces the key pair by up to
+        $71\%$, but lacks precise security analysis
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Analysis}
+  \begin{itemize}
+    \item Due to the pre-substitution of values in the private key of
+        Rainbow-$\eta$, the randomness of signatures is not preserved
+    \item A small number of signatures can be collected by an attacker and used
+        to create an \textbf{equivalent private key}
+    \item Complexity of the attack for usual parameters is non-trivial, but
+        still much smaller than desired
+    \item Proof-of-concept implementations of the attack in SageMath and Magma
+        for small parameters
+    \item Rainbow-$\eta$ is not recommended as a secure signature scheme
+        (cf. \url{https://github.com/zambonin/msc})
+  \end{itemize}
+\end{frame}
+
+\end{document}
